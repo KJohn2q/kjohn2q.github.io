@@ -8,13 +8,13 @@ subtitle: '一个专注技术的程序员'
 description: '涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。'
 keywords: "Python, Php, C++, Java, 爬虫, 架构, 分布式"
 author: John Wang
-language: en
+language: zh-CN
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://kjohn2q.github.io
-root: /
+root: /kjohn2q.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -104,3 +104,9 @@ search:
   field: post
   format: html
   limit: 10000
+
+excerpt:
+depth: 5
+excerpt_excludes: []
+more_excludes: []
+hideWholePostExcerpts: true
