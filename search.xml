@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>永远改变你编码技能的40个技巧</title>
-    <url>/kjohn2q.github.io/2020/07/14/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
+    <url>/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<blockquote>
 <p>本文译自 <a href="https://medium.com/swlh/40-tips-that-will-change-your-coding-skills-forever-bf9d6b936ccc" target="_blank" rel="noopener">40 Tips that will change your coding skills forever</a>,仅用于学习，不作商业用途</p>
 </blockquote>
@@ -57,7 +57,7 @@
   </entry>
   <entry>
     <title>git自建服务器权限管理</title>
-    <url>/kjohn2q.github.io/2020/03/19/git%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</url>
+    <url>/2020/git%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<blockquote>
 <p>本文部分译自 <a href="https://github.com/sitaramc/gitolite#gitolite-readme" target="_blank" rel="noopener"><code>Gitolite README</code></a>,仅作学习使用，不用于商业用途</p>
 </blockquote>
@@ -135,7 +135,7 @@
   </entry>
   <entry>
     <title>Generating Your SSH Public Key</title>
-    <url>/kjohn2q.github.io/2020/03/19/Generating-Your-SSH-Public-Key/</url>
+    <url>/2020/Generating-Your-SSH-Public-Key/</url>
     <content><![CDATA[<blockquote>
 <p>本文译自<a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key" target="_blank" rel="noopener"><code>Git on the Server - Generating Your SSH Public Key</code></a>，仅作学习使用，不用于商业用途</p>
 </blockquote>
@@ -170,7 +170,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
   </entry>
   <entry>
     <title>Active and Passive modes in FTP</title>
-    <url>/kjohn2q.github.io/2020/03/09/Active-and-Passive-modes-in-FTP/</url>
+    <url>/2020/Active-and-Passive-modes-in-FTP/</url>
     <content><![CDATA[<blockquote>
 <p>本文译自 <a href="https://www.web24.com.au/tutorials/active-passive-modes-ftp" target="_blank" rel="noopener"><code>Active and Passive modes in FTP</code></a> ,仅用于学习，不作商业用途</p>
 </blockquote>
@@ -199,7 +199,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
   </entry>
   <entry>
     <title>Splay Trees</title>
-    <url>/kjohn2q.github.io/2020/03/05/Splay-Trees/</url>
+    <url>/2020/Splay-Trees/</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
 <p>伸展树是一种能够自我平衡的二叉查找树，它能在均摊O(log n)的时间内完成基于伸展操作的插入、查找、修改和删除操作。它是由丹尼尔·斯立特（Daniel Sleator）和罗伯特·塔扬在1985年发明的。   ——— 维基百科</p>
 </blockquote>
@@ -275,7 +275,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
   </entry>
   <entry>
     <title>Configure CLion on Windows</title>
-    <url>/kjohn2q.github.io/2020/03/05/Configure-CLion-on-Windows/</url>
+    <url>/2020/Configure-CLion-on-Windows/</url>
     <content><![CDATA[<blockquote>
 <p>该文选译自 <code>jetbrains</code> 官网 <a href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm" target="_blank" rel="noopener"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
 </blockquote>
@@ -313,7 +313,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
   </entry>
   <entry>
     <title>github高效搜索</title>
-    <url>/kjohn2q.github.io/2019/12/26/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/</url>
+    <url>/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>github是全球最大的开源项目网站，集聚了非常多优质的开源项目，我们可以利用它，学习优秀代码，行业前沿知识，动手实践。</p>
 <p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20191226085939.png" alt=""></p>
 <p>上图为vue项目的主页，其中<code>name</code>为项目名称，description为项目的简要描述，<code>star</code>为项目的受关注程度，<code>fork</code>反映多少人克隆到了自己的仓库。除了这几个要素，还有项目的最后更新日期（<code>pushed</code>），项目的编程语言（<code>language</code>）,项目的创建日期（<code>create</code>）都可以作为我们搜索我们想要的项目时的依据。</p>
