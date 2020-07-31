@@ -34,7 +34,7 @@ tags: [虚拟机, 网络]
 
 此时，便可访问外网和宿主机。
 
-### 总结
+#### 总结
 
 桥接网络的方式配置简单，但并不适用于ip地址稀缺的情况。
 
@@ -42,7 +42,7 @@ tags: [虚拟机, 网络]
 
 网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）
 
-### 网络配置
+#### 网络配置
 
 首先，先将虚拟机的网络配置修改为`NAT`模式。
 
@@ -54,7 +54,7 @@ tags: [虚拟机, 网络]
 
 然后重启网络服务即可访问网络和宿主机。
 
-### 总结
+#### 总结
 
 `NAT` 模式适用于 `IP` 地址稀缺的情况。
 
@@ -62,13 +62,13 @@ tags: [虚拟机, 网络]
 
 仅主机模式表示虚拟机只能访问宿主机，不能访问网络。
 
-### 网络配置
+#### 网络配置
 
 可在 `vmware` 中的虚拟网络编辑器中查看 仅主机模式的 `IP` 地址段。配置仅主机模式的默认网卡（通常是`VMnet1`）的网络信息（IP地址，子网掩码，网关和DNS为刚刚查到的信息。IP地址需要自己定）。然后在虚拟机中配置IP地址，子网掩码，网关需要配置为虚拟网卡的IP地址。
 
 然后重启网络服务即可访问宿主机。
 
-### 总结
+#### 总结
 
 因仅主机模式并不能访问外网，故这种方式不常用。
 
