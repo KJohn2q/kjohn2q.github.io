@@ -1,6 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>tcp-explain</title>
+    <url>/2021/tcp-explain/</url>
+    <content><![CDATA[<h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
+<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
+<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
+<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
+<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
+<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
+</ol>
+<p><img src="tcp-explain/001.png" alt=""></p>
+<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
+<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
+<li>当接收到了第三个重复的 ACK （确认包）时，将  ssthresh（慢启动阶段临界值） 设置为 cwnd （当前拥塞窗口） 和 接收端通告窗口的最小值。 重传丢失的数据段。 将 cwnd 设置为 ssthresh + 3 * segsize（数据段的大小）。</li>
+<li>每次另一个重复的 ACK  到达， cwnd 增加 segsize , 传输一个数据包。（如果 cwnd  允许新的数据包的话）。</li>
+<li>当下一个确认新数据的 ACK 到达时，  将 cwnd  设置为 ssthresh 的值。此外，该 ACK  应该确认所有介于丢失的数据报和第三个 ACK  接收之间的数据段。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>tcp</tag>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Keep file in a Git repo, but don&#39;t track changes</title>
+    <url>/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/</url>
+    <content><![CDATA[<p>在工作中，我们常会使用 <code>git</code> 来进行项目的版本控制。但项目的一些配置文件我们希望只是存储在存储库中，本地开发环境对该部分配置文件进行修改，适合本地开发。而不将该部分修改提交到版本库。如：数据库配置文件。<br>那么怎样实现本地不追踪存储库中某文件的修改呢？有两种方法可以实现：</p>
+<ul>
+<li><code>git update-index --assume-unchanged [filename]</code></li>
+<li><code>git update-index --skip-worktree [filename]</code></li>
+</ul>
+<p>那么这两种方法有什么区别呢？</p>
+<p><code>assume-unchanged</code> is designed for cases where it is expensive to check whether a group of files have been modified; when you set the bit, git (of course) assumes the files corresponding to that portion of the index have not been modified in the working copy. So it avoids a mess of stat calls. This bit is lost whenever the file’s entry in the index changes (so, when the file is changed upstream).</p>
+<p><code>assume-unchange</code> 应用于检测一组文件是否修改成本很高的情况；当你设置了该选项，<code>git</code> 会假设在工作区副本中，索引对应的这部分文件没有修改。这避免了大量的<code>stat</code>的调用。每当文件在索引中的条目发生变化时，该选项无效。（也就是说当文件在上游发生变化时）</p>
+<p><code>skip-worktree</code> is more than that: even where git knows that the file has been modified (or needs to be modified by a reset –hard or the like), it will pretend it has not been, using the version from the index instead. This persists until the index is discarded.</p>
+<p><code>skip-worktree</code>不止于此：即使 <code>git</code> 监测到该文件发生了变化（或者当执行 <code>reset --hard</code> 文件需要发生变化），将会假装没有发生变化，而使用索引中的版本。直到索引被丢弃。</p>
+<p><code>--assume-unchanged</code> 假想开发者不应该修改该文件。该选项是为了提升那些像SDK一样不会修改的文件目录的性能。<br><code>--skip-worktree</code> 当你指示 <code>git</code> 不要监测指定文件，因为开发应该修改该文件。例如，主存储库上游主机存储了一些应用于生产环境的配置文件，你不希望偶然间不小心提交对这些文件的修改, <code>--skip-worktree</code> 是你正想要的。</p>
+<p>原文回答：<a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#" target="_blank" rel="noopener">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></p>
+<p>引用链接：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes" target="_blank" rel="noopener">Keep file in a Git repo, but don’t track changes</a></li>
+<li><a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#" target="_blank" rel="noopener">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></li>
+<li><a href="https://stackoverflow.com/questions/54575972/difference-between-git-rm-git-rm-cached" target="_blank" rel="noopener">Difference between git rm &amp; git rm –cached</a></li>
+<li><a href="https://git-scm.com/docs/git-update-index" target="_blank" rel="noopener">git-update-index</a></li>
+<li><a href="https://stackoverflow.com/questions/6138076/git-assume-unchanged-vs-skip-worktree-ignoring-a-symbolic-link" target="_blank" rel="noopener">git assume unchanged vs skip worktree - ignoring a symbolic link</a></li>
+<li><a href="https://fallengamer.livejournal.com/93321.html" target="_blank" rel="noopener">https://fallengamer.livejournal.com/93321.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github+hexo搭建博客</title>
+    <url>/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>本文介绍使用<code>hexo + github pages</code>搭建博客网站。</p>
+<p>基础环境：nodejs(version &lt; 14 &amp;&amp; version &gt; 12)</p>
+<h2 id="hexo安装与配置"><a href="#hexo安装与配置" class="headerlink" title="hexo安装与配置"></a>hexo安装与配置</h2><p><code>npm install -g hexo-cli</code></p>
+<h2 id="github仓库配置"><a href="#github仓库配置" class="headerlink" title="github仓库配置"></a>github仓库配置</h2><p>github中，新建一个 <code>public</code> 仓库，命名为 <code>TestBlog</code></p>
+<h2 id="本地新建博客并连接到-github-远程仓库地址"><a href="#本地新建博客并连接到-github-远程仓库地址" class="headerlink" title="本地新建博客并连接到 github 远程仓库地址"></a>本地新建博客并连接到 <code>github</code> 远程仓库地址</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"></span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line"></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置博客信息"><a href="#配置博客信息" class="headerlink" title="配置博客信息"></a>配置博客信息</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: KJohn2q</span><br><span class="line">subtitle: &#39;一个专注技术的程序员&#39;</span><br><span class="line">description: &#39;涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。&#39;</span><br><span class="line">keywords: &quot;Python, Php, C++, Java, 爬虫, 架构, 分布式&quot;</span><br><span class="line">author: John Wang</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: &#39;&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置博客部署信息"><a href="#配置博客部署信息" class="headerlink" title="配置博客部署信息"></a>配置博客部署信息</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:KJohn2q&#x2F;kjohn2q.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h2 id="本地博客连接到-github-远程仓库地址"><a href="#本地博客连接到-github-远程仓库地址" class="headerlink" title="本地博客连接到 github 远程仓库地址"></a>本地博客连接到 <code>github</code> 远程仓库地址</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &quot;blog first commit&quot;</span><br><span class="line"></span><br><span class="line">git remote add origin git@github.com:KJohn2q&#x2F;TestBlog.git</span><br><span class="line"></span><br><span class="line">git push origin source</span><br></pre></td></tr></table></figure>
+
+<h2 id="博客网站部署到远程仓库master分支"><a href="#博客网站部署到远程仓库master分支" class="headerlink" title="博客网站部署到远程仓库master分支"></a>博客网站部署到远程仓库master分支</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-github-pages"><a href="#配置-github-pages" class="headerlink" title="配置 github pages"></a>配置 <code>github pages</code></h2><p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200801085153.png" alt=""></p>
+<h2 id="hexo集成主题"><a href="#hexo集成主题" class="headerlink" title="hexo集成主题"></a>hexo集成主题</h2><p><code>hexo</code> 默认主题为 <code>landscape</code>，这里集成 <code>next</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd TestBlog</span><br><span class="line"></span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>为了便于保存主题文件，把主题文件夹中的 <code>.git</code> 文件夹删除。</p>
+<h2 id="配置评论功能"><a href="#配置评论功能" class="headerlink" title="配置评论功能"></a>配置评论功能</h2><p>打开 <code>theme/next</code> 主题文件夹中的 <code>_config.yml</code>文件，修改以下配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appid: t6IFRai4uKVYoIIyrH84awuK-gzGzoHsz</span><br><span class="line">  appkey: uo0ujaAY4BW05YV1NHgA4z0M</span><br><span class="line">  notify: false # Mail notifier</span><br><span class="line">  verify: false # Verification code</span><br><span class="line">  placeholder: Just go go # Comment box placeholder</span><br><span class="line">  avatar: mm # Gravatar style</span><br><span class="line">  guest_info: nick,mail,link # Custom comment header</span><br><span class="line">  pageSize: 10 # Pagination size</span><br><span class="line">  language: # Language, available values: en, zh-cn</span><br><span class="line">  visitor: false # Article reading statistic</span><br><span class="line">  comment_count: true # If false, comment count will only be displayed in post page, not in home page</span><br><span class="line">  recordIP: true # Whether to record the commenter IP</span><br><span class="line">  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)</span><br><span class="line">  #post_meta_order: 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置页面浏览量统计"><a href="#配置页面浏览量统计" class="headerlink" title="配置页面浏览量统计"></a>配置页面浏览量统计</h2><p>next集成了busuanzi访客统计插件</p>
+<p>打开 <code>theme/next</code> 主题文件夹中的 <code>_config.yml</code>文件，修改以下配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: true</span><br><span class="line">  total_visitors: true</span><br><span class="line">  total_visitors_icon: fa fa-user</span><br><span class="line">  total_views: true</span><br><span class="line">  total_views_icon: fa fa-eye</span><br><span class="line">  post_views: true</span><br><span class="line">  post_views_icon: fa fa-eye</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置头像和favicon"><a href="#配置头像和favicon" class="headerlink" title="配置头像和favicon"></a>配置头像和favicon</h2><p>打开 <code>theme/next</code> 主题文件夹中的 <code>_config.yml</code>文件，修改以下配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: &#x2F;images&#x2F;avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: false</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: false</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面底部标签信息-换图标"><a href="#页面底部标签信息-换图标" class="headerlink" title="页面底部标签信息#换图标"></a>页面底部标签信息<code>#</code>换图标</h2><p>修改文件 <code>themes/next/layout/_macro/post.swig</code> ，找到 <code>rel=&quot;tag&quot;&gt;#</code> ，将 <code>#</code> 替换为 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code> 即可。</p>
+<h2 id="hexo编写页面部署"><a href="#hexo编写页面部署" class="headerlink" title="hexo编写页面部署"></a>hexo编写页面部署</h2><p>hexo 相关命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br><span class="line"></span><br><span class="line">hexo new [post] # 新建一篇文章</span><br><span class="line"></span><br><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="语言配置"><a href="#语言配置" class="headerlink" title="语言配置"></a>语言配置</h2><p>设置中文/英文</p>
+<p>打开根目录的博客配置文件 <code>/_config.yml</code>,修改 <code>language</code>属性为 <code>zh-CN</code>（中文）或者 <code>en</code>（英文）</p>
+<h2 id="链接配置"><a href="#链接配置" class="headerlink" title="链接配置"></a>链接配置</h2><p>设置页面路由</p>
+<p>打开根目录的博客配置文件 <code>/_config.yml</code>,修改 <code>permalink</code> 属性为 <code>:year/:title/</code>，则最后呈现的路径为 ‘域名/年份/文章名/‘,如 <code>https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</code></p>
+<h2 id="使用github-workflows配置自动部署"><a href="#使用github-workflows配置自动部署" class="headerlink" title="使用github workflows配置自动部署"></a>使用github workflows配置自动部署</h2><p>在根目录新建 <code>.github/workflows</code> 文件夹，新建 <code>deploy.yml</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name: Build and Deploy</span><br><span class="line">on: [push]</span><br><span class="line">jobs:</span><br><span class="line">  build-and-deploy:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - name: Checkout 🛎️</span><br><span class="line">        uses: actions&#x2F;checkout@v2.3.1 # If you&#39;re using actions&#x2F;checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.</span><br><span class="line">        with:</span><br><span class="line">          persist-credentials: false</span><br><span class="line"></span><br><span class="line">      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the &#39;build&#39; folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.</span><br><span class="line">        run: |</span><br><span class="line">          npm install</span><br><span class="line">          npm run build</span><br><span class="line">        env: </span><br><span class="line">          CI: false</span><br><span class="line"></span><br><span class="line">      - name: Deploy 🚀</span><br><span class="line">        uses: JamesIves&#x2F;github-pages-deploy-action@3.5.7</span><br><span class="line">        with:</span><br><span class="line">          GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</span><br><span class="line">          BRANCH: master # The branch the action should deploy to.</span><br><span class="line">          FOLDER: public # The folder the action should deploy.</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">hexo官网</a></li>
+<li><a href="https://valine.js.org/quickstart.html" target="_blank" rel="noopener">valine官网</a></li>
+<li><a href="https://ylong.net.cn/hexo_conf.html" target="_blank" rel="noopener">Hexo 博客美化配置</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>github</tag>
+        <tag>blog</tag>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vmware 虚拟机联网的三种方式</title>
+    <url>/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png" alt=""></p>
+<h2 id="桥接（bridge）"><a href="#桥接（bridge）" class="headerlink" title="桥接（bridge）"></a>桥接（bridge）</h2><p>网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate network from multiple communication networks or network segments. ）。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170555.png" alt=""></p>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先在虚拟机配置中选择桥接模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170914.png" alt=""></p>
+<p>然后进入虚拟机系统，设置虚拟机IP和主机IP处于同一地址段。</p>
+<p>我本机的 <code>IP</code> 为 <code>192.168.3.X</code> 网段。故需要设置虚拟机为 <code>192.168.3.X</code>,且不能与当前局域网内的主机 <code>IP</code> 地址冲突。</p>
+<p>以 <code>centos7</code> 为例，使用 <code>root</code>账户登录后，<code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731173257.png" alt=""></p>
+<p>如图所示进行修改.</p>
+<p>然后重启网络服务(<code>service network restart</code>)</p>
+<p>此时，便可访问外网和宿主机。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>桥接网络的方式配置简单，但并不适用于ip地址稀缺的情况。</p>
+<h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）</p>
+<h4 id="网络配置-1"><a href="#网络配置-1" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先，先将虚拟机的网络配置修改为<code>NAT</code>模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731174109.png" alt=""></p>
+<p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 <code>NAT</code> 模式的 <code>ip</code> 地址段、网关地址和子网掩码。</p>
+<p>使用 <code>root</code> 用户登录虚拟机系统，配置网络信息为刚刚查到的（IP地址，子网掩码，网关地址），添加 <code>DNS</code> (114.114.114.114, 114.114.115.115)。</p>
+<p>然后重启网络服务即可访问网络和宿主机。</p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><code>NAT</code> 模式适用于 <code>IP</code> 地址稀缺的情况。</p>
+<h2 id="仅主机（Host-Only）"><a href="#仅主机（Host-Only）" class="headerlink" title="仅主机（Host-Only）"></a>仅主机（Host-Only）</h2><p>仅主机模式表示虚拟机只能访问宿主机，不能访问网络。</p>
+<h4 id="网络配置-2"><a href="#网络配置-2" class="headerlink" title="网络配置"></a>网络配置</h4><p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 仅主机模式的 <code>IP</code> 地址段。配置仅主机模式的默认网卡（通常是<code>VMnet1</code>）的网络信息（IP地址，子网掩码，网关和DNS为刚刚查到的信息。IP地址需要自己定）。然后在虚拟机中配置IP地址，子网掩码，网关需要配置为虚拟网卡的IP地址。</p>
+<p>然后重启网络服务即可访问宿主机。</p>
+<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>因仅主机模式并不能访问外网，故这种方式不常用。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://geek-university.com/ccna/what-is-a-network-bridge/" target="_blank" rel="noopener">What is a network bridge?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bridging_(networking)" target="_blank" rel="noopener">Bridging (networking)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener">Network address translation</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>虚拟机</tag>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>google搜索技巧</title>
+    <url>/2020/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>本文总结了几个使用搜索引擎（ <code>google</code> ）的小技巧，供你参考</p>
+<h2 id="英文"><a href="#英文" class="headerlink" title="英文"></a>英文</h2><p>尽量使用英文去搜索你需要的结果。英语是全世界使用范围最广的语言，使用英语你能搜索到更多高质量，且对你有帮助的内容。</p>
+<h2 id="使用标签"><a href="#使用标签" class="headerlink" title="使用标签"></a>使用标签</h2><p>如果你需要图片，使用 <code>Image</code> 标签。如果你查找最近的新闻文章，私用 <code>News</code> 标签。</p>
+<h2 id="使用-quot-quot"><a href="#使用-quot-quot" class="headerlink" title="使用 &quot;&quot;"></a>使用 <code>&quot;&quot;</code></h2><p>如果需要搜索指定的关键词或句子，使用引号缩小 <code>google</code> 搜索的猜测。该条在查找软件开发中遇到的问题或者软件使用中的报错尤其有用。</p>
+<h2 id="使用-排除关键词"><a href="#使用-排除关键词" class="headerlink" title="使用 - 排除关键词"></a>使用 <code>-</code> 排除关键词</h2><p>使用连字符号来排除你不想要的结果。</p>
+<h2 id="使用-在指定站点中搜索"><a href="#使用-在指定站点中搜索" class="headerlink" title="使用 : 在指定站点中搜索"></a>使用 <code>:</code> 在指定站点中搜索</h2><h2 id="查找有哪些网站引用了指定的网站即有到指定网站的链接"><a href="#查找有哪些网站引用了指定的网站即有到指定网站的链接" class="headerlink" title="查找有哪些网站引用了指定的网站即有到指定网站的链接"></a>查找有哪些网站引用了指定的网站即有到指定网站的链接</h2><p>如：<code>link:nytimes.com</code></p>
+<h2 id="使用-通配符来进行模糊查找"><a href="#使用-通配符来进行模糊查找" class="headerlink" title="使用 * 通配符来进行模糊查找"></a>使用 <code>*</code> 通配符来进行模糊查找</h2><p>如：<code>&quot;Come * right now * me&quot;</code></p>
+<p>会返回 <code>*</code> 替换成任意字符的结果</p>
+<h2 id="返回与指定站点相似的其它站点"><a href="#返回与指定站点相似的其它站点" class="headerlink" title="返回与指定站点相似的其它站点"></a>返回与指定站点相似的其它站点</h2><p>如： <code>related:amazon.com</code></p>
+<h2 id="使用-OR-至少一次来获取多个短语或关键词的结果"><a href="#使用-OR-至少一次来获取多个短语或关键词的结果" class="headerlink" title="使用 OR 至少一次来获取多个短语或关键词的结果"></a>使用 <code>OR</code> 至少一次来获取多个短语或关键词的结果</h2><h2 id="使用网站会使用的关键词来搜索"><a href="#使用网站会使用的关键词来搜索" class="headerlink" title="使用网站会使用的关键词来搜索"></a>使用网站会使用的关键词来搜索</h2><p>不要使用口语化的词汇或者短语，而是使用更为专业的词汇或者短语来进行搜索</p>
+<ul>
+<li><code>&quot;I have a flat tire&quot; could be replaced by &quot;repair a flat tire.&quot;</code></li>
+<li><code>&quot;My head hurts&quot; could be replaced by &quot;headache relief.&quot;</code></li>
+</ul>
+<h2 id="指定文件格式"><a href="#指定文件格式" class="headerlink" title="指定文件格式"></a>指定文件格式</h2><p>如：<code>*Search term here* filetype:pdf</code></p>
+<h2 id="货币或单位转换"><a href="#货币或单位转换" class="headerlink" title="货币或单位转换"></a>货币或单位转换</h2><p>如：<code>10 miles to km</code></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.lifehack.org/articles/technology/20-tips-use-google-search-efficiently.html" target="_blank" rel="noopener"><code>20 Google Search Tips to Use Google More Efficiently</code></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+      <tags>
+        <tag>google</tag>
+        <tag>搜索</tag>
+        <tag>技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>永远改变你编码技能的40个技巧</title>
     <url>/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<blockquote>
