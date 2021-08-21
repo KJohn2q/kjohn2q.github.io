@@ -46,7 +46,9 @@ tags: [虚拟机, 网络]
 
   网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）
 
-  ![](https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819165929.jpg)
+  `vmware` 中新建虚拟机默认网络配置为 `NAT` 模式,虚拟机处于独立的网络，通过 `NAT` 转换器可以访问外网，且能和主机相互通信。
+
+  ![](https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821174734.jpg)
 
   如图所示，虚拟的 `VMware Network Adapter VMnet8` 网卡与虚拟交换机 `VMNet8` 相连，`IP` 地址段为 `192.168.9.0/24`，网关默认为 `192.168.9.2`. 具体的 `NAT` 设置可点击NAT设置查看。
 
@@ -70,42 +72,44 @@ tags: [虚拟机, 网络]
 
   ## 仅主机（Host-Only）
 
-  仅主机模式表示虚拟机只能访问宿主机，不能访问网络。整个虚拟机和宿主机工作在一个大的内网下。如需要连接外网，可以利用宿主机共享网络.
+  仅主机模式表示虚拟机只能访问宿主机，不能访问网络。整个虚拟机和宿主机工作在一个大的内网下,宿主机可以访问虚拟机，虚拟机不能访问宿主机。如需要连接外网，可以利用宿主机共享网络。此时，处于 `host-only` 网络模式下的虚拟机可以通过宿主机网络访问外网，且可以访问宿主机
 
   ![](https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819173636.jpg)
 
+  如图所示，宿主机通过虚拟网卡 `VMware Network Adapter VMnet1` 与主机网络进行通信，虚拟网卡的 `IP` 地址需要设置为仅主机模式的网段。默认为主机号为 `.1`
+  
+  ![](https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821173642.png)
+  
   #### 网络配置
-
-  可在 `vmware` 中的虚拟网络编辑器中查看 仅主机模式的 `IP` 地址段。配置仅主机模式的默认网卡（通常是`VMnet1`）的网络信息（IP地址，子网掩码，网关和DNS为刚刚查到的信息。IP地址需要自己定）。然后在虚拟机中配置IP地址，子网掩码，网关需要配置为虚拟网卡的IP地址。
-
-
-  然后重启网络服务即可访问宿主机。
-
+  
+  可在 `vmware` 中的虚拟网络编辑器中查看 仅主机模式的 `IP` 地址段,在虚拟机中配置IP地址，子网掩码。
+  
+  重启网络服务，宿主机即可访问该虚拟机。
+  
   #### 访问外网
-
+  
   宿主机中联网的网卡，配置网络共享，选中 `host-only` 对应的那块虚拟网卡。
-
+  
   ![](https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115332.png)
-
+  
   点击确定后，该虚拟网卡的`ip` 地址会改为 `192.168.137.1`,需要改为该虚拟网卡对应的虚拟网络交换机的地址段
-
+  
   ![](https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115648.png)
-
+  
   如上图所示，地址段位 `192.168,17.0`,于是需要把虚拟网卡的 `ip` 地址改为 `192.168.17.1`
-
+  
   ![](https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115917.png)
-
-  然后，联网方式为 `host-only` 的虚拟机就可以访问外网了。
-
+  
+  然后，将联网方式为 `host-only` 的虚拟机网关设置为  `192.168.17.l` 即 `VMware Network Adapter VMnet1` 的地址就可以访问外网了，此时也可以访问宿主机。
+  
   #### 总结
-
+  
   仅主机模式一般用于公司对机密性要求比较高的网络，个人不常用。
-
+  
   ## 参考链接
-
+  
   * [What is a network bridge?](https://geek-university.com/ccna/what-is-a-network-bridge/)
   * [Bridging (networking)](https://en.wikipedia.org/wiki/Bridging_(networking))
   * [Network address translation](https://en.wikipedia.org/wiki/Network_address_translation)
   * [vmware联网解决方案：host-only共享上网](https://www.cnblogs.com/yihr/p/7348304.html)
-  * https://en.wikipedia.org/wiki/Network_address_translation)
   * [VMware的三种网络模式](https://zhuanlan.zhihu.com/p/24758022)
