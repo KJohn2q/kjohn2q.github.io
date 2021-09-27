@@ -16,7 +16,9 @@ categories: [笔记]
 其中有两个部分需要注意：
 
 1. `proxy-url`: `http://host-address:proxy-port`
-2. `software-source`:  `http://mirrors.aliyun.com/ubuntu/`
+2. `software-source`:  `http://mirror.xtom.com.hk/ubuntu/`  
+
+`software-source` 可在 [`Official Archive Mirrors for Ubuntu`](https://launchpad.net/ubuntu/+archivemirrors) 寻找相近地区的归档镜像源
 
 ## 相关的信息查看命令
 
@@ -84,6 +86,102 @@ ethernets:
 
 * `netplan try` 验证`netplan`配置
 * `netplan apply` 应用新的配置
+
+## 代理配置
+
+#### git配置
+
+```
+
+git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port
+
+git confiug --global https.proxy http://proxyUsername:proxyPassword@proxy.server.com:port
+
+```
+
+#### apt配置
+
+配置文件: `/etc/apt/apt.conf`
+
+```
+
+Acquire::http::proxy “http://<user>:<pass>@<proxy>:<port>/”; 
+Acquire::https::proxy “http://<user>:<pass>@<proxy>:<port>/”; 
+
+```
+
+#### 命令行配置
+
+配置文件: `~/.bashrc`
+
+最后一行添加：
+
+```
+export http_proxy=http://<user>:<pass>@<proxy>:<port>/
+export https_proxy=http://<user>:<pass>@<proxy>:<port>/
+```
+
+可通过 `env | grep proxy` 检测代理配置
+
+## 软件源配置
+
+如无可用代理，可设置国内镜像源提高 `apt update` 速度。`ubuntu` 的默认配置文件为 `/etc/apt/sources.list`。
+
+首先，将原来软件源进行备份  `sudo cp /etc/apt/sorces.list /etc/apt/sources.list.bak`
+
+### 替换国内软件源
+
+将软件源文件替换为以下任一源内容即可。
+
+**清华大学源**
+
+```
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+**阿里云**
+
+```
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+
+```
+
+**163（网易）**
+
+```
+deb http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse
+
+```
 
 ## 参考链接
 
