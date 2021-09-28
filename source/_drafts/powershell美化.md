@@ -14,3 +14,11 @@ tags: [powershell, windows, terminal, 命令行]
 ##  Oh My Posh 的安装
 
 `Theme` :  `robbyrussell`
+
+
+
+## 引用
+
+* [Home | Oh My Posh](https://ohmyposh.dev/)
+* [microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)](https://github.com/microsoft/terminal)
+
