@@ -171,6 +171,8 @@ date: 2021-09-29 00:00:00
 * `:help text-objects`
 * `:help options`
 * `:help option-list`
+* `:help options`
+* `:help option-list`
 
 ### 可视化模式
 
@@ -187,6 +189,17 @@ date: 2021-09-29 00:00:00
 ![image-20210929171750276](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291717546.png)
 
 普通模式下，可以通过 `ctrl+v` 进入可视化模式，并选中当前段落
+
+## 配置选项
+
+`vim` 的配置文件位置为 `~/.vimrc`
+
+* `:set no<option>`  重置配置
+* `:set <option>` 切换配置
+* `:set <option>?`  返回配置值
+* `:set <option>=<value>`  设置配置值`<value>`
+* `:set <option>+=<value> ` 指定配置值增加 `<value>`,如配置选项为字符串，则拼接
+* `:set <option>&`  重置配置为默认值
 
 ## 引用
 
