@@ -6,7 +6,7 @@ tags:
   - terminal
   - 命令行
 date: 2021-10-02 00:14:04
-categories:
+categories: tool
 ---
 
 
