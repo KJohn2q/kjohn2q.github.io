@@ -6,7 +6,7 @@ tags: [github, blog, hexo, "博客"]
 
 本文介绍使用`hexo + github pages`搭建博客网站。
 
-基础环境：nodejs(version < 14 && version > 12)
+基础环境：`nodejs(version < 14 && version > 12)`
 
 ## hexo安装与配置
 
@@ -205,7 +205,7 @@ jobs:
           CI: false
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.5.7
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: master # The branch the action should deploy to.
