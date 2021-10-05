@@ -27,8 +27,8 @@
 <meta property="og:site_name" content="KJohn2q">
 <meta property="og:description" content="本文部分译自 Gitolite README,仅作学习使用，不用于商业用途  Gitolitegit 仓库托管 – Gitolite 允许你在一台中心服务器上安装 git 托管，具有很多细粒度的访问控制和更强有力的特性。 安装首先，准备 ssh key  使用 git 用户登录服务器 确保 ~&#x2F;.ssh&#x2F;authorized_keys 为空或不存在 确保你工作区的 ssh 公钥复制到了 $HOM">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-19T02:28:19.000Z">
-<meta property="article:modified_time" content="2020-10-24T15:44:48.789Z">
+<meta property="article:published_time" content="2020-03-19T10:28:19.000Z">
+<meta property="article:modified_time" content="2020-03-19T10:28:19.000Z">
 <meta property="article:author" content="John Wang">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="服务器">
@@ -207,15 +207,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-03-19 10:28:19" itemprop="dateCreated datePublished" datetime="2020-03-19T10:28:19+08:00">2020-03-19</time>
+              <time title="创建时间：2020-03-19 10:28:19" itemprop="dateCreated datePublished" datetime="2020-03-19T10:28:19+00:00">2020-03-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -245,7 +238,7 @@
 
       
         <blockquote>
-<p>本文部分译自 <a href="https://github.com/sitaramc/gitolite#gitolite-readme" target="_blank" rel="noopener"><code>Gitolite README</code></a>,仅作学习使用，不用于商业用途</p>
+<p>本文部分译自 <a target="_blank" rel="noopener" href="https://github.com/sitaramc/gitolite#gitolite-readme"><code>Gitolite README</code></a>,仅作学习使用，不用于商业用途</p>
 </blockquote>
 <h2 id="Gitolite"><a href="#Gitolite" class="headerlink" title="Gitolite"></a><code>Gitolite</code></h2><p><code>git</code> 仓库托管 – <code>Gitolite</code> 允许你在一台中心服务器上安装 <code>git</code> 托管，具有很多细粒度的访问控制和更强有力的特性。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，准备 <code>ssh</code> key</p>
@@ -255,35 +248,35 @@
 <li>确保你工作区的 <code>ssh</code> 公钥复制到了 <code>$HOME/YourName.pub</code></li>
 </ul>
 <p>下一步，通过执行下面的命令来安装 <code>gitolite</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;sitaramc&#x2F;gitolite</span><br><span class="line">mkdir -p $HOME&#x2F;bin</span><br><span class="line">gitolite&#x2F;install -to $HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/sitaramc/gitolite</span><br><span class="line">mkdir -p $HOME/bin</span><br><span class="line">gitolite/install -to $HOME/bin</span><br></pre></td></tr></table></figure>
 
 <p>最后，作为管理员安装 <code>gitolite</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitolite setup -pk YourName.pub</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitolite setup -pk YourName.pub</span><br></pre></td></tr></table></figure>
 
 <p>如果最后的命令不能执行，也许是 <code>$HOME/bin</code> 没有添加到你的环境变量 <code>PATH</code> 中，你也可以添加它，或者直接执行：</p>
 <p><code>$HOME/bin/gitolite setup -pk YourName.pub</code></p>
-<p>如果出现其他错误，请查阅<a href="https://gitolite.com/gitolite/" target="_blank" rel="noopener">官方文档</a></p>
+<p>如果出现其他错误，请查阅<a target="_blank" rel="noopener" href="https://gitolite.com/gitolite/">官方文档</a></p>
 <h2 id="添加用户和仓库"><a href="#添加用户和仓库" class="headerlink" title="添加用户和仓库"></a>添加用户和仓库</h2><p>不要手动地在服务器上添加新的仓库或者用户。 通过推送对指定仓库 “ <code>gitolite-admin</code> “ 的修改，并推送至服务器，能够维护 <code>Gitolite</code> 用户，仓库和访问规则。</p>
 <p>开始在你的工作区做以下操作，你可以管理 <code>gitolite</code>的安装（如果你还没有安装的话）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@host:gitolite-admin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@host:gitolite-admin</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>注意：如果提示输入密码的话，配置有误。可以查看<a href="https://gitolite.com/gitolite/" target="_blank" rel="noopener">完整版文档</a>。</p>
+<p>注意：如果提示输入密码的话，配置有误。可以查看<a target="_blank" rel="noopener" href="https://gitolite.com/gitolite/">完整版文档</a>。</p>
 </blockquote>
 <p>现在，如果你执行 <code>cd gitolite-admin</code>, 你将看到两个子目录 <code>conf</code> 和 <code>keydir</code></p>
 <p>添加新用户 <code>alice</code>, <code>bob</code>, <code>carol</code> 以及他们的公钥，将它们复制到 <code>keydir</code> 文件夹， 并分别重命名为 <code>alice.pub</code>, <code>bob.pub</code>, <code>carol.pub</code>.</p>
 <p>添加一个新仓库 <code>foo</code>，给这些用户设置不同的访问级别，通过编辑 <code>conf/gitolite.conf</code>，添加类似下面这些行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+      &#x3D;  alice</span><br><span class="line">    RW       &#x3D;  bob</span><br><span class="line">    R        &#x3D;  carol</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+      =  alice</span><br><span class="line">    RW       =  bob</span><br><span class="line">    R        =  carol</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>一旦做了这些修改，执行下面的命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add conf</span><br><span class="line">git add keydir</span><br><span class="line">git commit -m &quot;added foo, give access to alice, bob, carol&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add conf</span><br><span class="line">git add keydir</span><br><span class="line">git commit -m &quot;added foo, give access to alice, bob, carol&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 
 <p>一旦推送完成，<code>gitolite</code> 将会在服务器的 <code>~/.ssg/authorized_keys</code>，同时创建一个新的、空的叫做 <code>foo</code> 的仓库</p>
 <h2 id="对你的用户提供帮助"><a href="#对你的用户提供帮助" class="headerlink" title="对你的用户提供帮助"></a>对你的用户提供帮助</h2><p>一旦一个用户向你发送了他们的公钥，你执行了上面的指定操作，设置了访问级别，你就告诉了他们仓库的地址。通常是 <code>git clone git@host:reponame</code>;通过 <code>man git-clone</code>，查看其它的操作</p>
 <p>注意：再次强调，如果提示输入密码，那一定是哪里出错了</p>
 <p>如果他们需要知道他们可以访问哪些仓库，他们只需要执行 <code>ssh git@host info</code>.</p>
 <h2 id="访问规则例子"><a href="#访问规则例子" class="headerlink" title="访问规则例子"></a>访问规则例子</h2><p><code>Gitolite</code>的例子是非常强大。以上为最简单的使用。下面展示稍微详细一点的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+                   &#x3D;   alice</span><br><span class="line">    -  master             &#x3D;   bob</span><br><span class="line">    -  refs&#x2F;tags&#x2F;v[0-9]   &#x3D;   bob</span><br><span class="line">    RW                    &#x3D;   bob</span><br><span class="line">    RW refs&#x2F;tags&#x2F;v[0-9]   &#x3D;   carol</span><br><span class="line">    R                     &#x3D;   dave</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+                   =   alice</span><br><span class="line">    -  master             =   bob</span><br><span class="line">    -  refs/tags/v[0-9]   =   bob</span><br><span class="line">    RW                    =   bob</span><br><span class="line">    RW refs/tags/v[0-9]   =   carol</span><br><span class="line">    R                     =   dave</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>例子中的规则表示：</p>
 <ul>
@@ -294,17 +287,17 @@
 </ul>
 <p>请查看以上链接的主文档查看所有细节，也有更多的特性和例子</p>
 <h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p><code>Gitolite</code> 可以方便的对用户或者仓库进行分组。以下为创建两个用户组的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@staff     &#x3D;  alice bob carol</span><br><span class="line">@interns   &#x3D;  ashok</span><br><span class="line"></span><br><span class="line">repo secret</span><br><span class="line">    RW     &#x3D;  @staff</span><br><span class="line"></span><br><span class="line">repo  foss</span><br><span class="line">    RW+    &#x3D;  @staff</span><br><span class="line">    RW     &#x3D;  @interns</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@staff     =  alice bob carol</span><br><span class="line">@interns   =  ashok</span><br><span class="line"></span><br><span class="line">repo secret</span><br><span class="line">    RW     =  @staff</span><br><span class="line"></span><br><span class="line">repo  foss</span><br><span class="line">    RW+    =  @staff</span><br><span class="line">    RW     =  @interns</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>积累分组列表。一下两行和以上之前对 <code>@staff</code> 的定义。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@staff    &#x3D;   alice bob</span><br><span class="line">@staff    &#x3D;   carol</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@staff    =   alice bob</span><br><span class="line">@staff    =   carol</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>你可以在其他分组名字中使用分组名字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@all-devs  &#x3D;  @staff @interns</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@all-devs  =  @staff @interns</span><br></pre></td></tr></table></figure>
 
 <p>最后， <code>@all</code> 是一个特殊的名字，常用来表达 <code>all repos</code> 或者 <code>all users</code>.</p>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>用户可以远程执行命令，使用 <code>ssh</code>, 执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@host help</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@host help</span><br></pre></td></tr></table></figure>
 
 <p>打印可用命令的列表</p>
 <p>最常使用的命令为 <code>info</code>。 所有的命令适宜的信息响应，使用一个简单的参数 <code>-h</code></p>

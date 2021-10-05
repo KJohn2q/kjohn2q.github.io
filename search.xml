@@ -4,7 +4,7 @@
     <title>Active and Passive modes in FTP</title>
     <url>/2020/Active-and-Passive-modes-in-FTP/</url>
     <content><![CDATA[<blockquote>
-<p>本文译自 <a href="https://www.web24.com.au/tutorials/active-passive-modes-ftp" target="_blank" rel="noopener"><code>Active and Passive modes in FTP</code></a> ,仅用于学习，不作商业用途</p>
+<p>本文译自 <a href="https://www.web24.com.au/tutorials/active-passive-modes-ftp"><code>Active and Passive modes in FTP</code></a> ,仅用于学习，不作商业用途</p>
 </blockquote>
 <p><code>FTP</code> 的主动和被动模式是 客户端和服务器端独立使用各自通道的 <code>FTP</code> 的两种连接模式，命令通道和数据通道，通常分离为两个TCP连接。命令通道通常基于 21 端口，数据通道基于 20 端口。命令通道通常处理命令和响应的传输，数据通道处理实际的文件传输。</p>
 <p><code>FTP</code> 主动模式和被动模式连接的不同在于服务器端或者客户端发起数据连接。对于主动模式，服务器端在命令通道客户端建立连接之后发起到客户端的数据连接。被动模式则相反，客户端发起到服务器端的数据连接。</p>
@@ -33,12 +33,12 @@
     <title>Configure CLion on Windows</title>
     <url>/2020/Configure-CLion-on-Windows/</url>
     <content><![CDATA[<blockquote>
-<p>该文选译自 <code>jetbrains</code> 官网 <a href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm" target="_blank" rel="noopener"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
+<p>该文选译自 <code>jetbrains</code> 官网 <a href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
 </blockquote>
 <p>在 <code>windows</code> 系统,配置 <code>CLion</code> 需要安装环境： <code>Cygwin</code>、<code>MinGW</code>、<code>WSL</code>、<code>MSVC</code>等。你需要在你的系统上安装环境，分别为每个环境创建 <code>CLion</code> 工具链。作为工具链重要的一环，编译环境提供了 <code>C</code> 和 <code>C++</code> 编译器， <code>make</code> 工具， 还有调试器（使用默认工具的情况下）</p>
-<p>想查看远程主机工具链的细节，可以访问 <a href="https://www.jetbrains.com/help/clion/remote-projects-support.html#remote-toolchain" target="_blank" rel="noopener">Full Remote Mode</a> 进行查看。</p>
+<p>想查看远程主机工具链的细节，可以访问 <a href="https://www.jetbrains.com/help/clion/remote-projects-support.html#remote-toolchain">Full Remote Mode</a> 进行查看。</p>
 <h2 id="Cygwin"><a href="#Cygwin" class="headerlink" title="Cygwin"></a>Cygwin</h2><ol>
-<li>下载 <a href="https://cygwin.com/install.html" target="_blank" rel="noopener">Cygwin</a> 安装包，2.8 或者更新的版本。</li>
+<li>下载 <a href="https://cygwin.com/install.html">Cygwin</a> 安装包，2.8 或者更新的版本。</li>
 <li>执行安装文件，选择以下的包：<ul>
 <li><code>gcc-g++</code></li>
 <li><code>make</code></li>
@@ -50,7 +50,7 @@
 <li>等待工具检测完成，点击应用。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_cygwin_toolchain.png" alt=""></li>
 </ol>
 <h2 id="MinGW"><a href="#MinGW" class="headerlink" title="MinGW"></a>MinGW</h2><ol>
-<li>下载 <a href="http://www.mingw.org/" target="_blank" rel="noopener">MinGW</a> 或者 <a href="http://mingw-w64.org/doku.php" target="_blank" rel="noopener">MinGW-W64</a>安装包。</li>
+<li>下载 <a href="http://www.mingw.org/">MinGW</a> 或者 <a href="http://mingw-w64.org/doku.php">MinGW-W64</a>安装包。</li>
 <li>运行安装包，在基础安装列表中选择一下的包： <code>mingw-developer-tool</code>, <code>mingw32-base</code>, <code>mingw32-gcc-g++</code>, <code>mingw32-msys-base</code>.<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_MinGWInstall.png" alt=""></li>
 <li>安装成功后，启动 <code>CLion</code>，<code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
 <li>在环境列表中选择 <code>MinGW</code>，<code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
@@ -71,13 +71,13 @@
     <title>Generating Your SSH Public Key</title>
     <url>/2020/Generating-Your-SSH-Public-Key/</url>
     <content><![CDATA[<blockquote>
-<p>本文译自<a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key" target="_blank" rel="noopener"><code>Git on the Server - Generating Your SSH Public Key</code></a>，仅作学习使用，不用于商业用途</p>
+<p>本文译自<a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key"><code>Git on the Server - Generating Your SSH Public Key</code></a>，仅作学习使用，不用于商业用途</p>
 </blockquote>
 <p>很多 <code>git</code> 服务器使用 <code>SSH</code> 公钥进行验证。为了提供一个公钥，如果你系统的用户还没有的话，他们必须生成一个。这个过程是跨所有的操作系统的。首先，你应该检查，确保你还没有公钥。默认，用户的 <code>SSH keys</code>存储在用户的 <code>~/.ssh</code> 目录。如果你已经有一个 <code>SSH key</code>，切换到那个目录，列出所有的内容，你可以轻松地看见。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd ~&#x2F;.ssh</span><br><span class="line">$ ls</span><br><span class="line"></span><br><span class="line">id_rsa  id_rsa.pub  known_hosts</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ ls</span><br><span class="line"></span><br><span class="line">id_rsa  id_rsa.pub  known_hosts</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>你将会看到一系列名称为 <code>id_dsa</code> 或者 <code>id_rsa</code>，且有一个后缀名为 <code>.pub</code> 的文件。该 <code>.pub</code> 文件是你的公钥，其它文件是对应的私钥。如果没有看到这些文件（或者你甚至没有 <code>.ssh</code> 目录），你可以通过执行 由 <code>Linux/macOS</code> 操作系统和 <code>windows</code> 上的 <code>git</code> 提供的 <code>ssh-keygen</code> 程序来创建它们：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -o</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -o</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <pre><code>Generating public/private rsa key pair.
 Enter file in which to save the key (/home/schacon/.ssh/id_rsa):
@@ -89,9 +89,9 @@ Your public key has been saved in /home/schacon/.ssh/id_rsa.pub.
 The key fingerprint is:
 d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></pre><p>首先，你要确认保存密钥的位置（<code>.ssh/id_rsa</code>），然后向你询问一个密码短语两次，如果你在使用密钥的时候不想输入密码，你可以留空。然而，如果你使用了密码，确保你使用了 <code>-o</code> 选项；它会以比默认格式更能抵御密码强力破解攻击的格式进行存储私钥。你也可以使用 <code>ssh-agent</code> 工具，避免每次都需要输入密码。</p>
 <p>现在，每个用户都做了以上操作，给你或者任何管理 <code>Git</code> 服务器的人发送了公钥。（假定你使用的是需要公钥的 <code>SSH</code> 服务器设置）。他们需要做的就是复制 <code>.pub</code> 文件的内容并通过邮件发送。公钥文件像这样：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom&#x2F;BWDSU</span><br><span class="line">GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3</span><br><span class="line">Pbv7kOdJ&#x2F;MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK&#x2F;7XA</span><br><span class="line">t3FaoJoAsncM1Q9x5+3V0Ww68&#x2F;eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw&#x2F;Pb0rwert&#x2F;En</span><br><span class="line">mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z&#x2F;il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx</span><br><span class="line">NrRFi9wrf+M7Q&#x3D;&#x3D; schacon@mylaptop.local</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU</span><br><span class="line">GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3</span><br><span class="line">Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA</span><br><span class="line">t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En</span><br><span class="line">mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx</span><br><span class="line">NrRFi9wrf+M7Q== schacon@mylaptop.local</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>获取更多在多操作系统创建 <code>SSH key</code> 的深入教程，可以查看 <a href="https://help.github.com/articles/generating-ssh-keys" target="_blank" rel="noopener"><code>GitHub guide on SSH keys</code></a>.</p>
+<p>获取更多在多操作系统创建 <code>SSH key</code> 的深入教程，可以查看 <a href="https://help.github.com/articles/generating-ssh-keys"><code>GitHub guide on SSH keys</code></a>.</p>
 ]]></content>
       <categories>
         <category>translate</category>
@@ -116,15 +116,15 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <p><code>skip-worktree</code> is more than that: even where git knows that the file has been modified (or needs to be modified by a reset –hard or the like), it will pretend it has not been, using the version from the index instead. This persists until the index is discarded.</p>
 <p><code>skip-worktree</code>不止于此：即使 <code>git</code> 监测到该文件发生了变化（或者当执行 <code>reset --hard</code> 文件需要发生变化），将会假装没有发生变化，而使用索引中的版本。直到索引被丢弃。</p>
 <p><code>--assume-unchanged</code> 假想开发者不应该修改该文件。该选项是为了提升那些像SDK一样不会修改的文件目录的性能。<br><code>--skip-worktree</code> 当你指示 <code>git</code> 不要监测指定文件，因为开发应该修改该文件。例如，主存储库上游主机存储了一些应用于生产环境的配置文件，你不希望偶然间不小心提交对这些文件的修改, <code>--skip-worktree</code> 是你正想要的。</p>
-<p>原文回答：<a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#" target="_blank" rel="noopener">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></p>
+<p>原文回答：<a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></p>
 <p>引用链接：</p>
 <ul>
-<li><a href="https://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes" target="_blank" rel="noopener">Keep file in a Git repo, but don’t track changes</a></li>
-<li><a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#" target="_blank" rel="noopener">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></li>
-<li><a href="https://stackoverflow.com/questions/54575972/difference-between-git-rm-git-rm-cached" target="_blank" rel="noopener">Difference between git rm &amp; git rm –cached</a></li>
-<li><a href="https://git-scm.com/docs/git-update-index" target="_blank" rel="noopener">git-update-index</a></li>
-<li><a href="https://stackoverflow.com/questions/6138076/git-assume-unchanged-vs-skip-worktree-ignoring-a-symbolic-link" target="_blank" rel="noopener">git assume unchanged vs skip worktree - ignoring a symbolic link</a></li>
-<li><a href="https://fallengamer.livejournal.com/93321.html" target="_blank" rel="noopener">https://fallengamer.livejournal.com/93321.html</a></li>
+<li><a href="https://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes">Keep file in a Git repo, but don’t track changes</a></li>
+<li><a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></li>
+<li><a href="https://stackoverflow.com/questions/54575972/difference-between-git-rm-git-rm-cached">Difference between git rm &amp; git rm –cached</a></li>
+<li><a href="https://git-scm.com/docs/git-update-index">git-update-index</a></li>
+<li><a href="https://stackoverflow.com/questions/6138076/git-assume-unchanged-vs-skip-worktree-ignoring-a-symbolic-link">git assume unchanged vs skip worktree - ignoring a symbolic link</a></li>
+<li><a href="https://fallengamer.livejournal.com/93321.html">https://fallengamer.livejournal.com/93321.html</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -185,53 +185,29 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200303153136.png" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200303153430.png" alt=""></p>
 <p>如上图所示，分别表示了在自上而下的实现方式中，单旋转、一字型旋转及之字形旋转的变换过程。</p>
-<h4 id="伸展方法"><a href="#伸展方法" class="headerlink" title="伸展方法"></a>伸展方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SplayTree Splay(Position x, TElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	SplayNode Header;</span><br><span class="line"></span><br><span class="line">	Position LeftTreeMax, RightTreeMin;</span><br><span class="line">	</span><br><span class="line">	Header.left &#x3D; Header.right &#x3D; NULL;</span><br><span class="line">	LeftTreeMax &#x3D; RightTreeMin &#x3D; &amp;Header;</span><br><span class="line">	</span><br><span class="line">	while (e !&#x3D; x-&gt;data) &#123;</span><br><span class="line">		if (e &lt; x-&gt;data) &#123;</span><br><span class="line">			if (x-&gt;left &#x3D;&#x3D; NULL) break;</span><br><span class="line">			if (e &lt; x-&gt;left-&gt;data)  </span><br><span class="line">				x &#x3D; SingleRotateWithLeft(x);</span><br><span class="line">			if (x-&gt;left &#x3D;&#x3D; NULL) break;</span><br><span class="line">				</span><br><span class="line">			&#x2F;* 链接右树 *&#x2F;</span><br><span class="line">			RightTreeMin-&gt;left &#x3D; x;</span><br><span class="line">			RightTreeMin &#x3D; x;</span><br><span class="line">			x &#x3D; x-&gt;left;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;	</span><br><span class="line">			if (x-&gt;right &#x3D;&#x3D; NULL) break;		</span><br><span class="line">			if (e &gt; x-&gt;right-&gt;data) </span><br><span class="line">				x &#x3D; SingleRotateWithRight(x);</span><br><span class="line">				</span><br><span class="line">			if (x-&gt;right &#x3D;&#x3D; NULL) break;	</span><br><span class="line">			LeftTreeMax-&gt;right &#x3D; x;</span><br><span class="line">			LeftTreeMax &#x3D; x;</span><br><span class="line">			x &#x3D; x-&gt;right;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	LeftTreeMax-&gt;right &#x3D; x-&gt;left;</span><br><span class="line">	RightTreeMin-&gt;left &#x3D; x-&gt;right;</span><br><span class="line">	</span><br><span class="line">	x-&gt;left &#x3D; Header.right;</span><br><span class="line">	x-&gt;right &#x3D; Header.left;</span><br><span class="line">	</span><br><span class="line">	return x; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="伸展方法"><a href="#伸展方法" class="headerlink" title="伸展方法"></a>伸展方法</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SplayTree Splay(Position x, TElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	SplayNode Header;</span><br><span class="line"></span><br><span class="line">	Position LeftTreeMax, RightTreeMin;</span><br><span class="line">	</span><br><span class="line">	Header.left = Header.right = NULL;</span><br><span class="line">	LeftTreeMax = RightTreeMin = &amp;Header;</span><br><span class="line">	</span><br><span class="line">	while (e != x-&gt;data) &#123;</span><br><span class="line">		if (e &lt; x-&gt;data) &#123;</span><br><span class="line">			if (x-&gt;left == NULL) break;</span><br><span class="line">			if (e &lt; x-&gt;left-&gt;data)  </span><br><span class="line">				x = SingleRotateWithLeft(x);</span><br><span class="line">			if (x-&gt;left == NULL) break;</span><br><span class="line">				</span><br><span class="line">			/* 链接右树 */</span><br><span class="line">			RightTreeMin-&gt;left = x;</span><br><span class="line">			RightTreeMin = x;</span><br><span class="line">			x = x-&gt;left;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;	</span><br><span class="line">			if (x-&gt;right == NULL) break;		</span><br><span class="line">			if (e &gt; x-&gt;right-&gt;data) </span><br><span class="line">				x = SingleRotateWithRight(x);</span><br><span class="line">				</span><br><span class="line">			if (x-&gt;right == NULL) break;	</span><br><span class="line">			LeftTreeMax-&gt;right = x;</span><br><span class="line">			LeftTreeMax = x;</span><br><span class="line">			x = x-&gt;right;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	LeftTreeMax-&gt;right = x-&gt;left;</span><br><span class="line">	RightTreeMin-&gt;left = x-&gt;right;</span><br><span class="line">	</span><br><span class="line">	x-&gt;left = Header.right;</span><br><span class="line">	x-&gt;right = Header.left;</span><br><span class="line">	</span><br><span class="line">	return x; </span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>代码中Header存放伸展后左子树和右子树的基址。</p>
 <p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200214092315.png" alt=""></p>
 <p>如图所示，如果要伸展的值为13，则需要进行如下判断。首先，<code>x&lt;15</code>,则将节点<code>15</code>放入<code>RightTreeMin</code>中，<code>RightTreeMin</code>为节点12。然后<code>x&gt;12</code>,则将节点<code>12</code>放入<code>LeftTreeMax</code>中，依次类推。</p>
 <p>即表示，只要x大于当前元素的值，就放入<code>LeftTreeMax</code>中。只要x小于当前元素的值，就放入<code>RightTreeMin</code>中。伸展操作最后，进行连接操作，将<code>LeftTreeMax</code>置为<code>x</code>的左孩子，<code>RightTreeMin</code>置为<code>x</code>的右孩子。</p>
 <h4 id="单旋操作"><a href="#单旋操作" class="headerlink" title="单旋操作"></a>单旋操作</h4><p>见Zig或Zag图。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Position SingleRotateWithLeft(Position K2)</span><br><span class="line">&#123;</span><br><span class="line">	Position K1;</span><br><span class="line">	</span><br><span class="line">	K1 &#x3D; K2-&gt;left;</span><br><span class="line">	K2-&gt;left &#x3D;  K1-&gt;right;</span><br><span class="line">	K1-&gt;right &#x3D; K2;</span><br><span class="line">	</span><br><span class="line">	return K1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Position SingleRotateWithRight(Position K1)</span><br><span class="line">&#123;</span><br><span class="line">	Position K2;</span><br><span class="line">	</span><br><span class="line">	K2 &#x3D; K1-&gt;right;</span><br><span class="line">	K1-&gt;right &#x3D; K2-&gt;left;</span><br><span class="line">	K2-&gt;left &#x3D; K1;</span><br><span class="line">	</span><br><span class="line">	return K2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Position SingleRotateWithLeft(Position K2)</span><br><span class="line">&#123;</span><br><span class="line">	Position K1;</span><br><span class="line">	</span><br><span class="line">	K1 = K2-&gt;left;</span><br><span class="line">	K2-&gt;left =  K1-&gt;right;</span><br><span class="line">	K1-&gt;right = K2;</span><br><span class="line">	</span><br><span class="line">	return K1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Position SingleRotateWithRight(Position K1)</span><br><span class="line">&#123;</span><br><span class="line">	Position K2;</span><br><span class="line">	</span><br><span class="line">	K2 = K1-&gt;right;</span><br><span class="line">	K1-&gt;right = K2-&gt;left;</span><br><span class="line">	K2-&gt;left = K1;</span><br><span class="line">	</span><br><span class="line">	return K2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="自下而上-down-top"><a href="#自下而上-down-top" class="headerlink" title="自下而上(down-top)"></a>自下而上(down-top)</h3><p>在自下而上的操作过程中，我们需要先找到x，然后再递归向上伸展，需要记录查找路径中节点的信息。</p>
-<h4 id="伸展操作"><a href="#伸展操作" class="headerlink" title="伸展操作"></a>伸展操作</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Splay(Position x)</span><br><span class="line">&#123;	</span><br><span class="line">	Position p;</span><br><span class="line">	Position g;</span><br><span class="line">	</span><br><span class="line">	while (x-&gt;parent) &#123;</span><br><span class="line">		if (!x-&gt;parent-&gt;parent) &#123;</span><br><span class="line">			if (x &#x3D;&#x3D; x-&gt;parent-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithLeft(x-&gt;parent);</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				SingleRotateWithRight(x-&gt;parent);</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			p &#x3D; x-&gt;parent;</span><br><span class="line">			g &#x3D; p-&gt;parent; </span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F; zig-zig</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;left &amp;&amp; p &#x3D;&#x3D; g-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithLeft(g);</span><br><span class="line">				SingleRotateWithLeft(p);</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F; zig-zag</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;left &amp;&amp; p &#x3D;&#x3D; g-&gt;right) &#123;</span><br><span class="line">				SingleRotateWithLeft(p);</span><br><span class="line">				SingleRotateWithRight(g); </span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F; zag-zig</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;right &amp;&amp; p &#x3D;&#x3D; g-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithRight(p);</span><br><span class="line">				SingleRotateWithLeft(g); </span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F; zag-zag</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;right &amp;&amp; p &#x3D;&#x3D; g-&gt;right) &#123;</span><br><span class="line">				SingleRotateWithRight(g);</span><br><span class="line">				SingleRotateWithRight(p);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="伸展操作"><a href="#伸展操作" class="headerlink" title="伸展操作"></a>伸展操作</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void Splay(Position x)</span><br><span class="line">&#123;	</span><br><span class="line">	Position p;</span><br><span class="line">	Position g;</span><br><span class="line">	</span><br><span class="line">	while (x-&gt;parent) &#123;</span><br><span class="line">		if (!x-&gt;parent-&gt;parent) &#123;</span><br><span class="line">			if (x == x-&gt;parent-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithLeft(x-&gt;parent);</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				SingleRotateWithRight(x-&gt;parent);</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			p = x-&gt;parent;</span><br><span class="line">			g = p-&gt;parent; </span><br><span class="line">			</span><br><span class="line">			// zig-zig</span><br><span class="line">			if (x == p-&gt;left &amp;&amp; p == g-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithLeft(g);</span><br><span class="line">				SingleRotateWithLeft(p);</span><br><span class="line">			&#125;</span><br><span class="line">			// zig-zag</span><br><span class="line">			if (x == p-&gt;left &amp;&amp; p == g-&gt;right) &#123;</span><br><span class="line">				SingleRotateWithLeft(p);</span><br><span class="line">				SingleRotateWithRight(g); </span><br><span class="line">			&#125;</span><br><span class="line">			// zag-zig</span><br><span class="line">			if (x == p-&gt;right &amp;&amp; p == g-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithRight(p);</span><br><span class="line">				SingleRotateWithLeft(g); </span><br><span class="line">			&#125;</span><br><span class="line">			// zag-zag</span><br><span class="line">			if (x == p-&gt;right &amp;&amp; p == g-&gt;right) &#123;</span><br><span class="line">				SingleRotateWithRight(g);</span><br><span class="line">				SingleRotateWithRight(p);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="旋转操作"><a href="#旋转操作" class="headerlink" title="旋转操作"></a>旋转操作</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">void SingleRotateWithLeft(Position x)</span><br><span class="line">&#123;</span><br><span class="line">	Position y;</span><br><span class="line">	</span><br><span class="line">	y &#x3D; x-&gt;left;</span><br><span class="line">	x-&gt;left &#x3D; y-&gt;right;</span><br><span class="line">	</span><br><span class="line">	if (y-&gt;right !&#x3D; NULL) &#123;</span><br><span class="line">		y-&gt;right-&gt;parent &#x3D; x;</span><br><span class="line">	&#125;</span><br><span class="line">	y-&gt;parent &#x3D; x-&gt;parent;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; x is root of the tree </span><br><span class="line">	if (x-&gt;parent &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		T &#x3D; y;</span><br><span class="line">	&#125; else if (x &#x3D;&#x3D; x-&gt;parent-&gt;left) &#123;</span><br><span class="line">		x-&gt;parent-&gt;left &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		x-&gt;parent-&gt;right &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	y-&gt;right &#x3D; x;</span><br><span class="line">	x-&gt;parent &#x3D; y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void SingleRotateWithRight(Position x)</span><br><span class="line">&#123;</span><br><span class="line">	Position y;</span><br><span class="line">	</span><br><span class="line">	y &#x3D; x-&gt;right;</span><br><span class="line">	x-&gt;right &#x3D; y-&gt;left;</span><br><span class="line">	if (y-&gt;left !&#x3D; NULL) &#123;</span><br><span class="line">		y-&gt;left-&gt;parent &#x3D; x;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y-&gt;parent &#x3D; x-&gt;parent;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; x is root of the tree </span><br><span class="line">	if (x-&gt;parent &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		T &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (x &#x3D;&#x3D; x-&gt;parent-&gt;left) &#123;</span><br><span class="line">		x-&gt;parent-&gt;left &#x3D; y;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		x-&gt;parent-&gt;right &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y-&gt;left &#x3D; x;</span><br><span class="line">	x-&gt;parent &#x3D; y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="旋转操作"><a href="#旋转操作" class="headerlink" title="旋转操作"></a>旋转操作</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">void SingleRotateWithLeft(Position x)</span><br><span class="line">&#123;</span><br><span class="line">	Position y;</span><br><span class="line">	</span><br><span class="line">	y = x-&gt;left;</span><br><span class="line">	x-&gt;left = y-&gt;right;</span><br><span class="line">	</span><br><span class="line">	if (y-&gt;right != NULL) &#123;</span><br><span class="line">		y-&gt;right-&gt;parent = x;</span><br><span class="line">	&#125;</span><br><span class="line">	y-&gt;parent = x-&gt;parent;</span><br><span class="line">	</span><br><span class="line">	// x is root of the tree </span><br><span class="line">	if (x-&gt;parent == NULL) &#123;</span><br><span class="line">		T = y;</span><br><span class="line">	&#125; else if (x == x-&gt;parent-&gt;left) &#123;</span><br><span class="line">		x-&gt;parent-&gt;left = y;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		x-&gt;parent-&gt;right = y;</span><br><span class="line">	&#125;</span><br><span class="line">	y-&gt;right = x;</span><br><span class="line">	x-&gt;parent = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void SingleRotateWithRight(Position x)</span><br><span class="line">&#123;</span><br><span class="line">	Position y;</span><br><span class="line">	</span><br><span class="line">	y = x-&gt;right;</span><br><span class="line">	x-&gt;right = y-&gt;left;</span><br><span class="line">	if (y-&gt;left != NULL) &#123;</span><br><span class="line">		y-&gt;left-&gt;parent = x;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y-&gt;parent = x-&gt;parent;</span><br><span class="line">	</span><br><span class="line">	// x is root of the tree </span><br><span class="line">	if (x-&gt;parent == NULL) &#123;</span><br><span class="line">		T = y;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (x == x-&gt;parent-&gt;left) &#123;</span><br><span class="line">		x-&gt;parent-&gt;left = y;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		x-&gt;parent-&gt;right = y;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y-&gt;left = x;</span><br><span class="line">	x-&gt;parent = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><ul>
-<li><a href="https://algorithmtutor.com/Data-Structures/Tree/Splay-Trees/" target="_blank" rel="noopener">https://algorithmtutor.com/Data-Structures/Tree/Splay-Trees/</a></li>
-<li><a href="https://www.codesdope.com/course/data-structures-splay-trees/" target="_blank" rel="noopener">https://www.codesdope.com/course/data-structures-splay-trees/</a></li>
+<li><a href="https://algorithmtutor.com/Data-Structures/Tree/Splay-Trees/">https://algorithmtutor.com/Data-Structures/Tree/Splay-Trees/</a></li>
+<li><a href="https://www.codesdope.com/course/data-structures-splay-trees/">https://www.codesdope.com/course/data-structures-splay-trees/</a></li>
 </ul>
 ]]></content>
       <tags>
         <tag>data-structure</tag>
         <tag>tree</tag>
         <tag>splay</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github高效搜索</title>
-    <url>/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>github是全球最大的开源项目网站，集聚了非常多优质的开源项目，我们可以利用它，学习优秀代码，行业前沿知识，动手实践。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20191226085939.png" alt=""></p>
-<p>上图为vue项目的主页，其中<code>name</code>为项目名称，description为项目的简要描述，<code>star</code>为项目的受关注程度，<code>fork</code>反映多少人克隆到了自己的仓库。除了这几个要素，还有项目的最后更新日期（<code>pushed</code>），项目的编程语言（<code>language</code>）,项目的创建日期（<code>create</code>）都可以作为我们搜索我们想要的项目时的依据。</p>
-<h2 id="高效搜索"><a href="#高效搜索" class="headerlink" title="高效搜索"></a>高效搜索</h2><p>以swoole举例</p>
-<h3 id="in-name-swoole"><a href="#in-name-swoole" class="headerlink" title="in:name swoole"></a><code>in:name swoole</code></h3><p>搜索仓库的名称，搜索仓库名称包含swoole关键字的所有项目</p>
-<h3 id="in-description-swoole"><a href="#in-description-swoole" class="headerlink" title="in:description swoole"></a><code>in:description swoole</code></h3><p>搜索描述中包含swoole关键字的项目</p>
-<h3 id="in-readme-swoole"><a href="#in-readme-swoole" class="headerlink" title="in:readme swoole"></a><code>in:readme swoole</code></h3><p>搜索<code>readme</code>文件中包含<code>swoole</code>关键字的项目</p>
-<h3 id="start-gt-100-swoole"><a href="#start-gt-100-swoole" class="headerlink" title="start:&gt;100 swoole"></a><code>start:&gt;100 swoole</code></h3><p>搜索<code>swoole</code>关键字项目中关注超过100个的项目</p>
-<h3 id="fork-gt-100-swoole"><a href="#fork-gt-100-swoole" class="headerlink" title="fork:&gt;100 swoole"></a><code>fork:&gt;100 swoole</code></h3><p>搜索<code>fork</code>超过100的<code>swoole</code>的项目</p>
-<h3 id="pushed-gt-2019-01-10-swoole"><a href="#pushed-gt-2019-01-10-swoole" class="headerlink" title="pushed:&gt;2019-01-10 swoole"></a><code>pushed:&gt;2019-01-10 swoole</code></h3><p>搜索包含<code>swoole</code>项目，并且仓库1月10日后还有更新的项目</p>
-<h3 id="create-gt-2019-01-10-swoole"><a href="#create-gt-2019-01-10-swoole" class="headerlink" title="create:&gt;2019-01-10 swoole"></a><code>create:&gt;2019-01-10 swoole</code></h3><p>搜索项目1月10日后创建的项目</p>
-<h3 id="language-php-shop"><a href="#language-php-shop" class="headerlink" title="language:php shop"></a><code>language:php shop</code></h3><p>搜索编程语言是<code>php</code>的<code>shop</code>项目</p>
-<h3 id="user-kjohn2q-language-php"><a href="#user-kjohn2q-language-php" class="headerlink" title="user:kjohn2q language:php"></a><code>user:kjohn2q language:php</code></h3><p>搜索用户是<code>kjohn2q</code> 开发语言是<code>php</code>的项目</p>
-]]></content>
-      <categories>
-        <category>tool</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -290,10 +266,34 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
+    <title>github高效搜索</title>
+    <url>/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>github是全球最大的开源项目网站，集聚了非常多优质的开源项目，我们可以利用它，学习优秀代码，行业前沿知识，动手实践。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20191226085939.png" alt=""></p>
+<p>上图为vue项目的主页，其中<code>name</code>为项目名称，description为项目的简要描述，<code>star</code>为项目的受关注程度，<code>fork</code>反映多少人克隆到了自己的仓库。除了这几个要素，还有项目的最后更新日期（<code>pushed</code>），项目的编程语言（<code>language</code>）,项目的创建日期（<code>create</code>）都可以作为我们搜索我们想要的项目时的依据。</p>
+<h2 id="高效搜索"><a href="#高效搜索" class="headerlink" title="高效搜索"></a>高效搜索</h2><p>以swoole举例</p>
+<h3 id="in-name-swoole"><a href="#in-name-swoole" class="headerlink" title="in:name swoole"></a><code>in:name swoole</code></h3><p>搜索仓库的名称，搜索仓库名称包含swoole关键字的所有项目</p>
+<h3 id="in-description-swoole"><a href="#in-description-swoole" class="headerlink" title="in:description swoole"></a><code>in:description swoole</code></h3><p>搜索描述中包含swoole关键字的项目</p>
+<h3 id="in-readme-swoole"><a href="#in-readme-swoole" class="headerlink" title="in:readme swoole"></a><code>in:readme swoole</code></h3><p>搜索<code>readme</code>文件中包含<code>swoole</code>关键字的项目</p>
+<h3 id="start-gt-100-swoole"><a href="#start-gt-100-swoole" class="headerlink" title="start:&gt;100 swoole"></a><code>start:&gt;100 swoole</code></h3><p>搜索<code>swoole</code>关键字项目中关注超过100个的项目</p>
+<h3 id="fork-gt-100-swoole"><a href="#fork-gt-100-swoole" class="headerlink" title="fork:&gt;100 swoole"></a><code>fork:&gt;100 swoole</code></h3><p>搜索<code>fork</code>超过100的<code>swoole</code>的项目</p>
+<h3 id="pushed-gt-2019-01-10-swoole"><a href="#pushed-gt-2019-01-10-swoole" class="headerlink" title="pushed:&gt;2019-01-10 swoole"></a><code>pushed:&gt;2019-01-10 swoole</code></h3><p>搜索包含<code>swoole</code>项目，并且仓库1月10日后还有更新的项目</p>
+<h3 id="create-gt-2019-01-10-swoole"><a href="#create-gt-2019-01-10-swoole" class="headerlink" title="create:&gt;2019-01-10 swoole"></a><code>create:&gt;2019-01-10 swoole</code></h3><p>搜索项目1月10日后创建的项目</p>
+<h3 id="language-php-shop"><a href="#language-php-shop" class="headerlink" title="language:php shop"></a><code>language:php shop</code></h3><p>搜索编程语言是<code>php</code>的<code>shop</code>项目</p>
+<h3 id="user-kjohn2q-language-php"><a href="#user-kjohn2q-language-php" class="headerlink" title="user:kjohn2q language:php"></a><code>user:kjohn2q language:php</code></h3><p>搜索用户是<code>kjohn2q</code> 开发语言是<code>php</code>的项目</p>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git自建服务器权限管理</title>
     <url>/2020/git%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<blockquote>
-<p>本文部分译自 <a href="https://github.com/sitaramc/gitolite#gitolite-readme" target="_blank" rel="noopener"><code>Gitolite README</code></a>,仅作学习使用，不用于商业用途</p>
+<p>本文部分译自 <a href="https://github.com/sitaramc/gitolite#gitolite-readme"><code>Gitolite README</code></a>,仅作学习使用，不用于商业用途</p>
 </blockquote>
 <h2 id="Gitolite"><a href="#Gitolite" class="headerlink" title="Gitolite"></a><code>Gitolite</code></h2><p><code>git</code> 仓库托管 – <code>Gitolite</code> 允许你在一台中心服务器上安装 <code>git</code> 托管，具有很多细粒度的访问控制和更强有力的特性。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，准备 <code>ssh</code> key</p>
@@ -303,35 +303,35 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li>确保你工作区的 <code>ssh</code> 公钥复制到了 <code>$HOME/YourName.pub</code></li>
 </ul>
 <p>下一步，通过执行下面的命令来安装 <code>gitolite</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;sitaramc&#x2F;gitolite</span><br><span class="line">mkdir -p $HOME&#x2F;bin</span><br><span class="line">gitolite&#x2F;install -to $HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/sitaramc/gitolite</span><br><span class="line">mkdir -p $HOME/bin</span><br><span class="line">gitolite/install -to $HOME/bin</span><br></pre></td></tr></table></figure>
 
 <p>最后，作为管理员安装 <code>gitolite</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gitolite setup -pk YourName.pub</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gitolite setup -pk YourName.pub</span><br></pre></td></tr></table></figure>
 
 <p>如果最后的命令不能执行，也许是 <code>$HOME/bin</code> 没有添加到你的环境变量 <code>PATH</code> 中，你也可以添加它，或者直接执行：</p>
 <p><code>$HOME/bin/gitolite setup -pk YourName.pub</code></p>
-<p>如果出现其他错误，请查阅<a href="https://gitolite.com/gitolite/" target="_blank" rel="noopener">官方文档</a></p>
+<p>如果出现其他错误，请查阅<a href="https://gitolite.com/gitolite/">官方文档</a></p>
 <h2 id="添加用户和仓库"><a href="#添加用户和仓库" class="headerlink" title="添加用户和仓库"></a>添加用户和仓库</h2><p>不要手动地在服务器上添加新的仓库或者用户。 通过推送对指定仓库 “ <code>gitolite-admin</code> “ 的修改，并推送至服务器，能够维护 <code>Gitolite</code> 用户，仓库和访问规则。</p>
 <p>开始在你的工作区做以下操作，你可以管理 <code>gitolite</code>的安装（如果你还没有安装的话）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git@host:gitolite-admin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@host:gitolite-admin</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>注意：如果提示输入密码的话，配置有误。可以查看<a href="https://gitolite.com/gitolite/" target="_blank" rel="noopener">完整版文档</a>。</p>
+<p>注意：如果提示输入密码的话，配置有误。可以查看<a href="https://gitolite.com/gitolite/">完整版文档</a>。</p>
 </blockquote>
 <p>现在，如果你执行 <code>cd gitolite-admin</code>, 你将看到两个子目录 <code>conf</code> 和 <code>keydir</code></p>
 <p>添加新用户 <code>alice</code>, <code>bob</code>, <code>carol</code> 以及他们的公钥，将它们复制到 <code>keydir</code> 文件夹， 并分别重命名为 <code>alice.pub</code>, <code>bob.pub</code>, <code>carol.pub</code>.</p>
 <p>添加一个新仓库 <code>foo</code>，给这些用户设置不同的访问级别，通过编辑 <code>conf/gitolite.conf</code>，添加类似下面这些行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+      &#x3D;  alice</span><br><span class="line">    RW       &#x3D;  bob</span><br><span class="line">    R        &#x3D;  carol</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+      =  alice</span><br><span class="line">    RW       =  bob</span><br><span class="line">    R        =  carol</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>一旦做了这些修改，执行下面的命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add conf</span><br><span class="line">git add keydir</span><br><span class="line">git commit -m &quot;added foo, give access to alice, bob, carol&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add conf</span><br><span class="line">git add keydir</span><br><span class="line">git commit -m &quot;added foo, give access to alice, bob, carol&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 
 <p>一旦推送完成，<code>gitolite</code> 将会在服务器的 <code>~/.ssg/authorized_keys</code>，同时创建一个新的、空的叫做 <code>foo</code> 的仓库</p>
 <h2 id="对你的用户提供帮助"><a href="#对你的用户提供帮助" class="headerlink" title="对你的用户提供帮助"></a>对你的用户提供帮助</h2><p>一旦一个用户向你发送了他们的公钥，你执行了上面的指定操作，设置了访问级别，你就告诉了他们仓库的地址。通常是 <code>git clone git@host:reponame</code>;通过 <code>man git-clone</code>，查看其它的操作</p>
 <p>注意：再次强调，如果提示输入密码，那一定是哪里出错了</p>
 <p>如果他们需要知道他们可以访问哪些仓库，他们只需要执行 <code>ssh git@host info</code>.</p>
 <h2 id="访问规则例子"><a href="#访问规则例子" class="headerlink" title="访问规则例子"></a>访问规则例子</h2><p><code>Gitolite</code>的例子是非常强大。以上为最简单的使用。下面展示稍微详细一点的例子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+                   &#x3D;   alice</span><br><span class="line">    -  master             &#x3D;   bob</span><br><span class="line">    -  refs&#x2F;tags&#x2F;v[0-9]   &#x3D;   bob</span><br><span class="line">    RW                    &#x3D;   bob</span><br><span class="line">    RW refs&#x2F;tags&#x2F;v[0-9]   &#x3D;   carol</span><br><span class="line">    R                     &#x3D;   dave</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+                   =   alice</span><br><span class="line">    -  master             =   bob</span><br><span class="line">    -  refs/tags/v[0-9]   =   bob</span><br><span class="line">    RW                    =   bob</span><br><span class="line">    RW refs/tags/v[0-9]   =   carol</span><br><span class="line">    R                     =   dave</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>例子中的规则表示：</p>
 <ul>
@@ -342,17 +342,17 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 </ul>
 <p>请查看以上链接的主文档查看所有细节，也有更多的特性和例子</p>
 <h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p><code>Gitolite</code> 可以方便的对用户或者仓库进行分组。以下为创建两个用户组的例子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@staff     &#x3D;  alice bob carol</span><br><span class="line">@interns   &#x3D;  ashok</span><br><span class="line"></span><br><span class="line">repo secret</span><br><span class="line">    RW     &#x3D;  @staff</span><br><span class="line"></span><br><span class="line">repo  foss</span><br><span class="line">    RW+    &#x3D;  @staff</span><br><span class="line">    RW     &#x3D;  @interns</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@staff     =  alice bob carol</span><br><span class="line">@interns   =  ashok</span><br><span class="line"></span><br><span class="line">repo secret</span><br><span class="line">    RW     =  @staff</span><br><span class="line"></span><br><span class="line">repo  foss</span><br><span class="line">    RW+    =  @staff</span><br><span class="line">    RW     =  @interns</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>积累分组列表。一下两行和以上之前对 <code>@staff</code> 的定义。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@staff    &#x3D;   alice bob</span><br><span class="line">@staff    &#x3D;   carol</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@staff    =   alice bob</span><br><span class="line">@staff    =   carol</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>你可以在其他分组名字中使用分组名字。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@all-devs  &#x3D;  @staff @interns</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@all-devs  =  @staff @interns</span><br></pre></td></tr></table></figure>
 
 <p>最后， <code>@all</code> 是一个特殊的名字，常用来表达 <code>all repos</code> 或者 <code>all users</code>.</p>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>用户可以远程执行命令，使用 <code>ssh</code>, 执行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@host help</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh git@host help</span><br></pre></td></tr></table></figure>
 
 <p>打印可用命令的列表</p>
 <p>最常使用的命令为 <code>info</code>。 所有的命令适宜的信息响应，使用一个简单的参数 <code>-h</code></p>
@@ -387,7 +387,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <h2 id="指定文件格式"><a href="#指定文件格式" class="headerlink" title="指定文件格式"></a>指定文件格式</h2><p>如：<code>*Search term here* filetype:pdf</code></p>
 <h2 id="货币或单位转换"><a href="#货币或单位转换" class="headerlink" title="货币或单位转换"></a>货币或单位转换</h2><p>如：<code>10 miles to km</code></p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a href="https://www.lifehack.org/articles/technology/20-tips-use-google-search-efficiently.html" target="_blank" rel="noopener"><code>20 Google Search Tips to Use Google More Efficiently</code></a></li>
+<li><a href="https://www.lifehack.org/articles/technology/20-tips-use-google-search-efficiently.html"><code>20 Google Search Tips to Use Google More Efficiently</code></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -397,121 +397,6 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
         <tag>google</tag>
         <tag>搜索</tag>
         <tag>技巧</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vmware 虚拟机联网的三种方式</title>
-    <url>/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<ul>
-<li><p>虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png" alt=""></p>
-<h2 id="桥接（bridge）模式"><a href="#桥接（bridge）模式" class="headerlink" title="桥接（bridge）模式"></a>桥接（bridge）模式</h2><p>网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate network from multiple communication networks or network segments. ）。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170555.png" alt=""></p>
-<p>如图所示，主机网卡通过虚拟网桥连接虚拟交换机，各网络模式为桥接的虚拟机连接虚拟交换机 <code>VMNet0</code>,各虚拟机  <code>IP</code> 均和主机 <code>IP</code> 处于同一网段且不能冲突。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819162442.jpg" alt=""></p>
-<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先在虚拟机配置中选择桥接模式。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170914.png" alt=""></p>
-<p>然后进入虚拟机系统，设置虚拟机IP和主机IP处于同一地址段。</p>
-<p>我本机的 <code>IP</code> 为 <code>192.168.3.X</code> 网段。故需要设置虚拟机为 <code>192.168.3.X</code>,且不能与当前局域网内的主机 <code>IP</code> 地址冲突。</p>
-<p>以 <code>centos7</code> 为例，使用 <code>root</code>账户登录后，<code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731173257.png" alt=""></p>
-<p>如图所示进行修改.</p>
-<p>然后重启网络服务(<code>service network restart</code>)</p>
-<p>此时，便可访问外网和宿主机。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>桥接网络的方式配置简单，但并不适用于ip地址稀缺的情况。</p>
-<h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）</p>
-<p><code>vmware</code> 中新建虚拟机默认网络配置为 <code>NAT</code> 模式,虚拟机处于独立的网络，通过 <code>NAT</code> 转换器可以访问外网，且能和主机相互通信。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821174734.jpg" alt=""></p>
-<p>如图所示，虚拟的 <code>VMware Network Adapter VMnet8</code> 网卡与虚拟交换机 <code>VMNet8</code> 相连，<code>IP</code> 地址段为 <code>192.168.9.0/24</code>，网关默认为 <code>192.168.9.2</code>. 具体的 <code>NAT</code> 设置可点击NAT设置查看。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819170322.png" alt=""></p>
-<h4 id="网络配置-1"><a href="#网络配置-1" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先，先将虚拟机的网络配置修改为<code>NAT</code>模式。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731174109.png" alt=""></p>
-<p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 <code>NAT</code> 模式的 <code>ip</code> 地址段、网关地址和子网掩码。</p>
-<p>使用 <code>root</code> 用户登录虚拟机系统，配置网络信息为刚刚查到的（IP地址，子网掩码，网关地址），添加 <code>DNS</code> (114.114.114.114, 114.114.115.115)。</p>
-<p>然后重启网络服务即可访问网络和宿主机。</p>
-<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><code>NAT</code> 模式适用于 <code>IP</code> 地址稀缺的情况。</p>
-<h2 id="仅主机（Host-Only）"><a href="#仅主机（Host-Only）" class="headerlink" title="仅主机（Host-Only）"></a>仅主机（Host-Only）</h2><p>仅主机模式表示虚拟机只能访问宿主机，不能访问网络。整个虚拟机和宿主机工作在一个大的内网下,宿主机可以访问虚拟机，虚拟机不能访问宿主机。如需要连接外网，可以利用宿主机共享网络。此时，处于 <code>host-only</code> 网络模式下的虚拟机可以通过宿主机网络访问外网，且可以访问宿主机</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819173636.jpg" alt=""></p>
-<p>如图所示，宿主机通过虚拟网卡 <code>VMware Network Adapter VMnet1</code> 与主机网络进行通信，虚拟网卡的 <code>IP</code> 地址需要设置为仅主机模式的网段。默认为主机号为 <code>.1</code></p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821173642.png" alt=""></p>
-<h4 id="网络配置-2"><a href="#网络配置-2" class="headerlink" title="网络配置"></a>网络配置</h4><p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 仅主机模式的 <code>IP</code> 地址段,在虚拟机中配置IP地址，子网掩码。</p>
-<p>重启网络服务，宿主机即可访问该虚拟机。</p>
-<h4 id="访问外网"><a href="#访问外网" class="headerlink" title="访问外网"></a>访问外网</h4><p>宿主机中联网的网卡，配置网络共享，选中 <code>host-only</code> 对应的那块虚拟网卡。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115332.png" alt=""></p>
-<p>点击确定后，该虚拟网卡的<code>ip</code> 地址会改为 <code>192.168.137.1</code>,需要改为该虚拟网卡对应的虚拟网络交换机的地址段</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115648.png" alt=""></p>
-<p>如上图所示，地址段位 <code>192.168,17.0</code>,于是需要把虚拟网卡的 <code>ip</code> 地址改为 <code>192.168.17.1</code></p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115917.png" alt=""></p>
-<p>然后，将联网方式为 <code>host-only</code> 的虚拟机网关设置为  <code>192.168.17.l</code> 即 <code>VMware Network Adapter VMnet1</code> 的地址就可以访问外网了，此时也可以访问宿主机。</p>
-<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>仅主机模式一般用于公司对机密性要求比较高的网络，个人不常用。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="https://geek-university.com/ccna/what-is-a-network-bridge/">What is a network bridge?</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Bridging_(networking)">Bridging (networking)</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Network_address_translation">Network address translation</a></li>
-<li><a href="https://www.cnblogs.com/yihr/p/7348304.html">vmware联网解决方案：host-only共享上网</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/24758022">VMware的三种网络模式</a></li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>虚拟机</tag>
-        <tag>网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>永远改变你编码技能的40个技巧</title>
-    <url>/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<blockquote>
-<p>本文译自 <a href="https://medium.com/swlh/40-tips-that-will-change-your-coding-skills-forever-bf9d6b936ccc" target="_blank" rel="noopener">40 Tips that will change your coding skills forever</a>,仅用于学习，不作商业用途</p>
-</blockquote>
-<p>在这篇总结里，我将会列举一些技巧。阅读起来很快，但是应用得很好可能要花费一辈子的时间。</p>
-<ol>
-<li>把大块代码分解成小函数。</li>
-<li>如果你结束一天的工作还没有解决问题。关机把它留到第二天。不要一直想着它。</li>
-<li><a href="https://en.wikipedia.org/wiki/You_aren' target="_blank" rel="noopener"t_gonna_need_it"><strong>YANNI</strong></a> 原则：不要编写超出被要求的内容。不要期望未来，尽可能快的做好现在的事情。为了解决当前问题，进行必要的编码。</li>
-<li>你不需要了解所有事情，所有存在的框架。最有效的事情是有好的基础。子开始学习一个框架和学习基础例如<a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener"><strong>SOLID</strong></a>原则或者编写简洁代码之前深入了解编程语言。</li>
-<li><a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" rel="noopener"><strong>KISS</strong></a>:”Keep it simple, stupid” or “Keep it stupid simple”(保持愚蠢且简单) 是一种设计原则：表明大多数系统在保持简单而不是复杂的情况下工作的最好。虽然这是合乎逻辑的，但有时很难实现。</li>
-<li>不要过分思考。</li>
-<li>如果你在一个问题或者 <code>bug</code> 上纠结太长时间，走走，一会再回去。通常，从办公室到卫生间的路上会想出问题的最佳解决方案。</li>
-<li>学习编写可用的测试和学习去做 <a href="http://"https://en.wikipedia.org/wiki/Test-driven_development""><strong><code>TDD</code></strong></a>。<code>TDD</code> 是一种软件开发流程依赖一个非常短的开发循环的重复：编写一个测试，执行所有的测试看是否有测试失败，编写代码，执行测试，重构代码，重复。</li>
-<li>首先解决问题，然后编码。不要在还没有搞懂做什么之前，就开始编码。</li>
-<li>不要记忆代码，而是要理解逻辑。</li>
-<li>如果要复制粘贴 <a href="https://stackoverflow.com/" target="_blank" rel="noopener"><code>stack overflow</code></a> 的解决方案，确保你已经理解了。学习更好地使用 <code>Stack Overflow</code></li>
-<li>如果你想学习，那就去练习。编写一些例子，运行起来。因为仅仅阅读是不够的。（原文：<code>If you want to learn something, practice. Make examples and make them work because read about something is not enough.</code>）</li>
-<li>时常学习其他人的代码，让其他人学习你的代码。结对编程和代码审查是个很好的想法。</li>
-<li>不要重复造轮子。</li>
-<li>你的代码是最好的文档。</li>
-<li>了解怎样 <code>google</code> 东西。为此，你需要有经验和大量的阅读知道你要找的东西。</li>
-<li>你的代码在未来需要你自己或其他人维护，所以写代码时要考虑到读者，而不是试图成为最聪明的人。使你的代码读起来就像是阅读一个故事。</li>
-<li>使用 <code>google</code> 去解决你的错误最好的方式是复制粘贴。</li>
-<li>永不放弃，最后，总会以这样或那样的方式去解决。总有一些难过的日子，但终会过去。</li>
-<li>休息，休息还是休息。解决问题最好的方式是有一个放松的大脑。</li>
-<li>学习使用 <a href="https://en.wikipedia.org/wiki/Software_design_pattern" target="_blank" rel="noopener">软件设计模式</a>。软件设计中的设计模式是通用问题的解决方案。每个模式就像是一幅蓝图，你可以自定义该蓝图已解决代码中常见的设计问题（不要重复造轮子）。</li>
-<li>使用集成工具，尽可能多的自动化。</li>
-<li>练习<code>code kata</code>（代码招式）。一个<a href="https://en.wikipedia.org/wiki/Kata_(programming)" target="_blank" rel="noopener"><code>code kata</code></a>是一个编程训练，通过练习和重复帮助程序开发者提升他们的技能。</li>
-<li>面向接口编程，而不是实现。依赖注入是必需的。可以查看 <code>SOLID</code> 原则。</li>
-<li>重构-测试-重构。<a href="https://refactoring.com/" target="_blank" rel="noopener"><code>Refactoring</code></a>是一种技术，用来重组现有代码，操作，优化内部结构而不改变外部行为。</li>
-<li>当你需要的时候，寻求帮助。不要浪费时间。</li>
-<li>熟能生巧。</li>
-<li>尽管有时评论能帮助你，不要过多关注。他们很可能是过时的。</li>
-<li>了解你的开发环境，在一个强力的足够的环境上投资，比如 <code>IntelliJ</code></li>
-<li>重用组件。</li>
-<li>开发一个 <code>web</code> 应用是，考虑移动优先和相关的因素(原文：<code>associated power</code>)，以及带宽限制。</li>
-<li>不要过早优化或者重构。尽可能快地开发出一个小型的，可用的产品是更重要的。</li>
-<li>不要选择效率低下的，捷径去节省几分钟时间。每次你编码的时候，尽你最大努力。</li>
-<li>遵循文档标准。</li>
-<li>用户不是懂技术的人。当你开发你的 <code>UI</code> 时，要把这点考虑进去。</li>
-<li>在使用源代码控制系统：像 <a href="https://github.com/" target="_blank" rel="noopener"><code>Github</code></a> 或者 <a href="https://bitbucket.org/product?&aceid=&adposition=&adgroup=92542398455&campaign=9128560695&creative=414608949972&device=c&keyword=bitbucket&matchtype=e&network=g&placement=&ds_kids=p51241296666&ds_e=GOOGLE&ds_eid=700000001551985&ds_e1=GOOGLE&gclid=CjwKCAjw5vz2BRAtEiwAbcVIL0jgdNIlupVukWp9ia0jTMh6sAONVv2cseqvZn8I3EHuFknYQqWzMhoCWZ0QAvD_BwE&gclsrc=aw.ds" target="_blank" rel="noopener"><code>bitbucket</code></a>时，做小且频繁的 <code>git</code> 提交。</li>
-<li>使用日志比调试代码更好。在所有的关键部分使用日志。</li>
-<li>编码时要始终如一。如果你使用一种编码风格，总是使用相同的。如果你与其他人在一起工作，与团队中的所有人使用相同的风格。</li>
-<li>不要停止学习，但不是学习更多的新的编程语言或者框架，把注意力集中在软件开发基础上。</li>
-<li>最后，保持耐心和热情去做事。</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>技巧</tag>
-        <tag>编码</tag>
       </tags>
   </entry>
   <entry>
@@ -736,6 +621,83 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
+    <title>powershell美化</title>
+    <url>/2021/powershell%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>作为一个开发者，在日常开发过程中经常会使用命令行。<code>windows</code> 自带的 <code>cmd</code> 和 <code>powershell</code>  在功能上和界面美观度上总是不能让我满意。本文主要和大家分享如何使用 <code>windows terminal</code>  和  <code>oh my posh</code> 增强和美化<code>powershell</code>。</p>
+<p>默认的powershell是这样的：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011422866.png" alt="image-20211001142221763"></p>
+<h2 id="Windows-Terminal-的安装"><a href="#Windows-Terminal-的安装" class="headerlink" title="Windows Terminal 的安装"></a>Windows Terminal 的安装</h2><p>仓库地址: <a href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></p>
+<p>推荐使用 <code>Microsoft Store</code>  来进行安装.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011426386.png" alt="image-20211001142641266"></p>
+<h2 id="Powerline-的安装"><a href="#Powerline-的安装" class="headerlink" title="Powerline 的安装"></a>Powerline 的安装</h2><h3 id="安装-Powerline-字体"><a href="#安装-Powerline-字体" class="headerlink" title="安装 Powerline 字体"></a>安装 <code>Powerline</code> 字体</h3><p><code>Powerline</code> 使用字形来设置提示符样式。 安装 <code>[Meslo LGM NF</code>，包含<code>Powerline</code> 字形。 可以从<a href="https://www.nerdfonts.com/">Nerd Fonts </a>安装字体。</p>
+<h3 id="安装-PowerLine"><a href="#安装-PowerLine" class="headerlink" title="安装 PowerLine"></a>安装 <code>PowerLine</code></h3><p>使用 <code>PowerShell</code> ，安装 <code>Posh-Git</code>  和 <code>Oh-My-Posh</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Install-Module posh-git -Scope CurrentUser</span><br><span class="line">Install-Module oh-my-posh -Scope CurrentUser</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果尚未安装 NuGet，可能需要安装它。 如果是这种情况，PowerShell 命令行会询问是否要安装 NuGet。 选择 [Y]“是”。 你可能还需要批准从不受信任的存储库 <a href="https://docs.microsoft.com/zh-cn/powershell/scripting/gallery/getting-started?view=powershell-7">PSGallery</a> 中安装模块。 选择 [Y]“是”。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011447255.png" alt="image-20211001144728179"></p>
+<p><a href="https://github.com/dahlbyk/posh-git">Posh-Git</a> 将 <code>Git</code> 状态信息添加到提示，并为<code>Git</code> 命令、参数、远程和分支名称添加  <code>tab</code>  自动补全。 <a href="https://github.com/JanDeDobbeleer/oh-my-posh">Oh-My-Posh</a> 为 <code>PowerShell</code>  提示符提供主题功能。</p>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>使用 <code>notepad $profile</code> 或所选的文本编辑器打开 <code>PowerShell</code> 的配置文件。 该配置文件是一个脚本，会在每次 <code>PowerShell</code> 启动时运行。</p>
+<p>将以下内容添加到 <code>PowerShell</code> 配置文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Import-Module posh-git</span><br><span class="line">Import-Module oh-my-posh</span><br><span class="line">Set-PoshPrompt -Theme Paradox</span><br></pre></td></tr></table></figure>
+
+<p>重启 <code>PowerShell</code> ，可能会出现以下问题</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011455800.png" alt="image-20211001145505754"></p>
+<p>这是由于启动 <code>PowerShell</code> 时，执行策略是 <code>Restricted</code> （默认）。<code>Restricted</code> 执行策略不允许任何脚本运行。</p>
+<p>可以通过 <code>get-executionpolicy</code> 命令来查看当前的执行策略。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011457687.png" alt="image-20211001145750648"></p>
+<p>可将执行策略修改为 <code>RemoteSigned</code> 或 <code>AllSigned</code>  解决此问题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011528807.png" alt="image-20211001152859773"></p>
+<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>可以通过 <code>Get-PoshThemes</code> 列出当前目录的所有可用主题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012340706.png" alt="image-20211001234003580"></p>
+<p>可以通过 <code>Set-PoshPrompt -Theme [ThemeName]</code>  指定主题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012343768.png" alt="image-20211001234341724"></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://ohmyposh.dev/">Home | Oh My Posh</a></li>
+<li><a href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/powerline-setup">Windows 终端 Powerline 设置 | Microsoft Docs</a></li>
+<li><a href="https://ohmyposh.dev/docs/themes#agnoster">Themes | Oh My Posh</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+        <tag>powershell</tag>
+        <tag>terminal</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tcp-explain</title>
+    <url>/2021/tcp-explain/</url>
+    <content><![CDATA[<h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
+<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
+<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
+<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
+<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
+<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
+</ol>
+<p><img src="tcp-explain/001.png" alt=""></p>
+<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
+<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
+<li>当接收到了第三个重复的 ACK （确认包）时，将  ssthresh（慢启动阶段临界值） 设置为 cwnd （当前拥塞窗口） 和 接收端通告窗口的最小值。 重传丢失的数据段。 将 cwnd 设置为 ssthresh + 3 * segsize（数据段的大小）。</li>
+<li>每次另一个重复的 ACK  到达， cwnd 增加 segsize , 传输一个数据包。（如果 cwnd  允许新的数据包的话）。</li>
+<li>当下一个确认新数据的 ACK 到达时，  将 cwnd  设置为 ssthresh 的值。此外，该 ACK  应该确认所有介于丢失的数据报和第三个 ACK  接收之间的数据段。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>tcp</tag>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>typora搭配github图床写文章真香</title>
     <url>/2021/typora%E6%90%AD%E9%85%8Dgithub%E5%9B%BE%E5%BA%8A%E5%86%99%E6%96%87%E7%AB%A0%E7%9C%9F%E9%A6%99/</url>
     <content><![CDATA[<p>平时写博客，记录知识用的最多的就是 <a href="https://typora.io/">Typora</a>. <code>typora</code> 是一歀简洁，优雅，高效的 <code>markdown</code> 文件编辑器。当插入图片时，图片会保存在 <code>C:/Users/[用户名]/AppData/Roaming/Typora/typora-user-images/文件名</code> 中，文章写好后，需要将图片同步上传到云端，可供他人访问，或在其它平台引用。这时就需要用到图床，也就是一个云端图片存储的地方。常见的图床有：<code>sm.ms</code>,   腾讯云 <code>cos</code>, 微博图床，七牛云， 阿里云 <code>oss</code>等。我主要使用 <code>github+jsdelivr cdn</code> 的方式。完全免费，稳定且几乎无限制。</p>
@@ -893,80 +855,118 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
-    <title>tcp-explain</title>
-    <url>/2021/tcp-explain/</url>
-    <content><![CDATA[<h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
-<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
-<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
-<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
-<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
-<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
-</ol>
-<p><img src="tcp-explain/001.png" alt=""></p>
-<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
-<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
-<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
-<li>当接收到了第三个重复的 ACK （确认包）时，将  ssthresh（慢启动阶段临界值） 设置为 cwnd （当前拥塞窗口） 和 接收端通告窗口的最小值。 重传丢失的数据段。 将 cwnd 设置为 ssthresh + 3 * segsize（数据段的大小）。</li>
-<li>每次另一个重复的 ACK  到达， cwnd 增加 segsize , 传输一个数据包。（如果 cwnd  允许新的数据包的话）。</li>
-<li>当下一个确认新数据的 ACK 到达时，  将 cwnd  设置为 ssthresh 的值。此外，该 ACK  应该确认所有介于丢失的数据报和第三个 ACK  接收之间的数据段。</li>
-</ol>
+    <title>vmware 虚拟机联网的三种方式</title>
+    <url>/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<ul>
+<li><p>虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png" alt=""></p>
+<h2 id="桥接（bridge）模式"><a href="#桥接（bridge）模式" class="headerlink" title="桥接（bridge）模式"></a>桥接（bridge）模式</h2><p>网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate network from multiple communication networks or network segments. ）。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170555.png" alt=""></p>
+<p>如图所示，主机网卡通过虚拟网桥连接虚拟交换机，各网络模式为桥接的虚拟机连接虚拟交换机 <code>VMNet0</code>,各虚拟机  <code>IP</code> 均和主机 <code>IP</code> 处于同一网段且不能冲突。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819162442.jpg" alt=""></p>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先在虚拟机配置中选择桥接模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170914.png" alt=""></p>
+<p>然后进入虚拟机系统，设置虚拟机IP和主机IP处于同一地址段。</p>
+<p>我本机的 <code>IP</code> 为 <code>192.168.3.X</code> 网段。故需要设置虚拟机为 <code>192.168.3.X</code>,且不能与当前局域网内的主机 <code>IP</code> 地址冲突。</p>
+<p>以 <code>centos7</code> 为例，使用 <code>root</code>账户登录后，<code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731173257.png" alt=""></p>
+<p>如图所示进行修改.</p>
+<p>然后重启网络服务(<code>service network restart</code>)</p>
+<p>此时，便可访问外网和宿主机。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>桥接网络的方式配置简单，但并不适用于ip地址稀缺的情况。</p>
+<h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）</p>
+<p><code>vmware</code> 中新建虚拟机默认网络配置为 <code>NAT</code> 模式,虚拟机处于独立的网络，通过 <code>NAT</code> 转换器可以访问外网，且能和主机相互通信。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821174734.jpg" alt=""></p>
+<p>如图所示，虚拟的 <code>VMware Network Adapter VMnet8</code> 网卡与虚拟交换机 <code>VMNet8</code> 相连，<code>IP</code> 地址段为 <code>192.168.9.0/24</code>，网关默认为 <code>192.168.9.2</code>. 具体的 <code>NAT</code> 设置可点击NAT设置查看。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819170322.png" alt=""></p>
+<h4 id="网络配置-1"><a href="#网络配置-1" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先，先将虚拟机的网络配置修改为<code>NAT</code>模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731174109.png" alt=""></p>
+<p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 <code>NAT</code> 模式的 <code>ip</code> 地址段、网关地址和子网掩码。</p>
+<p>使用 <code>root</code> 用户登录虚拟机系统，配置网络信息为刚刚查到的（IP地址，子网掩码，网关地址），添加 <code>DNS</code> (114.114.114.114, 114.114.115.115)。</p>
+<p>然后重启网络服务即可访问网络和宿主机。</p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><code>NAT</code> 模式适用于 <code>IP</code> 地址稀缺的情况。</p>
+<h2 id="仅主机（Host-Only）"><a href="#仅主机（Host-Only）" class="headerlink" title="仅主机（Host-Only）"></a>仅主机（Host-Only）</h2><p>仅主机模式表示虚拟机只能访问宿主机，不能访问网络。整个虚拟机和宿主机工作在一个大的内网下,宿主机可以访问虚拟机，虚拟机不能访问宿主机。如需要连接外网，可以利用宿主机共享网络。此时，处于 <code>host-only</code> 网络模式下的虚拟机可以通过宿主机网络访问外网，且可以访问宿主机</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819173636.jpg" alt=""></p>
+<p>如图所示，宿主机通过虚拟网卡 <code>VMware Network Adapter VMnet1</code> 与主机网络进行通信，虚拟网卡的 <code>IP</code> 地址需要设置为仅主机模式的网段。默认为主机号为 <code>.1</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821173642.png" alt=""></p>
+<h4 id="网络配置-2"><a href="#网络配置-2" class="headerlink" title="网络配置"></a>网络配置</h4><p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 仅主机模式的 <code>IP</code> 地址段,在虚拟机中配置IP地址，子网掩码。</p>
+<p>重启网络服务，宿主机即可访问该虚拟机。</p>
+<h4 id="访问外网"><a href="#访问外网" class="headerlink" title="访问外网"></a>访问外网</h4><p>宿主机中联网的网卡，配置网络共享，选中 <code>host-only</code> 对应的那块虚拟网卡。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115332.png" alt=""></p>
+<p>点击确定后，该虚拟网卡的<code>ip</code> 地址会改为 <code>192.168.137.1</code>,需要改为该虚拟网卡对应的虚拟网络交换机的地址段</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115648.png" alt=""></p>
+<p>如上图所示，地址段位 <code>192.168,17.0</code>,于是需要把虚拟网卡的 <code>ip</code> 地址改为 <code>192.168.17.1</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115917.png" alt=""></p>
+<p>然后，将联网方式为 <code>host-only</code> 的虚拟机网关设置为  <code>192.168.17.l</code> 即 <code>VMware Network Adapter VMnet1</code> 的地址就可以访问外网了，此时也可以访问宿主机。</p>
+<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>仅主机模式一般用于公司对机密性要求比较高的网络，个人不常用。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://geek-university.com/ccna/what-is-a-network-bridge/">What is a network bridge?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bridging_(networking)">Bridging (networking)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Network_address_translation">Network address translation</a></li>
+<li><a href="https://www.cnblogs.com/yihr/p/7348304.html">vmware联网解决方案：host-only共享上网</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24758022">VMware的三种网络模式</a></li>
+</ul>
+</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
       <tags>
-        <tag>tcp</tag>
-        <tag>network</tag>
+        <tag>虚拟机</tag>
+        <tag>网络</tag>
       </tags>
   </entry>
   <entry>
-    <title>powershell美化</title>
-    <url>/2021/powershell%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p>作为一个开发者，在日常开发过程中经常会使用命令行。<code>windows</code> 自带的 <code>cmd</code> 和 <code>powershell</code>  在功能上和界面美观度上总是不能让我满意。本文主要和大家分享如何使用 <code>windows terminal</code>  和  <code>oh my posh</code> 增强和美化<code>powershell</code>。</p>
-<p>默认的powershell是这样的：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011422866.png" alt="image-20211001142221763"></p>
-<h2 id="Windows-Terminal-的安装"><a href="#Windows-Terminal-的安装" class="headerlink" title="Windows Terminal 的安装"></a>Windows Terminal 的安装</h2><p>仓库地址: <a href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></p>
-<p>推荐使用 <code>Microsoft Store</code>  来进行安装.</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011426386.png" alt="image-20211001142641266"></p>
-<h2 id="Powerline-的安装"><a href="#Powerline-的安装" class="headerlink" title="Powerline 的安装"></a>Powerline 的安装</h2><h3 id="安装-Powerline-字体"><a href="#安装-Powerline-字体" class="headerlink" title="安装 Powerline 字体"></a>安装 <code>Powerline</code> 字体</h3><p><code>Powerline</code> 使用字形来设置提示符样式。 安装 <code>[Meslo LGM NF</code>，包含<code>Powerline</code> 字形。 可以从<a href="https://www.nerdfonts.com/">Nerd Fonts </a>安装字体。</p>
-<h3 id="安装-PowerLine"><a href="#安装-PowerLine" class="headerlink" title="安装 PowerLine"></a>安装 <code>PowerLine</code></h3><p>使用 <code>PowerShell</code> ，安装 <code>Posh-Git</code>  和 <code>Oh-My-Posh</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Install-Module posh-git -Scope CurrentUser</span><br><span class="line">Install-Module oh-my-posh -Scope CurrentUser</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果尚未安装 NuGet，可能需要安装它。 如果是这种情况，PowerShell 命令行会询问是否要安装 NuGet。 选择 [Y]“是”。 你可能还需要批准从不受信任的存储库 <a href="https://docs.microsoft.com/zh-cn/powershell/scripting/gallery/getting-started?view=powershell-7">PSGallery</a> 中安装模块。 选择 [Y]“是”。</p>
+    <title>永远改变你编码技能的40个技巧</title>
+    <url>/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<blockquote>
+<p>本文译自 <a href="https://medium.com/swlh/40-tips-that-will-change-your-coding-skills-forever-bf9d6b936ccc">40 Tips that will change your coding skills forever</a>,仅用于学习，不作商业用途</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011447255.png" alt="image-20211001144728179"></p>
-<p><a href="https://github.com/dahlbyk/posh-git">Posh-Git</a> 将 <code>Git</code> 状态信息添加到提示，并为<code>Git</code> 命令、参数、远程和分支名称添加  <code>tab</code>  自动补全。 <a href="https://github.com/JanDeDobbeleer/oh-my-posh">Oh-My-Posh</a> 为 <code>PowerShell</code>  提示符提供主题功能。</p>
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>使用 <code>notepad $profile</code> 或所选的文本编辑器打开 <code>PowerShell</code> 的配置文件。 该配置文件是一个脚本，会在每次 <code>PowerShell</code> 启动时运行。</p>
-<p>将以下内容添加到 <code>PowerShell</code> 配置文件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Import-Module posh-git</span><br><span class="line">Import-Module oh-my-posh</span><br><span class="line">Set-PoshPrompt -Theme Paradox</span><br></pre></td></tr></table></figure>
-
-<p>重启 <code>PowerShell</code> ，可能会出现以下问题</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011455800.png" alt="image-20211001145505754"></p>
-<p>这是由于启动 <code>PowerShell</code> 时，执行策略是 <code>Restricted</code> （默认）。<code>Restricted</code> 执行策略不允许任何脚本运行。</p>
-<p>可以通过 <code>get-executionpolicy</code> 命令来查看当前的执行策略。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011457687.png" alt="image-20211001145750648"></p>
-<p>可将执行策略修改为 <code>RemoteSigned</code> 或 <code>AllSigned</code>  解决此问题。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011528807.png" alt="image-20211001152859773"></p>
-<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>可以通过 <code>Get-PoshThemes</code> 列出当前目录的所有可用主题。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012340706.png" alt="image-20211001234003580"></p>
-<p>可以通过 <code>Set-PoshPrompt -Theme [ThemeName]</code>  指定主题。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012343768.png" alt="image-20211001234341724"></p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://ohmyposh.dev/">Home | Oh My Posh</a></li>
-<li><a href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></li>
-<li><a href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/powerline-setup">Windows 终端 Powerline 设置 | Microsoft Docs</a></li>
-<li><a href="https://ohmyposh.dev/docs/themes#agnoster">Themes | Oh My Posh</a></li>
-</ul>
+<p>在这篇总结里，我将会列举一些技巧。阅读起来很快，但是应用得很好可能要花费一辈子的时间。</p>
+<ol>
+<li>把大块代码分解成小函数。</li>
+<li>如果你结束一天的工作还没有解决问题。关机把它留到第二天。不要一直想着它。</li>
+<li><a href="https://en.wikipedia.org/wiki/You_aren't_gonna_need_it"><strong>YANNI</strong></a> 原则：不要编写超出被要求的内容。不要期望未来，尽可能快的做好现在的事情。为了解决当前问题，进行必要的编码。</li>
+<li>你不需要了解所有事情，所有存在的框架。最有效的事情是有好的基础。子开始学习一个框架和学习基础例如<a href="https://en.wikipedia.org/wiki/SOLID"><strong>SOLID</strong></a>原则或者编写简洁代码之前深入了解编程语言。</li>
+<li><a href="https://en.wikipedia.org/wiki/KISS_principle"><strong>KISS</strong></a>:”Keep it simple, stupid” or “Keep it stupid simple”(保持愚蠢且简单) 是一种设计原则：表明大多数系统在保持简单而不是复杂的情况下工作的最好。虽然这是合乎逻辑的，但有时很难实现。</li>
+<li>不要过分思考。</li>
+<li>如果你在一个问题或者 <code>bug</code> 上纠结太长时间，走走，一会再回去。通常，从办公室到卫生间的路上会想出问题的最佳解决方案。</li>
+<li>学习编写可用的测试和学习去做 <a href="http://"https://en.wikipedia.org/wiki/Test-driven_development""><strong><code>TDD</code></strong></a>。<code>TDD</code> 是一种软件开发流程依赖一个非常短的开发循环的重复：编写一个测试，执行所有的测试看是否有测试失败，编写代码，执行测试，重构代码，重复。</li>
+<li>首先解决问题，然后编码。不要在还没有搞懂做什么之前，就开始编码。</li>
+<li>不要记忆代码，而是要理解逻辑。</li>
+<li>如果要复制粘贴 <a href="https://stackoverflow.com/"><code>stack overflow</code></a> 的解决方案，确保你已经理解了。学习更好地使用 <code>Stack Overflow</code></li>
+<li>如果你想学习，那就去练习。编写一些例子，运行起来。因为仅仅阅读是不够的。（原文：<code>If you want to learn something, practice. Make examples and make them work because read about something is not enough.</code>）</li>
+<li>时常学习其他人的代码，让其他人学习你的代码。结对编程和代码审查是个很好的想法。</li>
+<li>不要重复造轮子。</li>
+<li>你的代码是最好的文档。</li>
+<li>了解怎样 <code>google</code> 东西。为此，你需要有经验和大量的阅读知道你要找的东西。</li>
+<li>你的代码在未来需要你自己或其他人维护，所以写代码时要考虑到读者，而不是试图成为最聪明的人。使你的代码读起来就像是阅读一个故事。</li>
+<li>使用 <code>google</code> 去解决你的错误最好的方式是复制粘贴。</li>
+<li>永不放弃，最后，总会以这样或那样的方式去解决。总有一些难过的日子，但终会过去。</li>
+<li>休息，休息还是休息。解决问题最好的方式是有一个放松的大脑。</li>
+<li>学习使用 <a href="https://en.wikipedia.org/wiki/Software_design_pattern">软件设计模式</a>。软件设计中的设计模式是通用问题的解决方案。每个模式就像是一幅蓝图，你可以自定义该蓝图已解决代码中常见的设计问题（不要重复造轮子）。</li>
+<li>使用集成工具，尽可能多的自动化。</li>
+<li>练习<code>code kata</code>（代码招式）。一个<a href="https://en.wikipedia.org/wiki/Kata_(programming)"><code>code kata</code></a>是一个编程训练，通过练习和重复帮助程序开发者提升他们的技能。</li>
+<li>面向接口编程，而不是实现。依赖注入是必需的。可以查看 <code>SOLID</code> 原则。</li>
+<li>重构-测试-重构。<a href="https://refactoring.com/"><code>Refactoring</code></a>是一种技术，用来重组现有代码，操作，优化内部结构而不改变外部行为。</li>
+<li>当你需要的时候，寻求帮助。不要浪费时间。</li>
+<li>熟能生巧。</li>
+<li>尽管有时评论能帮助你，不要过多关注。他们很可能是过时的。</li>
+<li>了解你的开发环境，在一个强力的足够的环境上投资，比如 <code>IntelliJ</code></li>
+<li>重用组件。</li>
+<li>开发一个 <code>web</code> 应用是，考虑移动优先和相关的因素(原文：<code>associated power</code>)，以及带宽限制。</li>
+<li>不要过早优化或者重构。尽可能快地开发出一个小型的，可用的产品是更重要的。</li>
+<li>不要选择效率低下的，捷径去节省几分钟时间。每次你编码的时候，尽你最大努力。</li>
+<li>遵循文档标准。</li>
+<li>用户不是懂技术的人。当你开发你的 <code>UI</code> 时，要把这点考虑进去。</li>
+<li>在使用源代码控制系统：像 <a href="https://github.com/"><code>Github</code></a> 或者 <a href="https://bitbucket.org/product?&aceid=&adposition=&adgroup=92542398455&campaign=9128560695&creative=414608949972&device=c&keyword=bitbucket&matchtype=e&network=g&placement=&ds_kids=p51241296666&ds_e=GOOGLE&ds_eid=700000001551985&ds_e1=GOOGLE&gclid=CjwKCAjw5vz2BRAtEiwAbcVIL0jgdNIlupVukWp9ia0jTMh6sAONVv2cseqvZn8I3EHuFknYQqWzMhoCWZ0QAvD_BwE&gclsrc=aw.ds"><code>bitbucket</code></a>时，做小且频繁的 <code>git</code> 提交。</li>
+<li>使用日志比调试代码更好。在所有的关键部分使用日志。</li>
+<li>编码时要始终如一。如果你使用一种编码风格，总是使用相同的。如果你与其他人在一起工作，与团队中的所有人使用相同的风格。</li>
+<li>不要停止学习，但不是学习更多的新的编程语言或者框架，把注意力集中在软件开发基础上。</li>
+<li>最后，保持耐心和热情去做事。</li>
+</ol>
 ]]></content>
-      <categories>
-        <category>tool</category>
-      </categories>
       <tags>
-        <tag>windows</tag>
-        <tag>powershell</tag>
-        <tag>terminal</tag>
-        <tag>命令行</tag>
+        <tag>技巧</tag>
+        <tag>编码</tag>
       </tags>
   </entry>
 </search>

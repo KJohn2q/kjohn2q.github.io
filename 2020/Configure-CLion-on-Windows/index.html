@@ -31,8 +31,8 @@
 <meta property="og:image" content="https://resources.jetbrains.com/help/img/idea/2019.3/cl_cygwin_toolchain.png">
 <meta property="og:image" content="https://resources.jetbrains.com/help/img/idea/2019.3/cl_MinGWInstall.png">
 <meta property="og:image" content="https://resources.jetbrains.com/help/img/idea/2019.3/cl_mingw_toolchain.png">
-<meta property="article:published_time" content="2020-03-05T00:45:43.000Z">
-<meta property="article:modified_time" content="2020-10-24T15:44:48.788Z">
+<meta property="article:published_time" content="2020-03-05T08:45:43.000Z">
+<meta property="article:modified_time" content="2020-03-05T08:45:43.000Z">
 <meta property="article:author" content="John Wang">
 <meta property="article:tag" content="CLion">
 <meta property="article:tag" content="tool">
@@ -213,15 +213,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-03-05 08:45:43" itemprop="dateCreated datePublished" datetime="2020-03-05T08:45:43+08:00">2020-03-05</time>
+              <time title="创建时间：2020-03-05 08:45:43" itemprop="dateCreated datePublished" datetime="2020-03-05T08:45:43+00:00">2020-03-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
-              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -242,12 +235,12 @@
 
       
         <blockquote>
-<p>该文选译自 <code>jetbrains</code> 官网 <a href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm" target="_blank" rel="noopener"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
+<p>该文选译自 <code>jetbrains</code> 官网 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
 </blockquote>
 <p>在 <code>windows</code> 系统,配置 <code>CLion</code> 需要安装环境： <code>Cygwin</code>、<code>MinGW</code>、<code>WSL</code>、<code>MSVC</code>等。你需要在你的系统上安装环境，分别为每个环境创建 <code>CLion</code> 工具链。作为工具链重要的一环，编译环境提供了 <code>C</code> 和 <code>C++</code> 编译器， <code>make</code> 工具， 还有调试器（使用默认工具的情况下）</p>
-<p>想查看远程主机工具链的细节，可以访问 <a href="https://www.jetbrains.com/help/clion/remote-projects-support.html#remote-toolchain" target="_blank" rel="noopener">Full Remote Mode</a> 进行查看。</p>
+<p>想查看远程主机工具链的细节，可以访问 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/remote-projects-support.html#remote-toolchain">Full Remote Mode</a> 进行查看。</p>
 <h2 id="Cygwin"><a href="#Cygwin" class="headerlink" title="Cygwin"></a>Cygwin</h2><ol>
-<li>下载 <a href="https://cygwin.com/install.html" target="_blank" rel="noopener">Cygwin</a> 安装包，2.8 或者更新的版本。</li>
+<li>下载 <a target="_blank" rel="noopener" href="https://cygwin.com/install.html">Cygwin</a> 安装包，2.8 或者更新的版本。</li>
 <li>执行安装文件，选择以下的包：<ul>
 <li><code>gcc-g++</code></li>
 <li><code>make</code></li>
@@ -259,7 +252,7 @@
 <li>等待工具检测完成，点击应用。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_cygwin_toolchain.png" alt=""></li>
 </ol>
 <h2 id="MinGW"><a href="#MinGW" class="headerlink" title="MinGW"></a>MinGW</h2><ol>
-<li>下载 <a href="http://www.mingw.org/" target="_blank" rel="noopener">MinGW</a> 或者 <a href="http://mingw-w64.org/doku.php" target="_blank" rel="noopener">MinGW-W64</a>安装包。</li>
+<li>下载 <a target="_blank" rel="noopener" href="http://www.mingw.org/">MinGW</a> 或者 <a target="_blank" rel="noopener" href="http://mingw-w64.org/doku.php">MinGW-W64</a>安装包。</li>
 <li>运行安装包，在基础安装列表中选择一下的包： <code>mingw-developer-tool</code>, <code>mingw32-base</code>, <code>mingw32-gcc-g++</code>, <code>mingw32-msys-base</code>.<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_MinGWInstall.png" alt=""></li>
 <li>安装成功后，启动 <code>CLion</code>，<code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
 <li>在环境列表中选择 <code>MinGW</code>，<code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
