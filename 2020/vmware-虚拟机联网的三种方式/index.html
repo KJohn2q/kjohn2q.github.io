@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kjohn2q.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。  桥接（bridge）模式网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vmware 虚拟机联网的三种方式">
+<meta property="og:url" content="https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="KJohn2q">
+<meta property="og:description" content="虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。  桥接（bridge）模式网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate n">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170555.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819162442.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170914.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731173257.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821174734.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819170322.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731174109.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819173636.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821173642.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115332.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115648.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115917.png">
+<meta property="article:published_time" content="2020-07-31T10:05:44.000Z">
+<meta property="article:modified_time" content="2020-07-31T10:05:44.000Z">
+<meta property="article:author" content="John Wang">
+<meta property="article:tag" content="虚拟机">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png">
+
+<link rel="canonical" href="https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vmware 虚拟机联网的三种方式 | KJohn2q</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KJohn2q</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注技术的程序员</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KJohn2q" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vmware 虚拟机联网的三种方式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-31 18:05:44" itemprop="dateCreated datePublished" datetime="2020-07-31T18:05:44+08:00">2020-07-31</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><p>虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png" alt=""></p>
+<h2 id="桥接（bridge）模式"><a href="#桥接（bridge）模式" class="headerlink" title="桥接（bridge）模式"></a>桥接（bridge）模式</h2><p>网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate network from multiple communication networks or network segments. ）。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170555.png" alt=""></p>
+<p>如图所示，主机网卡通过虚拟网桥连接虚拟交换机，各网络模式为桥接的虚拟机连接虚拟交换机 <code>VMNet0</code>,各虚拟机  <code>IP</code> 均和主机 <code>IP</code> 处于同一网段且不能冲突。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819162442.jpg" alt=""></p>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先在虚拟机配置中选择桥接模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170914.png" alt=""></p>
+<p>然后进入虚拟机系统，设置虚拟机IP和主机IP处于同一地址段。</p>
+<p>我本机的 <code>IP</code> 为 <code>192.168.3.X</code> 网段。故需要设置虚拟机为 <code>192.168.3.X</code>,且不能与当前局域网内的主机 <code>IP</code> 地址冲突。</p>
+<p>以 <code>centos7</code> 为例，使用 <code>root</code>账户登录后，<code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731173257.png" alt=""></p>
+<p>如图所示进行修改.</p>
+<p>然后重启网络服务(<code>service network restart</code>)</p>
+<p>此时，便可访问外网和宿主机。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>桥接网络的方式配置简单，但并不适用于ip地址稀缺的情况。</p>
+<h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）</p>
+<p><code>vmware</code> 中新建虚拟机默认网络配置为 <code>NAT</code> 模式,虚拟机处于独立的网络，通过 <code>NAT</code> 转换器可以访问外网，且能和主机相互通信。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821174734.jpg" alt=""></p>
+<p>如图所示，虚拟的 <code>VMware Network Adapter VMnet8</code> 网卡与虚拟交换机 <code>VMNet8</code> 相连，<code>IP</code> 地址段为 <code>192.168.9.0/24</code>，网关默认为 <code>192.168.9.2</code>. 具体的 <code>NAT</code> 设置可点击NAT设置查看。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819170322.png" alt=""></p>
+<h4 id="网络配置-1"><a href="#网络配置-1" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先，先将虚拟机的网络配置修改为<code>NAT</code>模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731174109.png" alt=""></p>
+<p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 <code>NAT</code> 模式的 <code>ip</code> 地址段、网关地址和子网掩码。</p>
+<p>使用 <code>root</code> 用户登录虚拟机系统，配置网络信息为刚刚查到的（IP地址，子网掩码，网关地址），添加 <code>DNS</code> (114.114.114.114, 114.114.115.115)。</p>
+<p>然后重启网络服务即可访问网络和宿主机。</p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><code>NAT</code> 模式适用于 <code>IP</code> 地址稀缺的情况。</p>
+<h2 id="仅主机（Host-Only）"><a href="#仅主机（Host-Only）" class="headerlink" title="仅主机（Host-Only）"></a>仅主机（Host-Only）</h2><p>仅主机模式表示虚拟机只能访问宿主机，不能访问网络。整个虚拟机和宿主机工作在一个大的内网下,宿主机可以访问虚拟机，虚拟机不能访问宿主机。如需要连接外网，可以利用宿主机共享网络。此时，处于 <code>host-only</code> 网络模式下的虚拟机可以通过宿主机网络访问外网，且可以访问宿主机</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819173636.jpg" alt=""></p>
+<p>如图所示，宿主机通过虚拟网卡 <code>VMware Network Adapter VMnet1</code> 与主机网络进行通信，虚拟网卡的 <code>IP</code> 地址需要设置为仅主机模式的网段。默认为主机号为 <code>.1</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821173642.png" alt=""></p>
+<h4 id="网络配置-2"><a href="#网络配置-2" class="headerlink" title="网络配置"></a>网络配置</h4><p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 仅主机模式的 <code>IP</code> 地址段,在虚拟机中配置IP地址，子网掩码。</p>
+<p>重启网络服务，宿主机即可访问该虚拟机。</p>
+<h4 id="访问外网"><a href="#访问外网" class="headerlink" title="访问外网"></a>访问外网</h4><p>宿主机中联网的网卡，配置网络共享，选中 <code>host-only</code> 对应的那块虚拟网卡。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115332.png" alt=""></p>
+<p>点击确定后，该虚拟网卡的<code>ip</code> 地址会改为 <code>192.168.137.1</code>,需要改为该虚拟网卡对应的虚拟网络交换机的地址段</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115648.png" alt=""></p>
+<p>如上图所示，地址段位 <code>192.168,17.0</code>,于是需要把虚拟网卡的 <code>ip</code> 地址改为 <code>192.168.17.1</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115917.png" alt=""></p>
+<p>然后，将联网方式为 <code>host-only</code> 的虚拟机网关设置为  <code>192.168.17.l</code> 即 <code>VMware Network Adapter VMnet1</code> 的地址就可以访问外网了，此时也可以访问宿主机。</p>
+<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>仅主机模式一般用于公司对机密性要求比较高的网络，个人不常用。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://geek-university.com/ccna/what-is-a-network-bridge/">What is a network bridge?</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bridging_(networking)">Bridging (networking)</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Network_address_translation">Network address translation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yihr/p/7348304.html">vmware联网解决方案：host-only共享上网</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24758022">VMware的三种网络模式</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag"><i class="fa fa-tag"></i> 虚拟机</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"><i class="fa fa-tag"></i> 网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="prev" title="google搜索技巧">
+      <i class="fa fa-chevron-left"></i> google搜索技巧
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="next" title="github+hexo搭建博客">
+      github+hexo搭建博客 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%A5%E6%8E%A5%EF%BC%88bridge%EF%BC%89%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">桥接（bridge）模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.1.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.0.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT"><span class="nav-number">2.</span> <span class="nav-text">NAT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%85%E4%B8%BB%E6%9C%BA%EF%BC%88Host-Only%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">仅主机（Host-Only）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91"><span class="nav-number">3.0.2.</span> <span class="nav-text">访问外网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Wang"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">John Wang</p>
+  <div class="site-description" itemprop="description">涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/KJohn2q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;KJohn2q" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

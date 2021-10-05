@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kjohn2q.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="vim是一个可高度定制的文本编辑器，使得创建和修改文件更加高效。  设计哲学vim 设计的目的就是为了摆脱鼠标，所有工作都可以通过键盘完成。为了提高效率，需要使得双手尽可能少的移动位置。   模式vim 中有四种模式：普通模式，编辑模式，命令模式和视图模式。 普通模式vim 默认为普通模式。在普通模式中我们可以进行光标的移动，文本的复制、粘贴和删除。 取代方向键">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim cheatsheet">
+<meta property="og:url" content="https://kjohn2q.github.io/2021/vim-cheatsheet/index.html">
+<meta property="og:site_name" content="KJohn2q">
+<meta property="og:description" content="vim是一个可高度定制的文本编辑器，使得创建和修改文件更加高效。  设计哲学vim 设计的目的就是为了摆脱鼠标，所有工作都可以通过键盘完成。为了提高效率，需要使得双手尽可能少的移动位置。   模式vim 中有四种模式：普通模式，编辑模式，命令模式和视图模式。 普通模式vim 默认为普通模式。在普通模式中我们可以进行光标的移动，文本的复制、粘贴和删除。 取代方向键">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291548160.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291124231.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291700025.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291712270.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291717546.png">
+<meta property="article:published_time" content="2021-09-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-09-28T16:00:00.000Z">
+<meta property="article:author" content="John Wang">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="cheatsheet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291548160.png">
+
+<link rel="canonical" href="https://kjohn2q.github.io/2021/vim-cheatsheet/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vim cheatsheet | KJohn2q</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KJohn2q</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注技术的程序员</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KJohn2q" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/vim-cheatsheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim cheatsheet
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-29 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-29T00:00:00+08:00">2021-09-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>vim是一个可高度定制的文本编辑器，使得创建和修改文件更加高效。</p>
+</blockquote>
+<h2 id="设计哲学"><a href="#设计哲学" class="headerlink" title="设计哲学"></a>设计哲学</h2><p><code>vim</code> 设计的目的就是为了摆脱鼠标，所有工作都可以通过键盘完成。为了提高效率，需要使得双手尽可能少的移动位置。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291548160.png" alt="illustration of a keyboard with home row keys"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291124231.png" alt=""></p>
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p><code>vim</code> 中有四种模式：普通模式，编辑模式，命令模式和视图模式。</p>
+<h3 id="普通模式"><a href="#普通模式" class="headerlink" title="普通模式"></a>普通模式</h3><p><code>vim</code> 默认为普通模式。在普通模式中我们可以进行光标的移动，文本的复制、粘贴和删除。</p>
+<h4 id="取代方向键"><a href="#取代方向键" class="headerlink" title="取代方向键"></a>取代方向键</h4><p><code>h</code> 光标向左移动</p>
+<p><code>j</code>  光标向下移动</p>
+<p><code>k</code> 光标向上移动</p>
+<p><code>l</code> 光标向右移动</p>
+<h4 id="光标水平移动"><a href="#光标水平移动" class="headerlink" title="光标水平移动"></a>光标水平移动</h4><p><code>w/W</code> 移动到下一个单词 （word）,  word 默认为一个序列，包含字符，数字或者下划线</p>
+<p><code>b/B</code> 移动到上一个单词 （word）</p>
+<p><code>0</code> 移动到当前行的开头</p>
+<p><code>^</code> 移动到当前行的第一个不为空格的字符前</p>
+<p><code>$</code> 移动到当前行的末尾</p>
+<p><code>%</code> 如光标在一个花括号的开头，则会移动到匹配的花括号另一半的位置</p>
+<blockquote>
+<p>If operators are the verbs, text objects are the nouns. Simply put, a text object is a set of character. In Vim, a <code>word</code> is a text object, as well as a <code>sentence</code> or a <code>paragraph</code>.    ——  <a target="_blank" rel="noopener" href="https://thevaluable.dev/vim-beginner/">Is Vim Really Not For You? A Beginner Guide </a></p>
+</blockquote>
+<h5 id="移动到指定字符的位置"><a href="#移动到指定字符的位置" class="headerlink" title="移动到指定字符的位置"></a>移动到指定字符的位置</h5><p><code>f[character]</code>  在当前光标之后查找字符，并移动   <code>f</code>: <code>find</code></p>
+<p><code>F[character]</code>  在当前光标之前查找字符，并移动</p>
+<p><code>t[character]</code>  移动到当前光标之后指定字符的位置  <code>t</code>:  <code>to</code></p>
+<p><code>T[character]</code>  移动到当前光标之前指定字符的位置 </p>
+<p>在使用了上面的四个操作后，可以使用 <code>;</code> 向前移动到下一次出现的位置， 使用<code>,</code> 移动到上一次出现的位置。</p>
+<h4 id="光标垂直移动"><a href="#光标垂直移动" class="headerlink" title="光标垂直移动"></a>光标垂直移动</h4><p><code>&lt;line_number&gt;G</code>  移动到指定的行，如 <code>10G</code> , 则移动到第10行</p>
+<p><code>G</code>  移动到文件的最后一行</p>
+<p><code>1G</code> 或  <code>gg</code>   移动到文件的第一行 </p>
+<h5 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h5><p><code>ctrl+e</code>   窗口向下滚动</p>
+<p><code>ctrl+u</code>  光标向上滚动半屏  <code>u</code>: <code>upward</code></p>
+<p><code>ctrl+d</code>  光标向下滚动半屏  <code>d</code>: <code>downward</code></p>
+<h4 id="其它指令"><a href="#其它指令" class="headerlink" title="其它指令"></a>其它指令</h4><p><code>u</code>    撤销上一次编辑</p>
+<p><code>r</code> 或 <code>ctrl+r</code>  重新编辑当前字符  </p>
+<p><code>d</code>    删除</p>
+<p><code>dd</code>  删除当前行</p>
+<p><code>[number]dd</code>  删除包含当前行在内的 <code>number</code> 行内容</p>
+<p><code>c</code>    修改</p>
+<p><code>y</code>    复制</p>
+<p><code>yy</code>  复制当前行</p>
+<p><code>[number]yy</code>  复制包含当前行在内的 <code>number</code> 行内容</p>
+<p><code>p/P</code>  粘贴</p>
+<h4 id="混合使用"><a href="#混合使用" class="headerlink" title="混合使用"></a>混合使用</h4><p><code>d$</code>  删除从光标位置到当前行末尾的所有字符</p>
+<p><code>dgg</code>  删除从文件开头到光标位置的内容</p>
+<p><code>ggdG</code>  删除文件的所有内容</p>
+<p><code>diw</code>   删除光标所在位置的 <code>word</code></p>
+<p><code>ciw</code>  删除光标所在位置的 <code>word</code>  , 并进入编辑模式</p>
+<p><code>dip</code>   删除光标所在位置的 段落</p>
+<h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><p>键入<code>/[keyword]</code>  后回车可在本文档中搜索指定的关键词 ，键入 <code>n</code> 可以跳转到下一个结果的位置，键入 <code>N</code> 可以跳转到上一个结果的位置</p>
+<p>普通模式下也可以使用  <code>*</code>  来向后搜索当前词汇, 键入 <code>#</code> 向前搜索当前词汇</p>
+<h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><p>在普通模式下，输入 <code>i</code> 可在当前字符前进入编辑模式。编辑模式可随意删除，添加和修改内容</p>
+<p><code>a</code>  在当前字符后插入内容，进入编辑模式</p>
+<p><code>A</code>   光标移动至当前行末尾，进入编辑模式</p>
+<p><code>o</code>  在当前行下新起一行，进入编辑模式</p>
+<p><code>O</code>  在当前行上插入一行，进入编辑模式</p>
+<p>编辑模式下，<code>esc</code> 或  <code>ctrl+c</code> 或  <code>ctrl+[</code> 可回到普通模式</p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>普通模式下，可键入 <code>:</code>进入命令模式。此时光标会自动移动到左下角，可以键入想要的命令。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291700025.png" alt="image-20210929170014833"></p>
+<p>下面列举一些基础命令：</p>
+<ul>
+<li><code>:help</code>  打开 <code>vim</code> 的帮助文档。如：如果你不知道如何退出，你可以通过键入 <code>:help quit</code> 来获取帮助</li>
+<li><code>:q</code>  退出当前窗口。如果仅有一个窗口，将会退出 <code>vim</code></li>
+<li><code>:q!</code>  不保存就退出。</li>
+<li><code>:w</code>    保存当前文件</li>
+<li><code>:wq</code>  或 <code>:x</code>  保存并退出</li>
+<li><code>:e &lt;path&gt;</code>  编辑指定的文件， <code>path</code> 可以是绝对路径或相对路径。  </li>
+</ul>
+<h4 id="一些有用的帮助命令"><a href="#一些有用的帮助命令" class="headerlink" title="一些有用的帮助命令"></a>一些有用的帮助命令</h4><ul>
+<li><code>:help helphelp</code></li>
+<li><code>:help vim-modes</code></li>
+<li><code>:help insert.txt</code></li>
+<li><code>:help visual.txt</code></li>
+<li><code>:help cmdline.txt</code></li>
+<li><code>help write-quite</code></li>
+<li><code>:help ex-cmd-index</code></li>
+<li><code>:help search-commands</code></li>
+<li><code>:help undo-redo</code></li>
+<li><code>:help cursor-motions</code></li>
+<li><code>:help left-right-motions</code></li>
+<li><code>:help up-down-motions</code></li>
+<li><code>:help scrolling</code></li>
+<li><code>:help operator</code></li>
+<li><code>:help text-objects</code></li>
+<li><code>:help options</code></li>
+<li><code>:help option-list</code></li>
+<li><code>:help options</code></li>
+<li><code>:help option-list</code></li>
+</ul>
+<h3 id="可视化模式"><a href="#可视化模式" class="headerlink" title="可视化模式"></a>可视化模式</h3><p>可视化模式主要用来选中内容。该模式下，可以修改，复制选中的内容。普通模式下可通过键入 <code>v</code> 进入可视化模式，此时在左下角可以看到 <code>--VISUAL--</code> 标识：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291712270.png" alt="image-20210929171256138"></p>
+<p>同样的，我们可以通过 <code>esc</code> 或 <code>ctrl+c</code> 返回到普通模式。</p>
+<h4 id="快捷操作"><a href="#快捷操作" class="headerlink" title="快捷操作"></a>快捷操作</h4><p>普通模式下，我们可以通过 <code>shift+v</code> 进入可视化模式，并选中当前行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291717546.png" alt="image-20210929171750276"></p>
+<p>普通模式下，可以通过 <code>ctrl+v</code> 进入可视化模式，并选中当前段落</p>
+<h2 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h2><p><code>vim</code> 的配置文件位置为 <code>~/.vimrc</code></p>
+<ul>
+<li><code>:set no&lt;option&gt;</code>  重置配置</li>
+<li><code>:set &lt;option&gt;</code> 切换配置</li>
+<li><code>:set &lt;option&gt;?</code>  返回配置值</li>
+<li><code>:set &lt;option&gt;=&lt;value&gt;</code>  设置配置值<code>&lt;value&gt;</code></li>
+<li><code>:set &lt;option&gt;+=&lt;value&gt;</code> 指定配置值增加 <code>&lt;value&gt;</code>,如配置选项为字符串，则拼接</li>
+<li><code>:set &lt;option&gt;&amp;</code>  重置配置为默认值</li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://thevaluable.dev/vim-beginner/">Is Vim Really Not For You? A Beginner Guide (thevaluable.dev)</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+              <a href="/tags/vim/" rel="tag"><i class="fa fa-tag"></i> vim</a>
+              <a href="/tags/cheatsheet/" rel="tag"><i class="fa fa-tag"></i> cheatsheet</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/typora%E6%90%AD%E9%85%8Dgithub%E5%9B%BE%E5%BA%8A%E5%86%99%E6%96%87%E7%AB%A0%E7%9C%9F%E9%A6%99/" rel="prev" title="typora搭配github图床写文章真香">
+      <i class="fa fa-chevron-left"></i> typora搭配github图床写文章真香
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/powershell%E7%BE%8E%E5%8C%96/" rel="next" title="powershell美化">
+      powershell美化 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6"><span class="nav-number">1.</span> <span class="nav-text">设计哲学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">普通模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E4%BB%A3%E6%96%B9%E5%90%91%E9%94%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">取代方向键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E6%A0%87%E6%B0%B4%E5%B9%B3%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.1.2.</span> <span class="nav-text">光标水平移动</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">移动到指定字符的位置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E6%A0%87%E5%9E%82%E7%9B%B4%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.1.3.</span> <span class="nav-text">光标垂直移动</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">快捷键</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.4.</span> <span class="nav-text">其它指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.5.</span> <span class="nav-text">混合使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2"><span class="nav-number">2.1.6.</span> <span class="nav-text">搜索</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">编辑模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">命令模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%9C%89%E7%94%A8%E7%9A%84%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.1.</span> <span class="nav-text">一些有用的帮助命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">可视化模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C"><span class="nav-number">2.4.1.</span> <span class="nav-text">快捷操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">配置选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Wang"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">John Wang</p>
+  <div class="site-description" itemprop="description">涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/KJohn2q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;KJohn2q" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

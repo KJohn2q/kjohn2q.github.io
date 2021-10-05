@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kjohn2q.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KJohn2q">
+<meta property="og:url" content="https://kjohn2q.github.io/page/2/index.html">
+<meta property="og:site_name" content="KJohn2q">
+<meta property="og:description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="John Wang">
+<meta property="article:tag" content="Python, Php, C++, Java, 爬虫, 架构, 分布式">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://kjohn2q.github.io/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>KJohn2q</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KJohn2q</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注技术的程序员</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KJohn2q" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">永远改变你编码技能的40个技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-14 16:47:38" itemprop="dateCreated datePublished" datetime="2020-07-14T16:47:38+08:00">2020-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文译自 <a href="https://medium.com/swlh/40-tips-that-will-change-your-coding-skills-forever-bf9d6b936ccc" target="_blank" rel="noopener">40 Tips that will change your coding skills forever</a>,仅用于学习，不作商业用途</p>
+</blockquote>
+<p>在这篇总结里，我将会列举一些技巧。阅读起来很快，但是应用得很好可能要花费一辈子的时间。</p>
+<ol>
+<li>把大块代码分解成小函数。</li>
+<li>如果你结束一天的工作还没有解决问题。关机把它留到第二天。不要一直想着它。</li>
+<li><a href="https://en.wikipedia.org/wiki/You_aren' target=" _blank" rel="noopener" t_gonna_need_it"><strong>YANNI</strong></a> 原则：不要编写超出被要求的内容。不要期望未来，尽可能快的做好现在的事情。为了解决当前问题，进行必要的编码。</li>
+<li>你不需要了解所有事情，所有存在的框架。最有效的事情是有好的基础。子开始学习一个框架和学习基础例如<a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener"><strong>SOLID</strong></a>原则或者编写简洁代码之前深入了解编程语言。</li>
+<li><a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" rel="noopener"><strong>KISS</strong></a>:”Keep it simple, stupid” or “Keep it stupid simple”(保持愚蠢且简单) 是一种设计原则：表明大多数系统在保持简单而不是复杂的情况下工作的最好。虽然这是合乎逻辑的，但有时很难实现。</li>
+<li>不要过分思考。</li>
+<li>如果你在一个问题或者 <code>bug</code> 上纠结太长时间，走走，一会再回去。通常，从办公室到卫生间的路上会想出问题的最佳解决方案。</li>
+<li>学习编写可用的测试和学习去做 <a href="http://" https: en.wikipedia.org wiki test-driven_development""><strong><code>TDD</code></strong></a>。<code>TDD</code> 是一种软件开发流程依赖一个非常短的开发循环的重复：编写一个测试，执行所有的测试看是否有测试失败，编写代码，执行测试，重构代码，重复。</li>
+<li>首先解决问题，然后编码。不要在还没有搞懂做什么之前，就开始编码。</li>
+<li>不要记忆代码，而是要理解逻辑。</li>
+<li>如果要复制粘贴 <a href="https://stackoverflow.com/" target="_blank" rel="noopener"><code>stack overflow</code></a> 的解决方案，确保你已经理解了。学习更好地使用 <code>Stack Overflow</code></li>
+<li>如果你想学习，那就去练习。编写一些例子，运行起来。因为仅仅阅读是不够的。（原文：<code>If you want to learn something, practice. Make examples and make them work because read about something is not enough.</code>）</li>
+<li>时常学习其他人的代码，让其他人学习你的代码。结对编程和代码审查是个很好的想法。</li>
+<li>不要重复造轮子。</li>
+<li>你的代码是最好的文档。</li>
+<li>了解怎样 <code>google</code> 东西。为此，你需要有经验和大量的阅读知道你要找的东西。</li>
+<li>你的代码在未来需要你自己或其他人维护，所以写代码时要考虑到读者，而不是试图成为最聪明的人。使你的代码读起来就像是阅读一个故事。</li>
+<li>使用 <code>google</code> 去解决你的错误最好的方式是复制粘贴。</li>
+<li>永不放弃，最后，总会以这样或那样的方式去解决。总有一些难过的日子，但终会过去。</li>
+<li>休息，休息还是休息。解决问题最好的方式是有一个放松的大脑。</li>
+<li>学习使用 <a href="https://en.wikipedia.org/wiki/Software_design_pattern" target="_blank" rel="noopener">软件设计模式</a>。软件设计中的设计模式是通用问题的解决方案。每个模式就像是一幅蓝图，你可以自定义该蓝图已解决代码中常见的设计问题（不要重复造轮子）。</li>
+<li>使用集成工具，尽可能多的自动化。</li>
+<li>练习<code>code kata</code>（代码招式）。一个<a href="https://en.wikipedia.org/wiki/Kata_(programming)" target="_blank" rel="noopener"><code>code kata</code></a>是一个编程训练，通过练习和重复帮助程序开发者提升他们的技能。</li>
+<li>面向接口编程，而不是实现。依赖注入是必需的。可以查看 <code>SOLID</code> 原则。</li>
+<li>重构-测试-重构。<a href="https://refactoring.com/" target="_blank" rel="noopener"><code>Refactoring</code></a>是一种技术，用来重组现有代码，操作，优化内部结构而不改变外部行为。</li>
+<li>当你需要的时候，寻求帮助。不要浪费时间。</li>
+<li>熟能生巧。</li>
+<li>尽管有时评论能帮助你，不要过多关注。他们很可能是过时的。</li>
+<li>了解你的开发环境，在一个强力的足够的环境上投资，比如 <code>IntelliJ</code></li>
+<li>重用组件。</li>
+<li>开发一个 <code>web</code> 应用是，考虑移动优先和相关的因素(原文：<code>associated power</code>)，以及带宽限制。</li>
+<li>不要过早优化或者重构。尽可能快地开发出一个小型的，可用的产品是更重要的。</li>
+<li>不要选择效率低下的，捷径去节省几分钟时间。每次你编码的时候，尽你最大努力。</li>
+<li>遵循文档标准。</li>
+<li>用户不是懂技术的人。当你开发你的 <code>UI</code> 时，要把这点考虑进去。</li>
+<li>在使用源代码控制系统：像 <a href="https://github.com/" target="_blank" rel="noopener"><code>Github</code></a> 或者 <a href="https://bitbucket.org/product?&aceid=&adposition=&adgroup=92542398455&campaign=9128560695&creative=414608949972&device=c&keyword=bitbucket&matchtype=e&network=g&placement=&ds_kids=p51241296666&ds_e=GOOGLE&ds_eid=700000001551985&ds_e1=GOOGLE&gclid=CjwKCAjw5vz2BRAtEiwAbcVIL0jgdNIlupVukWp9ia0jTMh6sAONVv2cseqvZn8I3EHuFknYQqWzMhoCWZ0QAvD_BwE&gclsrc=aw.ds" target="_blank" rel="noopener"><code>bitbucket</code></a>时，做小且频繁的 <code>git</code> 提交。</li>
+<li>使用日志比调试代码更好。在所有的关键部分使用日志。</li>
+<li>编码时要始终如一。如果你使用一种编码风格，总是使用相同的。如果你与其他人在一起工作，与团队中的所有人使用相同的风格。</li>
+<li>不要停止学习，但不是学习更多的新的编程语言或者框架，把注意力集中在软件开发基础上。</li>
+<li>最后，保持耐心和热情去做事。</li>
+</ol>
+
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/git%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/git%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">git自建服务器权限管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 10:28:19" itemprop="dateCreated datePublished" datetime="2020-03-19T10:28:19+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/translate/" itemprop="url" rel="index"><span itemprop="name">translate</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文部分译自 <a href="https://github.com/sitaramc/gitolite#gitolite-readme" target="_blank" rel="noopener"><code>Gitolite README</code></a>,仅作学习使用，不用于商业用途</p>
+</blockquote>
+<h2 id="Gitolite"><a href="#Gitolite" class="headerlink" title="Gitolite"></a><code>Gitolite</code></h2><p><code>git</code> 仓库托管 – <code>Gitolite</code> 允许你在一台中心服务器上安装 <code>git</code> 托管，具有很多细粒度的访问控制和更强有力的特性。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，准备 <code>ssh</code> key</p>
+<ul>
+<li>使用 <code>git</code> 用户登录服务器</li>
+<li>确保 <code>~/.ssh/authorized_keys</code> 为空或不存在</li>
+<li>确保你工作区的 <code>ssh</code> 公钥复制到了 <code>$HOME/YourName.pub</code></li>
+</ul>
+<p>下一步，通过执行下面的命令来安装 <code>gitolite</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;sitaramc&#x2F;gitolite</span><br><span class="line">mkdir -p $HOME&#x2F;bin</span><br><span class="line">gitolite&#x2F;install -to $HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+
+<p>最后，作为管理员安装 <code>gitolite</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitolite setup -pk YourName.pub</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/git%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Generating-Your-SSH-Public-Key/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/Generating-Your-SSH-Public-Key/" class="post-title-link" itemprop="url">Generating Your SSH Public Key</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 10:21:55" itemprop="dateCreated datePublished" datetime="2020-03-19T10:21:55+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/translate/" itemprop="url" rel="index"><span itemprop="name">translate</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文译自<a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key" target="_blank" rel="noopener"><code>Git on the Server - Generating Your SSH Public Key</code></a>，仅作学习使用，不用于商业用途</p>
+</blockquote>
+<p>很多 <code>git</code> 服务器使用 <code>SSH</code> 公钥进行验证。为了提供一个公钥，如果你系统的用户还没有的话，他们必须生成一个。这个过程是跨所有的操作系统的。首先，你应该检查，确保你还没有公钥。默认，用户的 <code>SSH keys</code>存储在用户的 <code>~/.ssh</code> 目录。如果你已经有一个 <code>SSH key</code>，切换到那个目录，列出所有的内容，你可以轻松地看见。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~&#x2F;.ssh</span><br><span class="line">$ ls</span><br><span class="line"></span><br><span class="line">id_rsa  id_rsa.pub  known_hosts</span><br></pre></td></tr></table></figure>
+
+<p>你将会看到一系列名称为 <code>id_dsa</code> 或者 <code>id_rsa</code>，且有一个后缀名为 <code>.pub</code> 的文件。该 <code>.pub</code> 文件是你的公钥，其它文件是对应的私钥。如果没有看到这些文件（或者你甚至没有 <code>.ssh</code> 目录），你可以通过执行 由 <code>Linux/macOS</code> 操作系统和 <code>windows</code> 上的 <code>git</code> 提供的 <code>ssh-keygen</code> 程序来创建它们：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -o</span><br></pre></td></tr></table></figure>
+
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/schacon/.ssh/id_rsa):
+Created directory &apos;/home/schacon/.ssh&apos;.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/schacon/.ssh/id_rsa.
+Your public key has been saved in /home/schacon/.ssh/id_rsa.pub.
+The key fingerprint is:
+d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></pre><p>首先，你要确认保存密钥的位置（<code>.ssh/id_rsa</code>），然后向你询问一个密码短语两次，如果你在使用密钥的时候不想输入密码，你可以留空。然而，如果你使用了密码，确保你使用了 <code>-o</code> 选项；它会以比默认格式更能抵御密码强力破解攻击的格式进行存储私钥。你也可以使用 <code>ssh-agent</code> 工具，避免每次都需要输入密码。</p>
+<p>现在，每个用户都做了以上操作，给你或者任何管理 <code>Git</code> 服务器的人发送了公钥。（假定你使用的是需要公钥的 <code>SSH</code> 服务器设置）。他们需要做的就是复制 <code>.pub</code> 文件的内容并通过邮件发送。公钥文件像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom&#x2F;BWDSU</span><br><span class="line">GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3</span><br><span class="line">Pbv7kOdJ&#x2F;MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK&#x2F;7XA</span><br><span class="line">t3FaoJoAsncM1Q9x5+3V0Ww68&#x2F;eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw&#x2F;Pb0rwert&#x2F;En</span><br><span class="line">mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z&#x2F;il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx</span><br><span class="line">NrRFi9wrf+M7Q&#x3D;&#x3D; schacon@mylaptop.local</span><br></pre></td></tr></table></figure>
+
+<p>获取更多在多操作系统创建 <code>SSH key</code> 的深入教程，可以查看 <a href="https://help.github.com/articles/generating-ssh-keys" target="_blank" rel="noopener"><code>GitHub guide on SSH keys</code></a>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/Generating-Your-SSH-Public-Key/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Active-and-Passive-modes-in-FTP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/Active-and-Passive-modes-in-FTP/" class="post-title-link" itemprop="url">Active and Passive modes in FTP</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-09 11:58:22" itemprop="dateCreated datePublished" datetime="2020-03-09T11:58:22+08:00">2020-03-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文译自 <a href="https://www.web24.com.au/tutorials/active-passive-modes-ftp" target="_blank" rel="noopener"><code>Active and Passive modes in FTP</code></a> ,仅用于学习，不作商业用途</p>
+</blockquote>
+<p><code>FTP</code> 的主动和被动模式是 客户端和服务器端独立使用各自通道的 <code>FTP</code> 的两种连接模式，命令通道和数据通道，通常分离为两个TCP连接。命令通道通常基于 21 端口，数据通道基于 20 端口。命令通道通常处理命令和响应的传输，数据通道处理实际的文件传输。</p>
+<p><code>FTP</code> 主动模式和被动模式连接的不同在于服务器端或者客户端发起数据连接。对于主动模式，服务器端在命令通道客户端建立连接之后发起到客户端的数据连接。被动模式则相反，客户端发起到服务器端的数据连接。</p>
+<p><strong>主动模式的事件序列：</strong></p>
+<ol>
+<li>你的客户端（例如 <code>filezilla</code> ）通过建立到服务端 21 端口的 <code>FTP</code> 控制连接 来连接 <code>FTP</code> 服务器端。</li>
+<li>当客户端通过控制连接请求数据时，服务端向客户端发起数据传输连接。数据传输连接的源端口始终是服务端的 20 端口 ，而目标端口是客户端上的一个高端口（大于1024）。</li>
+</ol>
+<p><code>FTP</code> 主动模式当客户端设置了防火墙并受到多对一的 <code>NAT</code> （伪装）防护。这是因为防火墙不能是别再后面的众多服务端，哪个应该接收返回的连接。</p>
+<p>对于服务端，主动模式更安全， 它不要求服务端打开不安全的端口。 因为服务端发起到客户端的数据连接。</p>
+<p>注意： <code>AUSWEB Windows Hosting Solutions</code> 默认就是 <code>FTP</code> 主动模式，你需要在你的 <code>FTP</code> 客户端开启。</p>
+<p><strong>被动模式有这不同的事件序列：</strong></p>
+<ol>
+<li>你的客户端通过建立到服务端 21 端口的 <code>FTP</code> 控制连接来连接 <code>FTP</code> 服务端。</li>
+<li>当客户端通过连接请求数据时，客户端向服务端发起数据传输连接。数据传输连接的源端口始终是客户端上的一个高端口，而目标端口是服务器上的一个高端口。</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/Active-and-Passive-modes-in-FTP/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Splay-Trees/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/Splay-Trees/" class="post-title-link" itemprop="url">Splay Trees</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 09:01:35" itemprop="dateCreated datePublished" datetime="2020-03-05T09:01:35+08:00">2020-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>伸展树是一种能够自我平衡的二叉查找树，它能在均摊O(log n)的时间内完成基于伸展操作的插入、查找、修改和删除操作。它是由丹尼尔·斯立特（Daniel Sleator）和罗伯特·塔扬在1985年发明的。   ——— 维基百科</p>
+</blockquote>
+<blockquote>
+<p>伸展树是基于这样的事实，当一个节点被访问时，它就很可能不久再被访问到。</p>
+</blockquote>
+<blockquote>
+<p>伸展树的基本想法是，当一个节点被访问后，它就要经过一系列AVL树的旋转被放到根上。注意，如果一个节点很深，那么在其路径上就存在许多的节点也相对较深，通过重新构造可以使对所有这些节点的进一步访问所花费的时间变少。因此，如果节点过深，那么我们还要求重新构造应具有平衡这棵树（到某种程度）的作用。  ———— 《数据结构与算法分析 ——c语言描述》</p>
+</blockquote>
+<h1 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h1><p>伸展树在经过一系列伸展操作后，有可能会变成一条链。</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h2 id="伸展"><a href="#伸展" class="headerlink" title="伸展"></a>伸展</h2><p>当一个节点x被访问后，伸展操作会将x移动到根节点。为了进行伸展操作，我们会进行一系列的旋转，每次旋转，会使x离根更近。</p>
+<p>每次旋转由三个因素决定：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/Splay-Trees/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Configure-CLion-on-Windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/Configure-CLion-on-Windows/" class="post-title-link" itemprop="url">Configure CLion on Windows</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 08:45:43" itemprop="dateCreated datePublished" datetime="2020-03-05T08:45:43+08:00">2020-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>该文选译自 <code>jetbrains</code> 官网 <a href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm" target="_blank" rel="noopener"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
+</blockquote>
+<p>在 <code>windows</code> 系统,配置 <code>CLion</code> 需要安装环境： <code>Cygwin</code>、<code>MinGW</code>、<code>WSL</code>、<code>MSVC</code>等。你需要在你的系统上安装环境，分别为每个环境创建 <code>CLion</code> 工具链。作为工具链重要的一环，编译环境提供了 <code>C</code> 和 <code>C++</code> 编译器， <code>make</code> 工具， 还有调试器（使用默认工具的情况下）</p>
+<p>想查看远程主机工具链的细节，可以访问 <a href="https://www.jetbrains.com/help/clion/remote-projects-support.html#remote-toolchain" target="_blank" rel="noopener">Full Remote Mode</a> 进行查看。</p>
+<h2 id="Cygwin"><a href="#Cygwin" class="headerlink" title="Cygwin"></a>Cygwin</h2><ol>
+<li>下载 <a href="https://cygwin.com/install.html" target="_blank" rel="noopener">Cygwin</a> 安装包，2.8 或者更新的版本。</li>
+<li>执行安装文件，选择以下的包：<ul>
+<li><code>gcc-g++</code></li>
+<li><code>make</code></li>
+<li><code>gdb</code><br>你可以在搜索框中键入包的名字，点击列表中该包，直到在该包上有对勾出现。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_CygwinSetup.png" alt="image"></li>
+</ul>
+</li>
+<li>安装完成后，启动 <code>CLion</code>，依次打开 <code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
+<li>在环境列表中选择 <code>Cygwin</code>. <code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
+<li>等待工具检测完成，点击应用。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_cygwin_toolchain.png" alt></li>
+</ol>
+<h2 id="MinGW"><a href="#MinGW" class="headerlink" title="MinGW"></a>MinGW</h2><ol>
+<li>下载 <a href="http://www.mingw.org/" target="_blank" rel="noopener">MinGW</a> 或者 <a href="http://mingw-w64.org/doku.php" target="_blank" rel="noopener">MinGW-W64</a>安装包。</li>
+<li>运行安装包，在基础安装列表中选择一下的包： <code>mingw-developer-tool</code>, <code>mingw32-base</code>, <code>mingw32-gcc-g++</code>, <code>mingw32-msys-base</code>.<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_MinGWInstall.png" alt></li>
+<li>安装成功后，启动 <code>CLion</code>，<code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
+<li>在环境列表中选择 <code>MinGW</code>，<code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
+<li>等待工具检测完成。如果 <code>CLion</code> 不能检测到编译器或者 <code>make</code> ，在 <code>MinGW</code> 安装管理器中再次检查需要的包是否已安装。工具设置正确后，点击应用。<br> <img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_mingw_toolchain.png" alt></li>
+</ol>
+<h2 id="GDB-on-Windows"><a href="#GDB-on-Windows" class="headerlink" title="GDB on Windows"></a>GDB on Windows</h2><p>如果使用了 <code>MinGW</code> , <code>CLion</code> 包含了内置的 <code>GDB</code> (8.3版本)。 如果是 <code>Cygwin</code>, 你需要在 <code>Cygwin</code> 包管理器中安装包 <code>GDB</code>，上面已经描述过。</p>
+<p>你也可以切换到自己的 <code>GDB</code> 二进制包，支持的 <code>GDB</code> 版本为 <code>7.8.X - 8.3.X</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/Configure-CLion-on-Windows/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/" class="post-title-link" itemprop="url">github高效搜索</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-26 09:04:25" itemprop="dateCreated datePublished" datetime="2019-12-26T09:04:25+08:00">2019-12-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 23:44:48" itemprop="dateModified" datetime="2020-10-24T23:44:48+08:00">2020-10-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>github是全球最大的开源项目网站，集聚了非常多优质的开源项目，我们可以利用它，学习优秀代码，行业前沿知识，动手实践。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20191226085939.png" alt></p>
+<p>上图为vue项目的主页，其中<code>name</code>为项目名称，description为项目的简要描述，<code>star</code>为项目的受关注程度，<code>fork</code>反映多少人克隆到了自己的仓库。除了这几个要素，还有项目的最后更新日期（<code>pushed</code>），项目的编程语言（<code>language</code>）,项目的创建日期（<code>create</code>）都可以作为我们搜索我们想要的项目时的依据。</p>
+<h2 id="高效搜索"><a href="#高效搜索" class="headerlink" title="高效搜索"></a>高效搜索</h2><p>以swoole举例</p>
+<h3 id="in-name-swoole"><a href="#in-name-swoole" class="headerlink" title="in:name swoole"></a><code>in:name swoole</code></h3><p>搜索仓库的名称，搜索仓库名称包含swoole关键字的所有项目</p>
+<h3 id="in-description-swoole"><a href="#in-description-swoole" class="headerlink" title="in:description swoole"></a><code>in:description swoole</code></h3><p>搜索描述中包含swoole关键字的项目</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Wang"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">John Wang</p>
+  <div class="site-description" itemprop="description">涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/KJohn2q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;KJohn2q" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

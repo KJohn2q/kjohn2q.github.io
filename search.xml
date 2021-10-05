@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Active and Passive modes in FTP</title>
+    <url>/2020/Active-and-Passive-modes-in-FTP/</url>
+    <content><![CDATA[<blockquote>
+<p>本文译自 <a href="https://www.web24.com.au/tutorials/active-passive-modes-ftp" target="_blank" rel="noopener"><code>Active and Passive modes in FTP</code></a> ,仅用于学习，不作商业用途</p>
+</blockquote>
+<p><code>FTP</code> 的主动和被动模式是 客户端和服务器端独立使用各自通道的 <code>FTP</code> 的两种连接模式，命令通道和数据通道，通常分离为两个TCP连接。命令通道通常基于 21 端口，数据通道基于 20 端口。命令通道通常处理命令和响应的传输，数据通道处理实际的文件传输。</p>
+<p><code>FTP</code> 主动模式和被动模式连接的不同在于服务器端或者客户端发起数据连接。对于主动模式，服务器端在命令通道客户端建立连接之后发起到客户端的数据连接。被动模式则相反，客户端发起到服务器端的数据连接。</p>
+<p><strong>主动模式的事件序列：</strong></p>
+<ol>
+<li>你的客户端（例如 <code>filezilla</code> ）通过建立到服务端 21 端口的 <code>FTP</code> 控制连接 来连接 <code>FTP</code> 服务器端。</li>
+<li>当客户端通过控制连接请求数据时，服务端向客户端发起数据传输连接。数据传输连接的源端口始终是服务端的 20 端口 ，而目标端口是客户端上的一个高端口（大于1024）。</li>
+</ol>
+<p><code>FTP</code> 主动模式当客户端设置了防火墙并受到多对一的 <code>NAT</code> （伪装）防护。这是因为防火墙不能是别再后面的众多服务端，哪个应该接收返回的连接。</p>
+<p>对于服务端，主动模式更安全， 它不要求服务端打开不安全的端口。 因为服务端发起到客户端的数据连接。</p>
+<p>注意： <code>AUSWEB Windows Hosting Solutions</code> 默认就是 <code>FTP</code> 主动模式，你需要在你的 <code>FTP</code> 客户端开启。</p>
+<p><strong>被动模式有这不同的事件序列：</strong></p>
+<ol>
+<li>你的客户端通过建立到服务端 21 端口的 <code>FTP</code> 控制连接来连接 <code>FTP</code> 服务端。</li>
+<li>当客户端通过连接请求数据时，客户端向服务端发起数据传输连接。数据传输连接的源端口始终是客户端上的一个高端口，而目标端口是服务器上的一个高端口。</li>
+</ol>
+<p>即使服务端从不积极进行尝试去连接客户端来进行 <code>FTP</code> 的数据传输，被动模式也应该能看见。因为客户端始终发起请求连接，所以被动模式更适合受防火墙保护的客户端。</p>
+]]></content>
+      <tags>
+        <tag>FTP</tag>
+        <tag>active</tag>
+        <tag>data</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Configure CLion on Windows</title>
+    <url>/2020/Configure-CLion-on-Windows/</url>
+    <content><![CDATA[<blockquote>
+<p>该文选译自 <code>jetbrains</code> 官网 <a href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm" target="_blank" rel="noopener"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
+</blockquote>
+<p>在 <code>windows</code> 系统,配置 <code>CLion</code> 需要安装环境： <code>Cygwin</code>、<code>MinGW</code>、<code>WSL</code>、<code>MSVC</code>等。你需要在你的系统上安装环境，分别为每个环境创建 <code>CLion</code> 工具链。作为工具链重要的一环，编译环境提供了 <code>C</code> 和 <code>C++</code> 编译器， <code>make</code> 工具， 还有调试器（使用默认工具的情况下）</p>
+<p>想查看远程主机工具链的细节，可以访问 <a href="https://www.jetbrains.com/help/clion/remote-projects-support.html#remote-toolchain" target="_blank" rel="noopener">Full Remote Mode</a> 进行查看。</p>
+<h2 id="Cygwin"><a href="#Cygwin" class="headerlink" title="Cygwin"></a>Cygwin</h2><ol>
+<li>下载 <a href="https://cygwin.com/install.html" target="_blank" rel="noopener">Cygwin</a> 安装包，2.8 或者更新的版本。</li>
+<li>执行安装文件，选择以下的包：<ul>
+<li><code>gcc-g++</code></li>
+<li><code>make</code></li>
+<li><code>gdb</code><br>你可以在搜索框中键入包的名字，点击列表中该包，直到在该包上有对勾出现。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_CygwinSetup.png" alt="image"></li>
+</ul>
+</li>
+<li>安装完成后，启动 <code>CLion</code>，依次打开 <code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
+<li>在环境列表中选择 <code>Cygwin</code>. <code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
+<li>等待工具检测完成，点击应用。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_cygwin_toolchain.png" alt=""></li>
+</ol>
+<h2 id="MinGW"><a href="#MinGW" class="headerlink" title="MinGW"></a>MinGW</h2><ol>
+<li>下载 <a href="http://www.mingw.org/" target="_blank" rel="noopener">MinGW</a> 或者 <a href="http://mingw-w64.org/doku.php" target="_blank" rel="noopener">MinGW-W64</a>安装包。</li>
+<li>运行安装包，在基础安装列表中选择一下的包： <code>mingw-developer-tool</code>, <code>mingw32-base</code>, <code>mingw32-gcc-g++</code>, <code>mingw32-msys-base</code>.<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_MinGWInstall.png" alt=""></li>
+<li>安装成功后，启动 <code>CLion</code>，<code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
+<li>在环境列表中选择 <code>MinGW</code>，<code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
+<li>等待工具检测完成。如果 <code>CLion</code> 不能检测到编译器或者 <code>make</code> ，在 <code>MinGW</code> 安装管理器中再次检查需要的包是否已安装。工具设置正确后，点击应用。<br> <img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_mingw_toolchain.png" alt=""></li>
+</ol>
+<h2 id="GDB-on-Windows"><a href="#GDB-on-Windows" class="headerlink" title="GDB on Windows"></a>GDB on Windows</h2><p>如果使用了 <code>MinGW</code> , <code>CLion</code> 包含了内置的 <code>GDB</code> (8.3版本)。 如果是 <code>Cygwin</code>, 你需要在 <code>Cygwin</code> 包管理器中安装包 <code>GDB</code>，上面已经描述过。</p>
+<p>你也可以切换到自己的 <code>GDB</code> 二进制包，支持的 <code>GDB</code> 版本为 <code>7.8.X - 8.3.X</code></p>
+<p>对于 <code>GDB</code> 8.0 或者更新的版本，调试器的输出默认会使用 <code>CLion</code>的控制台。你可以在 <code>Help|Find Action</code> 或者使用快捷键 <code>Ctrl+Shift+A</code>, 查找 <code>Registry</code> , 设置以下的值 <code>cidr.debugger.gdb.workaround.windows.forceExternalConsole.</code>,来使得程序输入/输出会打开额外的windows控制台窗口。</p>
+]]></content>
+      <tags>
+        <tag>CLion</tag>
+        <tag>tool</tag>
+        <tag>compiler</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Generating Your SSH Public Key</title>
+    <url>/2020/Generating-Your-SSH-Public-Key/</url>
+    <content><![CDATA[<blockquote>
+<p>本文译自<a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key" target="_blank" rel="noopener"><code>Git on the Server - Generating Your SSH Public Key</code></a>，仅作学习使用，不用于商业用途</p>
+</blockquote>
+<p>很多 <code>git</code> 服务器使用 <code>SSH</code> 公钥进行验证。为了提供一个公钥，如果你系统的用户还没有的话，他们必须生成一个。这个过程是跨所有的操作系统的。首先，你应该检查，确保你还没有公钥。默认，用户的 <code>SSH keys</code>存储在用户的 <code>~/.ssh</code> 目录。如果你已经有一个 <code>SSH key</code>，切换到那个目录，列出所有的内容，你可以轻松地看见。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd ~&#x2F;.ssh</span><br><span class="line">$ ls</span><br><span class="line"></span><br><span class="line">id_rsa  id_rsa.pub  known_hosts</span><br></pre></td></tr></table></figure>
+
+<p>你将会看到一系列名称为 <code>id_dsa</code> 或者 <code>id_rsa</code>，且有一个后缀名为 <code>.pub</code> 的文件。该 <code>.pub</code> 文件是你的公钥，其它文件是对应的私钥。如果没有看到这些文件（或者你甚至没有 <code>.ssh</code> 目录），你可以通过执行 由 <code>Linux/macOS</code> 操作系统和 <code>windows</code> 上的 <code>git</code> 提供的 <code>ssh-keygen</code> 程序来创建它们：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -o</span><br></pre></td></tr></table></figure>
+
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/schacon/.ssh/id_rsa):
+Created directory &apos;/home/schacon/.ssh&apos;.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/schacon/.ssh/id_rsa.
+Your public key has been saved in /home/schacon/.ssh/id_rsa.pub.
+The key fingerprint is:
+d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></pre><p>首先，你要确认保存密钥的位置（<code>.ssh/id_rsa</code>），然后向你询问一个密码短语两次，如果你在使用密钥的时候不想输入密码，你可以留空。然而，如果你使用了密码，确保你使用了 <code>-o</code> 选项；它会以比默认格式更能抵御密码强力破解攻击的格式进行存储私钥。你也可以使用 <code>ssh-agent</code> 工具，避免每次都需要输入密码。</p>
+<p>现在，每个用户都做了以上操作，给你或者任何管理 <code>Git</code> 服务器的人发送了公钥。（假定你使用的是需要公钥的 <code>SSH</code> 服务器设置）。他们需要做的就是复制 <code>.pub</code> 文件的内容并通过邮件发送。公钥文件像这样：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom&#x2F;BWDSU</span><br><span class="line">GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3</span><br><span class="line">Pbv7kOdJ&#x2F;MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK&#x2F;7XA</span><br><span class="line">t3FaoJoAsncM1Q9x5+3V0Ww68&#x2F;eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw&#x2F;Pb0rwert&#x2F;En</span><br><span class="line">mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z&#x2F;il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx</span><br><span class="line">NrRFi9wrf+M7Q&#x3D;&#x3D; schacon@mylaptop.local</span><br></pre></td></tr></table></figure>
+
+<p>获取更多在多操作系统创建 <code>SSH key</code> 的深入教程，可以查看 <a href="https://help.github.com/articles/generating-ssh-keys" target="_blank" rel="noopener"><code>GitHub guide on SSH keys</code></a>.</p>
+]]></content>
+      <categories>
+        <category>translate</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>ssh</tag>
+        <tag>keys</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Keep file in a Git repo, but don&#39;t track changes</title>
+    <url>/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/</url>
+    <content><![CDATA[<p>在工作中，我们常会使用 <code>git</code> 来进行项目的版本控制。但项目的一些配置文件我们希望只是存储在存储库中，本地开发环境对该部分配置文件进行修改，适合本地开发。而不将该部分修改提交到版本库。如：数据库配置文件。<br>那么怎样实现本地不追踪存储库中某文件的修改呢？有两种方法可以实现：</p>
+<ul>
+<li><code>git update-index --assume-unchanged [filename]</code></li>
+<li><code>git update-index --skip-worktree [filename]</code></li>
+</ul>
+<p>那么这两种方法有什么区别呢？</p>
+<p><code>assume-unchanged</code> is designed for cases where it is expensive to check whether a group of files have been modified; when you set the bit, git (of course) assumes the files corresponding to that portion of the index have not been modified in the working copy. So it avoids a mess of stat calls. This bit is lost whenever the file’s entry in the index changes (so, when the file is changed upstream).</p>
+<p><code>assume-unchange</code> 应用于检测一组文件是否修改成本很高的情况；当你设置了该选项，<code>git</code> 会假设在工作区副本中，索引对应的这部分文件没有修改。这避免了大量的<code>stat</code>的调用。每当文件在索引中的条目发生变化时，该选项无效。（也就是说当文件在上游发生变化时）</p>
+<p><code>skip-worktree</code> is more than that: even where git knows that the file has been modified (or needs to be modified by a reset –hard or the like), it will pretend it has not been, using the version from the index instead. This persists until the index is discarded.</p>
+<p><code>skip-worktree</code>不止于此：即使 <code>git</code> 监测到该文件发生了变化（或者当执行 <code>reset --hard</code> 文件需要发生变化），将会假装没有发生变化，而使用索引中的版本。直到索引被丢弃。</p>
+<p><code>--assume-unchanged</code> 假想开发者不应该修改该文件。该选项是为了提升那些像SDK一样不会修改的文件目录的性能。<br><code>--skip-worktree</code> 当你指示 <code>git</code> 不要监测指定文件，因为开发应该修改该文件。例如，主存储库上游主机存储了一些应用于生产环境的配置文件，你不希望偶然间不小心提交对这些文件的修改, <code>--skip-worktree</code> 是你正想要的。</p>
+<p>原文回答：<a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#" target="_blank" rel="noopener">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></p>
+<p>引用链接：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes" target="_blank" rel="noopener">Keep file in a Git repo, but don’t track changes</a></li>
+<li><a href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#" target="_blank" rel="noopener">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></li>
+<li><a href="https://stackoverflow.com/questions/54575972/difference-between-git-rm-git-rm-cached" target="_blank" rel="noopener">Difference between git rm &amp; git rm –cached</a></li>
+<li><a href="https://git-scm.com/docs/git-update-index" target="_blank" rel="noopener">git-update-index</a></li>
+<li><a href="https://stackoverflow.com/questions/6138076/git-assume-unchanged-vs-skip-worktree-ignoring-a-symbolic-link" target="_blank" rel="noopener">git assume unchanged vs skip worktree - ignoring a symbolic link</a></li>
+<li><a href="https://fallengamer.livejournal.com/93321.html" target="_blank" rel="noopener">https://fallengamer.livejournal.com/93321.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Splay Trees</title>
+    <url>/2020/Splay-Trees/</url>
+    <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
+<p>伸展树是一种能够自我平衡的二叉查找树，它能在均摊O(log n)的时间内完成基于伸展操作的插入、查找、修改和删除操作。它是由丹尼尔·斯立特（Daniel Sleator）和罗伯特·塔扬在1985年发明的。   ——— 维基百科</p>
+</blockquote>
+<blockquote>
+<p>伸展树是基于这样的事实，当一个节点被访问时，它就很可能不久再被访问到。</p>
+</blockquote>
+<blockquote>
+<p>伸展树的基本想法是，当一个节点被访问后，它就要经过一系列AVL树的旋转被放到根上。注意，如果一个节点很深，那么在其路径上就存在许多的节点也相对较深，通过重新构造可以使对所有这些节点的进一步访问所花费的时间变少。因此，如果节点过深，那么我们还要求重新构造应具有平衡这棵树（到某种程度）的作用。  ———— 《数据结构与算法分析 ——c语言描述》</p>
+</blockquote>
+<h1 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h1><p>伸展树在经过一系列伸展操作后，有可能会变成一条链。</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h2 id="伸展"><a href="#伸展" class="headerlink" title="伸展"></a>伸展</h2><p>当一个节点x被访问后，伸展操作会将x移动到根节点。为了进行伸展操作，我们会进行一系列的旋转，每次旋转，会使x离根更近。</p>
+<p>每次旋转由三个因素决定：</p>
+<ul>
+<li>x是其父节点p的左儿子还是右儿子</li>
+<li>p是否为根</li>
+<li>p是其父节点g（x的祖父节点）的左儿子还是右儿子</li>
+</ul>
+<p><code>Zig</code>标记为元素是父节点的左儿子,<code>Zag</code>标记为元素是父节点的右儿子。</p>
+<p>共有四种情况</p>
+<h3 id="x没有父节点和祖父节点，x为根"><a href="#x没有父节点和祖父节点，x为根" class="headerlink" title="x没有父节点和祖父节点，x为根"></a>x没有父节点和祖父节点，x为根</h3><p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213095030.png" alt=""></p>
+<p>如图所示，不需要旋转</p>
+<h3 id="Zig或Zag"><a href="#Zig或Zag" class="headerlink" title="Zig或Zag"></a>Zig或Zag</h3><p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213095535.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213095834.png" alt=""></p>
+<p>如图所示，P为根，X为P的左子树或者右子树，则只需要进行对应方向的单旋转即可</p>
+<h3 id="Zig-Zig-或-Zag-Zag"><a href="#Zig-Zig-或-Zag-Zag" class="headerlink" title="Zig-Zig 或 Zag-Zag"></a>Zig-Zig 或 Zag-Zag</h3><p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213142408.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213142515.png" alt=""></p>
+<p>当p为G的左节点且x为p的左节点，或反之。如图所示进行旋转。</p>
+<h3 id="Zig-Zag-或-Zag-Zig"><a href="#Zig-Zag-或-Zag-Zig" class="headerlink" title="Zig-Zag 或 Zag-Zig"></a>Zig-Zag 或 Zag-Zig</h3><p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213150031.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213150241.png" alt=""></p>
+<p>当p为G的左节点且x为p的右节点，或反之。如图所示进行变换。</p>
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><p>给出两棵树S和T，且S的所有元素都比T的元素要小。下面的步骤可以把它们连接成一棵树：</p>
+<ul>
+<li>伸展S中最大的节点。现在这个节点变为S的根结点，且没有右儿子。</li>
+<li>令T的根结点变为其右儿子。</li>
+</ul>
+<h2 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h2><p>给出一棵树和一个元素X，返回两棵树：一棵中所有的元素均小于等于X，另一棵中所有的元素大于X。下面的步骤可以完成这个操作：</p>
+<ul>
+<li>伸展X。这样的话X成为了这棵树的根所以它的左子树包含了所有比X小的元素，右子树包含了所有比X大的元素。</li>
+<li>把X的右子树从树中分割出来。</li>
+</ul>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="伸展-1"><a href="#伸展-1" class="headerlink" title="伸展"></a>伸展</h2><p>伸展操作有两种实现方式：top-down和down-top，即自上而下和自下而上。我们可以把伸展的所有情况都拆分成左单旋和右单旋的基本操作。</p>
+<h3 id="自上而下-top-dpwm"><a href="#自上而下-top-dpwm" class="headerlink" title="自上而下(top-dpwm)"></a>自上而下(top-dpwm)</h3><p>自上而下是一种相对容易的实现方式，并不需要记录查找路径中所有节点的信息，查找的同时进行旋转操作。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200213225133.png" alt=""></p>
+<p>如图所示，在<code>Zag-Zig</code>情况中，我们可以对旋转步骤进行分解，先对X进行右旋操作，再对X进行左旋操作</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200303152826.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200303153136.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200303153430.png" alt=""></p>
+<p>如上图所示，分别表示了在自上而下的实现方式中，单旋转、一字型旋转及之字形旋转的变换过程。</p>
+<h4 id="伸展方法"><a href="#伸展方法" class="headerlink" title="伸展方法"></a>伸展方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SplayTree Splay(Position x, TElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	SplayNode Header;</span><br><span class="line"></span><br><span class="line">	Position LeftTreeMax, RightTreeMin;</span><br><span class="line">	</span><br><span class="line">	Header.left &#x3D; Header.right &#x3D; NULL;</span><br><span class="line">	LeftTreeMax &#x3D; RightTreeMin &#x3D; &amp;Header;</span><br><span class="line">	</span><br><span class="line">	while (e !&#x3D; x-&gt;data) &#123;</span><br><span class="line">		if (e &lt; x-&gt;data) &#123;</span><br><span class="line">			if (x-&gt;left &#x3D;&#x3D; NULL) break;</span><br><span class="line">			if (e &lt; x-&gt;left-&gt;data)  </span><br><span class="line">				x &#x3D; SingleRotateWithLeft(x);</span><br><span class="line">			if (x-&gt;left &#x3D;&#x3D; NULL) break;</span><br><span class="line">				</span><br><span class="line">			&#x2F;* 链接右树 *&#x2F;</span><br><span class="line">			RightTreeMin-&gt;left &#x3D; x;</span><br><span class="line">			RightTreeMin &#x3D; x;</span><br><span class="line">			x &#x3D; x-&gt;left;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;	</span><br><span class="line">			if (x-&gt;right &#x3D;&#x3D; NULL) break;		</span><br><span class="line">			if (e &gt; x-&gt;right-&gt;data) </span><br><span class="line">				x &#x3D; SingleRotateWithRight(x);</span><br><span class="line">				</span><br><span class="line">			if (x-&gt;right &#x3D;&#x3D; NULL) break;	</span><br><span class="line">			LeftTreeMax-&gt;right &#x3D; x;</span><br><span class="line">			LeftTreeMax &#x3D; x;</span><br><span class="line">			x &#x3D; x-&gt;right;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	LeftTreeMax-&gt;right &#x3D; x-&gt;left;</span><br><span class="line">	RightTreeMin-&gt;left &#x3D; x-&gt;right;</span><br><span class="line">	</span><br><span class="line">	x-&gt;left &#x3D; Header.right;</span><br><span class="line">	x-&gt;right &#x3D; Header.left;</span><br><span class="line">	</span><br><span class="line">	return x; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码中Header存放伸展后左子树和右子树的基址。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200214092315.png" alt=""></p>
+<p>如图所示，如果要伸展的值为13，则需要进行如下判断。首先，<code>x&lt;15</code>,则将节点<code>15</code>放入<code>RightTreeMin</code>中，<code>RightTreeMin</code>为节点12。然后<code>x&gt;12</code>,则将节点<code>12</code>放入<code>LeftTreeMax</code>中，依次类推。</p>
+<p>即表示，只要x大于当前元素的值，就放入<code>LeftTreeMax</code>中。只要x小于当前元素的值，就放入<code>RightTreeMin</code>中。伸展操作最后，进行连接操作，将<code>LeftTreeMax</code>置为<code>x</code>的左孩子，<code>RightTreeMin</code>置为<code>x</code>的右孩子。</p>
+<h4 id="单旋操作"><a href="#单旋操作" class="headerlink" title="单旋操作"></a>单旋操作</h4><p>见Zig或Zag图。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Position SingleRotateWithLeft(Position K2)</span><br><span class="line">&#123;</span><br><span class="line">	Position K1;</span><br><span class="line">	</span><br><span class="line">	K1 &#x3D; K2-&gt;left;</span><br><span class="line">	K2-&gt;left &#x3D;  K1-&gt;right;</span><br><span class="line">	K1-&gt;right &#x3D; K2;</span><br><span class="line">	</span><br><span class="line">	return K1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Position SingleRotateWithRight(Position K1)</span><br><span class="line">&#123;</span><br><span class="line">	Position K2;</span><br><span class="line">	</span><br><span class="line">	K2 &#x3D; K1-&gt;right;</span><br><span class="line">	K1-&gt;right &#x3D; K2-&gt;left;</span><br><span class="line">	K2-&gt;left &#x3D; K1;</span><br><span class="line">	</span><br><span class="line">	return K2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自下而上-down-top"><a href="#自下而上-down-top" class="headerlink" title="自下而上(down-top)"></a>自下而上(down-top)</h3><p>在自下而上的操作过程中，我们需要先找到x，然后再递归向上伸展，需要记录查找路径中节点的信息。</p>
+<h4 id="伸展操作"><a href="#伸展操作" class="headerlink" title="伸展操作"></a>伸展操作</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void Splay(Position x)</span><br><span class="line">&#123;	</span><br><span class="line">	Position p;</span><br><span class="line">	Position g;</span><br><span class="line">	</span><br><span class="line">	while (x-&gt;parent) &#123;</span><br><span class="line">		if (!x-&gt;parent-&gt;parent) &#123;</span><br><span class="line">			if (x &#x3D;&#x3D; x-&gt;parent-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithLeft(x-&gt;parent);</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				SingleRotateWithRight(x-&gt;parent);</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			p &#x3D; x-&gt;parent;</span><br><span class="line">			g &#x3D; p-&gt;parent; </span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F; zig-zig</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;left &amp;&amp; p &#x3D;&#x3D; g-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithLeft(g);</span><br><span class="line">				SingleRotateWithLeft(p);</span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F; zig-zag</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;left &amp;&amp; p &#x3D;&#x3D; g-&gt;right) &#123;</span><br><span class="line">				SingleRotateWithLeft(p);</span><br><span class="line">				SingleRotateWithRight(g); </span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F; zag-zig</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;right &amp;&amp; p &#x3D;&#x3D; g-&gt;left) &#123;</span><br><span class="line">				SingleRotateWithRight(p);</span><br><span class="line">				SingleRotateWithLeft(g); </span><br><span class="line">			&#125;</span><br><span class="line">			&#x2F;&#x2F; zag-zag</span><br><span class="line">			if (x &#x3D;&#x3D; p-&gt;right &amp;&amp; p &#x3D;&#x3D; g-&gt;right) &#123;</span><br><span class="line">				SingleRotateWithRight(g);</span><br><span class="line">				SingleRotateWithRight(p);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="旋转操作"><a href="#旋转操作" class="headerlink" title="旋转操作"></a>旋转操作</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">void SingleRotateWithLeft(Position x)</span><br><span class="line">&#123;</span><br><span class="line">	Position y;</span><br><span class="line">	</span><br><span class="line">	y &#x3D; x-&gt;left;</span><br><span class="line">	x-&gt;left &#x3D; y-&gt;right;</span><br><span class="line">	</span><br><span class="line">	if (y-&gt;right !&#x3D; NULL) &#123;</span><br><span class="line">		y-&gt;right-&gt;parent &#x3D; x;</span><br><span class="line">	&#125;</span><br><span class="line">	y-&gt;parent &#x3D; x-&gt;parent;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; x is root of the tree </span><br><span class="line">	if (x-&gt;parent &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		T &#x3D; y;</span><br><span class="line">	&#125; else if (x &#x3D;&#x3D; x-&gt;parent-&gt;left) &#123;</span><br><span class="line">		x-&gt;parent-&gt;left &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		x-&gt;parent-&gt;right &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	y-&gt;right &#x3D; x;</span><br><span class="line">	x-&gt;parent &#x3D; y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void SingleRotateWithRight(Position x)</span><br><span class="line">&#123;</span><br><span class="line">	Position y;</span><br><span class="line">	</span><br><span class="line">	y &#x3D; x-&gt;right;</span><br><span class="line">	x-&gt;right &#x3D; y-&gt;left;</span><br><span class="line">	if (y-&gt;left !&#x3D; NULL) &#123;</span><br><span class="line">		y-&gt;left-&gt;parent &#x3D; x;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y-&gt;parent &#x3D; x-&gt;parent;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; x is root of the tree </span><br><span class="line">	if (x-&gt;parent &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		T &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (x &#x3D;&#x3D; x-&gt;parent-&gt;left) &#123;</span><br><span class="line">		x-&gt;parent-&gt;left &#x3D; y;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		x-&gt;parent-&gt;right &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	y-&gt;left &#x3D; x;</span><br><span class="line">	x-&gt;parent &#x3D; y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><ul>
+<li><a href="https://algorithmtutor.com/Data-Structures/Tree/Splay-Trees/" target="_blank" rel="noopener">https://algorithmtutor.com/Data-Structures/Tree/Splay-Trees/</a></li>
+<li><a href="https://www.codesdope.com/course/data-structures-splay-trees/" target="_blank" rel="noopener">https://www.codesdope.com/course/data-structures-splay-trees/</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>data-structure</tag>
+        <tag>tree</tag>
+        <tag>splay</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github高效搜索</title>
+    <url>/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>github是全球最大的开源项目网站，集聚了非常多优质的开源项目，我们可以利用它，学习优秀代码，行业前沿知识，动手实践。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20191226085939.png" alt=""></p>
+<p>上图为vue项目的主页，其中<code>name</code>为项目名称，description为项目的简要描述，<code>star</code>为项目的受关注程度，<code>fork</code>反映多少人克隆到了自己的仓库。除了这几个要素，还有项目的最后更新日期（<code>pushed</code>），项目的编程语言（<code>language</code>）,项目的创建日期（<code>create</code>）都可以作为我们搜索我们想要的项目时的依据。</p>
+<h2 id="高效搜索"><a href="#高效搜索" class="headerlink" title="高效搜索"></a>高效搜索</h2><p>以swoole举例</p>
+<h3 id="in-name-swoole"><a href="#in-name-swoole" class="headerlink" title="in:name swoole"></a><code>in:name swoole</code></h3><p>搜索仓库的名称，搜索仓库名称包含swoole关键字的所有项目</p>
+<h3 id="in-description-swoole"><a href="#in-description-swoole" class="headerlink" title="in:description swoole"></a><code>in:description swoole</code></h3><p>搜索描述中包含swoole关键字的项目</p>
+<h3 id="in-readme-swoole"><a href="#in-readme-swoole" class="headerlink" title="in:readme swoole"></a><code>in:readme swoole</code></h3><p>搜索<code>readme</code>文件中包含<code>swoole</code>关键字的项目</p>
+<h3 id="start-gt-100-swoole"><a href="#start-gt-100-swoole" class="headerlink" title="start:&gt;100 swoole"></a><code>start:&gt;100 swoole</code></h3><p>搜索<code>swoole</code>关键字项目中关注超过100个的项目</p>
+<h3 id="fork-gt-100-swoole"><a href="#fork-gt-100-swoole" class="headerlink" title="fork:&gt;100 swoole"></a><code>fork:&gt;100 swoole</code></h3><p>搜索<code>fork</code>超过100的<code>swoole</code>的项目</p>
+<h3 id="pushed-gt-2019-01-10-swoole"><a href="#pushed-gt-2019-01-10-swoole" class="headerlink" title="pushed:&gt;2019-01-10 swoole"></a><code>pushed:&gt;2019-01-10 swoole</code></h3><p>搜索包含<code>swoole</code>项目，并且仓库1月10日后还有更新的项目</p>
+<h3 id="create-gt-2019-01-10-swoole"><a href="#create-gt-2019-01-10-swoole" class="headerlink" title="create:&gt;2019-01-10 swoole"></a><code>create:&gt;2019-01-10 swoole</code></h3><p>搜索项目1月10日后创建的项目</p>
+<h3 id="language-php-shop"><a href="#language-php-shop" class="headerlink" title="language:php shop"></a><code>language:php shop</code></h3><p>搜索编程语言是<code>php</code>的<code>shop</code>项目</p>
+<h3 id="user-kjohn2q-language-php"><a href="#user-kjohn2q-language-php" class="headerlink" title="user:kjohn2q language:php"></a><code>user:kjohn2q language:php</code></h3><p>搜索用户是<code>kjohn2q</code> 开发语言是<code>php</code>的项目</p>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github+hexo搭建博客</title>
+    <url>/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>本文介绍使用<code>hexo + github pages</code>搭建博客网站。</p>
+<p>基础环境：<code>nodejs(version &lt; 14 &amp;&amp; version &gt; 12)</code></p>
+<h2 id="hexo安装与配置"><a href="#hexo安装与配置" class="headerlink" title="hexo安装与配置"></a>hexo安装与配置</h2><p><code>npm install -g hexo-cli</code></p>
+<h2 id="github仓库配置"><a href="#github仓库配置" class="headerlink" title="github仓库配置"></a>github仓库配置</h2><p>github中，新建一个 <code>public</code> 仓库，命名为 <code>TestBlog</code></p>
+<h2 id="本地新建博客并连接到-github-远程仓库地址"><a href="#本地新建博客并连接到-github-远程仓库地址" class="headerlink" title="本地新建博客并连接到 github 远程仓库地址"></a>本地新建博客并连接到 <code>github</code> 远程仓库地址</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"></span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line"></span><br><span class="line">npm install</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置博客信息"><a href="#配置博客信息" class="headerlink" title="配置博客信息"></a>配置博客信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: KJohn2q</span><br><span class="line">subtitle: &#x27;一个专注技术的程序员&#x27;</span><br><span class="line">description: &#x27;涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。&#x27;</span><br><span class="line">keywords: &quot;Python, Php, C++, Java, 爬虫, 架构, 分布式&quot;</span><br><span class="line">author: John Wang</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: &#x27;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置博客部署信息"><a href="#配置博客部署信息" class="headerlink" title="配置博客部署信息"></a>配置博客部署信息</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:KJohn2q/kjohn2q.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="本地博客连接到-github-远程仓库地址"><a href="#本地博客连接到-github-远程仓库地址" class="headerlink" title="本地博客连接到 github 远程仓库地址"></a>本地博客连接到 <code>github</code> 远程仓库地址</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &quot;blog first commit&quot;</span><br><span class="line"></span><br><span class="line">git remote add origin git@github.com:KJohn2q/TestBlog.git</span><br><span class="line"></span><br><span class="line">git push origin source</span><br></pre></td></tr></table></figure>
+
+<h2 id="博客网站部署到远程仓库master分支"><a href="#博客网站部署到远程仓库master分支" class="headerlink" title="博客网站部署到远程仓库master分支"></a>博客网站部署到远程仓库master分支</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-github-pages"><a href="#配置-github-pages" class="headerlink" title="配置 github pages"></a>配置 <code>github pages</code></h2><p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200801085153.png" alt=""></p>
+<h2 id="hexo集成主题"><a href="#hexo集成主题" class="headerlink" title="hexo集成主题"></a>hexo集成主题</h2><p><code>hexo</code> 默认主题为 <code>landscape</code>，这里集成 <code>next</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd TestBlog</span><br><span class="line"></span><br><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>为了便于保存主题文件，把主题文件夹中的 <code>.git</code> 文件夹删除。</p>
+<h2 id="配置评论功能"><a href="#配置评论功能" class="headerlink" title="配置评论功能"></a>配置评论功能</h2><p>打开 <code>theme/next</code> 主题文件夹中的 <code>_config.yml</code>文件，修改以下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appid: t6IFRai4uKVYoIIyrH84awuK-gzGzoHsz</span><br><span class="line">  appkey: uo0ujaAY4BW05YV1NHgA4z0M</span><br><span class="line">  notify: false # Mail notifier</span><br><span class="line">  verify: false # Verification code</span><br><span class="line">  placeholder: Just go go # Comment box placeholder</span><br><span class="line">  avatar: mm # Gravatar style</span><br><span class="line">  guest_info: nick,mail,link # Custom comment header</span><br><span class="line">  pageSize: 10 # Pagination size</span><br><span class="line">  language: # Language, available values: en, zh-cn</span><br><span class="line">  visitor: false # Article reading statistic</span><br><span class="line">  comment_count: true # If false, comment count will only be displayed in post page, not in home page</span><br><span class="line">  recordIP: true # Whether to record the commenter IP</span><br><span class="line">  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)</span><br><span class="line">  #post_meta_order: 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置页面浏览量统计"><a href="#配置页面浏览量统计" class="headerlink" title="配置页面浏览量统计"></a>配置页面浏览量统计</h2><p>next集成了busuanzi访客统计插件</p>
+<p>打开 <code>theme/next</code> 主题文件夹中的 <code>_config.yml</code>文件，修改以下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: true</span><br><span class="line">  total_visitors: true</span><br><span class="line">  total_visitors_icon: fa fa-user</span><br><span class="line">  total_views: true</span><br><span class="line">  total_views_icon: fa fa-eye</span><br><span class="line">  post_views: true</span><br><span class="line">  post_views_icon: fa fa-eye</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置头像和favicon"><a href="#配置头像和favicon" class="headerlink" title="配置头像和favicon"></a>配置头像和favicon</h2><p>打开 <code>theme/next</code> 主题文件夹中的 <code>_config.yml</code>文件，修改以下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: false</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="页面底部标签信息-换图标"><a href="#页面底部标签信息-换图标" class="headerlink" title="页面底部标签信息#换图标"></a>页面底部标签信息<code>#</code>换图标</h2><p>修改文件 <code>themes/next/layout/_macro/post.swig</code> ，找到 <code>rel=&quot;tag&quot;&gt;#</code> ，将 <code>#</code> 替换为 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code> 即可。</p>
+<h2 id="hexo编写页面部署"><a href="#hexo编写页面部署" class="headerlink" title="hexo编写页面部署"></a>hexo编写页面部署</h2><p>hexo 相关命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br><span class="line"></span><br><span class="line">hexo new [post] # 新建一篇文章</span><br><span class="line"></span><br><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="语言配置"><a href="#语言配置" class="headerlink" title="语言配置"></a>语言配置</h2><p>设置中文/英文</p>
+<p>打开根目录的博客配置文件 <code>/_config.yml</code>,修改 <code>language</code>属性为 <code>zh-CN</code>（中文）或者 <code>en</code>（英文）</p>
+<h2 id="链接配置"><a href="#链接配置" class="headerlink" title="链接配置"></a>链接配置</h2><p>设置页面路由</p>
+<p>打开根目录的博客配置文件 <code>/_config.yml</code>,修改 <code>permalink</code> 属性为 <code>:year/:title/</code>，则最后呈现的路径为 ‘域名/年份/文章名/‘,如 <code>https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</code></p>
+<h2 id="使用github-workflows配置自动部署"><a href="#使用github-workflows配置自动部署" class="headerlink" title="使用github workflows配置自动部署"></a>使用github workflows配置自动部署</h2><p>在根目录新建 <code>.github/workflows</code> 文件夹，新建 <code>deploy.yml</code> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name: Build and Deploy</span><br><span class="line">on: [push]</span><br><span class="line">jobs:</span><br><span class="line">  build-and-deploy:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - name: Checkout 🛎️</span><br><span class="line">        uses: actions/checkout@v2.3.1 # If you&#x27;re using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.</span><br><span class="line">        with:</span><br><span class="line">          persist-credentials: false</span><br><span class="line"></span><br><span class="line">      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the &#x27;build&#x27; folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.</span><br><span class="line">        run: |</span><br><span class="line">          npm install</span><br><span class="line">          npm run build</span><br><span class="line">        env: </span><br><span class="line">          CI: false</span><br><span class="line"></span><br><span class="line">      - name: Deploy 🚀</span><br><span class="line">        uses: JamesIves/github-pages-deploy-action@4.1.5</span><br><span class="line">        with:</span><br><span class="line">          GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</span><br><span class="line">          BRANCH: master # The branch the action should deploy to.</span><br><span class="line">          FOLDER: public # The folder the action should deploy.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://hexo.io/zh-cn/docs/">hexo官网</a></li>
+<li><a href="https://valine.js.org/quickstart.html">valine官网</a></li>
+<li><a href="https://ylong.net.cn/hexo_conf.html">Hexo 博客美化配置</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>github</tag>
+        <tag>blog</tag>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git自建服务器权限管理</title>
+    <url>/2020/git%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<blockquote>
+<p>本文部分译自 <a href="https://github.com/sitaramc/gitolite#gitolite-readme" target="_blank" rel="noopener"><code>Gitolite README</code></a>,仅作学习使用，不用于商业用途</p>
+</blockquote>
+<h2 id="Gitolite"><a href="#Gitolite" class="headerlink" title="Gitolite"></a><code>Gitolite</code></h2><p><code>git</code> 仓库托管 – <code>Gitolite</code> 允许你在一台中心服务器上安装 <code>git</code> 托管，具有很多细粒度的访问控制和更强有力的特性。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，准备 <code>ssh</code> key</p>
+<ul>
+<li>使用 <code>git</code> 用户登录服务器</li>
+<li>确保 <code>~/.ssh/authorized_keys</code> 为空或不存在</li>
+<li>确保你工作区的 <code>ssh</code> 公钥复制到了 <code>$HOME/YourName.pub</code></li>
+</ul>
+<p>下一步，通过执行下面的命令来安装 <code>gitolite</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;sitaramc&#x2F;gitolite</span><br><span class="line">mkdir -p $HOME&#x2F;bin</span><br><span class="line">gitolite&#x2F;install -to $HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
+
+<p>最后，作为管理员安装 <code>gitolite</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gitolite setup -pk YourName.pub</span><br></pre></td></tr></table></figure>
+
+<p>如果最后的命令不能执行，也许是 <code>$HOME/bin</code> 没有添加到你的环境变量 <code>PATH</code> 中，你也可以添加它，或者直接执行：</p>
+<p><code>$HOME/bin/gitolite setup -pk YourName.pub</code></p>
+<p>如果出现其他错误，请查阅<a href="https://gitolite.com/gitolite/" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="添加用户和仓库"><a href="#添加用户和仓库" class="headerlink" title="添加用户和仓库"></a>添加用户和仓库</h2><p>不要手动地在服务器上添加新的仓库或者用户。 通过推送对指定仓库 “ <code>gitolite-admin</code> “ 的修改，并推送至服务器，能够维护 <code>Gitolite</code> 用户，仓库和访问规则。</p>
+<p>开始在你的工作区做以下操作，你可以管理 <code>gitolite</code>的安装（如果你还没有安装的话）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git@host:gitolite-admin</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：如果提示输入密码的话，配置有误。可以查看<a href="https://gitolite.com/gitolite/" target="_blank" rel="noopener">完整版文档</a>。</p>
+</blockquote>
+<p>现在，如果你执行 <code>cd gitolite-admin</code>, 你将看到两个子目录 <code>conf</code> 和 <code>keydir</code></p>
+<p>添加新用户 <code>alice</code>, <code>bob</code>, <code>carol</code> 以及他们的公钥，将它们复制到 <code>keydir</code> 文件夹， 并分别重命名为 <code>alice.pub</code>, <code>bob.pub</code>, <code>carol.pub</code>.</p>
+<p>添加一个新仓库 <code>foo</code>，给这些用户设置不同的访问级别，通过编辑 <code>conf/gitolite.conf</code>，添加类似下面这些行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+      &#x3D;  alice</span><br><span class="line">    RW       &#x3D;  bob</span><br><span class="line">    R        &#x3D;  carol</span><br></pre></td></tr></table></figure>
+
+<p>一旦做了这些修改，执行下面的命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add conf</span><br><span class="line">git add keydir</span><br><span class="line">git commit -m &quot;added foo, give access to alice, bob, carol&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>一旦推送完成，<code>gitolite</code> 将会在服务器的 <code>~/.ssg/authorized_keys</code>，同时创建一个新的、空的叫做 <code>foo</code> 的仓库</p>
+<h2 id="对你的用户提供帮助"><a href="#对你的用户提供帮助" class="headerlink" title="对你的用户提供帮助"></a>对你的用户提供帮助</h2><p>一旦一个用户向你发送了他们的公钥，你执行了上面的指定操作，设置了访问级别，你就告诉了他们仓库的地址。通常是 <code>git clone git@host:reponame</code>;通过 <code>man git-clone</code>，查看其它的操作</p>
+<p>注意：再次强调，如果提示输入密码，那一定是哪里出错了</p>
+<p>如果他们需要知道他们可以访问哪些仓库，他们只需要执行 <code>ssh git@host info</code>.</p>
+<h2 id="访问规则例子"><a href="#访问规则例子" class="headerlink" title="访问规则例子"></a>访问规则例子</h2><p><code>Gitolite</code>的例子是非常强大。以上为最简单的使用。下面展示稍微详细一点的例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">repo foo</span><br><span class="line">    RW+                   &#x3D;   alice</span><br><span class="line">    -  master             &#x3D;   bob</span><br><span class="line">    -  refs&#x2F;tags&#x2F;v[0-9]   &#x3D;   bob</span><br><span class="line">    RW                    &#x3D;   bob</span><br><span class="line">    RW refs&#x2F;tags&#x2F;v[0-9]   &#x3D;   carol</span><br><span class="line">    R                     &#x3D;   dave</span><br></pre></td></tr></table></figure>
+
+<p>例子中的规则表示：</p>
+<ul>
+<li><code>alice</code> 可以在所有分支或者标签做所有事情 – 创建，推送，删除，回退/覆盖 等等。</li>
+<li><code>bob</code> 可以创建或者快速推送名字不以 <code>master</code> 开头的分支，且可以创建名字不以 “<code>v</code>+数字” 开头的的标签</li>
+<li><code>carol</code> 可以创建名字以 “ <code>v</code> + 数字”开头的标签</li>
+<li><code>dave</code> 可以 <code>clone/fetch</code></li>
+</ul>
+<p>请查看以上链接的主文档查看所有细节，也有更多的特性和例子</p>
+<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p><code>Gitolite</code> 可以方便的对用户或者仓库进行分组。以下为创建两个用户组的例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@staff     &#x3D;  alice bob carol</span><br><span class="line">@interns   &#x3D;  ashok</span><br><span class="line"></span><br><span class="line">repo secret</span><br><span class="line">    RW     &#x3D;  @staff</span><br><span class="line"></span><br><span class="line">repo  foss</span><br><span class="line">    RW+    &#x3D;  @staff</span><br><span class="line">    RW     &#x3D;  @interns</span><br></pre></td></tr></table></figure>
+
+<p>积累分组列表。一下两行和以上之前对 <code>@staff</code> 的定义。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@staff    &#x3D;   alice bob</span><br><span class="line">@staff    &#x3D;   carol</span><br></pre></td></tr></table></figure>
+
+<p>你可以在其他分组名字中使用分组名字。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@all-devs  &#x3D;  @staff @interns</span><br></pre></td></tr></table></figure>
+
+<p>最后， <code>@all</code> 是一个特殊的名字，常用来表达 <code>all repos</code> 或者 <code>all users</code>.</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>用户可以远程执行命令，使用 <code>ssh</code>, 执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@host help</span><br></pre></td></tr></table></figure>
+
+<p>打印可用命令的列表</p>
+<p>最常使用的命令为 <code>info</code>。 所有的命令适宜的信息响应，使用一个简单的参数 <code>-h</code></p>
+<p>如果你有服务器上的 <code>shell</code>, 你有很多可用的命令。尝试执行 “gitolite help” 来查看。</p>
+]]></content>
+      <categories>
+        <category>translate</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>服务器</tag>
+        <tag>‘Gitolite’</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>google搜索技巧</title>
+    <url>/2020/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>本文总结了几个使用搜索引擎（ <code>google</code> ）的小技巧，供你参考</p>
+<h2 id="英文"><a href="#英文" class="headerlink" title="英文"></a>英文</h2><p>尽量使用英文去搜索你需要的结果。英语是全世界使用范围最广的语言，使用英语你能搜索到更多高质量，且对你有帮助的内容。</p>
+<h2 id="使用标签"><a href="#使用标签" class="headerlink" title="使用标签"></a>使用标签</h2><p>如果你需要图片，使用 <code>Image</code> 标签。如果你查找最近的新闻文章，私用 <code>News</code> 标签。</p>
+<h2 id="使用-quot-quot"><a href="#使用-quot-quot" class="headerlink" title="使用 &quot;&quot;"></a>使用 <code>&quot;&quot;</code></h2><p>如果需要搜索指定的关键词或句子，使用引号缩小 <code>google</code> 搜索的猜测。该条在查找软件开发中遇到的问题或者软件使用中的报错尤其有用。</p>
+<h2 id="使用-排除关键词"><a href="#使用-排除关键词" class="headerlink" title="使用 - 排除关键词"></a>使用 <code>-</code> 排除关键词</h2><p>使用连字符号来排除你不想要的结果。</p>
+<h2 id="使用-在指定站点中搜索"><a href="#使用-在指定站点中搜索" class="headerlink" title="使用 : 在指定站点中搜索"></a>使用 <code>:</code> 在指定站点中搜索</h2><h2 id="查找有哪些网站引用了指定的网站即有到指定网站的链接"><a href="#查找有哪些网站引用了指定的网站即有到指定网站的链接" class="headerlink" title="查找有哪些网站引用了指定的网站即有到指定网站的链接"></a>查找有哪些网站引用了指定的网站即有到指定网站的链接</h2><p>如：<code>link:nytimes.com</code></p>
+<h2 id="使用-通配符来进行模糊查找"><a href="#使用-通配符来进行模糊查找" class="headerlink" title="使用 * 通配符来进行模糊查找"></a>使用 <code>*</code> 通配符来进行模糊查找</h2><p>如：<code>&quot;Come * right now * me&quot;</code></p>
+<p>会返回 <code>*</code> 替换成任意字符的结果</p>
+<h2 id="返回与指定站点相似的其它站点"><a href="#返回与指定站点相似的其它站点" class="headerlink" title="返回与指定站点相似的其它站点"></a>返回与指定站点相似的其它站点</h2><p>如： <code>related:amazon.com</code></p>
+<h2 id="使用-OR-至少一次来获取多个短语或关键词的结果"><a href="#使用-OR-至少一次来获取多个短语或关键词的结果" class="headerlink" title="使用 OR 至少一次来获取多个短语或关键词的结果"></a>使用 <code>OR</code> 至少一次来获取多个短语或关键词的结果</h2><h2 id="使用网站会使用的关键词来搜索"><a href="#使用网站会使用的关键词来搜索" class="headerlink" title="使用网站会使用的关键词来搜索"></a>使用网站会使用的关键词来搜索</h2><p>不要使用口语化的词汇或者短语，而是使用更为专业的词汇或者短语来进行搜索</p>
+<ul>
+<li><code>&quot;I have a flat tire&quot; could be replaced by &quot;repair a flat tire.&quot;</code></li>
+<li><code>&quot;My head hurts&quot; could be replaced by &quot;headache relief.&quot;</code></li>
+</ul>
+<h2 id="指定文件格式"><a href="#指定文件格式" class="headerlink" title="指定文件格式"></a>指定文件格式</h2><p>如：<code>*Search term here* filetype:pdf</code></p>
+<h2 id="货币或单位转换"><a href="#货币或单位转换" class="headerlink" title="货币或单位转换"></a>货币或单位转换</h2><p>如：<code>10 miles to km</code></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a href="https://www.lifehack.org/articles/technology/20-tips-use-google-search-efficiently.html" target="_blank" rel="noopener"><code>20 Google Search Tips to Use Google More Efficiently</code></a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+      <tags>
+        <tag>google</tag>
+        <tag>搜索</tag>
+        <tag>技巧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vmware 虚拟机联网的三种方式</title>
+    <url>/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<ul>
+<li><p>虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png" alt=""></p>
+<h2 id="桥接（bridge）模式"><a href="#桥接（bridge）模式" class="headerlink" title="桥接（bridge）模式"></a>桥接（bridge）模式</h2><p>网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate network from multiple communication networks or network segments. ）。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170555.png" alt=""></p>
+<p>如图所示，主机网卡通过虚拟网桥连接虚拟交换机，各网络模式为桥接的虚拟机连接虚拟交换机 <code>VMNet0</code>,各虚拟机  <code>IP</code> 均和主机 <code>IP</code> 处于同一网段且不能冲突。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819162442.jpg" alt=""></p>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先在虚拟机配置中选择桥接模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170914.png" alt=""></p>
+<p>然后进入虚拟机系统，设置虚拟机IP和主机IP处于同一地址段。</p>
+<p>我本机的 <code>IP</code> 为 <code>192.168.3.X</code> 网段。故需要设置虚拟机为 <code>192.168.3.X</code>,且不能与当前局域网内的主机 <code>IP</code> 地址冲突。</p>
+<p>以 <code>centos7</code> 为例，使用 <code>root</code>账户登录后，<code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731173257.png" alt=""></p>
+<p>如图所示进行修改.</p>
+<p>然后重启网络服务(<code>service network restart</code>)</p>
+<p>此时，便可访问外网和宿主机。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>桥接网络的方式配置简单，但并不适用于ip地址稀缺的情况。</p>
+<h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）</p>
+<p><code>vmware</code> 中新建虚拟机默认网络配置为 <code>NAT</code> 模式,虚拟机处于独立的网络，通过 <code>NAT</code> 转换器可以访问外网，且能和主机相互通信。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821174734.jpg" alt=""></p>
+<p>如图所示，虚拟的 <code>VMware Network Adapter VMnet8</code> 网卡与虚拟交换机 <code>VMNet8</code> 相连，<code>IP</code> 地址段为 <code>192.168.9.0/24</code>，网关默认为 <code>192.168.9.2</code>. 具体的 <code>NAT</code> 设置可点击NAT设置查看。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819170322.png" alt=""></p>
+<h4 id="网络配置-1"><a href="#网络配置-1" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先，先将虚拟机的网络配置修改为<code>NAT</code>模式。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731174109.png" alt=""></p>
+<p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 <code>NAT</code> 模式的 <code>ip</code> 地址段、网关地址和子网掩码。</p>
+<p>使用 <code>root</code> 用户登录虚拟机系统，配置网络信息为刚刚查到的（IP地址，子网掩码，网关地址），添加 <code>DNS</code> (114.114.114.114, 114.114.115.115)。</p>
+<p>然后重启网络服务即可访问网络和宿主机。</p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><code>NAT</code> 模式适用于 <code>IP</code> 地址稀缺的情况。</p>
+<h2 id="仅主机（Host-Only）"><a href="#仅主机（Host-Only）" class="headerlink" title="仅主机（Host-Only）"></a>仅主机（Host-Only）</h2><p>仅主机模式表示虚拟机只能访问宿主机，不能访问网络。整个虚拟机和宿主机工作在一个大的内网下,宿主机可以访问虚拟机，虚拟机不能访问宿主机。如需要连接外网，可以利用宿主机共享网络。此时，处于 <code>host-only</code> 网络模式下的虚拟机可以通过宿主机网络访问外网，且可以访问宿主机</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819173636.jpg" alt=""></p>
+<p>如图所示，宿主机通过虚拟网卡 <code>VMware Network Adapter VMnet1</code> 与主机网络进行通信，虚拟网卡的 <code>IP</code> 地址需要设置为仅主机模式的网段。默认为主机号为 <code>.1</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821173642.png" alt=""></p>
+<h4 id="网络配置-2"><a href="#网络配置-2" class="headerlink" title="网络配置"></a>网络配置</h4><p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 仅主机模式的 <code>IP</code> 地址段,在虚拟机中配置IP地址，子网掩码。</p>
+<p>重启网络服务，宿主机即可访问该虚拟机。</p>
+<h4 id="访问外网"><a href="#访问外网" class="headerlink" title="访问外网"></a>访问外网</h4><p>宿主机中联网的网卡，配置网络共享，选中 <code>host-only</code> 对应的那块虚拟网卡。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115332.png" alt=""></p>
+<p>点击确定后，该虚拟网卡的<code>ip</code> 地址会改为 <code>192.168.137.1</code>,需要改为该虚拟网卡对应的虚拟网络交换机的地址段</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115648.png" alt=""></p>
+<p>如上图所示，地址段位 <code>192.168,17.0</code>,于是需要把虚拟网卡的 <code>ip</code> 地址改为 <code>192.168.17.1</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115917.png" alt=""></p>
+<p>然后，将联网方式为 <code>host-only</code> 的虚拟机网关设置为  <code>192.168.17.l</code> 即 <code>VMware Network Adapter VMnet1</code> 的地址就可以访问外网了，此时也可以访问宿主机。</p>
+<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>仅主机模式一般用于公司对机密性要求比较高的网络，个人不常用。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://geek-university.com/ccna/what-is-a-network-bridge/">What is a network bridge?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bridging_(networking)">Bridging (networking)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Network_address_translation">Network address translation</a></li>
+<li><a href="https://www.cnblogs.com/yihr/p/7348304.html">vmware联网解决方案：host-only共享上网</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24758022">VMware的三种网络模式</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>虚拟机</tag>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>永远改变你编码技能的40个技巧</title>
+    <url>/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<blockquote>
+<p>本文译自 <a href="https://medium.com/swlh/40-tips-that-will-change-your-coding-skills-forever-bf9d6b936ccc" target="_blank" rel="noopener">40 Tips that will change your coding skills forever</a>,仅用于学习，不作商业用途</p>
+</blockquote>
+<p>在这篇总结里，我将会列举一些技巧。阅读起来很快，但是应用得很好可能要花费一辈子的时间。</p>
+<ol>
+<li>把大块代码分解成小函数。</li>
+<li>如果你结束一天的工作还没有解决问题。关机把它留到第二天。不要一直想着它。</li>
+<li><a href="https://en.wikipedia.org/wiki/You_aren' target="_blank" rel="noopener"t_gonna_need_it"><strong>YANNI</strong></a> 原则：不要编写超出被要求的内容。不要期望未来，尽可能快的做好现在的事情。为了解决当前问题，进行必要的编码。</li>
+<li>你不需要了解所有事情，所有存在的框架。最有效的事情是有好的基础。子开始学习一个框架和学习基础例如<a href="https://en.wikipedia.org/wiki/SOLID" target="_blank" rel="noopener"><strong>SOLID</strong></a>原则或者编写简洁代码之前深入了解编程语言。</li>
+<li><a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" rel="noopener"><strong>KISS</strong></a>:”Keep it simple, stupid” or “Keep it stupid simple”(保持愚蠢且简单) 是一种设计原则：表明大多数系统在保持简单而不是复杂的情况下工作的最好。虽然这是合乎逻辑的，但有时很难实现。</li>
+<li>不要过分思考。</li>
+<li>如果你在一个问题或者 <code>bug</code> 上纠结太长时间，走走，一会再回去。通常，从办公室到卫生间的路上会想出问题的最佳解决方案。</li>
+<li>学习编写可用的测试和学习去做 <a href="http://"https://en.wikipedia.org/wiki/Test-driven_development""><strong><code>TDD</code></strong></a>。<code>TDD</code> 是一种软件开发流程依赖一个非常短的开发循环的重复：编写一个测试，执行所有的测试看是否有测试失败，编写代码，执行测试，重构代码，重复。</li>
+<li>首先解决问题，然后编码。不要在还没有搞懂做什么之前，就开始编码。</li>
+<li>不要记忆代码，而是要理解逻辑。</li>
+<li>如果要复制粘贴 <a href="https://stackoverflow.com/" target="_blank" rel="noopener"><code>stack overflow</code></a> 的解决方案，确保你已经理解了。学习更好地使用 <code>Stack Overflow</code></li>
+<li>如果你想学习，那就去练习。编写一些例子，运行起来。因为仅仅阅读是不够的。（原文：<code>If you want to learn something, practice. Make examples and make them work because read about something is not enough.</code>）</li>
+<li>时常学习其他人的代码，让其他人学习你的代码。结对编程和代码审查是个很好的想法。</li>
+<li>不要重复造轮子。</li>
+<li>你的代码是最好的文档。</li>
+<li>了解怎样 <code>google</code> 东西。为此，你需要有经验和大量的阅读知道你要找的东西。</li>
+<li>你的代码在未来需要你自己或其他人维护，所以写代码时要考虑到读者，而不是试图成为最聪明的人。使你的代码读起来就像是阅读一个故事。</li>
+<li>使用 <code>google</code> 去解决你的错误最好的方式是复制粘贴。</li>
+<li>永不放弃，最后，总会以这样或那样的方式去解决。总有一些难过的日子，但终会过去。</li>
+<li>休息，休息还是休息。解决问题最好的方式是有一个放松的大脑。</li>
+<li>学习使用 <a href="https://en.wikipedia.org/wiki/Software_design_pattern" target="_blank" rel="noopener">软件设计模式</a>。软件设计中的设计模式是通用问题的解决方案。每个模式就像是一幅蓝图，你可以自定义该蓝图已解决代码中常见的设计问题（不要重复造轮子）。</li>
+<li>使用集成工具，尽可能多的自动化。</li>
+<li>练习<code>code kata</code>（代码招式）。一个<a href="https://en.wikipedia.org/wiki/Kata_(programming)" target="_blank" rel="noopener"><code>code kata</code></a>是一个编程训练，通过练习和重复帮助程序开发者提升他们的技能。</li>
+<li>面向接口编程，而不是实现。依赖注入是必需的。可以查看 <code>SOLID</code> 原则。</li>
+<li>重构-测试-重构。<a href="https://refactoring.com/" target="_blank" rel="noopener"><code>Refactoring</code></a>是一种技术，用来重组现有代码，操作，优化内部结构而不改变外部行为。</li>
+<li>当你需要的时候，寻求帮助。不要浪费时间。</li>
+<li>熟能生巧。</li>
+<li>尽管有时评论能帮助你，不要过多关注。他们很可能是过时的。</li>
+<li>了解你的开发环境，在一个强力的足够的环境上投资，比如 <code>IntelliJ</code></li>
+<li>重用组件。</li>
+<li>开发一个 <code>web</code> 应用是，考虑移动优先和相关的因素(原文：<code>associated power</code>)，以及带宽限制。</li>
+<li>不要过早优化或者重构。尽可能快地开发出一个小型的，可用的产品是更重要的。</li>
+<li>不要选择效率低下的，捷径去节省几分钟时间。每次你编码的时候，尽你最大努力。</li>
+<li>遵循文档标准。</li>
+<li>用户不是懂技术的人。当你开发你的 <code>UI</code> 时，要把这点考虑进去。</li>
+<li>在使用源代码控制系统：像 <a href="https://github.com/" target="_blank" rel="noopener"><code>Github</code></a> 或者 <a href="https://bitbucket.org/product?&aceid=&adposition=&adgroup=92542398455&campaign=9128560695&creative=414608949972&device=c&keyword=bitbucket&matchtype=e&network=g&placement=&ds_kids=p51241296666&ds_e=GOOGLE&ds_eid=700000001551985&ds_e1=GOOGLE&gclid=CjwKCAjw5vz2BRAtEiwAbcVIL0jgdNIlupVukWp9ia0jTMh6sAONVv2cseqvZn8I3EHuFknYQqWzMhoCWZ0QAvD_BwE&gclsrc=aw.ds" target="_blank" rel="noopener"><code>bitbucket</code></a>时，做小且频繁的 <code>git</code> 提交。</li>
+<li>使用日志比调试代码更好。在所有的关键部分使用日志。</li>
+<li>编码时要始终如一。如果你使用一种编码风格，总是使用相同的。如果你与其他人在一起工作，与团队中的所有人使用相同的风格。</li>
+<li>不要停止学习，但不是学习更多的新的编程语言或者框架，把注意力集中在软件开发基础上。</li>
+<li>最后，保持耐心和热情去做事。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>技巧</tag>
+        <tag>编码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>how-to-install-ubuntu-server20.04LTS</title>
+    <url>/2021/how-to-install-ubuntu-server20-04LTS/</url>
+    <content><![CDATA[<p>本文档演示如何安装<code>ubuntu server 20.04 LTS</code></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://ubuntu.com/download/server">ubuntu server 20.04LTS 镜像下载</a></p>
+<p>可根据 <a href="https://ubuntu.com/tutorials/install-ubuntu-server#3-boot-from-install-media">install-ubuntu-server</a> 一步一步进行安装。</p>
+<p>其中有两个部分需要注意：</p>
+<ol>
+<li><code>proxy-url</code>: <code>http://host-address:proxy-port</code></li>
+<li><code>software-source</code>:  <code>http://mirror.xtom.com.hk/ubuntu/</code>  </li>
+</ol>
+<p><code>software-source</code> 可在 <a href="https://launchpad.net/ubuntu/+archivemirrors"><code>Official Archive Mirrors for Ubuntu</code></a> 寻找相近地区的归档镜像源</p>
+<h2 id="相关的信息查看命令"><a href="#相关的信息查看命令" class="headerlink" title="相关的信息查看命令"></a>相关的信息查看命令</h2><h4 id="网络配置查看"><a href="#网络配置查看" class="headerlink" title="网络配置查看"></a>网络配置查看</h4><ul>
+<li><code>ip -a</code> 查看ip地址</li>
+<li><code>ifconfig</code> 查看ip地址信息(需要安装<code>net-tools</code>)</li>
+</ul>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h4 id="修改-root-账户密码"><a href="#修改-root-账户密码" class="headerlink" title="修改 root 账户密码"></a>修改 <code>root</code> 账户密码</h4><p><code>ubuntu server</code> 安装时需要提供一个用户名和密码（非<code>root</code>）如需要<code>root</code> 账户，则首先需要修改 <code>root</code> 账户的密码</p>
+<p><code>sudo passwd root</code>  输入密码，并且再次输入，即可修改成功</p>
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><ul>
+<li><code>sudo ufw status</code>  查看防火墙状态</li>
+<li><code>sudo ufw enable</code>  启动防火墙</li>
+<li><code>sudo uft disable</code>  关闭防火墙</li>
+</ul>
+<h4 id="启用ssh-server"><a href="#启用ssh-server" class="headerlink" title="启用ssh-server"></a>启用<code>ssh-server</code></h4><p><code>ubuntu server</code> 默认是不提供<code>sshd</code> 服务的，如需要通过<code>xshell</code>或<code>secureCRT</code>等工具进行连接，则需要安装<code>openssh-sever</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line"></span><br><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>可以通过 <code>sudo systemctl status ssh</code> 查看<code>ssh.server</code>的启动状态</p>
+<p>如<code>ssh.service</code>未启动，则可以运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable ssh</span><br><span class="line">sudo systemctl start ssh</span><br></pre></td></tr></table></figure>
+
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p><code>ubuntu 20.04</code>使用<code>netplan</code>作为默认的网络管理器。配置文件目录为 <code>/etc/netplan</code></p>
+<p><code>00-installer-config.yaml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">network:</span><br><span class="line">version: 2</span><br><span class="line">renderer: NetworkManager</span><br><span class="line">ethernets:</span><br><span class="line"> ens33:</span><br><span class="line">  dhcp4: no</span><br><span class="line">  addresses:</span><br><span class="line">  - 192.168.72.140/24</span><br><span class="line">  gateway4: 192.168.72.2</span><br><span class="line">  nameservers:</span><br><span class="line">   addresses: [8.8.8.8, 8.8.4.4]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><code>netplan</code>相关命令</strong></p>
+<ul>
+<li><code>netplan try</code> 验证<code>netplan</code>配置</li>
+<li><code>netplan apply</code> 应用新的配置</li>
+</ul>
+<h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">git config --global http.proxy http://proxyUsername:proxyPassword@proxy.server.com:port</span><br><span class="line"></span><br><span class="line">git confiug --global https.proxy http://proxyUsername:proxyPassword@proxy.server.com:port</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="apt配置"><a href="#apt配置" class="headerlink" title="apt配置"></a>apt配置</h4><p>配置文件: <code>/etc/apt/apt.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Acquire::http::proxy “http://&lt;user&gt;:&lt;pass&gt;@&lt;proxy&gt;:&lt;port&gt;/”; </span><br><span class="line">Acquire::https::proxy “http://&lt;user&gt;:&lt;pass&gt;@&lt;proxy&gt;:&lt;port&gt;/”; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="命令行配置"><a href="#命令行配置" class="headerlink" title="命令行配置"></a>命令行配置</h4><p>配置文件: <code>~/.bashrc</code></p>
+<p>最后一行添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export http_proxy=http://&lt;user&gt;:&lt;pass&gt;@&lt;proxy&gt;:&lt;port&gt;/</span><br><span class="line">export https_proxy=http://&lt;user&gt;:&lt;pass&gt;@&lt;proxy&gt;:&lt;port&gt;/</span><br></pre></td></tr></table></figure>
+
+<p>可通过 <code>env | grep proxy</code> 检测代理配置</p>
+<h2 id="软件源配置"><a href="#软件源配置" class="headerlink" title="软件源配置"></a>软件源配置</h2><p>如无可用代理，可设置国内镜像源提高 <code>apt update</code> 速度。<code>ubuntu</code> 的默认配置文件为 <code>/etc/apt/sources.list</code>。</p>
+<p>首先，将原来软件源进行备份  <code>sudo cp /etc/apt/sorces.list /etc/apt/sources.list.bak</code></p>
+<h3 id="替换国内软件源"><a href="#替换国内软件源" class="headerlink" title="替换国内软件源"></a>替换国内软件源</h3><p>将软件源文件替换为以下任一源内容即可。</p>
+<p><strong>清华大学源</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+
+<p><strong>阿里云</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>163（网易）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://www.cyberciti.biz/faq/ubuntu-linux-install-openssh-server/">Ubuntu Linux install OpenSSH server</a></li>
+<li><a href="https://linuxhint.com/ubuntu_20-04_network_configuration/">Ubuntu 20.04 Network Configuration</a></li>
+<li><a href="https://ubuntu.com/server/docs/network-configuration">Network Configuration</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>install centos in vmware workstation</title>
+    <url>/2021/install-centos-in-vmware-workstation/</url>
+    <content><![CDATA[<p>本文档演示如何在 <code>vmware</code> 中新建一个 <code>centos</code> 的虚拟机。</p>
+<h2 id="镜像下载"><a href="#镜像下载" class="headerlink" title="镜像下载"></a>镜像下载</h2><p>centos源列表：</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927112748.png" alt=""></p>
+<ul>
+<li><a href="http://isoredirect.centos.org/centos/7/isos/x86_64/">centos7 isos</a></li>
+<li><a href="http://isoredirect.centos.org/centos/8/isos/x86_64/">centos8 isos</a></li>
+</ul>
+<p>受限于网络环境，推荐以下镜像源：</p>
+<ul>
+<li><a href="http://mirrors.163.com/centos/7.9.2009/isos/x86_64/">163</a></li>
+<li><a href="http://mirrors.tuna.tsinghua.edu.cn/centos/7.9.2009/isos/x86_64/">清华</a></li>
+<li><a href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">阿里云</a></li>
+</ul>
+<h3 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h3><p>打开 <code>163</code> 镜像源地址，可以看到有四个版本供我们选择</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927114433.png" alt=""></p>
+<p>分别为 <code>DVD</code>, <code>Everything</code>, <code>Minimal</code>, <code>NetInstall</code></p>
+<ul>
+<li><code>DVD</code>: 如果你不知道使用哪个镜像，就选择这个版本。该版本允许你在安装时选择自己想要安装的组件。</li>
+<li><code>Everything</code>: 包含所有可用的软件包，包括那些不能直接通过安装程序安装的包。如果需要安装其它的包，可在系统安装后挂载安装媒体，从那里复制或安装包。对大多数用户来说，直接使用  <code>DVD</code>  镜像安装，随后使用 <code>yum install</code> 来安装其它的包是更容易的。</li>
+<li><code>Minimal</code>:  最基础的系统，会安装一些系统功能所需的基础包。</li>
+<li><code>NetInstall</code>:  通过网络进行安装或恢复的镜像。</li>
+</ul>
+<h2 id="新建虚拟机"><a href="#新建虚拟机" class="headerlink" title="新建虚拟机"></a>新建虚拟机</h2><p>打开 <code>vmware</code> ，文件 -&gt; 新建虚拟机，选择自定义后，下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144407.png" alt="image-20210927144407592"> </p>
+<p>下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144524.png" alt="image-20210927144524851"></p>
+<p>选择稍后安装操作系统，下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144707.png" alt="image-20210927144707464"></p>
+<p>选择客户机操作系统类型为 <code>Linux</code> ， 版本为 <code>CentOS7 64位</code>。 下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144807.png" alt="image-20210927144807436"></p>
+<p>修改新建虚拟机的名称，指定该虚拟机放置的目录。如图所示，虚拟机名称为 <code>centos7_test_node</code>, 位置为 <code>D:\virtural machine\centos7 test node</code>。需要特别说明的是，新建虚拟机并不会生成虚拟机名称同名的文件夹，故我们需要指定一个空目录来放置新建的虚拟机。下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145319.png" alt="image-20210927145319367"></p>
+<p>处理器配置保持默认，下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145634.png" alt="image-20210927145634792"></p>
+<p>内存配置选择 <code>512M</code>，基本够用。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145746.png" alt="image-20210927145746773"></p>
+<p>网络模式选择 <code>NAT</code>, 在之前的文章 <a href="https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/">vmware 虚拟机联网的三种方式</a> 已经详细说明过。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150053.png" alt="image-20210927150053427"></p>
+<p><code>IO</code> 控制器 和 磁盘类型保持默认。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150124.png" alt="image-20210927150124572"></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150140.png" alt="image-20210927150140646"></p>
+<p>选择创建新虚拟硬盘。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150248.png" alt="image-20210927150248376"></p>
+<p>最大磁盘大小保持默认即可，选择将虚拟磁盘存储为单个文件。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150351.png" alt="image-20210927150351844"></p>
+<p>保持默认，下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150509.png" alt="image-20210927150509757"></p>
+<p>选择自定义硬件，移除无用的虚拟设备（打印机，声卡，<code>USB</code> 控制器）。并指定使用<code>ISO</code> 映像文件的位置。使用此镜像来为虚拟机安装操作系统。关闭。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150539.png" alt="image-20210927150538935"></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150734.png" alt="image-20210927150734740"></p>
+<p>点击完成。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151000.png" alt="image-20210927151000212"></p>
+<h2 id="安装操作系统"><a href="#安装操作系统" class="headerlink" title="安装操作系统"></a>安装操作系统</h2><p>开启此虚拟机，安装操作系统。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151103.png" alt="image-20210927151103071"></p>
+<p>光标定位到虚拟机中，选择 <code>Install Centos 7</code> 。 回车</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151334.png" alt="image-20210927151334041"></p>
+<p>等待跑码后，出现该界面。因为我们要安装的是服务器的操作系统，不会安装桌面。故保持默认 <code>Continue</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151613.png" alt="image-20210927151613118"></p>
+<p>出现该界面后，需要修改下时区，选择要安装系统的硬盘，关闭 <code>KDUMP</code> , 启用网卡。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151833.png" alt="image-20210927151833814"></p>
+<p>首先点击  <code>DATE &amp; TIME</code> ,进行时区的设置, 选择图中所示位置 <code>Asia Shanghai</code>. 点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152244.png" alt="image-20210927152244374"></p>
+<p>点击 <code>INSTALLATION DESTATION</code> ,指定系统安装的位置。选中之前新建的硬盘，点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152450.png" alt="image-20210927152450046"></p>
+<p>点击 <code>NETWORK &amp; HOST NAME</code>, 开启网卡。 点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152207.png" alt="image-20210927152207712"></p>
+<p>点击 <code>KDUMP</code>. 取消勾选  <code>Enable kdump</code>  。<code>Kdump</code> 是一种崩溃转储机制。当系统发生故障时，会抓取一些导致系统崩溃的关键信息，但会占用一部分内存。点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152826.png" alt="image-20210927152825901"></p>
+<p>点击 <code>SOFTWARE SELECTION</code> 后可选择要安装的包。如之前使用的是 <code>Minal</code> 版本的镜像，则如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927142512.png" alt="image-20210927142512809"></p>
+<p>如之前使用的是 <code>DVD</code> 版本的镜像，则如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144030.png" alt="image-20210927144030197"></p>
+<p>点击 <code>Begin Installation</code> 开始安装。点击 <code>ROOT PASSWORD</code> 设置 <code>Root</code>账户密码。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927153228.png" alt="image-20210927153228381"></p>
+<p>输入密码，确认密码，后点击 <code>Done</code>。 密码尽量为数字，大小写字幕，特殊符号的组合。否则会提示弱密码</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927153752.png" alt="image-20210927153752121"></p>
+<p>等待安装完成后，点击 <code>Reboot</code> 重启</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927154940.png" alt="image-20210927154940640"></p>
+<p>输入用户名和密码，回车。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927155437.png" alt="image-20210927155437426"></p>
+<h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><p>首先，检查虚拟 <code>DHCP</code> 服务器分配的  <code>IP</code> 地址。如图所示，自动分配的 <code>IP</code> 地址为 <code>192.168.9.130</code></p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927155649.png" alt="image-20210927155649705"></p>
+<p>修改网络配置，设置静态 <code>IP</code> 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens32</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160115.png" alt="image-20210927160115404"></p>
+<p>将 <code>BOOTPROTO</code> 从 <code>dhcp</code> 改为 <code>static</code>, 增加以下几行。<code>IPADDR</code>  为 <code>IP</code> 地址， <code>PREFIX</code> 为网络号的位数，<code>24</code> 表示子网掩码为 <code>255.255.255.0</code> ,  <code>GATEWAY</code> 为默认网关， <code>DNS1</code> 为主要的 <code>dns</code>.网关可以在 <code>NAT</code> 配置中找到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IPADDR=192.168.9.130</span><br><span class="line">PREFIX=24</span><br><span class="line">GATEWAY=192.168.9.2</span><br><span class="line">DNS1=114.114.114.114</span><br></pre></td></tr></table></figure>
+
+<p>默认网关</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160417.png" alt="image-20210927160417810"></p>
+<p>最终配置如下</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160713.png" alt="image-20210927160713637"></p>
+<p>配置好后，重启网络配置 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927161333.png" alt="image-20210927161333063"></p>
+<p>测试网络连接</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ping baidu.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927161648.png" alt="image-20210927161648471"></p>
+<p>网络连接正常，配置完成。</p>
+<h2 id="使用-SecureCRT-连接虚拟机"><a href="#使用-SecureCRT-连接虚拟机" class="headerlink" title="使用 SecureCRT 连接虚拟机"></a>使用 SecureCRT 连接虚拟机</h2><p>在<code>vmware</code> 中操作很不方便，界面又不美观。通常我们会使用 <code>SSH</code> 客户端连接虚拟机进行操作, 常用的有 <code>SecureCRT</code> 和  <code>xshell</code>.</p>
+<h3 id="使用-SecureCRT-连接"><a href="#使用-SecureCRT-连接" class="headerlink" title="使用 SecureCRT 连接"></a>使用 <code>SecureCRT</code> 连接</h3><p>打开 <code>SecureCRT</code>,  <code>File</code> -&gt;  <code>Quick Connect</code> ，输入要连接的虚拟机的地址 <code>192.168.9.130</code>，用户名 <code>root</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162303.png" alt="image-20210927162303367"></p>
+<p>点击 <code>Accept &amp; Save</code> </p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162425.png" alt="image-20210927162425095"></p>
+<p>输入密码，点击 <code>ok</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162557.png" alt="image-20210927162557133"></p>
+<p>此时就可以在 <code>SecureCRT</code> 中对虚拟机进行操作了。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162749.png" alt="image-20210927162749385"></p>
+<h2 id="系统更新"><a href="#系统更新" class="headerlink" title="系统更新"></a>系统更新</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum update</span><br></pre></td></tr></table></figure>
+
+<p>如下载速度比较慢或无法下载，则需要更换软件源：</p>
+<p>网易、清华大学和阿里云都提供了对应的解决方案。</p>
+<ul>
+<li><a href="https://mirrors.163.com/.help/centos.html">网易CentOS镜像使用帮助</a></li>
+<li><a href="https://developer.aliyun.com/mirror/centos">阿里云 centos镜像</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/centos/">清华大学开源软件镜像站</a></li>
+</ul>
+<blockquote>
+<p>先备份 <code>/etc/yum.repos.d/</code> 内的文件（CentOS 7 及之前为 <code>CentOS-Base.repo</code>，CentOS 8 为<code>CentOS-Linux-*.repo</code>）</p>
+<p>然后编辑 <code>/etc/yum.repos.d/</code> 中的相应文件，在 <code>mirrorlist=</code> 开头行前面加 <code>#</code> 注释掉；并将 <code>baseurl=</code> 开头行取消注释（如果被注释的话），把该行内的域名（例如<code>mirror.centos.org</code>）替换为 <code>mirrors.tuna.tsinghua.edu.cn</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sed -e &#x27;s|^mirrorlist=|#mirrorlist=|g&#x27; \</span><br><span class="line">         -e &#x27;s|^#baseurl=http://mirror.centos.org|baseurl=https://mirrors.tuna.tsinghua.edu.cn|g&#x27; \</span><br><span class="line">         -i.bak \</span><br><span class="line">         /etc/yum.repos.d/CentOS-*.repo</span><br></pre></td></tr></table></figure>
+
+<p>最后更新软件包缓存：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://superuser.com/questions/878135/what-is-the-difference-between-centos-dvd-vs-everything-isos">What is the difference between CentOS “DVD” vs “Everything” ISOs</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>vmware</tag>
+        <tag>centos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>typora搭配github图床写文章真香</title>
+    <url>/2021/typora%E6%90%AD%E9%85%8Dgithub%E5%9B%BE%E5%BA%8A%E5%86%99%E6%96%87%E7%AB%A0%E7%9C%9F%E9%A6%99/</url>
+    <content><![CDATA[<p>平时写博客，记录知识用的最多的就是 <a href="https://typora.io/">Typora</a>. <code>typora</code> 是一歀简洁，优雅，高效的 <code>markdown</code> 文件编辑器。当插入图片时，图片会保存在 <code>C:/Users/[用户名]/AppData/Roaming/Typora/typora-user-images/文件名</code> 中，文章写好后，需要将图片同步上传到云端，可供他人访问，或在其它平台引用。这时就需要用到图床，也就是一个云端图片存储的地方。常见的图床有：<code>sm.ms</code>,   腾讯云 <code>cos</code>, 微博图床，七牛云， 阿里云 <code>oss</code>等。我主要使用 <code>github+jsdelivr cdn</code> 的方式。完全免费，稳定且几乎无限制。</p>
+<h2 id="github-新建图床仓库"><a href="#github-新建图床仓库" class="headerlink" title="github 新建图床仓库"></a>github 新建图床仓库</h2><p><code>github</code> 新建一个公共的仓库，以 <code>image-gallery</code> 为例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928105538.png" alt="image-20210928105538243"></p>
+<p>打开<code>settings</code>-&gt; <code>Developer settings</code> -&gt; <code>Personal access tokens</code> ，新建一个 <code>token</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928110138.png" alt="image-20210928110138862"></p>
+<p>验证密码后，填入 <code>token</code> 信息，生成 <code>token</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928110445.png" alt="image-20210928110445510"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928110626.png" alt="image-20210928110626114"></p>
+<p>保存好新生成的<code>token</code>，只会出现一次，如果没有保存，就需要重新生成</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928110905.png" alt="image-20210928110905660"></p>
+<h2 id="picgo-配置图床信息"><a href="#picgo-配置图床信息" class="headerlink" title="picgo 配置图床信息"></a>picgo 配置图床信息</h2><p><a href="https://github.com/Molunerfinn/PicGo/releases">picgo下载地址</a></p>
+<p>安装好后，配置 <code>github</code> 图床， 仓库名为之前新建的仓库  <code>KJohn2q/image-gallery</code>， 分支名为  <code>main</code>,  <code>token</code> 为之前新建的  <code>token</code>,  存储路径可自定义，我设置的是 <code>image/</code>， 自定义域名先不填</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928112656.png" alt="image-20210928112656761"></p>
+<h3 id="github-图床搭配-CDN"><a href="#github-图床搭配-CDN" class="headerlink" title="github 图床搭配 CDN"></a>github 图床搭配 CDN</h3><p>github的服务器在国外，故访问速度及稳定性有时会出一些问题。我们可以搭配 <code>CDN</code> 来使用。推荐使用  <a href="https://www.jsdelivr.com/">jsDelivr</a>. <code>jsDelivr</code> 是一款用于开源项目的免费公共 <code>CDN</code>, 与国内的 <code>CDN</code> 厂商也有合作。</p>
+<p>直接配置自定义域名为  <code>https://cdn.jsdelivr.net/gh/[用户名]/[仓库名]</code>， 如  <code>https://cdn.jsdelivr.net/gh/KJohn2q/image-gallery</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928113452.png" alt="image-20210928113452717"></p>
+<h2 id="typora-插入图片"><a href="#typora-插入图片" class="headerlink" title="typora 插入图片"></a>typora 插入图片</h2><p>图床配置好后，我们可以使用两种方式在 <code>typora</code> 中插入图片，第一种方法是：先在 <code>picgo</code> 中上传图片，在 <code>typora</code> 中插入图片的 <code>markdown</code> 链接，另一种方法是： 直接在 <code>typora</code> 中插入图片，图片自动通过 <code>picgo</code> 上传到图床， 替换本地 <code>markdown</code> 链接</p>
+<h3 id="typora-配置图片自动上传"><a href="#typora-配置图片自动上传" class="headerlink" title="typora 配置图片自动上传"></a>typora 配置图片自动上传</h3><p>打开偏好设置 -&gt; 图像 , 插入图片时选项改为自动上传, 勾选对本地位置的图片应用上述规则。上传服务设定中，上传服务选择 <code>PicGo(app)</code>, <code>PicGo</code> 路径选择 <code>PicGo</code>的安装路径，通常为 <code>C:\Program Files\PicGo\PicGo.exe</code> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928114253.png" alt="image-20210928114253032"></p>
+<h2 id="上传图片测试"><a href="#上传图片测试" class="headerlink" title="上传图片测试"></a>上传图片测试</h2><p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/20210928114923.png" alt="image-20210928114923508"></p>
+<p>可以看到图片已经上传到  <code>github</code> 图床，并使用了 <code>jsdelivr cdn</code> 加速</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://lovelijunyi.gitee.io/posts/a833.html">图床对比与Github图床的优化</a></li>
+<li><a href="https://www.jsdelivr.com/">jsDelivr - A free, fast, and reliable CDN for open source</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>typora</tag>
+        <tag>图床，博客，markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vim cheatsheet</title>
+    <url>/2021/vim-cheatsheet/</url>
+    <content><![CDATA[<blockquote>
+<p>vim是一个可高度定制的文本编辑器，使得创建和修改文件更加高效。</p>
+</blockquote>
+<h2 id="设计哲学"><a href="#设计哲学" class="headerlink" title="设计哲学"></a>设计哲学</h2><p><code>vim</code> 设计的目的就是为了摆脱鼠标，所有工作都可以通过键盘完成。为了提高效率，需要使得双手尽可能少的移动位置。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291548160.png" alt="illustration of a keyboard with home row keys"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291124231.png" alt=""></p>
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p><code>vim</code> 中有四种模式：普通模式，编辑模式，命令模式和视图模式。</p>
+<h3 id="普通模式"><a href="#普通模式" class="headerlink" title="普通模式"></a>普通模式</h3><p><code>vim</code> 默认为普通模式。在普通模式中我们可以进行光标的移动，文本的复制、粘贴和删除。</p>
+<h4 id="取代方向键"><a href="#取代方向键" class="headerlink" title="取代方向键"></a>取代方向键</h4><p><code>h</code> 光标向左移动</p>
+<p><code>j</code>  光标向下移动</p>
+<p><code>k</code> 光标向上移动</p>
+<p><code>l</code> 光标向右移动</p>
+<h4 id="光标水平移动"><a href="#光标水平移动" class="headerlink" title="光标水平移动"></a>光标水平移动</h4><p><code>w/W</code> 移动到下一个单词 （word）,  word 默认为一个序列，包含字符，数字或者下划线</p>
+<p><code>b/B</code> 移动到上一个单词 （word）</p>
+<p><code>0</code> 移动到当前行的开头</p>
+<p><code>^</code> 移动到当前行的第一个不为空格的字符前</p>
+<p><code>$</code> 移动到当前行的末尾</p>
+<p><code>%</code> 如光标在一个花括号的开头，则会移动到匹配的花括号另一半的位置</p>
+<blockquote>
+<p>If operators are the verbs, text objects are the nouns. Simply put, a text object is a set of character. In Vim, a <code>word</code> is a text object, as well as a <code>sentence</code> or a <code>paragraph</code>.    ——  <a href="https://thevaluable.dev/vim-beginner/">Is Vim Really Not For You? A Beginner Guide </a></p>
+</blockquote>
+<h5 id="移动到指定字符的位置"><a href="#移动到指定字符的位置" class="headerlink" title="移动到指定字符的位置"></a>移动到指定字符的位置</h5><p><code>f[character]</code>  在当前光标之后查找字符，并移动   <code>f</code>: <code>find</code></p>
+<p><code>F[character]</code>  在当前光标之前查找字符，并移动</p>
+<p><code>t[character]</code>  移动到当前光标之后指定字符的位置  <code>t</code>:  <code>to</code></p>
+<p><code>T[character]</code>  移动到当前光标之前指定字符的位置 </p>
+<p>在使用了上面的四个操作后，可以使用 <code>;</code> 向前移动到下一次出现的位置， 使用<code>,</code> 移动到上一次出现的位置。</p>
+<h4 id="光标垂直移动"><a href="#光标垂直移动" class="headerlink" title="光标垂直移动"></a>光标垂直移动</h4><p><code>&lt;line_number&gt;G</code>  移动到指定的行，如 <code>10G</code> , 则移动到第10行</p>
+<p><code>G</code>  移动到文件的最后一行</p>
+<p><code>1G</code> 或  <code>gg</code>   移动到文件的第一行 </p>
+<h5 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h5><p><code>ctrl+e</code>   窗口向下滚动</p>
+<p><code>ctrl+u</code>  光标向上滚动半屏  <code>u</code>: <code>upward</code></p>
+<p><code>ctrl+d</code>  光标向下滚动半屏  <code>d</code>: <code>downward</code></p>
+<h4 id="其它指令"><a href="#其它指令" class="headerlink" title="其它指令"></a>其它指令</h4><p><code>u</code>    撤销上一次编辑</p>
+<p><code>r</code> 或 <code>ctrl+r</code>  重新编辑当前字符  </p>
+<p><code>d</code>    删除</p>
+<p><code>dd</code>  删除当前行</p>
+<p><code>[number]dd</code>  删除包含当前行在内的 <code>number</code> 行内容</p>
+<p><code>c</code>    修改</p>
+<p><code>y</code>    复制</p>
+<p><code>yy</code>  复制当前行</p>
+<p><code>[number]yy</code>  复制包含当前行在内的 <code>number</code> 行内容</p>
+<p><code>p/P</code>  粘贴</p>
+<h4 id="混合使用"><a href="#混合使用" class="headerlink" title="混合使用"></a>混合使用</h4><p><code>d$</code>  删除从光标位置到当前行末尾的所有字符</p>
+<p><code>dgg</code>  删除从文件开头到光标位置的内容</p>
+<p><code>ggdG</code>  删除文件的所有内容</p>
+<p><code>diw</code>   删除光标所在位置的 <code>word</code></p>
+<p><code>ciw</code>  删除光标所在位置的 <code>word</code>  , 并进入编辑模式</p>
+<p><code>dip</code>   删除光标所在位置的 段落</p>
+<h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><p>键入<code>/[keyword]</code>  后回车可在本文档中搜索指定的关键词 ，键入 <code>n</code> 可以跳转到下一个结果的位置，键入 <code>N</code> 可以跳转到上一个结果的位置</p>
+<p>普通模式下也可以使用  <code>*</code>  来向后搜索当前词汇, 键入 <code>#</code> 向前搜索当前词汇</p>
+<h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><p>在普通模式下，输入 <code>i</code> 可在当前字符前进入编辑模式。编辑模式可随意删除，添加和修改内容</p>
+<p><code>a</code>  在当前字符后插入内容，进入编辑模式</p>
+<p><code>A</code>   光标移动至当前行末尾，进入编辑模式</p>
+<p><code>o</code>  在当前行下新起一行，进入编辑模式</p>
+<p><code>O</code>  在当前行上插入一行，进入编辑模式</p>
+<p>编辑模式下，<code>esc</code> 或  <code>ctrl+c</code> 或  <code>ctrl+[</code> 可回到普通模式</p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>普通模式下，可键入 <code>:</code>进入命令模式。此时光标会自动移动到左下角，可以键入想要的命令。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291700025.png" alt="image-20210929170014833"></p>
+<p>下面列举一些基础命令：</p>
+<ul>
+<li><code>:help</code>  打开 <code>vim</code> 的帮助文档。如：如果你不知道如何退出，你可以通过键入 <code>:help quit</code> 来获取帮助</li>
+<li><code>:q</code>  退出当前窗口。如果仅有一个窗口，将会退出 <code>vim</code></li>
+<li><code>:q!</code>  不保存就退出。</li>
+<li><code>:w</code>    保存当前文件</li>
+<li><code>:wq</code>  或 <code>:x</code>  保存并退出</li>
+<li><code>:e &lt;path&gt;</code>  编辑指定的文件， <code>path</code> 可以是绝对路径或相对路径。  </li>
+</ul>
+<h4 id="一些有用的帮助命令"><a href="#一些有用的帮助命令" class="headerlink" title="一些有用的帮助命令"></a>一些有用的帮助命令</h4><ul>
+<li><code>:help helphelp</code></li>
+<li><code>:help vim-modes</code></li>
+<li><code>:help insert.txt</code></li>
+<li><code>:help visual.txt</code></li>
+<li><code>:help cmdline.txt</code></li>
+<li><code>help write-quite</code></li>
+<li><code>:help ex-cmd-index</code></li>
+<li><code>:help search-commands</code></li>
+<li><code>:help undo-redo</code></li>
+<li><code>:help cursor-motions</code></li>
+<li><code>:help left-right-motions</code></li>
+<li><code>:help up-down-motions</code></li>
+<li><code>:help scrolling</code></li>
+<li><code>:help operator</code></li>
+<li><code>:help text-objects</code></li>
+<li><code>:help options</code></li>
+<li><code>:help option-list</code></li>
+<li><code>:help options</code></li>
+<li><code>:help option-list</code></li>
+</ul>
+<h3 id="可视化模式"><a href="#可视化模式" class="headerlink" title="可视化模式"></a>可视化模式</h3><p>可视化模式主要用来选中内容。该模式下，可以修改，复制选中的内容。普通模式下可通过键入 <code>v</code> 进入可视化模式，此时在左下角可以看到 <code>--VISUAL--</code> 标识：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291712270.png" alt="image-20210929171256138"></p>
+<p>同样的，我们可以通过 <code>esc</code> 或 <code>ctrl+c</code> 返回到普通模式。</p>
+<h4 id="快捷操作"><a href="#快捷操作" class="headerlink" title="快捷操作"></a>快捷操作</h4><p>普通模式下，我们可以通过 <code>shift+v</code> 进入可视化模式，并选中当前行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202109291717546.png" alt="image-20210929171750276"></p>
+<p>普通模式下，可以通过 <code>ctrl+v</code> 进入可视化模式，并选中当前段落</p>
+<h2 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h2><p><code>vim</code> 的配置文件位置为 <code>~/.vimrc</code></p>
+<ul>
+<li><code>:set no&lt;option&gt;</code>  重置配置</li>
+<li><code>:set &lt;option&gt;</code> 切换配置</li>
+<li><code>:set &lt;option&gt;?</code>  返回配置值</li>
+<li><code>:set &lt;option&gt;=&lt;value&gt;</code>  设置配置值<code>&lt;value&gt;</code></li>
+<li><code>:set &lt;option&gt;+=&lt;value&gt;</code> 指定配置值增加 <code>&lt;value&gt;</code>,如配置选项为字符串，则拼接</li>
+<li><code>:set &lt;option&gt;&amp;</code>  重置配置为默认值</li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://thevaluable.dev/vim-beginner/">Is Vim Really Not For You? A Beginner Guide (thevaluable.dev)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>vim</tag>
+        <tag>cheatsheet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tcp-explain</title>
+    <url>/2021/tcp-explain/</url>
+    <content><![CDATA[<h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
+<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
+<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
+<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
+<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
+<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
+</ol>
+<p><img src="tcp-explain/001.png" alt=""></p>
+<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
+<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
+<li>当接收到了第三个重复的 ACK （确认包）时，将  ssthresh（慢启动阶段临界值） 设置为 cwnd （当前拥塞窗口） 和 接收端通告窗口的最小值。 重传丢失的数据段。 将 cwnd 设置为 ssthresh + 3 * segsize（数据段的大小）。</li>
+<li>每次另一个重复的 ACK  到达， cwnd 增加 segsize , 传输一个数据包。（如果 cwnd  允许新的数据包的话）。</li>
+<li>当下一个确认新数据的 ACK 到达时，  将 cwnd  设置为 ssthresh 的值。此外，该 ACK  应该确认所有介于丢失的数据报和第三个 ACK  接收之间的数据段。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>tcp</tag>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>powershell美化</title>
+    <url>/2021/powershell%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>作为一个开发者，在日常开发过程中经常会使用命令行。<code>windows</code> 自带的 <code>cmd</code> 和 <code>powershell</code>  在功能上和界面美观度上总是不能让我满意。本文主要和大家分享如何使用 <code>windows terminal</code>  和  <code>oh my posh</code> 增强和美化<code>powershell</code>。</p>
+<p>默认的powershell是这样的：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011422866.png" alt="image-20211001142221763"></p>
+<h2 id="Windows-Terminal-的安装"><a href="#Windows-Terminal-的安装" class="headerlink" title="Windows Terminal 的安装"></a>Windows Terminal 的安装</h2><p>仓库地址: <a href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></p>
+<p>推荐使用 <code>Microsoft Store</code>  来进行安装.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011426386.png" alt="image-20211001142641266"></p>
+<h2 id="Powerline-的安装"><a href="#Powerline-的安装" class="headerlink" title="Powerline 的安装"></a>Powerline 的安装</h2><h3 id="安装-Powerline-字体"><a href="#安装-Powerline-字体" class="headerlink" title="安装 Powerline 字体"></a>安装 <code>Powerline</code> 字体</h3><p><code>Powerline</code> 使用字形来设置提示符样式。 安装 <code>[Meslo LGM NF</code>，包含<code>Powerline</code> 字形。 可以从<a href="https://www.nerdfonts.com/">Nerd Fonts </a>安装字体。</p>
+<h3 id="安装-PowerLine"><a href="#安装-PowerLine" class="headerlink" title="安装 PowerLine"></a>安装 <code>PowerLine</code></h3><p>使用 <code>PowerShell</code> ，安装 <code>Posh-Git</code>  和 <code>Oh-My-Posh</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Install-Module posh-git -Scope CurrentUser</span><br><span class="line">Install-Module oh-my-posh -Scope CurrentUser</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果尚未安装 NuGet，可能需要安装它。 如果是这种情况，PowerShell 命令行会询问是否要安装 NuGet。 选择 [Y]“是”。 你可能还需要批准从不受信任的存储库 <a href="https://docs.microsoft.com/zh-cn/powershell/scripting/gallery/getting-started?view=powershell-7">PSGallery</a> 中安装模块。 选择 [Y]“是”。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011447255.png" alt="image-20211001144728179"></p>
+<p><a href="https://github.com/dahlbyk/posh-git">Posh-Git</a> 将 <code>Git</code> 状态信息添加到提示，并为<code>Git</code> 命令、参数、远程和分支名称添加  <code>tab</code>  自动补全。 <a href="https://github.com/JanDeDobbeleer/oh-my-posh">Oh-My-Posh</a> 为 <code>PowerShell</code>  提示符提供主题功能。</p>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>使用 <code>notepad $profile</code> 或所选的文本编辑器打开 <code>PowerShell</code> 的配置文件。 该配置文件是一个脚本，会在每次 <code>PowerShell</code> 启动时运行。</p>
+<p>将以下内容添加到 <code>PowerShell</code> 配置文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Import-Module posh-git</span><br><span class="line">Import-Module oh-my-posh</span><br><span class="line">Set-PoshPrompt -Theme Paradox</span><br></pre></td></tr></table></figure>
+
+<p>重启 <code>PowerShell</code> ，可能会出现以下问题</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011455800.png" alt="image-20211001145505754"></p>
+<p>这是由于启动 <code>PowerShell</code> 时，执行策略是 <code>Restricted</code> （默认）。<code>Restricted</code> 执行策略不允许任何脚本运行。</p>
+<p>可以通过 <code>get-executionpolicy</code> 命令来查看当前的执行策略。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011457687.png" alt="image-20211001145750648"></p>
+<p>可将执行策略修改为 <code>RemoteSigned</code> 或 <code>AllSigned</code>  解决此问题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011528807.png" alt="image-20211001152859773"></p>
+<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>可以通过 <code>Get-PoshThemes</code> 列出当前目录的所有可用主题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012340706.png" alt="image-20211001234003580"></p>
+<p>可以通过 <code>Set-PoshPrompt -Theme [ThemeName]</code>  指定主题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012343768.png" alt="image-20211001234341724"></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://ohmyposh.dev/">Home | Oh My Posh</a></li>
+<li><a href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/powerline-setup">Windows 终端 Powerline 设置 | Microsoft Docs</a></li>
+<li><a href="https://ohmyposh.dev/docs/themes#agnoster">Themes | Oh My Posh</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+        <tag>powershell</tag>
+        <tag>terminal</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+</search>

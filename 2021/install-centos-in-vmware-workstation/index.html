@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kjohn2q.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文档演示如何在 vmware 中新建一个 centos 的虚拟机。 镜像下载centos源列表：   centos7 isos centos8 isos  受限于网络环境，推荐以下镜像源：  163 清华 阿里云  版本选择打开 163 镜像源地址，可以看到有四个版本供我们选择">
+<meta property="og:type" content="article">
+<meta property="og:title" content="install centos in vmware workstation">
+<meta property="og:url" content="https://kjohn2q.github.io/2021/install-centos-in-vmware-workstation/index.html">
+<meta property="og:site_name" content="KJohn2q">
+<meta property="og:description" content="本文档演示如何在 vmware 中新建一个 centos 的虚拟机。 镜像下载centos源列表：   centos7 isos centos8 isos  受限于网络环境，推荐以下镜像源：  163 清华 阿里云  版本选择打开 163 镜像源地址，可以看到有四个版本供我们选择">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927112748.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927114433.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144407.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144524.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144707.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144807.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145319.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145634.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145746.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150053.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150124.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150140.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150248.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150351.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150509.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150539.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150734.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151000.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151103.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151334.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151613.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151833.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152244.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152450.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152207.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152826.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927142512.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144030.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927153228.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927153752.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927154940.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927155437.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927155649.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160115.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160417.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160713.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927161333.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927161648.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162303.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162425.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162557.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162749.png">
+<meta property="article:published_time" content="2021-09-27T06:03:45.000Z">
+<meta property="article:modified_time" content="2021-09-27T06:03:45.000Z">
+<meta property="article:author" content="John Wang">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="vmware">
+<meta property="article:tag" content="centos">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927112748.png">
+
+<link rel="canonical" href="https://kjohn2q.github.io/2021/install-centos-in-vmware-workstation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>install centos in vmware workstation | KJohn2q</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KJohn2q</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个专注技术的程序员</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KJohn2q" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/install-centos-in-vmware-workstation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          install centos in vmware workstation
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-27 14:03:45" itemprop="dateCreated datePublished" datetime="2021-09-27T14:03:45+08:00">2021-09-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文档演示如何在 <code>vmware</code> 中新建一个 <code>centos</code> 的虚拟机。</p>
+<h2 id="镜像下载"><a href="#镜像下载" class="headerlink" title="镜像下载"></a>镜像下载</h2><p>centos源列表：</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927112748.png" alt=""></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://isoredirect.centos.org/centos/7/isos/x86_64/">centos7 isos</a></li>
+<li><a target="_blank" rel="noopener" href="http://isoredirect.centos.org/centos/8/isos/x86_64/">centos8 isos</a></li>
+</ul>
+<p>受限于网络环境，推荐以下镜像源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://mirrors.163.com/centos/7.9.2009/isos/x86_64/">163</a></li>
+<li><a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/centos/7.9.2009/isos/x86_64/">清华</a></li>
+<li><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">阿里云</a></li>
+</ul>
+<h3 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h3><p>打开 <code>163</code> 镜像源地址，可以看到有四个版本供我们选择</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927114433.png" alt=""></p>
+<p>分别为 <code>DVD</code>, <code>Everything</code>, <code>Minimal</code>, <code>NetInstall</code></p>
+<ul>
+<li><code>DVD</code>: 如果你不知道使用哪个镜像，就选择这个版本。该版本允许你在安装时选择自己想要安装的组件。</li>
+<li><code>Everything</code>: 包含所有可用的软件包，包括那些不能直接通过安装程序安装的包。如果需要安装其它的包，可在系统安装后挂载安装媒体，从那里复制或安装包。对大多数用户来说，直接使用  <code>DVD</code>  镜像安装，随后使用 <code>yum install</code> 来安装其它的包是更容易的。</li>
+<li><code>Minimal</code>:  最基础的系统，会安装一些系统功能所需的基础包。</li>
+<li><code>NetInstall</code>:  通过网络进行安装或恢复的镜像。</li>
+</ul>
+<h2 id="新建虚拟机"><a href="#新建虚拟机" class="headerlink" title="新建虚拟机"></a>新建虚拟机</h2><p>打开 <code>vmware</code> ，文件 -&gt; 新建虚拟机，选择自定义后，下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144407.png" alt="image-20210927144407592"> </p>
+<p>下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144524.png" alt="image-20210927144524851"></p>
+<p>选择稍后安装操作系统，下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144707.png" alt="image-20210927144707464"></p>
+<p>选择客户机操作系统类型为 <code>Linux</code> ， 版本为 <code>CentOS7 64位</code>。 下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144807.png" alt="image-20210927144807436"></p>
+<p>修改新建虚拟机的名称，指定该虚拟机放置的目录。如图所示，虚拟机名称为 <code>centos7_test_node</code>, 位置为 <code>D:\virtural machine\centos7 test node</code>。需要特别说明的是，新建虚拟机并不会生成虚拟机名称同名的文件夹，故我们需要指定一个空目录来放置新建的虚拟机。下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145319.png" alt="image-20210927145319367"></p>
+<p>处理器配置保持默认，下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145634.png" alt="image-20210927145634792"></p>
+<p>内存配置选择 <code>512M</code>，基本够用。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927145746.png" alt="image-20210927145746773"></p>
+<p>网络模式选择 <code>NAT</code>, 在之前的文章 <a href="https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/">vmware 虚拟机联网的三种方式</a> 已经详细说明过。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150053.png" alt="image-20210927150053427"></p>
+<p><code>IO</code> 控制器 和 磁盘类型保持默认。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150124.png" alt="image-20210927150124572"></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150140.png" alt="image-20210927150140646"></p>
+<p>选择创建新虚拟硬盘。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150248.png" alt="image-20210927150248376"></p>
+<p>最大磁盘大小保持默认即可，选择将虚拟磁盘存储为单个文件。下一步</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150351.png" alt="image-20210927150351844"></p>
+<p>保持默认，下一步。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150509.png" alt="image-20210927150509757"></p>
+<p>选择自定义硬件，移除无用的虚拟设备（打印机，声卡，<code>USB</code> 控制器）。并指定使用<code>ISO</code> 映像文件的位置。使用此镜像来为虚拟机安装操作系统。关闭。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150539.png" alt="image-20210927150538935"></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927150734.png" alt="image-20210927150734740"></p>
+<p>点击完成。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151000.png" alt="image-20210927151000212"></p>
+<h2 id="安装操作系统"><a href="#安装操作系统" class="headerlink" title="安装操作系统"></a>安装操作系统</h2><p>开启此虚拟机，安装操作系统。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151103.png" alt="image-20210927151103071"></p>
+<p>光标定位到虚拟机中，选择 <code>Install Centos 7</code> 。 回车</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151334.png" alt="image-20210927151334041"></p>
+<p>等待跑码后，出现该界面。因为我们要安装的是服务器的操作系统，不会安装桌面。故保持默认 <code>Continue</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151613.png" alt="image-20210927151613118"></p>
+<p>出现该界面后，需要修改下时区，选择要安装系统的硬盘，关闭 <code>KDUMP</code> , 启用网卡。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927151833.png" alt="image-20210927151833814"></p>
+<p>首先点击  <code>DATE &amp; TIME</code> ,进行时区的设置, 选择图中所示位置 <code>Asia Shanghai</code>. 点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152244.png" alt="image-20210927152244374"></p>
+<p>点击 <code>INSTALLATION DESTATION</code> ,指定系统安装的位置。选中之前新建的硬盘，点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152450.png" alt="image-20210927152450046"></p>
+<p>点击 <code>NETWORK &amp; HOST NAME</code>, 开启网卡。 点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152207.png" alt="image-20210927152207712"></p>
+<p>点击 <code>KDUMP</code>. 取消勾选  <code>Enable kdump</code>  。<code>Kdump</code> 是一种崩溃转储机制。当系统发生故障时，会抓取一些导致系统崩溃的关键信息，但会占用一部分内存。点击 <code>Done</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927152826.png" alt="image-20210927152825901"></p>
+<p>点击 <code>SOFTWARE SELECTION</code> 后可选择要安装的包。如之前使用的是 <code>Minal</code> 版本的镜像，则如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927142512.png" alt="image-20210927142512809"></p>
+<p>如之前使用的是 <code>DVD</code> 版本的镜像，则如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927144030.png" alt="image-20210927144030197"></p>
+<p>点击 <code>Begin Installation</code> 开始安装。点击 <code>ROOT PASSWORD</code> 设置 <code>Root</code>账户密码。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927153228.png" alt="image-20210927153228381"></p>
+<p>输入密码，确认密码，后点击 <code>Done</code>。 密码尽量为数字，大小写字幕，特殊符号的组合。否则会提示弱密码</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927153752.png" alt="image-20210927153752121"></p>
+<p>等待安装完成后，点击 <code>Reboot</code> 重启</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927154940.png" alt="image-20210927154940640"></p>
+<p>输入用户名和密码，回车。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927155437.png" alt="image-20210927155437426"></p>
+<h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><p>首先，检查虚拟 <code>DHCP</code> 服务器分配的  <code>IP</code> 地址。如图所示，自动分配的 <code>IP</code> 地址为 <code>192.168.9.130</code></p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927155649.png" alt="image-20210927155649705"></p>
+<p>修改网络配置，设置静态 <code>IP</code> 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens32</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160115.png" alt="image-20210927160115404"></p>
+<p>将 <code>BOOTPROTO</code> 从 <code>dhcp</code> 改为 <code>static</code>, 增加以下几行。<code>IPADDR</code>  为 <code>IP</code> 地址， <code>PREFIX</code> 为网络号的位数，<code>24</code> 表示子网掩码为 <code>255.255.255.0</code> ,  <code>GATEWAY</code> 为默认网关， <code>DNS1</code> 为主要的 <code>dns</code>.网关可以在 <code>NAT</code> 配置中找到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IPADDR=192.168.9.130</span><br><span class="line">PREFIX=24</span><br><span class="line">GATEWAY=192.168.9.2</span><br><span class="line">DNS1=114.114.114.114</span><br></pre></td></tr></table></figure>
+
+<p>默认网关</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160417.png" alt="image-20210927160417810"></p>
+<p>最终配置如下</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927160713.png" alt="image-20210927160713637"></p>
+<p>配置好后，重启网络配置 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927161333.png" alt="image-20210927161333063"></p>
+<p>测试网络连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping baidu.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927161648.png" alt="image-20210927161648471"></p>
+<p>网络连接正常，配置完成。</p>
+<h2 id="使用-SecureCRT-连接虚拟机"><a href="#使用-SecureCRT-连接虚拟机" class="headerlink" title="使用 SecureCRT 连接虚拟机"></a>使用 SecureCRT 连接虚拟机</h2><p>在<code>vmware</code> 中操作很不方便，界面又不美观。通常我们会使用 <code>SSH</code> 客户端连接虚拟机进行操作, 常用的有 <code>SecureCRT</code> 和  <code>xshell</code>.</p>
+<h3 id="使用-SecureCRT-连接"><a href="#使用-SecureCRT-连接" class="headerlink" title="使用 SecureCRT 连接"></a>使用 <code>SecureCRT</code> 连接</h3><p>打开 <code>SecureCRT</code>,  <code>File</code> -&gt;  <code>Quick Connect</code> ，输入要连接的虚拟机的地址 <code>192.168.9.130</code>，用户名 <code>root</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162303.png" alt="image-20210927162303367"></p>
+<p>点击 <code>Accept &amp; Save</code> </p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162425.png" alt="image-20210927162425095"></p>
+<p>输入密码，点击 <code>ok</code></p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162557.png" alt="image-20210927162557133"></p>
+<p>此时就可以在 <code>SecureCRT</code> 中对虚拟机进行操作了。</p>
+<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927162749.png" alt="image-20210927162749385"></p>
+<h2 id="系统更新"><a href="#系统更新" class="headerlink" title="系统更新"></a>系统更新</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br></pre></td></tr></table></figure>
+
+<p>如下载速度比较慢或无法下载，则需要更换软件源：</p>
+<p>网易、清华大学和阿里云都提供了对应的解决方案。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mirrors.163.com/.help/centos.html">网易CentOS镜像使用帮助</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/centos">阿里云 centos镜像</a></li>
+<li><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/centos/">清华大学开源软件镜像站</a></li>
+</ul>
+<blockquote>
+<p>先备份 <code>/etc/yum.repos.d/</code> 内的文件（CentOS 7 及之前为 <code>CentOS-Base.repo</code>，CentOS 8 为<code>CentOS-Linux-*.repo</code>）</p>
+<p>然后编辑 <code>/etc/yum.repos.d/</code> 中的相应文件，在 <code>mirrorlist=</code> 开头行前面加 <code>#</code> 注释掉；并将 <code>baseurl=</code> 开头行取消注释（如果被注释的话），把该行内的域名（例如<code>mirror.centos.org</code>）替换为 <code>mirrors.tuna.tsinghua.edu.cn</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sed -e &#x27;s|^mirrorlist=|#mirrorlist=|g&#x27; \</span><br><span class="line">         -e &#x27;s|^#baseurl=http://mirror.centos.org|baseurl=https://mirrors.tuna.tsinghua.edu.cn|g&#x27; \</span><br><span class="line">         -i.bak \</span><br><span class="line">         /etc/yum.repos.d/CentOS-*.repo</span><br></pre></td></tr></table></figure>
+
+<p>最后更新软件包缓存：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://superuser.com/questions/878135/what-is-the-difference-between-centos-dvd-vs-everything-isos">What is the difference between CentOS “DVD” vs “Everything” ISOs</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+              <a href="/tags/vmware/" rel="tag"><i class="fa fa-tag"></i> vmware</a>
+              <a href="/tags/centos/" rel="tag"><i class="fa fa-tag"></i> centos</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/how-to-install-ubuntu-server20-04LTS/" rel="prev" title="how-to-install-ubuntu-server20.04LTS">
+      <i class="fa fa-chevron-left"></i> how-to-install-ubuntu-server20.04LTS
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/typora%E6%90%AD%E9%85%8Dgithub%E5%9B%BE%E5%BA%8A%E5%86%99%E6%96%87%E7%AB%A0%E7%9C%9F%E9%A6%99/" rel="next" title="typora搭配github图床写文章真香">
+      typora搭配github图床写文章真香 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">镜像下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="nav-number">1.1.</span> <span class="nav-text">版本选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">新建虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">安装操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">网络配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-SecureCRT-%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">4.</span> <span class="nav-text">使用 SecureCRT 连接虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-SecureCRT-%E8%BF%9E%E6%8E%A5"><span class="nav-number">4.1.</span> <span class="nav-text">使用 SecureCRT 连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0"><span class="nav-number">5.</span> <span class="nav-text">系统更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Wang"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">John Wang</p>
+  <div class="site-description" itemprop="description">涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/KJohn2q" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;KJohn2q" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
