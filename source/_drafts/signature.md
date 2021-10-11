@@ -17,17 +17,19 @@ categories: [笔记]
 
 ![image-20211011111533617](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111115034.png)
 
-此时，如果有不怀好意的 `C`  , 可以对数据包劫持。因为没有任何加密，`C` 能看到信息内容为 `Hello`
+此时，如果 `C` 看到了 `B` 收到的信息，因为没有加密，能清楚看到信息内容为 `Hello`
 
-![image-20211011112136572](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111121624.png)
+![image-20211011153508522](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111535586.png)
 
-`A` 意识到了这个问题，于是和 `B` 协商了密码和加密算法，用于信息的加密。如选择加密算法为 `AES`, 密码为 `123456`, 则对 `Hello` 加密后，结果为  `U2FsdGVkX1+tSNz3t5BLBi97cEu+9WavFv3mdrf3NGQ=`   加密工具地址： [文本加密解密 - 一个工具箱 - 好用的在线工具都在这里！ (atoolbox.net)](http://www.atoolbox.net/Tool.php?Id=679)。`B` 在收到信息的时候，依据约定好的加密算法和密码对信息进行解密，得到真实的信息内容。这种加密方式称之为对称加密（`sysmetric encryption`）。
+`A` 意识了此问题，和 `B` 协商了个密码。以后 `A` 在发送信息的时候先用协商好的密钥对信息内容进行加密，`B` 在收到信息后使用密钥对收到的信息进行解密，得到真实的消息内容。同一个密钥对信息进行加密和解密，这种方式称之为**对称加密**（`symmetric encryption`）。
 
-![image-20211011114218625](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111142676.png)
+![image-20211011154820482](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111548541.png)
 
-此时，如 `C` 再对数据包进行劫持，则只能看到加密后的结果。不知道真实信息
+此时，如 `C` 看到 `B` 收到由 `A` 发送的信息，得不到真实的内容
 
-![image-20211011115448821](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111154890.png)
+![image-20211011155316727](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111553785.png)
+
+
 
 ## 引用
 
