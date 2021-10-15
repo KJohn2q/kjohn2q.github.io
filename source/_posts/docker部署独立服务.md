@@ -1,9 +1,14 @@
 ---
 title: docker部署独立服务
-date: 2021-10-15 10:06:37
-tags: [docker, 服务，数据库，mysql, rabbitmq, redis]
+tags:
+  - docker
+  - 服务，数据库，mysql
+  - rabbitmq
+  - redis
 categories: 笔记
+date: 2021-10-15 10:06:37
 ---
+
 
 > 独立服务指的是没有任何业务依赖，可独立部署，供其它系统调用的服务。如数据库，缓存服务，消息队列等。
 
