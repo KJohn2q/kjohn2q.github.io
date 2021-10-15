@@ -55,6 +55,7 @@ redis:latest
 
 * [How to Deploy and Run Redis in Docker](https://phoenixnap.com/kb/docker-redis)
 * [redis dockerhub](https://hub.docker.com/_/redis)
+* [Redis configuration](https://redis.io/topics/config)
 
 ## docker 部署 rabbitmq
 
