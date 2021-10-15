@@ -1,9 +1,11 @@
 ---
 title: docker cheatsheet
-date: 2021-10-15 14:15:54
-tags: [docker]
+tags:
+  - docker
 categories: 笔记
+date: 2021-10-15 14:15:54
 ---
+
 
 ## docker run
 
