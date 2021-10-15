@@ -180,6 +180,292 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/docker-cheatsheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/docker-cheatsheet/" class="post-title-link" itemprop="url">docker cheatsheet</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-15 14:15:54" itemprop="dateCreated datePublished" datetime="2021-10-15T14:15:54+00:00">2021-10-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>启动一个新的容器 (<code>container</code>). 如镜像不存在，会先从 <code>docker</code> 托管库中拉取镜像。</p>
+<p>用法：<code>docker run [options] IMAGE</code></p>
+<ul>
+<li><code>-d, --detach</code>  容器在后台运行</li>
+<li><code>--name string</code>  指定容器的名称</li>
+<li><code>-e --env list</code>  设置环境变量</li>
+<li><code>-p  --publish list</code>  建立容器到本地的端口映射</li>
+<li><code>-i，--interactive</code>  保持命令行交互状态  </li>
+<li><code>-t, --tty</code>   分配一个伪终端</li>
+<li><code>-w, --workdir</code>  设置容器的工作目录</li>
+<li><code>--rm</code>  如果容器已经存在，自动删除</li>
+<li><code>-v, --volume list</code>  绑定挂载卷</li>
+</ul>
+<p>例子： <code>docker run -d --rm --name dmysql -e MYSQL_ROOT_PASSWORD=secret -v mysql-data:/var/lib/mysql mysql:5,7</code> 该命令会运行一个 <code>mysql:5.7</code> 的容器，名称为 <code>dmysql</code>，<code>root</code> 账户密码为 <code>secret</code>, 数据存储在名为 <code>mysql-data</code> 的挂载卷中，并将本地端口 <code>3306</code> 与容器 <code>3306</code> 端口做了映射。</p>
+<h2 id="docker-image"><a href="#docker-image" class="headerlink" title="docker image"></a>docker image</h2><p>管理 <code>docker</code> 镜像</p>
+<p>用法： <code>docker image COMMAND</code></p>
+<ul>
+<li><code>ls</code>  查看所有镜像</li>
+<li><code>build</code> 依据 <code>Dockerfile</code> 创建镜像</li>
+<li><code>pull</code>  从远程仓库拉取镜像</li>
+<li><code>push</code> 推送镜像到远程仓库</li>
+<li><code>rm</code>  删除指定镜像</li>
+</ul>
+<h3 id="docker-image-ls"><a href="#docker-image-ls" class="headerlink" title="docker image ls"></a>docker image ls</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/docker-cheatsheet/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/docker%E9%83%A8%E7%BD%B2%E7%8B%AC%E7%AB%8B%E6%9C%8D%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/docker%E9%83%A8%E7%BD%B2%E7%8B%AC%E7%AB%8B%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">docker部署独立服务</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-15 10:06:37" itemprop="dateCreated datePublished" datetime="2021-10-15T10:06:37+00:00">2021-10-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>独立服务指的是没有任何业务依赖，可独立部署，供其它系统调用的服务。如数据库，缓存服务，消息队列等。</p>
+</blockquote>
+<h2 id="docker-部署-mysql"><a href="#docker-部署-mysql" class="headerlink" title="docker 部署 mysql"></a>docker 部署 mysql</h2><p>以 <code>mysql5.7</code> 为例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name dmysql \</span><br><span class="line">-p3306:3306 \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret \</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p>如使用 <code>powershell</code>,则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--name dmysql `</span><br><span class="line">-p3306:3306 `</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret `</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/_/mysql">mysql dockerhub</a></li>
+</ul>
+<h2 id="docker-部署-redis"><a href="#docker-部署-redis" class="headerlink" title="docker 部署 redis"></a>docker 部署 redis</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name redis-app \</span><br><span class="line">-p6379:6379 \</span><br><span class="line">redis:latest</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/docker%E9%83%A8%E7%BD%B2%E7%8B%AC%E7%AB%8B%E6%9C%8D%E5%8A%A1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">个人常用软件整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-12 15:22:54" itemprop="dateCreated datePublished" datetime="2021-10-12T15:22:54+00:00">2021-10-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">记录</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><ul>
+<li>clash  网络代理软件</li>
+<li>listary 集应用和文件快速搜索的工具</li>
+<li>picgo  图床管理工具</li>
+<li>snipaste 轻量截图工具</li>
+</ul>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
+<li>chrome  用于页面调试</li>
+<li>新edge  用于普通的浏览，收藏同步</li>
+</ul>
+<h2 id="云盘"><a href="#云盘" class="headerlink" title="云盘"></a>云盘</h2><ul>
+<li>阿里云盘 不限速 3+T免费空间 </li>
+<li>onedrive  在windows系统上同步体验极佳，用于保存资料，个人相册同步</li>
+</ul>
+<h2 id="浏览器插件"><a href="#浏览器插件" class="headerlink" title="浏览器插件"></a>浏览器插件</h2><ul>
+<li>pocket  经典文章收藏，同步，有手机端app</li>
+<li>GoFullPage  整站、滚动截屏工具</li>
+<li>bitwarden  密码管理器插件</li>
+<li>Internet Download Manager  idm浏览器下载插件，搭配pc端应用使用</li>
+<li>crxMouse Top Gestures  鼠标手势</li>
+<li>AdBlock  广告屏蔽插件</li>
+<li>Google翻译  翻译</li>
+<li>沙拉查词 整合多个翻译和查词工具</li>
+<li>Imageus 图片缩放插件，无需到新链接打开</li>
+</ul>
+<h2 id="音乐下载"><a href="#音乐下载" class="headerlink" title="音乐下载"></a>音乐下载</h2><ul>
+<li>五音助手</li>
+<li>Music Tools</li>
+<li>酷我音乐</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/powershell%E7%BE%8E%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -763,272 +1049,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">github+hexo搭建博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-01 09:32:49" itemprop="dateCreated datePublished" datetime="2020-08-01T09:32:49+00:00">2020-08-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文介绍使用<code>hexo + github pages</code>搭建博客网站。</p>
-<p>基础环境：<code>nodejs(version &lt; 14 &amp;&amp; version &gt; 12)</code></p>
-<h2 id="hexo安装与配置"><a href="#hexo安装与配置" class="headerlink" title="hexo安装与配置"></a>hexo安装与配置</h2><p><code>npm install -g hexo-cli</code></p>
-<h2 id="github仓库配置"><a href="#github仓库配置" class="headerlink" title="github仓库配置"></a>github仓库配置</h2><p>github中，新建一个 <code>public</code> 仓库，命名为 <code>TestBlog</code></p>
-<h2 id="本地新建博客并连接到-github-远程仓库地址"><a href="#本地新建博客并连接到-github-远程仓库地址" class="headerlink" title="本地新建博客并连接到 github 远程仓库地址"></a>本地新建博客并连接到 <code>github</code> 远程仓库地址</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"></span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line"></span><br><span class="line">npm install</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="配置博客信息"><a href="#配置博客信息" class="headerlink" title="配置博客信息"></a>配置博客信息</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: KJohn2q</span><br><span class="line">subtitle: &#x27;一个专注技术的程序员&#x27;</span><br><span class="line">description: &#x27;涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。&#x27;</span><br><span class="line">keywords: &quot;Python, Php, C++, Java, 爬虫, 架构, 分布式&quot;</span><br><span class="line">author: John Wang</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: &#x27;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">vmware 虚拟机联网的三种方式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-31 18:05:44" itemprop="dateCreated datePublished" datetime="2020-07-31T18:05:44+00:00">2020-07-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>虚拟机联网有三种方式：桥接（bridge）, NAT, 仅主机模式（Host-Only)。联网方式可以在虚拟机设置中进行设置。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170113.png" alt></p>
-<h2 id="桥接（bridge）模式"><a href="#桥接（bridge）模式" class="headerlink" title="桥接（bridge）模式"></a>桥接（bridge）模式</h2><p>网络桥接是一种计算机联网设备，可从多个通信网络或网段中创建单个聚合网络。（原文：A network bridge is a computer networking device that creates a single aggregate network from multiple communication networks or network segments. ）。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170555.png" alt></p>
-<p>如图所示，主机网卡通过虚拟网桥连接虚拟交换机，各网络模式为桥接的虚拟机连接虚拟交换机 <code>VMNet0</code>,各虚拟机  <code>IP</code> 均和主机 <code>IP</code> 处于同一网段且不能冲突。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819162442.jpg" alt></p>
-<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先在虚拟机配置中选择桥接模式。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731170914.png" alt></p>
-<p>然后进入虚拟机系统，设置虚拟机IP和主机IP处于同一地址段。</p>
-<p>我本机的 <code>IP</code> 为 <code>192.168.3.X</code> 网段。故需要设置虚拟机为 <code>192.168.3.X</code>,且不能与当前局域网内的主机 <code>IP</code> 地址冲突。</p>
-<p>以 <code>centos7</code> 为例，使用 <code>root</code>账户登录后，<code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731173257.png" alt></p>
-<p>如图所示进行修改.</p>
-<p>然后重启网络服务(<code>service network restart</code>)</p>
-<p>此时，便可访问外网和宿主机。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>桥接网络的方式配置简单，但并不适用于ip地址稀缺的情况。</p>
-<h2 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h2><p>网络地址转换（NAT）是一种通过在数据包通过流量路由设备传输时修改数据包IP报头中的网络地址信息，将IP地址空间重新映射到另一个地址的方法。（原文：Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.）</p>
-<p><code>vmware</code> 中新建虚拟机默认网络配置为 <code>NAT</code> 模式,虚拟机处于独立的网络，通过 <code>NAT</code> 转换器可以访问外网，且能和主机相互通信。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821174734.jpg" alt></p>
-<p>如图所示，虚拟的 <code>VMware Network Adapter VMnet8</code> 网卡与虚拟交换机 <code>VMNet8</code> 相连，<code>IP</code> 地址段为 <code>192.168.9.0/24</code>，网关默认为 <code>192.168.9.2</code>. 具体的 <code>NAT</code> 设置可点击NAT设置查看。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819170322.png" alt></p>
-<h4 id="网络配置-1"><a href="#网络配置-1" class="headerlink" title="网络配置"></a>网络配置</h4><p>首先，先将虚拟机的网络配置修改为<code>NAT</code>模式。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20200731174109.png" alt></p>
-<p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 <code>NAT</code> 模式的 <code>ip</code> 地址段、网关地址和子网掩码。</p>
-<p>使用 <code>root</code> 用户登录虚拟机系统，配置网络信息为刚刚查到的（IP地址，子网掩码，网关地址），添加 <code>DNS</code> (114.114.114.114, 114.114.115.115)。</p>
-<p>然后重启网络服务即可访问网络和宿主机。</p>
-<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><code>NAT</code> 模式适用于 <code>IP</code> 地址稀缺的情况。</p>
-<h2 id="仅主机（Host-Only）"><a href="#仅主机（Host-Only）" class="headerlink" title="仅主机（Host-Only）"></a>仅主机（Host-Only）</h2><p>仅主机模式表示虚拟机只能访问宿主机，不能访问网络。整个虚拟机和宿主机工作在一个大的内网下,宿主机可以访问虚拟机，虚拟机不能访问宿主机。如需要连接外网，可以利用宿主机共享网络。此时，处于 <code>host-only</code> 网络模式下的虚拟机可以通过宿主机网络访问外网，且可以访问宿主机</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210819173636.jpg" alt></p>
-<p>如图所示，宿主机通过虚拟网卡 <code>VMware Network Adapter VMnet1</code> 与主机网络进行通信，虚拟网卡的 <code>IP</code> 地址需要设置为仅主机模式的网段。默认为主机号为 <code>.1</code></p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210821173642.png" alt></p>
-<h4 id="网络配置-2"><a href="#网络配置-2" class="headerlink" title="网络配置"></a>网络配置</h4><p>可在 <code>vmware</code> 中的虚拟网络编辑器中查看 仅主机模式的 <code>IP</code> 地址段,在虚拟机中配置IP地址，子网掩码。</p>
-<p>重启网络服务，宿主机即可访问该虚拟机。</p>
-<h4 id="访问外网"><a href="#访问外网" class="headerlink" title="访问外网"></a>访问外网</h4><p>宿主机中联网的网卡，配置网络共享，选中 <code>host-only</code> 对应的那块虚拟网卡。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115332.png" alt></p>
-<p>点击确定后，该虚拟网卡的<code>ip</code> 地址会改为 <code>192.168.137.1</code>,需要改为该虚拟网卡对应的虚拟网络交换机的地址段</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115648.png" alt></p>
-<p>如上图所示，地址段位 <code>192.168,17.0</code>,于是需要把虚拟网卡的 <code>ip</code> 地址改为 <code>192.168.17.1</code></p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210812115917.png" alt></p>
-<p>然后，将联网方式为 <code>host-only</code> 的虚拟机网关设置为  <code>192.168.17.l</code> 即 <code>VMware Network Adapter VMnet1</code> 的地址就可以访问外网了，此时也可以访问宿主机。</p>
-<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>仅主机模式一般用于公司对机密性要求比较高的网络，个人不常用。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://geek-university.com/ccna/what-is-a-network-bridge/">What is a network bridge?</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bridging_(networking)">Bridging (networking)</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Network_address_translation">Network address translation</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yihr/p/7348304.html">vmware联网解决方案：host-only共享上网</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24758022">VMware的三种网络模式</a></li>
-</ul>
-</li>
-</ul>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/vmware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%81%94%E7%BD%91%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">google搜索技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-21 10:04:13" itemprop="dateCreated datePublished" datetime="2020-07-21T10:04:13+00:00">2020-07-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">技巧</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文总结了几个使用搜索引擎（ <code>google</code> ）的小技巧，供你参考</p>
-<h2 id="英文"><a href="#英文" class="headerlink" title="英文"></a>英文</h2><p>尽量使用英文去搜索你需要的结果。英语是全世界使用范围最广的语言，使用英语你能搜索到更多高质量，且对你有帮助的内容。</p>
-<h2 id="使用标签"><a href="#使用标签" class="headerlink" title="使用标签"></a>使用标签</h2><p>如果你需要图片，使用 <code>Image</code> 标签。如果你查找最近的新闻文章，私用 <code>News</code> 标签。</p>
-<h2 id="使用-quot-quot"><a href="#使用-quot-quot" class="headerlink" title="使用 &quot;&quot;"></a>使用 <code>&quot;&quot;</code></h2><p>如果需要搜索指定的关键词或句子，使用引号缩小 <code>google</code> 搜索的猜测。该条在查找软件开发中遇到的问题或者软件使用中的报错尤其有用。</p>
-<h2 id="使用-排除关键词"><a href="#使用-排除关键词" class="headerlink" title="使用 - 排除关键词"></a>使用 <code>-</code> 排除关键词</h2><p>使用连字符号来排除你不想要的结果。</p>
-<h2 id="使用-在指定站点中搜索"><a href="#使用-在指定站点中搜索" class="headerlink" title="使用 : 在指定站点中搜索"></a>使用 <code>:</code> 在指定站点中搜索</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1100,18 +1120,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

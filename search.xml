@@ -211,6 +211,122 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
+    <title>docker cheatsheet</title>
+    <url>/2021/docker-cheatsheet/</url>
+    <content><![CDATA[<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>启动一个新的容器 (<code>container</code>). 如镜像不存在，会先从 <code>docker</code> 托管库中拉取镜像。</p>
+<p>用法：<code>docker run [options] IMAGE</code></p>
+<ul>
+<li><code>-d, --detach</code>  容器在后台运行</li>
+<li><code>--name string</code>  指定容器的名称</li>
+<li><code>-e --env list</code>  设置环境变量</li>
+<li><code>-p  --publish list</code>  建立容器到本地的端口映射</li>
+<li><code>-i，--interactive</code>  保持命令行交互状态  </li>
+<li><code>-t, --tty</code>   分配一个伪终端</li>
+<li><code>-w, --workdir</code>  设置容器的工作目录</li>
+<li><code>--rm</code>  如果容器已经存在，自动删除</li>
+<li><code>-v, --volume list</code>  绑定挂载卷</li>
+</ul>
+<p>例子： <code>docker run -d --rm --name dmysql -e MYSQL_ROOT_PASSWORD=secret -v mysql-data:/var/lib/mysql mysql:5,7</code> 该命令会运行一个 <code>mysql:5.7</code> 的容器，名称为 <code>dmysql</code>，<code>root</code> 账户密码为 <code>secret</code>, 数据存储在名为 <code>mysql-data</code> 的挂载卷中，并将本地端口 <code>3306</code> 与容器 <code>3306</code> 端口做了映射。</p>
+<h2 id="docker-image"><a href="#docker-image" class="headerlink" title="docker image"></a>docker image</h2><p>管理 <code>docker</code> 镜像</p>
+<p>用法： <code>docker image COMMAND</code></p>
+<ul>
+<li><code>ls</code>  查看所有镜像</li>
+<li><code>build</code> 依据 <code>Dockerfile</code> 创建镜像</li>
+<li><code>pull</code>  从远程仓库拉取镜像</li>
+<li><code>push</code> 推送镜像到远程仓库</li>
+<li><code>rm</code>  删除指定镜像</li>
+</ul>
+<h3 id="docker-image-ls"><a href="#docker-image-ls" class="headerlink" title="docker image ls"></a>docker image ls</h3><p>列出所有 <code>docker</code> 镜像</p>
+<p>用法 : <code>docker image ls [options]</code></p>
+<ul>
+<li><code>-a</code>  列出所有镜像，默认会隐藏中间镜像（多阶段构建中会用到）</li>
+</ul>
+<h3 id="docker-image-build"><a href="#docker-image-build" class="headerlink" title="docker image build"></a>docker image build</h3><p>依据 <code>Dockerfile</code> 创建镜像</p>
+<p>用法：<code>docker image build [options]</code></p>
+<ul>
+<li><code>-f, --file</code> 指定 <code>Dockerfile</code> 路径</li>
+<li><code>-t, --tag list</code> 指定要创建的镜像名称和可选的标签，格式为 <code>name:tag</code></li>
+</ul>
+<h3 id="docker-image-pull"><a href="#docker-image-pull" class="headerlink" title="docker image pull"></a>docker image pull</h3><p>从远程仓库拉取镜像</p>
+<p>用法:  <code>docker image pull Name[:Tag]</code></p>
+<p>例子: <code>docker image pull mysql:latest</code></p>
+<h3 id="docker-image-push"><a href="#docker-image-push" class="headerlink" title="docker image push"></a>docker image push</h3><p>推送仓库到远程仓库</p>
+<p>用法：<code>docker image push Name:[:Tag]</code></p>
+<h3 id="docker-image-rm"><a href="#docker-image-rm" class="headerlink" title="docker image rm"></a>docker image rm</h3><p>删除指定镜像 </p>
+<p>用法：<code>docker image rm [options]</code> IMAGE</p>
+<ul>
+<li><code>-f, --force</code>  强制删除指定镜像 </li>
+</ul>
+<h2 id="docker-container"><a href="#docker-container" class="headerlink" title="docker container"></a>docker container</h2><p>管理 <code>docker</code> 容器</p>
+<p>用法: <code>docker container COMMAND</code></p>
+<ul>
+<li><code>ls</code>  列出容器</li>
+<li><code>start</code> 启动停用（<code>stopped</code>）的容器</li>
+<li><code>rm</code>  删除容器</li>
+<li><code>stop</code> 停用运行中的容器</li>
+</ul>
+<h2 id="docker-ps"><a href="#docker-ps" class="headerlink" title="docker ps"></a>docker ps</h2><p>列出运行中的容器。</p>
+<h2 id="docker-logs"><a href="#docker-logs" class="headerlink" title="docker logs"></a>docker logs</h2><p>抓取容器的日志。</p>
+<p>用法：<code>docker logs [OPTIONS] CONTAINER</code></p>
+<ul>
+<li><code>-f, --follow</code>  追踪日志输出</li>
+<li><code>-n, --tail string</code>  显示末尾第<code>n</code>行  </li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker部署独立服务</title>
+    <url>/2021/docker%E9%83%A8%E7%BD%B2%E7%8B%AC%E7%AB%8B%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<blockquote>
+<p>独立服务指的是没有任何业务依赖，可独立部署，供其它系统调用的服务。如数据库，缓存服务，消息队列等。</p>
+</blockquote>
+<h2 id="docker-部署-mysql"><a href="#docker-部署-mysql" class="headerlink" title="docker 部署 mysql"></a>docker 部署 mysql</h2><p>以 <code>mysql5.7</code> 为例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name dmysql \</span><br><span class="line">-p3306:3306 \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret \</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<p>如使用 <code>powershell</code>,则：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--name dmysql `</span><br><span class="line">-p3306:3306 `</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret `</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://hub.docker.com/_/mysql">mysql dockerhub</a></li>
+</ul>
+<h2 id="docker-部署-redis"><a href="#docker-部署-redis" class="headerlink" title="docker 部署 redis"></a>docker 部署 redis</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name redis-app \</span><br><span class="line">-p6379:6379 \</span><br><span class="line">redis:latest</span><br></pre></td></tr></table></figure>
+
+<p>如使用 <code>powershell</code>,则：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--name redis-app `</span><br><span class="line">-p6379:6379 `</span><br><span class="line">redis:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://phoenixnap.com/kb/docker-redis">How to Deploy and Run Redis in Docker</a></li>
+<li><a href="https://hub.docker.com/_/redis">redis dockerhub</a></li>
+<li><a href="https://redis.io/topics/config">Redis configuration</a></li>
+</ul>
+<h2 id="docker-部署-rabbitmq"><a href="#docker-部署-rabbitmq" class="headerlink" title="docker 部署 rabbitmq"></a>docker 部署 rabbitmq</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--rm -it \</span><br><span class="line">--hostname my-rabbit \</span><br><span class="line">-p 15672:15672 \</span><br><span class="line">-p 5672:5672 \</span><br><span class="line">rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+
+<p>如使用 <code>powershell</code>，则：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--rm -it `</span><br><span class="line">--hostname my-rabbit `</span><br><span class="line">-p 15672:15672 `</span><br><span class="line">-p 5672:5672 `</span><br><span class="line">rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+
+<p>端口 <code>15672</code> 为 <code>rabbitmq</code> 管理站点端口， 端口 <code>5672</code> 为客户端连接端口。上述命令执行完成后，我们可以打开地址 <code>http://localhost:15672</code> 打开 <code>rabbitmq</code> 管理站点，默认的用户名和密码都为 <code>guest</code></p>
+<h3 id="参考-2"><a href="#参考-2" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://codeburst.io/get-started-with-rabbitmq-on-docker-4428d7f6e46b">Get Started with RabbitMQ on Docker</a></li>
+<li><a href="https://hub.docker.com/_/rabbitmq">rabbitmq dockerhub</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>服务，数据库，mysql</tag>
+        <tag>rabbitmq</tag>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>github+hexo搭建博客</title>
     <url>/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>本文介绍使用<code>hexo + github pages</code>搭建博客网站。</p>
@@ -912,6 +1028,71 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       <tags>
         <tag>虚拟机</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人常用软件整理</title>
+    <url>/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><ul>
+<li>clash  网络代理软件</li>
+<li>listary 集应用和文件快速搜索的工具</li>
+<li>picgo  图床管理工具</li>
+<li>snipaste 轻量截图工具</li>
+</ul>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
+<li>chrome  用于页面调试</li>
+<li>新edge  用于普通的浏览，收藏同步</li>
+</ul>
+<h2 id="云盘"><a href="#云盘" class="headerlink" title="云盘"></a>云盘</h2><ul>
+<li>阿里云盘 不限速 3+T免费空间 </li>
+<li>onedrive  在windows系统上同步体验极佳，用于保存资料，个人相册同步</li>
+</ul>
+<h2 id="浏览器插件"><a href="#浏览器插件" class="headerlink" title="浏览器插件"></a>浏览器插件</h2><ul>
+<li>pocket  经典文章收藏，同步，有手机端app</li>
+<li>GoFullPage  整站、滚动截屏工具</li>
+<li>bitwarden  密码管理器插件</li>
+<li>Internet Download Manager  idm浏览器下载插件，搭配pc端应用使用</li>
+<li>crxMouse Top Gestures  鼠标手势</li>
+<li>AdBlock  广告屏蔽插件</li>
+<li>Google翻译  翻译</li>
+<li>沙拉查词 整合多个翻译和查词工具</li>
+<li>Imageus 图片缩放插件，无需到新链接打开</li>
+</ul>
+<h2 id="音乐下载"><a href="#音乐下载" class="headerlink" title="音乐下载"></a>音乐下载</h2><ul>
+<li>五音助手</li>
+<li>Music Tools</li>
+<li>酷我音乐</li>
+</ul>
+<h2 id="开发相关"><a href="#开发相关" class="headerlink" title="开发相关"></a>开发相关</h2><ul>
+<li>docker for desktop 搭建独立环境，如mysql,redis,rabbitmq等</li>
+<li>idea java开发者必备</li>
+<li>nodejs环境</li>
+<li>jdk java环境</li>
+<li>navicat premium  数据库连接客户端</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>calibre 图书管理，将书库目录设置为onedrive中自定义目录，很香</li>
+<li>Todo 日程待办软件，干净简洁，无网络问题</li>
+<li>Windows Terminal  新的命令行终端</li>
+<li>网易云音乐  长期使用，歌单同步，云盘配合酷我音乐等第三方软件很香</li>
+<li>vscode  文本编辑器，搭配各种插件很好用</li>
+<li>网易有道词典</li>
+<li>secureCRT  ssh client</li>
+<li>SumatraPDF 轻量pdf阅读工具</li>
+<li>天若OCR  文字识别工具</li>
+<li>Potplayer  视频播放</li>
+<li>PDF-XChange Editor  PDF编辑工具</li>
+<li>Git 版本控制软件</li>
+<li>微信 聊天软件</li>
+<li>vmware 虚拟机软件，用于创建各种测试环境，虚拟机</li>
+<li>ObsStudio  录屏，直播推流</li>
+</ul>
+]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
