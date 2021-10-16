@@ -6,6 +6,9 @@ categories: 笔记
 date: 2021-10-15 14:15:54
 ---
 
+#  docker
+
+* `docker -v, --version`    查看 `docker` 版本
 
 ## docker run
 
@@ -100,3 +103,24 @@ date: 2021-10-15 14:15:54
 * `-f, --follow`  追踪日志输出
 * `-n, --tail string`  显示末尾第`n`行  
 
+## docker network
+
+管理 `docker` 网络
+
+用法： `docker network COMMAND`
+
+* `create`  创建网络
+* `ls`  列出网络
+* `prune`  删除所有无用的网络
+* `rm`  删除网络
+
+## docker volume
+
+管理 `docker` 卷
+
+用法：`docker volumn COMMAND`
+
+* `create` 创建卷
+* `ls` 列出卷
+* `prune` 删除所有无用的卷
+* `rm` 删除卷
