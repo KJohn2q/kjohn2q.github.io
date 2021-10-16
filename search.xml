@@ -213,7 +213,10 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
   <entry>
     <title>docker cheatsheet</title>
     <url>/2021/docker-cheatsheet/</url>
-    <content><![CDATA[<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>启动一个新的容器 (<code>container</code>). 如镜像不存在，会先从 <code>docker</code> 托管库中拉取镜像。</p>
+    <content><![CDATA[<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><ul>
+<li><code>docker -v, --version</code>    查看 <code>docker</code> 版本</li>
+</ul>
+<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>启动一个新的容器 (<code>container</code>). 如镜像不存在，会先从 <code>docker</code> 托管库中拉取镜像。</p>
 <p>用法：<code>docker run [options] IMAGE</code></p>
 <ul>
 <li><code>-d, --detach</code>  容器在后台运行</li>
@@ -271,6 +274,22 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <ul>
 <li><code>-f, --follow</code>  追踪日志输出</li>
 <li><code>-n, --tail string</code>  显示末尾第<code>n</code>行  </li>
+</ul>
+<h2 id="docker-network"><a href="#docker-network" class="headerlink" title="docker network"></a>docker network</h2><p>管理 <code>docker</code> 网络</p>
+<p>用法： <code>docker network COMMAND</code></p>
+<ul>
+<li><code>create</code>  创建网络</li>
+<li><code>ls</code>  列出网络</li>
+<li><code>prune</code>  删除所有无用的网络</li>
+<li><code>rm</code>  删除网络</li>
+</ul>
+<h2 id="docker-volume"><a href="#docker-volume" class="headerlink" title="docker volume"></a>docker volume</h2><p>管理 <code>docker</code> 卷</p>
+<p>用法：<code>docker volumn COMMAND</code></p>
+<ul>
+<li><code>create</code> 创建卷</li>
+<li><code>ls</code> 列出卷</li>
+<li><code>prune</code> 删除所有无用的卷</li>
+<li><code>rm</code> 删除卷</li>
 </ul>
 ]]></content>
       <categories>

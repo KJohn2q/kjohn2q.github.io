@@ -227,7 +227,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>启动一个新的容器 (<code>container</code>). 如镜像不存在，会先从 <code>docker</code> 托管库中拉取镜像。</p>
+          <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><ul>
+<li><code>docker -v, --version</code>    查看 <code>docker</code> 版本</li>
+</ul>
+<h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p>启动一个新的容器 (<code>container</code>). 如镜像不存在，会先从 <code>docker</code> 托管库中拉取镜像。</p>
 <p>用法：<code>docker run [options] IMAGE</code></p>
 <ul>
 <li><code>-d, --detach</code>  容器在后台运行</li>
@@ -243,14 +246,6 @@
 <p>例子： <code>docker run -d --rm --name dmysql -e MYSQL_ROOT_PASSWORD=secret -v mysql-data:/var/lib/mysql mysql:5,7</code> 该命令会运行一个 <code>mysql:5.7</code> 的容器，名称为 <code>dmysql</code>，<code>root</code> 账户密码为 <code>secret</code>, 数据存储在名为 <code>mysql-data</code> 的挂载卷中，并将本地端口 <code>3306</code> 与容器 <code>3306</code> 端口做了映射。</p>
 <h2 id="docker-image"><a href="#docker-image" class="headerlink" title="docker image"></a>docker image</h2><p>管理 <code>docker</code> 镜像</p>
 <p>用法： <code>docker image COMMAND</code></p>
-<ul>
-<li><code>ls</code>  查看所有镜像</li>
-<li><code>build</code> 依据 <code>Dockerfile</code> 创建镜像</li>
-<li><code>pull</code>  从远程仓库拉取镜像</li>
-<li><code>push</code> 推送镜像到远程仓库</li>
-<li><code>rm</code>  删除指定镜像</li>
-</ul>
-<h3 id="docker-image-ls"><a href="#docker-image-ls" class="headerlink" title="docker image ls"></a>docker image ls</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/docker-cheatsheet/#more" rel="contents">
