@@ -349,28 +349,28 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <p>独立服务指的是没有任何业务依赖，可独立部署，供其它系统调用的服务。如数据库，缓存服务，消息队列等。</p>
 </blockquote>
 <h2 id="docker-部署-mysql"><a href="#docker-部署-mysql" class="headerlink" title="docker 部署 mysql"></a>docker 部署 mysql</h2><p>以 <code>mysql5.7</code> 为例</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name dmysql \</span><br><span class="line">-p3306:3306 \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret \</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--rm \</span><br><span class="line">--name dmysql \</span><br><span class="line">-p3306:3306 \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret \</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
 
 <p>如使用 <code>powershell</code>,则：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--name dmysql `</span><br><span class="line">-p3306:3306 `</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret `</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--rm  `</span><br><span class="line">--name dmysql `</span><br><span class="line">-p3306:3306 `</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=secret `</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
 
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="https://hub.docker.com/_/mysql">mysql dockerhub</a></li>
 </ul>
-<h2 id="docker-部署-redis"><a href="#docker-部署-redis" class="headerlink" title="docker 部署 redis"></a>docker 部署 redis</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name redis-app \</span><br><span class="line">-p6379:6379 \</span><br><span class="line">redis:latest</span><br></pre></td></tr></table></figure>
+<h2 id="docker-部署-redis"><a href="#docker-部署-redis" class="headerlink" title="docker 部署 redis"></a>docker 部署 redis</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--rm  \</span><br><span class="line">--name redis-app \</span><br><span class="line">-p6379:6379 \</span><br><span class="line">redis:latest</span><br></pre></td></tr></table></figure>
 
 <p>如使用 <code>powershell</code>,则：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--name redis-app `</span><br><span class="line">-p6379:6379 `</span><br><span class="line">redis:latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--rm `</span><br><span class="line">--name redis-app `</span><br><span class="line">-p6379:6379 `</span><br><span class="line">redis:latest</span><br></pre></td></tr></table></figure>
 
 <h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="https://phoenixnap.com/kb/docker-redis">How to Deploy and Run Redis in Docker</a></li>
 <li><a href="https://hub.docker.com/_/redis">redis dockerhub</a></li>
 <li><a href="https://redis.io/topics/config">Redis configuration</a></li>
 </ul>
-<h2 id="docker-部署-rabbitmq"><a href="#docker-部署-rabbitmq" class="headerlink" title="docker 部署 rabbitmq"></a>docker 部署 rabbitmq</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--rm -it \</span><br><span class="line">--hostname my-rabbit \</span><br><span class="line">-p 15672:15672 \</span><br><span class="line">-p 5672:5672 \</span><br><span class="line">rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+<h2 id="docker-部署-rabbitmq"><a href="#docker-部署-rabbitmq" class="headerlink" title="docker 部署 rabbitmq"></a>docker 部署 rabbitmq</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--rm -it \</span><br><span class="line">--name my-rabbit \</span><br><span class="line">--hostname my-rabbit \</span><br><span class="line">-p 15672:15672 \</span><br><span class="line">-p 5672:5672 \</span><br><span class="line">rabbitmq:3-management</span><br></pre></td></tr></table></figure>
 
 <p>如使用 <code>powershell</code>，则：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--rm -it `</span><br><span class="line">--hostname my-rabbit `</span><br><span class="line">-p 15672:15672 `</span><br><span class="line">-p 5672:5672 `</span><br><span class="line">rabbitmq:3-management</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d `</span><br><span class="line">--rm -it `</span><br><span class="line">--name my-rabbit `</span><br><span class="line">--hostname my-rabbit `</span><br><span class="line">-p 15672:15672 `</span><br><span class="line">-p 5672:5672 `</span><br><span class="line">rabbitmq:3-management</span><br></pre></td></tr></table></figure>
 
 <p>端口 <code>15672</code> 为 <code>rabbitmq</code> 管理站点端口， 端口 <code>5672</code> 为客户端连接端口。上述命令执行完成后，我们可以打开地址 <code>http://localhost:15672</code> 打开 <code>rabbitmq</code> 管理站点，默认的用户名和密码都为 <code>guest</code></p>
 <h3 id="参考-2"><a href="#参考-2" class="headerlink" title="参考"></a>参考</h3><ul>
