@@ -18,6 +18,7 @@ date: 2021-10-15 10:06:37
 
 ```
 docker run -d \
+--rm \
 --name dmysql \
 -p3306:3306 \
 -e MYSQL_ROOT_PASSWORD=secret \
@@ -28,6 +29,7 @@ mysql:5.7
 
 ```
 docker run -d `
+--rm  `
 --name dmysql `
 -p3306:3306 `
 -e MYSQL_ROOT_PASSWORD=secret `
@@ -42,6 +44,7 @@ mysql:5.7
 
 ```
 docker run -d \
+--rm  \
 --name redis-app \
 -p6379:6379 \
 redis:latest
@@ -51,6 +54,7 @@ redis:latest
 
 ```
 docker run -d `
+--rm `
 --name redis-app `
 -p6379:6379 `
 redis:latest
@@ -67,6 +71,7 @@ redis:latest
 ```
 docker run -d \
 --rm -it \
+--name my-rabbit \
 --hostname my-rabbit \
 -p 15672:15672 \
 -p 5672:5672 \
@@ -78,6 +83,7 @@ rabbitmq:3-management
 ```
 docker run -d `
 --rm -it `
+--name my-rabbit `
 --hostname my-rabbit `
 -p 15672:15672 `
 -p 5672:5672 `
