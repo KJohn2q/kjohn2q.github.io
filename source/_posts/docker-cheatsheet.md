@@ -39,10 +39,10 @@ date: 2021-10-15 14:15:54
 **COMMAND**
 
 * `ls`  查看所有镜像
-* `build` 依据 `Dockerfile` 创建镜像, 详见 [docker build](#docker build)
-* `pull`  从远程仓库拉取镜像,详见 [docker pull](#docker pull)
-* `push` 推送镜像到远程仓库,详见 [docker push](#docker push)
-* `rm`  删除指定镜像,同 [docker rmi](#docker rmi)
+* `build` 依据 `Dockerfile` 创建镜像, 详见 [docker build](#docker-build)
+* `pull`  从远程仓库拉取镜像,详见 [docker pull](#docker-pull)
+* `push` 推送镜像到远程仓库,详见 [docker push](#docker-push)
+* `rm`  删除指定镜像,同 [docker rmi](#docker-rmi)
 
 ### docker image ls
 
@@ -113,7 +113,7 @@ date: 2021-10-15 14:15:54
 * `start` 启动停用（`stopped`）的容器
 * `rm`  删除容器
 * `stop` 停用运行中的容器
-* `exec` 在运行中的容器中运行命令,详见 [docker exec](#docker exec)
+* `exec` 在运行中的容器中运行命令,详见 [docker exec](#docker-exec)
 
 ## docker ps
 
