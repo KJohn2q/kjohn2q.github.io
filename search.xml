@@ -236,10 +236,10 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <p><strong>COMMAND</strong></p>
 <ul>
 <li><code>ls</code>  查看所有镜像</li>
-<li><code>build</code> 依据 <code>Dockerfile</code> 创建镜像, 详见 [docker build](#docker build)</li>
-<li><code>pull</code>  从远程仓库拉取镜像,详见 [docker pull](#docker pull)</li>
-<li><code>push</code> 推送镜像到远程仓库,详见 [docker push](#docker push)</li>
-<li><code>rm</code>  删除指定镜像,同 [docker rmi](#docker rmi)</li>
+<li><code>build</code> 依据 <code>Dockerfile</code> 创建镜像, 详见 <a href="#docker-build">docker build</a></li>
+<li><code>pull</code>  从远程仓库拉取镜像,详见 <a href="#docker-pull">docker pull</a></li>
+<li><code>push</code> 推送镜像到远程仓库,详见 <a href="#docker-push">docker push</a></li>
+<li><code>rm</code>  删除指定镜像,同 <a href="#docker-rmi">docker rmi</a></li>
 </ul>
 <h3 id="docker-image-ls"><a href="#docker-image-ls" class="headerlink" title="docker image ls"></a>docker image ls</h3><p>列出所有 <code>docker</code> 镜像</p>
 <p>用法 : <code>docker image ls [OPTIONS]</code></p>
@@ -286,7 +286,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li><code>start</code> 启动停用（<code>stopped</code>）的容器</li>
 <li><code>rm</code>  删除容器</li>
 <li><code>stop</code> 停用运行中的容器</li>
-<li><code>exec</code> 在运行中的容器中运行命令,详见 [docker exec](#docker exec)</li>
+<li><code>exec</code> 在运行中的容器中运行命令,详见 <a href="#docker-exec">docker exec</a></li>
 </ul>
 <h2 id="docker-ps"><a href="#docker-ps" class="headerlink" title="docker ps"></a>docker ps</h2><p>列出运行中的容器。</p>
 <h2 id="docker-logs"><a href="#docker-logs" class="headerlink" title="docker logs"></a>docker logs</h2><p>抓取容器的日志。</p>
