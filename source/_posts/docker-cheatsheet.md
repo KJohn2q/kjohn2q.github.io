@@ -181,6 +181,14 @@ date: 2021-10-15 14:15:54
 * `-t, --tty`   分配伪终端
 * `-w, --workdir string`  指定容器内的工作目录
 
+## docker tag
+
+为指定镜像创建新的标签（不会创建新的镜像，而是引用之前的镜像）
+
+用法：`docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]`
+
+例子： `docker tag java-docker:latest  java-docker:1.0` 
+
 # 引用
 
 * [docker reference](https://docs.docker.com/reference/)
