@@ -331,6 +331,9 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li><code>-t, --tty</code>   分配伪终端</li>
 <li><code>-w, --workdir string</code>  指定容器内的工作目录</li>
 </ul>
+<h2 id="docker-tag"><a href="#docker-tag" class="headerlink" title="docker tag"></a>docker tag</h2><p>为指定镜像创建新的标签（不会创建新的镜像，而是引用之前的镜像）</p>
+<p>用法：<code>docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</code></p>
+<p>例子： <code>docker tag java-docker:latest  java-docker:1.0</code> </p>
 <h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
 <li><a href="https://docs.docker.com/reference/">docker reference</a></li>
 </ul>
