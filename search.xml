@@ -1100,7 +1100,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
     <url>/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><ul>
 <li>clash  网络代理软件</li>
-<li>listary 集应用和文件快速搜索的工具</li>
+<li>listary 集应用和文件快速搜索的工具 (可使用 <code>wox</code> 和 <code>everything</code> 组合替换之)</li>
 <li>picgo  图床管理工具</li>
 <li>snipaste 轻量截图工具</li>
 </ul>
@@ -1151,6 +1151,9 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li>微信 聊天软件</li>
 <li>vmware 虚拟机软件，用于创建各种测试环境，虚拟机</li>
 <li>ObsStudio  录屏，直播推流</li>
+<li>zoomlt  桌面标记</li>
+<li>有道云笔记  笔记软件，主要作学习笔记备份（剪藏功能不好用）   </li>
+<li>印象笔记  笔记软件，主要用作私人笔记记录，文章剪藏（免费版最多只能有两个客户端）</li>
 </ul>
 ]]></content>
       <categories>
