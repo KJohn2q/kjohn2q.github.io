@@ -142,6 +142,18 @@ date: 2021-10-15 14:15:54
 * `ls`  列出网络
 * `prune`  删除所有无用的网络
 * `rm`  删除网络
+* `insecet` 查看网络详细信息，详见 [docker network inspect](#docker-network-inspect)
+
+### docker network inspect
+
+查看网络详细信息
+
+用法： `docker network inspect [OPTIONS] NETWORK [NETWORK ...]`
+
+**OPTIONS**
+
+* `-f, --format string`  使用给定模板格式化信息输出
+* `-v, --verbose`  用于诊断的详细输出 
 
 ## docker volume
 
