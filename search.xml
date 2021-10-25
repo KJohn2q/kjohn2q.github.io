@@ -304,6 +304,14 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li><code>ls</code>  列出网络</li>
 <li><code>prune</code>  删除所有无用的网络</li>
 <li><code>rm</code>  删除网络</li>
+<li><code>insecet</code> 查看网络详细信息，详见 <a href="#docker-network-inspect">docker network inspect</a></li>
+</ul>
+<h3 id="docker-network-inspect"><a href="#docker-network-inspect" class="headerlink" title="docker network inspect"></a>docker network inspect</h3><p>查看网络详细信息</p>
+<p>用法： <code>docker network inspect [OPTIONS] NETWORK [NETWORK ...]</code></p>
+<p><strong>OPTIONS</strong></p>
+<ul>
+<li><code>-f, --format string</code>  使用给定模板格式化信息输出</li>
+<li><code>-v, --verbose</code>  用于诊断的详细输出 </li>
 </ul>
 <h2 id="docker-volume"><a href="#docker-volume" class="headerlink" title="docker volume"></a>docker volume</h2><p>管理 <code>docker</code> 卷</p>
 <p>用法：<code>docker volumn COMMAND</code></p>
