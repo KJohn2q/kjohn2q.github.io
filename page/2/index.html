@@ -180,6 +180,175 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/tcp-explain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/tcp-explain/" class="post-title-link" itemprop="url">tcp-explain</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-07 09:42:00" itemprop="dateCreated datePublished" datetime="2021-01-07T09:42:00+00:00">2021-01-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
+<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
+<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
+<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
+<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
+<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
+</ol>
+<p><img src="tcp-explain/001.png" alt></p>
+<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
+<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/tcp-explain/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/" class="post-title-link" itemprop="url">Keep file in a Git repo, but don't track changes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-24 23:50:15" itemprop="dateCreated datePublished" datetime="2020-10-24T23:50:15+00:00">2020-10-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在工作中，我们常会使用 <code>git</code> 来进行项目的版本控制。但项目的一些配置文件我们希望只是存储在存储库中，本地开发环境对该部分配置文件进行修改，适合本地开发。而不将该部分修改提交到版本库。如：数据库配置文件。<br>那么怎样实现本地不追踪存储库中某文件的修改呢？有两种方法可以实现：</p>
+<ul>
+<li><code>git update-index --assume-unchanged [filename]</code></li>
+<li><code>git update-index --skip-worktree [filename]</code></li>
+</ul>
+<p>那么这两种方法有什么区别呢？</p>
+<p><code>assume-unchanged</code> is designed for cases where it is expensive to check whether a group of files have been modified; when you set the bit, git (of course) assumes the files corresponding to that portion of the index have not been modified in the working copy. So it avoids a mess of stat calls. This bit is lost whenever the file’s entry in the index changes (so, when the file is changed upstream).</p>
+<p><code>assume-unchange</code> 应用于检测一组文件是否修改成本很高的情况；当你设置了该选项，<code>git</code> 会假设在工作区副本中，索引对应的这部分文件没有修改。这避免了大量的<code>stat</code>的调用。每当文件在索引中的条目发生变化时，该选项无效。（也就是说当文件在上游发生变化时）</p>
+<p><code>skip-worktree</code> is more than that: even where git knows that the file has been modified (or needs to be modified by a reset –hard or the like), it will pretend it has not been, using the version from the index instead. This persists until the index is discarded.</p>
+<p><code>skip-worktree</code>不止于此：即使 <code>git</code> 监测到该文件发生了变化（或者当执行 <code>reset --hard</code> 文件需要发生变化），将会假装没有发生变化，而使用索引中的版本。直到索引被丢弃。</p>
+<p><code>--assume-unchanged</code> 假想开发者不应该修改该文件。该选项是为了提升那些像SDK一样不会修改的文件目录的性能。<br><code>--skip-worktree</code> 当你指示 <code>git</code> 不要监测指定文件，因为开发应该修改该文件。例如，主存储库上游主机存储了一些应用于生产环境的配置文件，你不希望偶然间不小心提交对这些文件的修改, <code>--skip-worktree</code> 是你正想要的。</p>
+<p>原文回答：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></p>
+<p>引用链接：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -894,179 +1063,10 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Configure-CLion-on-Windows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/Configure-CLion-on-Windows/" class="post-title-link" itemprop="url">Configure CLion on Windows</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-05 08:45:43" itemprop="dateCreated datePublished" datetime="2020-03-05T08:45:43+00:00">2020-03-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>该文选译自 <code>jetbrains</code> 官网 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.htm"><code>Quick Tutorial: Configure CLion on Windows</code></a> 不用于商业用途</p>
-</blockquote>
-<p>在 <code>windows</code> 系统,配置 <code>CLion</code> 需要安装环境： <code>Cygwin</code>、<code>MinGW</code>、<code>WSL</code>、<code>MSVC</code>等。你需要在你的系统上安装环境，分别为每个环境创建 <code>CLion</code> 工具链。作为工具链重要的一环，编译环境提供了 <code>C</code> 和 <code>C++</code> 编译器， <code>make</code> 工具， 还有调试器（使用默认工具的情况下）</p>
-<p>想查看远程主机工具链的细节，可以访问 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/clion/remote-projects-support.html#remote-toolchain">Full Remote Mode</a> 进行查看。</p>
-<h2 id="Cygwin"><a href="#Cygwin" class="headerlink" title="Cygwin"></a>Cygwin</h2><ol>
-<li>下载 <a target="_blank" rel="noopener" href="https://cygwin.com/install.html">Cygwin</a> 安装包，2.8 或者更新的版本。</li>
-<li>执行安装文件，选择以下的包：<ul>
-<li><code>gcc-g++</code></li>
-<li><code>make</code></li>
-<li><code>gdb</code><br>你可以在搜索框中键入包的名字，点击列表中该包，直到在该包上有对勾出现。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_CygwinSetup.png" alt="image"></li>
-</ul>
-</li>
-<li>安装完成后，启动 <code>CLion</code>，依次打开 <code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
-<li>在环境列表中选择 <code>Cygwin</code>. <code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
-<li>等待工具检测完成，点击应用。<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_cygwin_toolchain.png" alt></li>
-</ol>
-<h2 id="MinGW"><a href="#MinGW" class="headerlink" title="MinGW"></a>MinGW</h2><ol>
-<li>下载 <a target="_blank" rel="noopener" href="http://www.mingw.org/">MinGW</a> 或者 <a target="_blank" rel="noopener" href="http://mingw-w64.org/doku.php">MinGW-W64</a>安装包。</li>
-<li>运行安装包，在基础安装列表中选择一下的包： <code>mingw-developer-tool</code>, <code>mingw32-base</code>, <code>mingw32-gcc-g++</code>, <code>mingw32-msys-base</code>.<br><img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_MinGWInstall.png" alt></li>
-<li>安装成功后，启动 <code>CLion</code>，<code>File|Settings|Build,Exceution,Deployment|Toolchains</code>选择你想要配置的工具链。</li>
-<li>在环境列表中选择 <code>MinGW</code>，<code>Clion</code>会自动地检测 <code>Cygwin</code>的安装情况。检查检测结果，手动指定需要的路径。</li>
-<li>等待工具检测完成。如果 <code>CLion</code> 不能检测到编译器或者 <code>make</code> ，在 <code>MinGW</code> 安装管理器中再次检查需要的包是否已安装。工具设置正确后，点击应用。<br> <img src="https://resources.jetbrains.com/help/img/idea/2019.3/cl_mingw_toolchain.png" alt></li>
-</ol>
-<h2 id="GDB-on-Windows"><a href="#GDB-on-Windows" class="headerlink" title="GDB on Windows"></a>GDB on Windows</h2><p>如果使用了 <code>MinGW</code> , <code>CLion</code> 包含了内置的 <code>GDB</code> (8.3版本)。 如果是 <code>Cygwin</code>, 你需要在 <code>Cygwin</code> 包管理器中安装包 <code>GDB</code>，上面已经描述过。</p>
-<p>你也可以切换到自己的 <code>GDB</code> 二进制包，支持的 <code>GDB</code> 版本为 <code>7.8.X - 8.3.X</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/Configure-CLion-on-Windows/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/" class="post-title-link" itemprop="url">github高效搜索</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-26 09:04:25" itemprop="dateCreated datePublished" datetime="2019-12-26T09:04:25+00:00">2019-12-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>github是全球最大的开源项目网站，集聚了非常多优质的开源项目，我们可以利用它，学习优秀代码，行业前沿知识，动手实践。</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20191226085939.png" alt></p>
-<p>上图为vue项目的主页，其中<code>name</code>为项目名称，description为项目的简要描述，<code>star</code>为项目的受关注程度，<code>fork</code>反映多少人克隆到了自己的仓库。除了这几个要素，还有项目的最后更新日期（<code>pushed</code>），项目的编程语言（<code>language</code>）,项目的创建日期（<code>create</code>）都可以作为我们搜索我们想要的项目时的依据。</p>
-<h2 id="高效搜索"><a href="#高效搜索" class="headerlink" title="高效搜索"></a>高效搜索</h2><p>以swoole举例</p>
-<h3 id="in-name-swoole"><a href="#in-name-swoole" class="headerlink" title="in:name swoole"></a><code>in:name swoole</code></h3><p>搜索仓库的名称，搜索仓库名称包含swoole关键字的所有项目</p>
-<h3 id="in-description-swoole"><a href="#in-description-swoole" class="headerlink" title="in:description swoole"></a><code>in:description swoole</code></h3><p>搜索描述中包含swoole关键字的项目</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/github%E9%AB%98%E6%95%88%E6%90%9C%E7%B4%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1134,7 +1134,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1145,7 +1145,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

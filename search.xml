@@ -400,6 +400,37 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
+    <title>github-actions详解</title>
+    <url>/2021/github-actions%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="github-actions-例子"><a href="#github-actions-例子" class="headerlink" title="github actions 例子"></a>github actions 例子</h2><p>通过使用 <code>github-actions</code>, 可以在自己的仓库中自动化地执行软件开发工作流。以我的博客工作流举例，当提交代码到远程仓库的 <code>source</code> 分支时，安装所有依赖，并将生成的静态页面文件部署到 <code>master</code> 分支上，具体的配置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name: Build and Deploy</span><br><span class="line">on: </span><br><span class="line">  push:</span><br><span class="line">    branches: </span><br><span class="line">      - source</span><br><span class="line">jobs:</span><br><span class="line">  build-and-deploy:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - name: Checkout 🛎️</span><br><span class="line">        uses: actions/checkout@v2.3.1 # If you&#x27;re using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.</span><br><span class="line">        with:</span><br><span class="line">          persist-credentials: false</span><br><span class="line"></span><br><span class="line">      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the &#x27;build&#x27; folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.</span><br><span class="line">        run: |</span><br><span class="line">          npm install</span><br><span class="line">          npm run build</span><br><span class="line"></span><br><span class="line">      - name: Deploy 🚀</span><br><span class="line">        uses: JamesIves/github-pages-deploy-action@4.1.5</span><br><span class="line">        with:</span><br><span class="line">          BRANCH: master # The branch the action should deploy to.</span><br><span class="line">          FOLDER: public # The folder the action should deploy.</span><br></pre></td></tr></table></figure>
+
+<h2 id="github-actions-语法解释"><a href="#github-actions-语法解释" class="headerlink" title="github actions 语法解释"></a>github actions 语法解释</h2><p>该 <code>workflow</code> 文件位于  <code>./github/workflows</code> 中</p>
+<ul>
+<li><code>name</code>,  <code>workflow</code> 的名称</li>
+<li><code>on</code> ，触发事件，如：<code>push</code>, <code>pull_request</code>。 </li>
+<li><code>jobs</code> ,  一系列在相同运行环境中执行的步骤</li>
+<li><code>build-and-deploy</code>， 在 <code>jobs</code>下定义的一个 <code>job</code> 的名称</li>
+<li><code>runs-on</code>,  定义 <code>job</code> 的运行时环境</li>
+<li><code>steps</code>,    定义一组执行步骤</li>
+<li><code>name:Checkout</code>   执行步骤的名称</li>
+<li><code>uses:actions/checkout@v2.3.1</code>  该执行步骤使用社区提供的 <code>action</code>, 名称为 <code>checkout</code>，<code>v2.3.1</code> 为该 <code>action</code> 的标签，详情参见 <a href="https://github.com/marketplace/actions/checkout">checkout in github actions marketplace</a></li>
+<li><code>with</code> 定义 <code>action</code> 使用的变量</li>
+<li><code>run</code> 定义 <code>job</code> 需要执行的命令</li>
+</ul>
+<h2 id="引用链接"><a href="#引用链接" class="headerlink" title="引用链接"></a>引用链接</h2><ul>
+<li><a href="https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions">Workflow syntax for GitHub Actions</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>github-actions</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>github+hexo搭建博客</title>
     <url>/2020/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>本文介绍使用<code>hexo + github pages</code>搭建博客网站。</p>
@@ -1101,6 +1132,51 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       <tags>
         <tag>虚拟机</tag>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows10下修改docker镜像存储位置</title>
+    <url>/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="docker-镜像占用空间问题描述"><a href="#docker-镜像占用空间问题描述" class="headerlink" title="docker 镜像占用空间问题描述"></a>docker 镜像占用空间问题描述</h2><p>在平时使用 <code>docker</code> 过程中，使用一段时间后，经常会出现 <code>C</code> 盘爆满的情况，不得已去清理 <code>C</code> 盘空间，保证系统正常使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041559044.png" alt="image-20211104155929332"></p>
+<p>如 <code>docker</code>  使用 <code>wsl2</code> 作为基础引擎，则 <code>docker</code> 镜像默认存储在 <code>%USERPROFILE%\AppData\Local\Docker\wsl\data\ext4.vhdx</code>。可以通过 <code>Settings</code> -&gt; <code>General</code> 查看是否使用了 <code>wsl2</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041606488.png" alt="image-20211104160655271"></p>
+<p>可以通过修改 <code>docker</code> 镜像存储位置，将 <code>docker</code>镜像存储在 <code>HDD</code> 中，不影响系统正常使用。</p>
+<h2 id="修改镜像存储位置"><a href="#修改镜像存储位置" class="headerlink" title="修改镜像存储位置"></a>修改镜像存储位置</h2><p>首先，需要关闭 <code>docker desktop</code>，可以通过右击任务栏  <code>docker</code> 图标，点击 <code>Quit Docker Desktop</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041612312.png" alt="image-20211104161227253"></p>
+<p>打开命令行，检查运行状态</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl --list -v</span><br></pre></td></tr></table></figure>
+
+<p>确保状态均为 <code>Stopped</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041617285.png" alt="image-20211104161719233"></p>
+<p>导出 <code>docker-desktop-data</code> </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl --export docker-desktop-data &quot;D:\Docker\wsl\data\docker-desktop-data.tar&quot;</span><br></pre></td></tr></table></figure>
+
+<p>如提示文件夹不存在，可新建文件夹后再次执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir D:/Docker/wsl/data/ -ea 0</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>wsl</code>中注销 <code>docker-desktop-data</code>， 需要注意的是这一步会自动删除 <code>ext4.vhdx</code> 文件，如有重要的镜像或容器，可以先备份</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl --unregister docker-desktop-data</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>docker-desktop-data</code> 备份导入到  <code>wsl</code>中，指定新的存储位置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl --import docker-desktop-data &quot;D:\Docker\wsl\data&quot; &quot;D:\Docker\wsl\data\docker-desktop-data.tar&quot; --version 2</span><br></pre></td></tr></table></figure>
+
+<p>接下来，可以再次启动 <code>docker desktop</code>，之后拉取或新创建的镜像会存储在新的位置</p>
+<p>如测试没有问题，可将 <code>D:\Docker\wsl\data\docker-desktop-data.tar</code> 文件删除。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://stackoverflow.com/questions/62441307/how-can-i-change-the-location-of-docker-images-when-using-docker-desktop-on-wsl2">How can I change the location of docker images when using Docker Desktop on WSL2 with Windows 10 Home?</a></li>
+<li><a href="https://stackoverflow.com/questions/42250222/where-is-docker-image-location-in-windows-10">Where is docker image location in Windows 10?</a></li>
+<li><a href="https://stackoverflow.com/questions/47357135/powershell-equivalent-of-linux-mkdir-p">powershell equivalent of linux “mkdir -p”?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+        <tag>docker</tag>
+        <tag>镜像</tag>
+        <tag>wsl</tag>
       </tags>
   </entry>
   <entry>

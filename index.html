@@ -180,6 +180,180 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/" class="post-title-link" itemprop="url">windows10下修改docker镜像存储位置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-04 15:55:45" itemprop="dateCreated datePublished" datetime="2021-11-04T15:55:45+00:00">2021-11-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="docker-镜像占用空间问题描述"><a href="#docker-镜像占用空间问题描述" class="headerlink" title="docker 镜像占用空间问题描述"></a>docker 镜像占用空间问题描述</h2><p>在平时使用 <code>docker</code> 过程中，使用一段时间后，经常会出现 <code>C</code> 盘爆满的情况，不得已去清理 <code>C</code> 盘空间，保证系统正常使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041559044.png" alt="image-20211104155929332"></p>
+<p>如 <code>docker</code>  使用 <code>wsl2</code> 作为基础引擎，则 <code>docker</code> 镜像默认存储在 <code>%USERPROFILE%\AppData\Local\Docker\wsl\data\ext4.vhdx</code>。可以通过 <code>Settings</code> -&gt; <code>General</code> 查看是否使用了 <code>wsl2</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041606488.png" alt="image-20211104160655271"></p>
+<p>可以通过修改 <code>docker</code> 镜像存储位置，将 <code>docker</code>镜像存储在 <code>HDD</code> 中，不影响系统正常使用。</p>
+<h2 id="修改镜像存储位置"><a href="#修改镜像存储位置" class="headerlink" title="修改镜像存储位置"></a>修改镜像存储位置</h2><p>首先，需要关闭 <code>docker desktop</code>，可以通过右击任务栏  <code>docker</code> 图标，点击 <code>Quit Docker Desktop</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041612312.png" alt="image-20211104161227253"></p>
+<p>打开命令行，检查运行状态</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/github-actions%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/github-actions%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">github-actions详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-18 11:57:28" itemprop="dateCreated datePublished" datetime="2021-10-18T11:57:28+00:00">2021-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="github-actions-例子"><a href="#github-actions-例子" class="headerlink" title="github actions 例子"></a>github actions 例子</h2><p>通过使用 <code>github-actions</code>, 可以在自己的仓库中自动化地执行软件开发工作流。以我的博客工作流举例，当提交代码到远程仓库的 <code>source</code> 分支时，安装所有依赖，并将生成的静态页面文件部署到 <code>master</code> 分支上，具体的配置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">name: Build and Deploy</span><br><span class="line">on: </span><br><span class="line">  push:</span><br><span class="line">    branches: </span><br><span class="line">      - source</span><br><span class="line">jobs:</span><br><span class="line">  build-and-deploy:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - name: Checkout 🛎️</span><br><span class="line">        uses: actions/checkout@v2.3.1 # If you&#x27;re using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.</span><br><span class="line">        with:</span><br><span class="line">          persist-credentials: false</span><br><span class="line"></span><br><span class="line">      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the &#x27;build&#x27; folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.</span><br><span class="line">        run: |</span><br><span class="line">          npm install</span><br><span class="line">          npm run build</span><br><span class="line"></span><br><span class="line">      - name: Deploy 🚀</span><br><span class="line">        uses: JamesIves/github-pages-deploy-action@4.1.5</span><br><span class="line">        with:</span><br><span class="line">          BRANCH: master # The branch the action should deploy to.</span><br><span class="line">          FOLDER: public # The folder the action should deploy.</span><br></pre></td></tr></table></figure>
+
+<h2 id="github-actions-语法解释"><a href="#github-actions-语法解释" class="headerlink" title="github actions 语法解释"></a>github actions 语法解释</h2><p>该 <code>workflow</code> 文件位于  <code>./github/workflows</code> 中</p>
+<ul>
+<li><code>name</code>,  <code>workflow</code> 的名称</li>
+<li><code>on</code> ，触发事件，如：<code>push</code>, <code>pull_request</code>。 </li>
+<li><code>jobs</code> ,  一系列在相同运行环境中执行的步骤</li>
+<li><code>build-and-deploy</code>， 在 <code>jobs</code>下定义的一个 <code>job</code> 的名称</li>
+<li><code>runs-on</code>,  定义 <code>job</code> 的运行时环境</li>
+<li><code>steps</code>,    定义一组执行步骤</li>
+<li><code>name:Checkout</code>   执行步骤的名称</li>
+<li><code>uses:actions/checkout@v2.3.1</code>  该执行步骤使用社区提供的 <code>action</code>, 名称为 <code>checkout</code>，<code>v2.3.1</code> 为该 <code>action</code> 的标签，详情参见 <a target="_blank" rel="noopener" href="https://github.com/marketplace/actions/checkout">checkout in github actions marketplace</a></li>
+<li><code>with</code> 定义 <code>action</code> 使用的变量</li>
+<li><code>run</code> 定义 <code>job</code> 需要执行的命令</li>
+</ul>
+<h2 id="引用链接"><a href="#引用链接" class="headerlink" title="引用链接"></a>引用链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions">Workflow syntax for GitHub Actions</a></li>
+</ul>
+
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/github-actions%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/docker-cheatsheet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -875,179 +1049,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/tcp-explain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/tcp-explain/" class="post-title-link" itemprop="url">tcp-explain</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-07 09:42:00" itemprop="dateCreated datePublished" datetime="2021-01-07T09:42:00+00:00">2021-01-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
-<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
-<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
-<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
-<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
-<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
-</ol>
-<p><img src="tcp-explain/001.png" alt></p>
-<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
-<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/tcp-explain/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/" class="post-title-link" itemprop="url">Keep file in a Git repo, but don't track changes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-24 23:50:15" itemprop="dateCreated datePublished" datetime="2020-10-24T23:50:15+00:00">2020-10-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在工作中，我们常会使用 <code>git</code> 来进行项目的版本控制。但项目的一些配置文件我们希望只是存储在存储库中，本地开发环境对该部分配置文件进行修改，适合本地开发。而不将该部分修改提交到版本库。如：数据库配置文件。<br>那么怎样实现本地不追踪存储库中某文件的修改呢？有两种方法可以实现：</p>
-<ul>
-<li><code>git update-index --assume-unchanged [filename]</code></li>
-<li><code>git update-index --skip-worktree [filename]</code></li>
-</ul>
-<p>那么这两种方法有什么区别呢？</p>
-<p><code>assume-unchanged</code> is designed for cases where it is expensive to check whether a group of files have been modified; when you set the bit, git (of course) assumes the files corresponding to that portion of the index have not been modified in the working copy. So it avoids a mess of stat calls. This bit is lost whenever the file’s entry in the index changes (so, when the file is changed upstream).</p>
-<p><code>assume-unchange</code> 应用于检测一组文件是否修改成本很高的情况；当你设置了该选项，<code>git</code> 会假设在工作区副本中，索引对应的这部分文件没有修改。这避免了大量的<code>stat</code>的调用。每当文件在索引中的条目发生变化时，该选项无效。（也就是说当文件在上游发生变化时）</p>
-<p><code>skip-worktree</code> is more than that: even where git knows that the file has been modified (or needs to be modified by a reset –hard or the like), it will pretend it has not been, using the version from the index instead. This persists until the index is discarded.</p>
-<p><code>skip-worktree</code>不止于此：即使 <code>git</code> 监测到该文件发生了变化（或者当执行 <code>reset --hard</code> 文件需要发生变化），将会假装没有发生变化，而使用索引中的版本。直到索引被丢弃。</p>
-<p><code>--assume-unchanged</code> 假想开发者不应该修改该文件。该选项是为了提升那些像SDK一样不会修改的文件目录的性能。<br><code>--skip-worktree</code> 当你指示 <code>git</code> 不要监测指定文件，因为开发应该修改该文件。例如，主存储库上游主机存储了一些应用于生产环境的配置文件，你不希望偶然间不小心提交对这些文件的修改, <code>--skip-worktree</code> 是你正想要的。</p>
-<p>原文回答：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13630849/git-difference-between-assume-unchanged-and-skip-worktree#">Git - Difference Between ‘assume-unchanged’ and ‘skip-worktree’</a></p>
-<p>引用链接：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/Keep-file-in-a-Git-repo-but-don-t-track-changes/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1115,7 +1120,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1126,7 +1131,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
