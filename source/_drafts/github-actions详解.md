@@ -5,6 +5,8 @@ tags: [github, github-actions]
 categories: [笔记]
 ---
 
+## github actions 例子
+
 通过使用 `github-actions`, 可以在自己的仓库中自动化地执行软件开发工作流。以我的博客工作流举例，当提交代码到远程仓库的 `source` 分支时，安装所有依赖，并将生成的静态页面文件部署到 `master` 分支上，具体的配置如下
 
 ```
@@ -34,6 +36,8 @@ jobs:
           FOLDER: public # The folder the action should deploy.
 ```
 
+## github actions 语法解释
+
 该 `workflow` 文件位于  `./github/workflows` 中
 
 * `name`,  `workflow` 的名称
@@ -46,3 +50,7 @@ jobs:
 * `uses:actions/checkout@v2.3.1`  该执行步骤使用社区提供的 `action`, 名称为 `checkout`，`v2.3.1` 为该 `action` 的标签，详情参见 [checkout in github actions marketplace](https://github.com/marketplace/actions/checkout)
 * `with` 定义 `action` 使用的变量
 * `run` 定义 `job` 需要执行的命令
+
+## 引用链接
+
+* [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions)
