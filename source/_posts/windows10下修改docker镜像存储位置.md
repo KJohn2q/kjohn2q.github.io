@@ -1,9 +1,14 @@
 ---
 title: windows10下修改docker镜像存储位置
-date: 2021-11-04 15:55:45
-tags: [docker, 镜像, windows, wsl]
+tags:
+  - docker
+  - 镜像
+  - windows
+  - wsl
 categories: 笔记
+date: 2021-11-04 15:55:45
 ---
+
 
 ## docker 镜像占用空间问题描述
 
