@@ -1,9 +1,13 @@
 ---
 title: github-actions详解
+tags:
+  - github
+  - github-actions
+categories:
+  - 笔记
 date: 2021-10-18 11:57:28
-tags: [github, github-actions]
-categories: [笔记]
 ---
+
 
 ## github actions 例子
 
