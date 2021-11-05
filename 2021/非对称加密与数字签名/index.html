@@ -20,28 +20,29 @@
     var CONFIG = {"hostname":"kjohn2q.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="docker 镜像占用空间问题描述在平时使用 docker 过程中，使用一段时间后，经常会出现 C 盘爆满的情况，不得已去清理 C 盘空间，保证系统正常使用。  如 docker  使用 wsl2 作为基础引擎，则 docker 镜像默认存储在 %USERPROFILE%\AppData\Local\Docker\wsl\data\ext4.vhdx。可以通过 Settings -&gt; Gen">
+  <meta name="description" content="加密在如今的互联网世界中，我们不可避免的会传输敏感信息：服务器的账户密码，身份证号，或者仅仅是你想和某人说话，不想让其他人听见。那如何实现安全、有效的向对方传输信息呢？这就需要对信息进行加密。接下来我将通过一个例子进行表述： 无加密想象一下，A 要给 B 发送消息 Hello 。刚开始对信息没有任何加密  此时，因为没有加密，不怀好意的 C, 能看到 A 给 B 发送的信息内容     对称加密A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows10下修改docker镜像存储位置">
-<meta property="og:url" content="https://kjohn2q.github.io/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="非对称加密与数字签名">
+<meta property="og:url" content="https://kjohn2q.github.io/2021/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/index.html">
 <meta property="og:site_name" content="KJohn2q">
-<meta property="og:description" content="docker 镜像占用空间问题描述在平时使用 docker 过程中，使用一段时间后，经常会出现 C 盘爆满的情况，不得已去清理 C 盘空间，保证系统正常使用。  如 docker  使用 wsl2 作为基础引擎，则 docker 镜像默认存储在 %USERPROFILE%\AppData\Local\Docker\wsl\data\ext4.vhdx。可以通过 Settings -&gt; Gen">
+<meta property="og:description" content="加密在如今的互联网世界中，我们不可避免的会传输敏感信息：服务器的账户密码，身份证号，或者仅仅是你想和某人说话，不想让其他人听见。那如何实现安全、有效的向对方传输信息呢？这就需要对信息进行加密。接下来我将通过一个例子进行表述： 无加密想象一下，A 要给 B 发送消息 Hello 。刚开始对信息没有任何加密  此时，因为没有加密，不怀好意的 C, 能看到 A 给 B 发送的信息内容     对称加密A">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041559044.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041606488.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041612312.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041617285.png">
-<meta property="article:published_time" content="2021-11-04T15:55:45.000Z">
-<meta property="article:modified_time" content="2021-11-04T15:55:45.000Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111115034.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110131138930.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110131201196.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110131519396.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111050905322.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111050913726.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111050925095.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051012780.png">
+<meta property="article:published_time" content="2021-10-11T11:14:25.000Z">
+<meta property="article:modified_time" content="2021-10-11T11:14:25.000Z">
 <meta property="article:author" content="John Wang">
-<meta property="article:tag" content="windows">
-<meta property="article:tag" content="docker">
-<meta property="article:tag" content="镜像">
-<meta property="article:tag" content="wsl">
+<meta property="article:tag" content="加密，非对称，签名">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041559044.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111115034.png">
 
-<link rel="canonical" href="https://kjohn2q.github.io/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/">
+<link rel="canonical" href="https://kjohn2q.github.io/2021/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/">
 
 
 <script id="page-configurations">
@@ -54,7 +55,7 @@
   };
 </script>
 
-  <title>windows10下修改docker镜像存储位置 | KJohn2q</title>
+  <title>非对称加密与数字签名 | KJohn2q</title>
   
 
 
@@ -191,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -204,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          windows10下修改docker镜像存储位置
+          非对称加密与数字签名
         </h1>
 
         <div class="post-meta">
@@ -214,7 +215,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-04 15:55:45" itemprop="dateCreated datePublished" datetime="2021-11-04T15:55:45+00:00">2021-11-04</time>
+              <time title="创建时间：2021-10-11 11:14:25" itemprop="dateCreated datePublished" datetime="2021-10-11T11:14:25+00:00">2021-10-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,36 +245,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="docker-镜像占用空间问题描述"><a href="#docker-镜像占用空间问题描述" class="headerlink" title="docker 镜像占用空间问题描述"></a>docker 镜像占用空间问题描述</h2><p>在平时使用 <code>docker</code> 过程中，使用一段时间后，经常会出现 <code>C</code> 盘爆满的情况，不得已去清理 <code>C</code> 盘空间，保证系统正常使用。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041559044.png" alt="image-20211104155929332"></p>
-<p>如 <code>docker</code>  使用 <code>wsl2</code> 作为基础引擎，则 <code>docker</code> 镜像默认存储在 <code>%USERPROFILE%\AppData\Local\Docker\wsl\data\ext4.vhdx</code>。可以通过 <code>Settings</code> -&gt; <code>General</code> 查看是否使用了 <code>wsl2</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041606488.png" alt="image-20211104160655271"></p>
-<p>可以通过修改 <code>docker</code> 镜像存储位置，将 <code>docker</code>镜像存储在 <code>HDD</code> 中，不影响系统正常使用。</p>
-<h2 id="修改镜像存储位置"><a href="#修改镜像存储位置" class="headerlink" title="修改镜像存储位置"></a>修改镜像存储位置</h2><p>首先，需要关闭 <code>docker desktop</code>，可以通过右击任务栏  <code>docker</code> 图标，点击 <code>Quit Docker Desktop</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041612312.png" alt="image-20211104161227253"></p>
-<p>打开命令行，检查运行状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --list -v</span><br></pre></td></tr></table></figure>
-
-<p>确保状态均为 <code>Stopped</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111041617285.png" alt="image-20211104161719233"></p>
-<p>导出 <code>docker-desktop-data</code> </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --export docker-desktop-data &quot;D:\Docker\wsl\data\docker-desktop-data.tar&quot;</span><br></pre></td></tr></table></figure>
-
-<p>如提示文件夹不存在，可新建文件夹后再次执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir D:/Docker/wsl/data/ -ea 0</span><br></pre></td></tr></table></figure>
-
-<p>在 <code>wsl</code>中注销 <code>docker-desktop-data</code>， 需要注意的是这一步会自动删除 <code>ext4.vhdx</code> 文件，如有重要的镜像或容器，可以先备份</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister docker-desktop-data</span><br></pre></td></tr></table></figure>
-
-<p>将 <code>docker-desktop-data</code> 备份导入到  <code>wsl</code>中，指定新的存储位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --import docker-desktop-data &quot;D:\Docker\wsl\data&quot; &quot;D:\Docker\wsl\data\docker-desktop-data.tar&quot; --version 2</span><br></pre></td></tr></table></figure>
-
-<p>接下来，可以再次启动 <code>docker desktop</code>，之后拉取或新创建的镜像会存储在新的位置</p>
-<p>如测试没有问题，可将 <code>D:\Docker\wsl\data\docker-desktop-data.tar</code> 文件删除。</p>
+        <h2 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h2><p>在如今的互联网世界中，我们不可避免的会传输敏感信息：服务器的账户密码，身份证号，或者仅仅是你想和某人说话，不想让其他人听见。那如何实现安全、有效的向对方传输信息呢？这就需要对信息进行加密。接下来我将通过一个例子进行表述：</p>
+<h3 id="无加密"><a href="#无加密" class="headerlink" title="无加密"></a>无加密</h3><p>想象一下，<code>A</code> 要给 <code>B</code> 发送消息 <code>Hello</code> 。刚开始对信息没有任何加密</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110111115034.png" alt="image-20211011111533617"></p>
+<p>此时，因为没有加密，不怀好意的 <code>C</code>, 能看到 <code>A</code> 给 <code>B</code> 发送的信息内容   </p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110131138930.png" alt="image-20211013113841872"></p>
+<h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p><code>A</code> 意识了此问题， 选择了算法 <code>AES</code>, 密码 <code>123456</code> 对信息内容进行加密，以 <code>Hello</code> 为例， 加密后的内容为： <code>U2FsdGVkX19E9T4t8hqL472J1jXdiDV7P9UZmM8LrNs=</code> 。<code>B</code> 在收到信息后，选择同样的算法和密码，对信息解密，得到真实的内容。而不怀好意的 <code>C</code> 即使看到了信息，因为没有密钥，看不到真实的内容。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110131201196.png" alt="image-20211013120142096"></p>
+<p>为什么需要用到加密算法，而不是仅仅使用密码呢？这是因为仅仅只使用简单的密码（如：<code>123456</code>）,很容易被暴力破解。而复杂的，随机程度高且冗长的密码，又不易于记忆。使用加密算法配合密码能保证信息的单向加密，即加密过程简单，而反过来很难。</p>
+<p>以上这种用同一密钥进行加解密的方式称之为<strong>对称加密</strong>。看起来很好，对吗？不过对称加密存在一个问题，发送者需要提前将<strong>密钥</strong>发送给信息接受者，使得在对方收到信息后，能对信息解密，得到真实的信息内容。而将密钥发送给接受者这一过程，有可能会被不怀好意的人拿到密钥。同时，如果需要给多人发送信息，则需要进行多次的密钥交换。</p>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>这时就需要用到<strong>非对称加密</strong>了。非对称加密指的是：使用一个密钥对对信息进行加密和解密。一个是公钥，一个是私钥，两者彼此独立，又相互关联。私钥，顾名思义，是私有的，由密钥创建人进行妥善保管。而公钥，可以发给任何一个你想要与之进行联系的人。回到刚刚那个例子： <code>A</code> 需要和 <code>B</code> 进行通信， 则 <code>B</code> 可以生成一对密钥，将公钥发给 <code>A</code>, 然后 <code>A</code> 用 <code>B</code> 的公钥对信息进行加密后发送， <code>B</code> 在收到信息后，使用自己的私钥对信息进行解密，得到真实的内容。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110131519396.png" alt="image-20211013151949326"></p>
+<p><code>B</code> 的私钥是只有 <code>B</code> 能看到，故<code>C</code> 看不到信息的真实内容。</p>
+<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>之前提到了，<code>B</code> 生成一对密钥，可以将公钥发给任何想要合作的人。而私钥则自己保留。假如 <code>B</code> 要发给 <code>D</code> 一份文档，<code>D</code> 在收到文档后，如何确定该文档没有被别人修改过呢？可以通过对文档或其他数据进行 <strong>数字签名</strong> 。<strong>数字签名</strong> 表示对文档进行盖戳，该戳可以证明 <code>B</code> 的身份，且难以被伪造。此外，签名可以保证文档没有被修改过。</p>
+<p>要对文档进行数字签名，需要先对文档进行散列，生成一个字符串（不同的散列算法，生成的字符串长度也不同）。该字符串称之为“信息摘要”。将摘要回退到原始数据几乎不可能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111050905322.png" alt="image-20211105090501170"></p>
+<p>接下来，<code>B</code> 可以使用自己的私钥对信息摘要进行加密，结果即为签名。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111050913726.png" alt="image-20211105091350680"></p>
+<p>接下来， <code>B</code> 可以将签名和原文档一并发给 <code>D</code>.</p>
+<p><code>D</code> 在收到后先使用公钥对数字签名进行解密，得到信息摘要。同时对文档进行散列，得到信息摘要。将两步得到的信息摘要进行对比，如相同，则可确定收到的文档没有被修改过。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111050925095.png" alt="image-20211105092542040"></p>
+<p>现在有不怀好意的 <code>E</code> 知道 <code>D</code> 收到了 <code>B</code> 发给的文档和 <code>B</code> 的公钥。<code>E</code> 使用 <code>B</code> 的名字给 <code>D</code>  发送了自己的公钥，<code>D</code> 如何确保 <code>B</code> 的公钥是真实的呢？</p>
+<p>于是就出现了证书颁发机构。<code>B</code> 可以在该机构中注册证书，其中包括 <code>B</code>的公钥及 <code>B</code> 的其他信息。证书颁发机构可在 <code>B</code> 的私钥丢失或不再使用时，撤销证书。同时有其他机构对证书颁发机构进行监督和管理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051012780.png" alt="image-20211105101210715"></p>
+<p>现在，如 <code>B</code> 再要发送文档给 <code>D</code>， 则<code>D</code> 在收到文档后，可以先用证书颁发机构的公钥验证证书的有效性。如证书有效，可以拿到 <code>B</code> 的公钥，然后使用公钥来继续上面提到的验证操作。这样就保证了 <code>B</code> 公钥的真实性，避免其它人冒充 <code>B</code>.</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/62441307/how-can-i-change-the-location-of-docker-images-when-using-docker-desktop-on-wsl2">How can I change the location of docker images when using Docker Desktop on WSL2 with Windows 10 Home?</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42250222/where-is-docker-image-location-in-windows-10">Where is docker image location in Windows 10?</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47357135/powershell-equivalent-of-linux-mkdir-p">powershell equivalent of linux “mkdir -p”?</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.youdzone.com/signature.html">What is a Digital Signature?</a></li>
 </ul>
 
     </div>
@@ -285,10 +282,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
-              <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
-              <a href="/tags/%E9%95%9C%E5%83%8F/" rel="tag"><i class="fa fa-tag"></i> 镜像</a>
-              <a href="/tags/wsl/" rel="tag"><i class="fa fa-tag"></i> wsl</a>
+              <a href="/tags/%E5%8A%A0%E5%AF%86%EF%BC%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%EF%BC%8C%E7%AD%BE%E5%90%8D/" rel="tag"><i class="fa fa-tag"></i> 加密，非对称，签名</a>
           </div>
 
         
@@ -297,10 +291,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/github-actions%E8%AF%A6%E8%A7%A3/" rel="prev" title="github-actions详解">
-      <i class="fa fa-chevron-left"></i> github-actions详解
+    <a href="/2021/powershell%E7%BE%8E%E5%8C%96/" rel="prev" title="powershell美化">
+      <i class="fa fa-chevron-left"></i> powershell美化
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/" rel="next" title="个人常用软件整理">
+      个人常用软件整理 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -359,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-%E9%95%9C%E5%83%8F%E5%8D%A0%E7%94%A8%E7%A9%BA%E9%97%B4%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">docker 镜像占用空间问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">修改镜像存储位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86"><span class="nav-number">1.</span> <span class="nav-text">加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">无加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.2.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.3.</span> <span class="nav-text">非对称加密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
