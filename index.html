@@ -180,6 +180,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/npm%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/npm%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">npm全局和局部安装的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-05 14:54:58" itemprop="dateCreated datePublished" datetime="2021-11-05T14:54:58+00:00">2021-11-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>npm</code> 是基于 <code>nodejs</code> 开发的<code>javascript</code> 包管理器，用于管理开发中软件包的依赖关系，从远程仓库中下载我们需要的工具。我的博客就是基于 <code>hexo</code> 来构建的，我们可以通过  <code>npm install hexo-cli -g</code>  来安装 <code>hexo-cli</code> 工具。那么 <code>-g</code> 表示什么意思？与不带 <code>-g</code> 有什么区别？</p>
+<h2 id="npm-安装"><a href="#npm-安装" class="headerlink" title="npm 安装"></a>npm 安装</h2><p><code>npm</code> 安装软件有两种方式 ：局部安装和全局安装。为了测试，我们使用 <code>npm</code>初始化一个包。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p pack</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051551886.png" alt="image-20211105155130555"></p>
+<h3 id="局部安装"><a href="#局部安装" class="headerlink" title="局部安装"></a>局部安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install [package/module]</span><br></pre></td></tr></table></figure>
+
+<p>局部安装会在将包/模块安装在当前目录的 <code>node_modules</code> 目录中。以 <code>hexo-cli</code> 为例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，当前目录中多了一个 <code>node_modules</code>目录。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/npm%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%BA%E5%88%AB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -955,94 +1039,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/install-centos-in-vmware-workstation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="John Wang">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KJohn2q">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/install-centos-in-vmware-workstation/" class="post-title-link" itemprop="url">install centos in vmware workstation</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-27 14:03:45" itemprop="dateCreated datePublished" datetime="2021-09-27T14:03:45+00:00">2021-09-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文档演示如何在 <code>vmware</code> 中新建一个 <code>centos</code> 的虚拟机。</p>
-<h2 id="镜像下载"><a href="#镜像下载" class="headerlink" title="镜像下载"></a>镜像下载</h2><p>centos源列表：</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927112748.png" alt></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://isoredirect.centos.org/centos/7/isos/x86_64/">centos7 isos</a></li>
-<li><a target="_blank" rel="noopener" href="http://isoredirect.centos.org/centos/8/isos/x86_64/">centos8 isos</a></li>
-</ul>
-<p>受限于网络环境，推荐以下镜像源：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://mirrors.163.com/centos/7.9.2009/isos/x86_64/">163</a></li>
-<li><a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/centos/7.9.2009/isos/x86_64/">清华</a></li>
-<li><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">阿里云</a></li>
-</ul>
-<h3 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h3><p>打开 <code>163</code> 镜像源地址，可以看到有四个版本供我们选择</p>
-<p><img src="https://raw.githubusercontent.com/KJohn2q/John-s-figure-bed/master/image/20210927114433.png" alt></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/install-centos-in-vmware-workstation/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1114,7 +1110,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1125,7 +1121,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

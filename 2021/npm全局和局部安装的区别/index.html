@@ -20,20 +20,33 @@
     var CONFIG = {"hostname":"kjohn2q.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="开机自启 clash  网络代理软件 listary 集应用和文件快速搜索的工具 (可使用 wox 和 everything 组合替换之) picgo  图床管理工具 snipaste 轻量截图工具  浏览器 chrome  用于页面调试 新edge  用于普通的浏览，收藏同步  云盘 阿里云盘 不限速 3+T免费空间  onedrive  在windows系统上同步体验极佳，用于保存资料，个人相">
+  <meta name="description" content="npm 是基于 nodejs 开发的javascript 包管理器，用于管理开发中软件包的依赖关系，从远程仓库中下载我们需要的工具。我的博客就是基于 hexo 来构建的，我们可以通过  npm install hexo-cli -g  来安装 hexo-cli 工具。那么 -g 表示什么意思？与不带 -g 有什么区别？ npm 安装npm 安装软件有两种方式 ：局部安装和全局安装。为了测试，我们使">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人常用软件整理">
-<meta property="og:url" content="https://kjohn2q.github.io/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/index.html">
+<meta property="og:title" content="npm全局和局部安装的区别">
+<meta property="og:url" content="https://kjohn2q.github.io/2021/npm%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="KJohn2q">
-<meta property="og:description" content="开机自启 clash  网络代理软件 listary 集应用和文件快速搜索的工具 (可使用 wox 和 everything 组合替换之) picgo  图床管理工具 snipaste 轻量截图工具  浏览器 chrome  用于页面调试 新edge  用于普通的浏览，收藏同步  云盘 阿里云盘 不限速 3+T免费空间  onedrive  在windows系统上同步体验极佳，用于保存资料，个人相">
+<meta property="og:description" content="npm 是基于 nodejs 开发的javascript 包管理器，用于管理开发中软件包的依赖关系，从远程仓库中下载我们需要的工具。我的博客就是基于 hexo 来构建的，我们可以通过  npm install hexo-cli -g  来安装 hexo-cli 工具。那么 -g 表示什么意思？与不带 -g 有什么区别？ npm 安装npm 安装软件有两种方式 ：局部安装和全局安装。为了测试，我们使">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-12T15:22:54.000Z">
-<meta property="article:modified_time" content="2021-10-12T15:22:54.000Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051551886.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051552385.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051557163.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051608683.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051615876.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051640522.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051641884.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051652022.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051654118.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051657247.png">
+<meta property="article:published_time" content="2021-11-05T14:54:58.000Z">
+<meta property="article:modified_time" content="2021-11-05T14:54:58.000Z">
 <meta property="article:author" content="John Wang">
-<meta property="article:tag" content="软件">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="node">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051551886.png">
 
-<link rel="canonical" href="https://kjohn2q.github.io/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/">
+<link rel="canonical" href="https://kjohn2q.github.io/2021/npm%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 <script id="page-configurations">
@@ -46,7 +59,7 @@
   };
 </script>
 
-  <title>个人常用软件整理 | KJohn2q</title>
+  <title>npm全局和局部安装的区别 | KJohn2q</title>
   
 
 
@@ -183,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/npm%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -196,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          个人常用软件整理
+          npm全局和局部安装的区别
         </h1>
 
         <div class="post-meta">
@@ -206,7 +219,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-10-12 15:22:54" itemprop="dateCreated datePublished" datetime="2021-10-12T15:22:54+00:00">2021-10-12</time>
+              <time title="创建时间：2021-11-05 14:54:58" itemprop="dateCreated datePublished" datetime="2021-11-05T14:54:58+00:00">2021-11-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,7 +227,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">记录</span></a>
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
             </span>
 
@@ -236,62 +249,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><ul>
-<li>clash  网络代理软件</li>
-<li>listary 集应用和文件快速搜索的工具 (可使用 <code>wox</code> 和 <code>everything</code> 组合替换之)</li>
-<li>picgo  图床管理工具</li>
-<li>snipaste 轻量截图工具</li>
+        <p><code>npm</code> 是基于 <code>nodejs</code> 开发的<code>javascript</code> 包管理器，用于管理开发中软件包的依赖关系，从远程仓库中下载我们需要的工具。我的博客就是基于 <code>hexo</code> 来构建的，我们可以通过  <code>npm install hexo-cli -g</code>  来安装 <code>hexo-cli</code> 工具。那么 <code>-g</code> 表示什么意思？与不带 <code>-g</code> 有什么区别？</p>
+<h2 id="npm-安装"><a href="#npm-安装" class="headerlink" title="npm 安装"></a>npm 安装</h2><p><code>npm</code> 安装软件有两种方式 ：局部安装和全局安装。为了测试，我们使用 <code>npm</code>初始化一个包。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p pack</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051551886.png" alt="image-20211105155130555"></p>
+<h3 id="局部安装"><a href="#局部安装" class="headerlink" title="局部安装"></a>局部安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install [package/module]</span><br></pre></td></tr></table></figure>
+
+<p>局部安装会在将包/模块安装在当前目录的 <code>node_modules</code> 目录中。以 <code>hexo-cli</code> 为例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，当前目录中多了一个 <code>node_modules</code>目录。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051552385.png" alt="image-20211105155258331"></p>
+<p><code>node_modules</code>目录中有 <code>hexo-cli</code>目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051557163.png" alt="image-20211105155741122"></p>
+<p><code>hexo-cli</code>提供了一些命令如 <code>hexo init</code>, <code>hexo generate</code> 等。此时，测试一下 <code>hexo</code> 命令, 新建一个博客目录，并执行 <code>hexo init</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051608683.png" alt="image-20211105160828637"></p>
+<p>提示命令不存在，可是我们已经安装了 <code>hexo-cli</code>，这是什么情况呢？其实局部安装，只会将包或模块安装在当前目录中。检查<code>node_modules</code>目录，可以看到其中有个 <code>.bin</code>隐藏目录，提供了 <code>hexo</code>命令的软链接。而 <code>shell</code>不会在当前目录的  <code>node_modules/hexo-cli/bin/hexo</code>或 <code>node_modules/.bin</code> 中查找 <code>hexo</code>命令，故提示命令不存在</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051615876.png" alt="image-20211105161534828"></p>
+<p>可以通过使用全路径或者使用 <code>npx</code> 来执行 <code>hexo</code> 命令。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051640522.png" alt="image-20211105164034467"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051641884.png" alt="image-20211105164107829"></p>
+<h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g [package/module]</span><br></pre></td></tr></table></figure>
+
+<p>与局部安装不同，全局安装会将包或模块安装在 <code>prefix</code> 目录中，而不是当前目录。</p>
+<ul>
+<li>软件包安装在 <code>&#123;prefix&#125;/lib/node_modules</code>中</li>
+<li>可执行文件链接到了 <code>&#123;prefix&#125;/bin</code></li>
+<li>帮助页面链接到了 <code>&#123;prefix&#125;/share/man</code></li>
 </ul>
-<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
-<li>chrome  用于页面调试</li>
-<li>新edge  用于普通的浏览，收藏同步</li>
-</ul>
-<h2 id="云盘"><a href="#云盘" class="headerlink" title="云盘"></a>云盘</h2><ul>
-<li>阿里云盘 不限速 3+T免费空间 </li>
-<li>onedrive  在windows系统上同步体验极佳，用于保存资料，个人相册同步</li>
-</ul>
-<h2 id="浏览器插件"><a href="#浏览器插件" class="headerlink" title="浏览器插件"></a>浏览器插件</h2><ul>
-<li>pocket  经典文章收藏，同步，有手机端app</li>
-<li>GoFullPage  整站、滚动截屏工具</li>
-<li>bitwarden  密码管理器插件</li>
-<li>Internet Download Manager  idm浏览器下载插件，搭配pc端应用使用</li>
-<li>crxMouse Top Gestures  鼠标手势</li>
-<li>AdBlock  广告屏蔽插件</li>
-<li>Google翻译  翻译</li>
-<li>沙拉查词 整合多个翻译和查词工具</li>
-<li>Imageus 图片缩放插件，无需到新链接打开</li>
-</ul>
-<h2 id="音乐下载"><a href="#音乐下载" class="headerlink" title="音乐下载"></a>音乐下载</h2><ul>
-<li>五音助手</li>
-<li>Music Tools</li>
-<li>酷我音乐</li>
-</ul>
-<h2 id="开发相关"><a href="#开发相关" class="headerlink" title="开发相关"></a>开发相关</h2><ul>
-<li>docker for desktop 搭建独立环境，如mysql,redis,rabbitmq等</li>
-<li>idea java开发者必备</li>
-<li>nodejs环境</li>
-<li>jdk java环境</li>
-<li>navicat premium  数据库连接客户端</li>
-</ul>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
-<li>calibre 图书管理，将书库目录设置为onedrive中自定义目录，很香</li>
-<li>Todo 日程待办软件，干净简洁，无网络问题</li>
-<li>Windows Terminal  新的命令行终端</li>
-<li>网易云音乐  长期使用，歌单同步，云盘配合酷我音乐等第三方软件很香</li>
-<li>vscode  文本编辑器，搭配各种插件很好用</li>
-<li>网易有道词典</li>
-<li>secureCRT  ssh client</li>
-<li>SumatraPDF 轻量pdf阅读工具</li>
-<li>天若OCR  文字识别工具</li>
-<li>Potplayer  视频播放</li>
-<li>PDF-XChange Editor  PDF编辑工具</li>
-<li>Git 版本控制软件</li>
-<li>微信 聊天软件</li>
-<li>vmware 虚拟机软件，用于创建各种测试环境，虚拟机</li>
-<li>ObsStudio  录屏，直播推流</li>
-<li>zoomlt  桌面标记</li>
-<li>有道云笔记  笔记软件，主要作学习笔记备份（剪藏功能不好用）   </li>
-<li>印象笔记  笔记软件，主要用作私人笔记记录，文章剪藏（免费版最多只能有两个客户端）</li>
+<p>检查 <code>prefix</code>的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config ls -l</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051652022.png" alt="image-20211105165203966"></p>
+<p>以 <code>hexo-cli</code>为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，检查安装情况</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051654118.png" alt="image-20211105165421065"></p>
+<p>此时，在 <code>blog</code>目录中，测试 <code>hexo</code> 命令</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111051657247.png" alt="image-20211105165735196"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>npm</code> 局部安装会将包安装在当前目录中，适用于不想全局安装，仅仅只在当前目录中引用模块或局部使用包的情况。 而全局安装会将包安装在指定的目录（<code>shell</code>可以读取），使得包在其它目录也可以使用。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v7/commands/npm-install">npm-install</a></li>
 </ul>
 
     </div>
@@ -303,7 +303,9 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"><i class="fa fa-tag"></i> 软件</a>
+              <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i> npm</a>
+              <a href="/tags/nodejs/" rel="tag"><i class="fa fa-tag"></i> nodejs</a>
+              <a href="/tags/node/" rel="tag"><i class="fa fa-tag"></i> node</a>
           </div>
 
         
@@ -312,13 +314,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" rel="prev" title="非对称加密与数字签名">
-      <i class="fa fa-chevron-left"></i> 非对称加密与数字签名
+    <a href="/2021/windows10%E4%B8%8B%E4%BF%AE%E6%94%B9docker%E9%95%9C%E5%83%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/" rel="prev" title="windows10下修改docker镜像存储位置">
+      <i class="fa fa-chevron-left"></i> windows10下修改docker镜像存储位置
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/docker%E9%83%A8%E7%BD%B2%E7%8B%AC%E7%AB%8B%E6%9C%8D%E5%8A%A1/" rel="next" title="docker部署独立服务">
-      docker部署独立服务 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -377,7 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-number">1.</span> <span class="nav-text">开机自启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%91%E7%9B%98"><span class="nav-number">3.</span> <span class="nav-text">云盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">浏览器插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E4%B9%90%E4%B8%8B%E8%BD%BD"><span class="nav-number">5.</span> <span class="nav-text">音乐下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3"><span class="nav-number">6.</span> <span class="nav-text">开发相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">7.</span> <span class="nav-text">其它</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">npm 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">局部安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">全局安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
