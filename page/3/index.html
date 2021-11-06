@@ -180,6 +180,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Generating-Your-SSH-Public-Key/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="John Wang">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、Php、C++、Java，领域涵盖爬虫、后端、架构等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KJohn2q">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/Generating-Your-SSH-Public-Key/" class="post-title-link" itemprop="url">Generating Your SSH Public Key</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 10:21:55" itemprop="dateCreated datePublished" datetime="2020-03-19T10:21:55+00:00">2020-03-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/translate/" itemprop="url" rel="index"><span itemprop="name">translate</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文译自<a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key"><code>Git on the Server - Generating Your SSH Public Key</code></a>，仅作学习使用，不用于商业用途</p>
+</blockquote>
+<p>很多 <code>git</code> 服务器使用 <code>SSH</code> 公钥进行验证。为了提供一个公钥，如果你系统的用户还没有的话，他们必须生成一个。这个过程是跨所有的操作系统的。首先，你应该检查，确保你还没有公钥。默认，用户的 <code>SSH keys</code>存储在用户的 <code>~/.ssh</code> 目录。如果你已经有一个 <code>SSH key</code>，切换到那个目录，列出所有的内容，你可以轻松地看见。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ ls</span><br><span class="line"></span><br><span class="line">id_rsa  id_rsa.pub  known_hosts</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>你将会看到一系列名称为 <code>id_dsa</code> 或者 <code>id_rsa</code>，且有一个后缀名为 <code>.pub</code> 的文件。该 <code>.pub</code> 文件是你的公钥，其它文件是对应的私钥。如果没有看到这些文件（或者你甚至没有 <code>.ssh</code> 目录），你可以通过执行 由 <code>Linux/macOS</code> 操作系统和 <code>windows</code> 上的 <code>git</code> 提供的 <code>ssh-keygen</code> 程序来创建它们：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -o</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/schacon/.ssh/id_rsa):
+Created directory &apos;/home/schacon/.ssh&apos;.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/schacon/.ssh/id_rsa.
+Your public key has been saved in /home/schacon/.ssh/id_rsa.pub.
+The key fingerprint is:
+d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></pre><p>首先，你要确认保存密钥的位置（<code>.ssh/id_rsa</code>），然后向你询问一个密码短语两次，如果你在使用密钥的时候不想输入密码，你可以留空。然而，如果你使用了密码，确保你使用了 <code>-o</code> 选项；它会以比默认格式更能抵御密码强力破解攻击的格式进行存储私钥。你也可以使用 <code>ssh-agent</code> 工具，避免每次都需要输入密码。</p>
+<p>现在，每个用户都做了以上操作，给你或者任何管理 <code>Git</code> 服务器的人发送了公钥。（假定你使用的是需要公钥的 <code>SSH</code> 服务器设置）。他们需要做的就是复制 <code>.pub</code> 文件的内容并通过邮件发送。公钥文件像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU</span><br><span class="line">GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3</span><br><span class="line">Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA</span><br><span class="line">t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En</span><br><span class="line">mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx</span><br><span class="line">NrRFi9wrf+M7Q== schacon@mylaptop.local</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>获取更多在多操作系统创建 <code>SSH key</code> 的深入教程，可以查看 <a target="_blank" rel="noopener" href="https://help.github.com/articles/generating-ssh-keys"><code>GitHub guide on SSH keys</code></a>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/Generating-Your-SSH-Public-Key/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2020/Active-and-Passive-modes-in-FTP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -574,7 +669,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -585,7 +680,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -1305,6 +1305,90 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
+    <title>打造windows下易用终端</title>
+    <url>/2021/%E6%89%93%E9%80%A0windows%E4%B8%8B%E6%98%93%E7%94%A8%E7%BB%88%E7%AB%AF/</url>
+    <content><![CDATA[<p><code>windows</code> 下的命令行工具一直被人诟病：老旧，功能弱，界面。我一直在寻找 <code>windows</code> 下比较好用的终端工具，尝试使用过 <code>cmder</code>， <code>cygwin</code>等，都因各种各样的原因放弃了。直到微软推出了新的终端工具：<code>Windows Terminal</code>。 <code>Windows Terminal</code> 是一款界面美观，现代化易用的终端工具。我将会基于此构建功能丰富、易用的终端。</p>
+<h2 id="Windows-Terminal-的安装"><a href="#Windows-Terminal-的安装" class="headerlink" title="Windows Terminal 的安装"></a>Windows Terminal 的安装</h2><p><code>windows terminal</code> 的安装在之前的文章中写过，不再赘述。</p>
+<h2 id="安装-powershell-core"><a href="#安装-powershell-core" class="headerlink" title="安装 powershell-core"></a>安装 powershell-core</h2><p><code>powershell core</code> 与 <code>windows powershell</code> 不同，是一款开源、跨平台的命令行 <code>shell</code>。可以通过 <code>Microsoft Store</code> 或 <code>winget</code>工具来进行安装。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111052344351.png" alt="image-20211105234447288"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">winget install Microsoft.PowerShell</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111052347936.png" alt="image-20211105234717887"></p>
+<p>安装完成后，重新启动 <code>windows terminal</code>，可以看到 新的<code>powershell</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111052349773.png" alt="image-20211105234953712"></p>
+<h3 id="将powershell-core设置为默认启动终端"><a href="#将powershell-core设置为默认启动终端" class="headerlink" title="将powershell-core设置为默认启动终端"></a>将powershell-core设置为默认启动终端</h3><p>打开 <code>windows terminal</code> 设置，将默认配置文件改为 <code>PowerShell</code> ，重启 <code>windows terminal</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111052354342.png" alt="image-20211105235409289"></p>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p><a href="https://ohmyposh.dev/">Oh-My-Posh</a>是一款用于 <code>shell</code> 的提示主题引擎。 </p>
+<h3 id="安装-Oh-My-Posh"><a href="#安装-Oh-My-Posh" class="headerlink" title="安装 Oh-My-Posh"></a>安装 Oh-My-Posh</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">winget install JanDeDobbeleer.OhMyPosh</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，重启 <code>windows terminal</code>,执行 <code>oh-my-posh</code>进行测试</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060002931.png" alt="image-20211106000238888"></p>
+<p>命令成功执行，不过显示有点问题，需要修改下字体。</p>
+<h3 id="更新字体"><a href="#更新字体" class="headerlink" title="更新字体"></a>更新字体</h3><p>下载 <a href="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip?WT.mc_id=-blog-scottha">Caskaydia Cove Nerd Font Complete</a>，解压后进行安装。</p>
+<p>打开 <code>PowerShell</code> 外观设置 ，修改字体为 <code>CaskaydiaCove Nerd Font</code>, 重新启动 <code>windows terminal</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060009860.png" alt="image-20211106000911797"></p>
+<p>重新测试 <code>oh-my-posh</code>，可以看到显示正常</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060011665.png" alt="image-20211106001121625"></p>
+<h3 id="配置-oh-my-posh"><a href="#配置-oh-my-posh" class="headerlink" title="配置 oh-my-posh"></a>配置 <code>oh-my-posh</code></h3><p>打开配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">notepad $PROFILE</span><br></pre></td></tr></table></figure>
+
+<p>如提示找不到指定的路径，可检查配置文件的路径</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo $PROFILE</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060016827.png" alt="image-20211106001639782"></p>
+<p>在指定目录，新建配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir C:\Users\John\Documents\PowerShell\</span><br><span class="line">New-Item -Path &#x27;C:\Users\John\Documents\PowerShell\Microsoft.PowerShell_profile.ps1&#x27; -ItemType File</span><br></pre></td></tr></table></figure>
+
+<p>下载 <code>shanselman</code> 修改好的配置文件，复制至自定义目录，我这边放置到了 <code>OneDrive</code>中</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060026675.png" alt="image-20211106002606638"></p>
+<p>重新打开配置文件,添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">oh-my-posh --init --shell pwsh --config D:/OneDrive/OhMyPosh/ohmyposhv3-2.json | Invoke-Expression</span><br></pre></td></tr></table></figure>
+
+<p>刷新配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">. $PROFILE</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060028912.png" alt="image-20211106002858874"></p>
+<h2 id="启用终端图标"><a href="#启用终端图标" class="headerlink" title="启用终端图标"></a>启用终端图标</h2><p>命令行环境下 ，执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Install-Module -Name Terminal-Icons -Repository PSGallery</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060033585.png" alt="image-20211106003341545"></p>
+<p>将以下内容添加至配置文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Import-Module -Name Terminal-Icons</span><br></pre></td></tr></table></figure>
+
+<p>刷新配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">. $PROFILE</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060035676.png" alt="image-20211106003510634"></p>
+<h2 id="git-自动补全"><a href="#git-自动补全" class="headerlink" title="git 自动补全"></a>git 自动补全</h2><p>安装 <a href="https://github.com/dahlbyk/posh-git">Posh-Git</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Install-Module Posh-Git</span><br></pre></td></tr></table></figure>
+
+<p>将以下内容添加至配置文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Import-Module Posh-Git</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060931112.gif" alt=""></p>
+<h2 id="基于历史建议与-tab-自动补全"><a href="#基于历史建议与-tab-自动补全" class="headerlink" title="基于历史建议与 tab 自动补全"></a>基于历史建议与 tab 自动补全</h2><p><code>PSReadLine</code> 能基于命令历史记录来提示输入，首先进行安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Install-Module PSReadLine</span><br></pre></td></tr></table></figure>
+
+<p>将以下内容添加至配置文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 导入PSReadLine</span><br><span class="line">Import-Module PSReadLine</span><br><span class="line"># 基于历史提示</span><br><span class="line">Set-PSReadLineOption -PredictionSource History</span><br><span class="line">Set-PSReadLineOption -EditMode Windows</span><br><span class="line">Set-PSReadLineOption -HistorySearchCursorMovesToEnd</span><br><span class="line"># 上下方向键查找历史</span><br><span class="line">Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward</span><br><span class="line">Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward</span><br><span class="line"># tab键自动补全</span><br><span class="line">Set-PSReadLineKeyHandler -Key Tab -Function Complete</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060939879.gif" alt="tab自动补全与历史命令提示"></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal">My Ultimate PowerShell prompt with Oh My Posh and the Windows Terminal</a></li>
+<li><a href="https://devblogs.microsoft.com/powershell/announcing-psreadline-2-1-with-predictive-intellisense/?WT.mc_id=-blog-scottha">Announcing PSReadLine 2.1+ with Predictive IntelliSense</a></li>
+<li><a href="https://git-scm.com/book/ms/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Powershell">A1.6 Appendix A: Git in Other Environments - Git in Powershell</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+        <tag>terminal</tag>
+        <tag>终端， 命令行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>永远改变你编码技能的40个技巧</title>
     <url>/2020/%E6%B0%B8%E8%BF%9C%E6%94%B9%E5%8F%98%E4%BD%A0%E7%BC%96%E7%A0%81%E6%8A%80%E8%83%BD%E7%9A%8440%E4%B8%AA%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<blockquote>
