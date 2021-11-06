@@ -20,32 +20,25 @@
     var CONFIG = {"hostname":"kjohn2q.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="作为一个开发者，在日常开发过程中经常会使用命令行。windows 自带的 cmd 和 powershell  在功能上和界面美观度上总是不能让我满意。本文主要和大家分享如何使用 windows terminal  和  oh my posh 增强和美化powershell。 默认的powershell是这样的：  Windows Terminal 的安装仓库地址: microsoft&#x2F;termin">
+  <meta name="description" content="在我刚开始接触 npm 包时，常会困惑 package.json 和 package-lock.json 各自的作用和两者的区别。本篇文章就详细梳理一下： 生成package.json新建一个空目录，执行 npm init， 会提示你输入包名，版本号，描述，入口文件等信息，引导在当前目录生成  package.json 文件，如全部默认，则文件内容为： 123456789101112&amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="powershell美化">
-<meta property="og:url" content="https://kjohn2q.github.io/2021/powershell%E7%BE%8E%E5%8C%96/index.html">
+<meta property="og:title" content="package.json和package-lock.json的区别">
+<meta property="og:url" content="https://kjohn2q.github.io/2021/package-json%E5%92%8Cpackage-lock-json%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="KJohn2q">
-<meta property="og:description" content="作为一个开发者，在日常开发过程中经常会使用命令行。windows 自带的 cmd 和 powershell  在功能上和界面美观度上总是不能让我满意。本文主要和大家分享如何使用 windows terminal  和  oh my posh 增强和美化powershell。 默认的powershell是这样的：  Windows Terminal 的安装仓库地址: microsoft&#x2F;termin">
+<meta property="og:description" content="在我刚开始接触 npm 包时，常会困惑 package.json 和 package-lock.json 各自的作用和两者的区别。本篇文章就详细梳理一下： 生成package.json新建一个空目录，执行 npm init， 会提示你输入包名，版本号，描述，入口文件等信息，引导在当前目录生成  package.json 文件，如全部默认，则文件内容为： 123456789101112&amp;#123;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011422866.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011426386.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011447255.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011455800.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011457687.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011528807.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012340706.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012343768.png">
-<meta property="article:published_time" content="2021-10-02T00:14:04.000Z">
-<meta property="article:modified_time" content="2021-10-02T00:14:04.000Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111061136595.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111061138926.png">
+<meta property="article:published_time" content="2021-11-06T10:41:33.000Z">
+<meta property="article:modified_time" content="2021-11-06T10:41:33.000Z">
 <meta property="article:author" content="John Wang">
-<meta property="article:tag" content="windows">
-<meta property="article:tag" content="powershell">
-<meta property="article:tag" content="terminal">
-<meta property="article:tag" content="命令行">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="package">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011422866.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111061136595.png">
 
-<link rel="canonical" href="https://kjohn2q.github.io/2021/powershell%E7%BE%8E%E5%8C%96/">
+<link rel="canonical" href="https://kjohn2q.github.io/2021/package-json%E5%92%8Cpackage-lock-json%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 <script id="page-configurations">
@@ -58,7 +51,7 @@
   };
 </script>
 
-  <title>powershell美化 | KJohn2q</title>
+  <title>package.json和package-lock.json的区别 | KJohn2q</title>
   
 
 
@@ -195,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/powershell%E7%BE%8E%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://kjohn2q.github.io/2021/package-json%E5%92%8Cpackage-lock-json%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -208,7 +201,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          powershell美化
+          package.json和package-lock.json的区别
         </h1>
 
         <div class="post-meta">
@@ -218,7 +211,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-10-02 00:14:04" itemprop="dateCreated datePublished" datetime="2021-10-02T00:14:04+00:00">2021-10-02</time>
+              <time title="创建时间：2021-11-06 10:41:33" itemprop="dateCreated datePublished" datetime="2021-11-06T10:41:33+00:00">2021-11-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +219,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tool/" itemprop="url" rel="index"><span itemprop="name">tool</span></a>
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
                 </span>
             </span>
 
@@ -248,41 +241,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>作为一个开发者，在日常开发过程中经常会使用命令行。<code>windows</code> 自带的 <code>cmd</code> 和 <code>powershell</code>  在功能上和界面美观度上总是不能让我满意。本文主要和大家分享如何使用 <code>windows terminal</code>  和  <code>oh my posh</code> 增强和美化<code>powershell</code>。</p>
-<p>默认的powershell是这样的：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011422866.png" alt="image-20211001142221763"></p>
-<h2 id="Windows-Terminal-的安装"><a href="#Windows-Terminal-的安装" class="headerlink" title="Windows Terminal 的安装"></a>Windows Terminal 的安装</h2><p>仓库地址: <a target="_blank" rel="noopener" href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></p>
-<p>推荐使用 <code>Microsoft Store</code>  来进行安装.</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011426386.png" alt="image-20211001142641266"></p>
-<h2 id="Powerline-的安装"><a href="#Powerline-的安装" class="headerlink" title="Powerline 的安装"></a>Powerline 的安装</h2><h3 id="安装-Powerline-字体"><a href="#安装-Powerline-字体" class="headerlink" title="安装 Powerline 字体"></a>安装 <code>Powerline</code> 字体</h3><p><code>Powerline</code> 使用字形来设置提示符样式。 安装 <code>[Meslo LGM NF</code>，包含<code>Powerline</code> 字形。 可以从<a target="_blank" rel="noopener" href="https://www.nerdfonts.com/">Nerd Fonts </a>安装字体。</p>
-<h3 id="安装-PowerLine"><a href="#安装-PowerLine" class="headerlink" title="安装 PowerLine"></a>安装 <code>PowerLine</code></h3><p>使用 <code>PowerShell</code> ，安装 <code>Posh-Git</code>  和 <code>Oh-My-Posh</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Install-Module posh-git -Scope CurrentUser</span><br><span class="line">Install-Module oh-my-posh -Scope CurrentUser</span><br></pre></td></tr></table></figure>
+        <p>在我刚开始接触 <code>npm</code> 包时，常会困惑 <code>package.json</code> 和 <code>package-lock.json</code> 各自的作用和两者的区别。本篇文章就详细梳理一下：</p>
+<h2 id="生成package-json"><a href="#生成package-json" class="headerlink" title="生成package.json"></a>生成package.json</h2><p>新建一个空目录，执行 <code>npm init</code>， 会提示你输入包名，版本号，描述，入口文件等信息，引导在当前目录生成  <code>package.json</code> 文件，如全部默认，则文件内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;pack&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>如果尚未安装 NuGet，可能需要安装它。 如果是这种情况，PowerShell 命令行会询问是否要安装 NuGet。 选择 [Y]“是”。 你可能还需要批准从不受信任的存储库 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/powershell/scripting/gallery/getting-started?view=powershell-7">PSGallery</a> 中安装模块。 选择 [Y]“是”。</p>
-</blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011447255.png" alt="image-20211001144728179"></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/dahlbyk/posh-git">Posh-Git</a> 将 <code>Git</code> 状态信息添加到提示，并为<code>Git</code> 命令、参数、远程和分支名称添加  <code>tab</code>  自动补全。 <a target="_blank" rel="noopener" href="https://github.com/JanDeDobbeleer/oh-my-posh">Oh-My-Posh</a> 为 <code>PowerShell</code>  提示符提供主题功能。</p>
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>使用 <code>notepad $profile</code> 或所选的文本编辑器打开 <code>PowerShell</code> 的配置文件。 该配置文件是一个脚本，会在每次 <code>PowerShell</code> 启动时运行。</p>
-<p>将以下内容添加到 <code>PowerShell</code> 配置文件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Import-Module posh-git</span><br><span class="line">Import-Module oh-my-posh</span><br><span class="line">Set-PoshPrompt -Theme Paradox</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111061136595.png" alt="image-20211106113604539"></p>
+<h2 id="生成-package-lock-json"><a href="#生成-package-lock-json" class="headerlink" title="生成 package-lock.json"></a>生成 package-lock.json</h2><p>当我们安装软件包时，改文件会发生变化。如在当前目录下安装 <code>hexo-cli</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
 
-<p>重启 <code>PowerShell</code> ，可能会出现以下问题</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011455800.png" alt="image-20211001145505754"></p>
-<p>这是由于启动 <code>PowerShell</code> 时，执行策略是 <code>Restricted</code> （默认）。<code>Restricted</code> 执行策略不允许任何脚本运行。</p>
-<p>可以通过 <code>get-executionpolicy</code> 命令来查看当前的执行策略。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011457687.png" alt="image-20211001145750648"></p>
-<p>可将执行策略修改为 <code>RemoteSigned</code> 或 <code>AllSigned</code>  解决此问题。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110011528807.png" alt="image-20211001152859773"></p>
-<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>可以通过 <code>Get-PoshThemes</code> 列出当前目录的所有可用主题。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012340706.png" alt="image-20211001234003580"></p>
-<p>可以通过 <code>Set-PoshPrompt -Theme [ThemeName]</code>  指定主题。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202110012343768.png" alt="image-20211001234341724"></p>
+<p>安装完成后，会在 <code>package.json</code> 文件中，插入下面的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;hexo-cli&quot;: &quot;^4.3.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>dependencies</code> 表明了当前项目所依赖的包。同时会在当前目录中生成 <code>node_modules</code> 文件夹和 <code>package-lock.json</code> 文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111061138926.png" alt="image-20211106113824866"></p>
+<p><code>package-lock.json</code> 显示当前项目依赖的所有包，包括依赖包的依赖。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;hexo-cli&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;4.3.0&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;resolved&quot;</span>: <span class="string">&quot;https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.3.0.tgz&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;integrity&quot;</span>: <span class="string">&quot;sha512-lr46h1tK1RNQJAQZbzKYAWGsmqF5DLrW6xKEakqv/o9JqgdeempBjIm7HqjcZEUBpWij4EO65X6YJiDmT9LR7g==&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;requires&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;abbrev&quot;</span>: <span class="string">&quot;^1.1.1&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;bluebird&quot;</span>: <span class="string">&quot;^3.5.5&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;chalk&quot;</span>: <span class="string">&quot;^4.0.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;command-exists&quot;</span>: <span class="string">&quot;^1.2.8&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;hexo-fs&quot;</span>: <span class="string">&quot;^3.0.1&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;hexo-log&quot;</span>: <span class="string">&quot;^2.0.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;hexo-util&quot;</span>: <span class="string">&quot;^2.0.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;minimist&quot;</span>: <span class="string">&quot;^1.2.5&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;resolve&quot;</span>: <span class="string">&quot;^1.11.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;tildify&quot;</span>: <span class="string">&quot;^2.0.0&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，<code>node_modules</code> 树或 <code>package.json</code>文件的更新，都会自动生成 <code>package-lock.json</code></p>
+<h2 id="package-json和package-lock-json的作用"><a href="#package-json和package-lock-json的作用" class="headerlink" title="package.json和package-lock.json的作用"></a>package.json和package-lock.json的作用</h2><ul>
+<li><code>package.json</code> 定义了所有项目相关属性：名称，版本号，依赖项，入口文件，运行脚本等。使得 <code>npm</code> 能识别该项目，知道该项目如何安装依赖，如何启动。</li>
+<li><code>package-lock.json</code> 是要提交到代码仓库中去的，有以下几点作用：<ul>
+<li>描述了依赖项的实际版本号，使得同事在部署和持续集成时能安装相同的依赖</li>
+<li>描述了 <code>node_modules</code> 的状态，无需将 <code>node_modules</code>提交到代码仓库中</li>
+<li>通过避免重复解析之前安装过的包，优化安装进程</li>
+<li>通过版本控制中的 <code>diff</code> 工具，能清晰地看到依赖树的变更</li>
+</ul>
+</li>
+</ul>
+<h2 id="package-json和package-lock-json的区别"><a href="#package-json和package-lock-json的区别" class="headerlink" title="package.json和package-lock.json的区别"></a>package.json和package-lock.json的区别</h2><ul>
+<li><code>package-lock.json</code> 描述了每个依赖项的实际版本号，使得在重新安装依赖项时能得到相同的依赖树</li>
+<li><code>package.json</code> 描述了应用依赖项的最低版本。单个依赖项的版本更新，不会反映到该文件中</li>
+</ul>
+<p>如上面提到的例子，安装完 <code>hexo-cli</code> 后，<code>package.json</code> 中依赖项 <code>hexo-cli</code> 保存的版本为 <code>^4.3.0</code>。 <code>^</code> 表示该项目支持 <code>4.3.0</code>及更高的版本。而<code>package-lock.json</code> 中依赖项 <code>hexo-cli</code>保存的版本为 <code>4.3.0</code>， 为实际安装的版本。</p>
+<p><code>npm install</code> 不带任何选项默认会读取 <code>package.json</code> 中的依赖项来进行安装，这样可能使得 <code>node_modules</code> 依赖树不一致的情况，而在一个项目中如果有 <code>package-lock.json</code>，<code>npm ci</code>会读取 <code>package-lock.json</code>中依赖项的定义来进行安装，确保依赖树一致。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://ohmyposh.dev/">Home | Oh My Posh</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/terminal">microsoft/terminal: The new Windows Terminal and the original Windows console host, all in the same place! (github.com)</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/terminal/tutorials/powerline-setup">Windows 终端 Powerline 设置 | Microsoft Docs</a></li>
-<li><a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/themes#agnoster">Themes | Oh My Posh</a></li>
+<li><a target="_blank" rel="noopener" href="https://heynode.com/tutorial/what-packagejson/">What Is package.json?</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json">package-lock.json</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v7/configuring-npm/package-json">package.json</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/dlt-labs-publication/package-json-vs-package-lock-json-c8d5deba12cb">package.json Vs package-lock.json</a></li>
 </ul>
 
     </div>
@@ -294,10 +290,9 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
-              <a href="/tags/powershell/" rel="tag"><i class="fa fa-tag"></i> powershell</a>
-              <a href="/tags/terminal/" rel="tag"><i class="fa fa-tag"></i> terminal</a>
-              <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag"><i class="fa fa-tag"></i> 命令行</a>
+              <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i> npm</a>
+              <a href="/tags/nodejs/" rel="tag"><i class="fa fa-tag"></i> nodejs</a>
+              <a href="/tags/package/" rel="tag"><i class="fa fa-tag"></i> package</a>
           </div>
 
         
@@ -306,13 +301,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/vim-cheatsheet/" rel="prev" title="vim cheatsheet">
-      <i class="fa fa-chevron-left"></i> vim cheatsheet
+    <a href="/2021/%E6%89%93%E9%80%A0windows%E4%B8%8B%E6%98%93%E7%94%A8%E7%BB%88%E7%AB%AF/" rel="prev" title="打造windows下易用终端">
+      <i class="fa fa-chevron-left"></i> 打造windows下易用终端
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" rel="next" title="非对称加密与数字签名">
-      非对称加密与数字签名 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -371,7 +363,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-Terminal-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Windows Terminal 的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Powerline-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Powerline 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Powerline-%E5%AD%97%E4%BD%93"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Powerline 字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-PowerLine"><span class="nav-number">2.2.</span> <span class="nav-text">安装 PowerLine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">修改主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90package-json"><span class="nav-number">1.</span> <span class="nav-text">生成package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90-package-lock-json"><span class="nav-number">2.</span> <span class="nav-text">生成 package-lock.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package-json%E5%92%8Cpackage-lock-json%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">package.json和package-lock.json的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package-json%E5%92%8Cpackage-lock-json%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">package.json和package-lock.json的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

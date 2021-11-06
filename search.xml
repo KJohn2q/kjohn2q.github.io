@@ -898,6 +898,58 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
+    <title>package.json和package-lock.json的区别</title>
+    <url>/2021/package-json%E5%92%8Cpackage-lock-json%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p>在我刚开始接触 <code>npm</code> 包时，常会困惑 <code>package.json</code> 和 <code>package-lock.json</code> 各自的作用和两者的区别。本篇文章就详细梳理一下：</p>
+<h2 id="生成package-json"><a href="#生成package-json" class="headerlink" title="生成package.json"></a>生成package.json</h2><p>新建一个空目录，执行 <code>npm init</code>， 会提示你输入包名，版本号，描述，入口文件等信息，引导在当前目录生成  <code>package.json</code> 文件，如全部默认，则文件内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;pack&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111061136595.png" alt="image-20211106113604539"></p>
+<h2 id="生成-package-lock-json"><a href="#生成-package-lock-json" class="headerlink" title="生成 package-lock.json"></a>生成 package-lock.json</h2><p>当我们安装软件包时，改文件会发生变化。如在当前目录下安装 <code>hexo-cli</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，会在 <code>package.json</code> 文件中，插入下面的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;hexo-cli&quot;: &quot;^4.3.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>dependencies</code> 表明了当前项目所依赖的包。同时会在当前目录中生成 <code>node_modules</code> 文件夹和 <code>package-lock.json</code> 文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111061138926.png" alt="image-20211106113824866"></p>
+<p><code>package-lock.json</code> 显示当前项目依赖的所有包，包括依赖包的依赖。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;hexo-cli&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;4.3.0&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;resolved&quot;</span>: <span class="string">&quot;https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.3.0.tgz&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;integrity&quot;</span>: <span class="string">&quot;sha512-lr46h1tK1RNQJAQZbzKYAWGsmqF5DLrW6xKEakqv/o9JqgdeempBjIm7HqjcZEUBpWij4EO65X6YJiDmT9LR7g==&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;requires&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;abbrev&quot;</span>: <span class="string">&quot;^1.1.1&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;bluebird&quot;</span>: <span class="string">&quot;^3.5.5&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;chalk&quot;</span>: <span class="string">&quot;^4.0.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;command-exists&quot;</span>: <span class="string">&quot;^1.2.8&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;hexo-fs&quot;</span>: <span class="string">&quot;^3.0.1&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;hexo-log&quot;</span>: <span class="string">&quot;^2.0.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;hexo-util&quot;</span>: <span class="string">&quot;^2.0.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;minimist&quot;</span>: <span class="string">&quot;^1.2.5&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;resolve&quot;</span>: <span class="string">&quot;^1.11.0&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;tildify&quot;</span>: <span class="string">&quot;^2.0.0&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，<code>node_modules</code> 树或 <code>package.json</code>文件的更新，都会自动生成 <code>package-lock.json</code></p>
+<h2 id="package-json和package-lock-json的作用"><a href="#package-json和package-lock-json的作用" class="headerlink" title="package.json和package-lock.json的作用"></a>package.json和package-lock.json的作用</h2><ul>
+<li><code>package.json</code> 定义了所有项目相关属性：名称，版本号，依赖项，入口文件，运行脚本等。使得 <code>npm</code> 能识别该项目，知道该项目如何安装依赖，如何启动。</li>
+<li><code>package-lock.json</code> 是要提交到代码仓库中去的，有以下几点作用：<ul>
+<li>描述了依赖项的实际版本号，使得同事在部署和持续集成时能安装相同的依赖</li>
+<li>描述了 <code>node_modules</code> 的状态，无需将 <code>node_modules</code>提交到代码仓库中</li>
+<li>通过避免重复解析之前安装过的包，优化安装进程</li>
+<li>通过版本控制中的 <code>diff</code> 工具，能清晰地看到依赖树的变更</li>
+</ul>
+</li>
+</ul>
+<h2 id="package-json和package-lock-json的区别"><a href="#package-json和package-lock-json的区别" class="headerlink" title="package.json和package-lock.json的区别"></a>package.json和package-lock.json的区别</h2><ul>
+<li><code>package-lock.json</code> 描述了每个依赖项的实际版本号，使得在重新安装依赖项时能得到相同的依赖树</li>
+<li><code>package.json</code> 描述了应用依赖项的最低版本。单个依赖项的版本更新，不会反映到该文件中</li>
+</ul>
+<p>如上面提到的例子，安装完 <code>hexo-cli</code> 后，<code>package.json</code> 中依赖项 <code>hexo-cli</code> 保存的版本为 <code>^4.3.0</code>。 <code>^</code> 表示该项目支持 <code>4.3.0</code>及更高的版本。而<code>package-lock.json</code> 中依赖项 <code>hexo-cli</code>保存的版本为 <code>4.3.0</code>， 为实际安装的版本。</p>
+<p><code>npm install</code> 不带任何选项默认会读取 <code>package.json</code> 中的依赖项来进行安装，这样可能使得 <code>node_modules</code> 依赖树不一致的情况，而在一个项目中如果有 <code>package-lock.json</code>，<code>npm ci</code>会读取 <code>package-lock.json</code>中依赖项的定义来进行安装，确保依赖树一致。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="https://heynode.com/tutorial/what-packagejson/">What Is package.json?</a></li>
+<li><a href="https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json">package-lock.json</a></li>
+<li><a href="https://docs.npmjs.com/cli/v7/configuring-npm/package-json">package.json</a></li>
+<li><a href="https://medium.com/dlt-labs-publication/package-json-vs-package-lock-json-c8d5deba12cb">package.json Vs package-lock.json</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+        <tag>nodejs</tag>
+        <tag>package</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>powershell美化</title>
     <url>/2021/powershell%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>作为一个开发者，在日常开发过程中经常会使用命令行。<code>windows</code> 自带的 <code>cmd</code> 和 <code>powershell</code>  在功能上和界面美观度上总是不能让我满意。本文主要和大家分享如何使用 <code>windows terminal</code>  和  <code>oh my posh</code> 增强和美化<code>powershell</code>。</p>
