@@ -1291,7 +1291,8 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
   <entry>
     <title>个人常用软件整理</title>
     <url>/2021/%E4%B8%AA%E4%BA%BA%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><ul>
+    <content><![CDATA[<p>本文记录个人常用软件与浏览器插件。操作系统：<code>windows</code></p>
+<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><ul>
 <li>clash  网络代理软件</li>
 <li>listary 集应用和文件快速搜索的工具 (可使用 <code>wox</code> 和 <code>everything</code> 组合替换之)</li>
 <li>picgo  图床管理工具</li>
@@ -1302,7 +1303,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li>新edge  用于普通的浏览，收藏同步</li>
 </ul>
 <h2 id="云盘"><a href="#云盘" class="headerlink" title="云盘"></a>云盘</h2><ul>
-<li>阿里云盘 不限速 3+T免费空间 </li>
+<li>阿里云盘 不限速 3T+ 免费空间 </li>
 <li>onedrive  在windows系统上同步体验极佳，用于保存资料，个人相册同步</li>
 </ul>
 <h2 id="浏览器插件"><a href="#浏览器插件" class="headerlink" title="浏览器插件"></a>浏览器插件</h2><ul>
@@ -1310,7 +1311,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li>GoFullPage  整站、滚动截屏工具</li>
 <li>bitwarden  密码管理器插件</li>
 <li>Internet Download Manager  idm浏览器下载插件，搭配pc端应用使用</li>
-<li>crxMouse Top Gestures  鼠标手势</li>
+<li>crxMouse Top Gestures  鼠标手势（部分页面会有滚动异常）</li>
 <li>AdBlock  广告屏蔽插件</li>
 <li>Google翻译  翻译</li>
 <li>沙拉查词 整合多个翻译和查词工具</li>
@@ -1345,6 +1346,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
 <li>vmware 虚拟机软件，用于创建各种测试环境，虚拟机</li>
 <li>ObsStudio  录屏，直播推流</li>
 <li>zoomlt  桌面标记</li>
+<li>ScreenToGif  Gif录屏制作工具</li>
 <li>有道云笔记  笔记软件，主要作学习笔记备份（剪藏功能不好用）   </li>
 <li>印象笔记  笔记软件，主要用作私人笔记记录，文章剪藏（免费版最多只能有两个客户端）</li>
 </ul>
@@ -1353,6 +1355,7 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
         <category>记录</category>
       </categories>
       <tags>
+        <tag>windows</tag>
         <tag>软件</tag>
       </tags>
   </entry>
