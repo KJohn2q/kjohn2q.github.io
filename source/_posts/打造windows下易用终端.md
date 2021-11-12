@@ -14,7 +14,15 @@ date: 2021-11-05 23:25:49
 
 ## Windows Terminal 的安装
 
-`windows terminal` 的安装在之前的文章中写过，不再赘述。
+`windows terminal` 是一款微软开源的免费、好用的终端工具。可以集成多种 `shell`，如 `powershell`,`cmd`, `git` 等。可通过 `Microsoft Store` 或 `winget`工具来进行安装。
+
+![image-20211112083938310](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111120839432.png)
+
+```
+winget install --id=Microsoft.WindowsTerminal -e
+```
+
+## powershell core的安装
 
 ## 安装 powershell-core
 
