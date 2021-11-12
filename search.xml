@@ -1000,33 +1000,6 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
       </tags>
   </entry>
   <entry>
-    <title>tcp-explain</title>
-    <url>/2021/tcp-explain/</url>
-    <content><![CDATA[<h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
-<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
-<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
-<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
-<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
-<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
-</ol>
-<p><img src="tcp-explain/001.png" alt=""></p>
-<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
-<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
-<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
-<li>当接收到了第三个重复的 ACK （确认包）时，将  ssthresh（慢启动阶段临界值） 设置为 cwnd （当前拥塞窗口） 和 接收端通告窗口的最小值。 重传丢失的数据段。 将 cwnd 设置为 ssthresh + 3 * segsize（数据段的大小）。</li>
-<li>每次另一个重复的 ACK  到达， cwnd 增加 segsize , 传输一个数据包。（如果 cwnd  允许新的数据包的话）。</li>
-<li>当下一个确认新数据的 ACK 到达时，  将 cwnd  设置为 ssthresh 的值。此外，该 ACK  应该确认所有介于丢失的数据报和第三个 ACK  接收之间的数据段。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>tcp</tag>
-        <tag>network</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>typora搭配github图床写文章真香</title>
     <url>/2021/typora%E6%90%AD%E9%85%8Dgithub%E5%9B%BE%E5%BA%8A%E5%86%99%E6%96%87%E7%AB%A0%E7%9C%9F%E9%A6%99/</url>
     <content><![CDATA[<p>平时写博客，记录知识用的最多的就是 <a href="https://typora.io/">Typora</a>. <code>typora</code> 是一歀简洁，优雅，高效的 <code>markdown</code> 文件编辑器。当插入图片时，图片会保存在 <code>C:/Users/[用户名]/AppData/Roaming/Typora/typora-user-images/文件名</code> 中，文章写好后，需要将图片同步上传到云端，可供他人访问，或在其它平台引用。这时就需要用到图床，也就是一个云端图片存储的地方。常见的图床有：<code>sm.ms</code>,   腾讯云 <code>cos</code>, 微博图床，七牛云， 阿里云 <code>oss</code>等。我主要使用 <code>github+jsdelivr cdn</code> 的方式。完全免费，稳定且几乎无限制。</p>
@@ -1062,6 +1035,33 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
         <tag>github</tag>
         <tag>typora</tag>
         <tag>图床，博客，markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tcp-explain</title>
+    <url>/2021/tcp-explain/</url>
+    <content><![CDATA[<h1 id="tcp的连接和断开"><a href="#tcp的连接和断开" class="headerlink" title="tcp的连接和断开"></a>tcp的连接和断开</h1><h1 id="滑动窗口机制"><a href="#滑动窗口机制" class="headerlink" title="滑动窗口机制"></a>滑动窗口机制</h1><h1 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h1><p>拥塞避免和慢启动为作用于不同对象的独立的算法。当拥塞发生时，我们希望减慢网络中数据包的传输速率，然后调用慢启动使继续。</p>
+<h2 id="混合算法操作"><a href="#混合算法操作" class="headerlink" title="混合算法操作"></a>混合算法操作</h2><ol>
+<li>初始化一个给定的连接时，将 cwnd 设置为 segsize （一个数据段的大小），将 ssthresh 设置为 65535字节。</li>
+<li>TCP output  常规不会发送超过 cmnd 和接收端通告窗口的最小值。拥塞避免是发送端利用的控制流，通告窗口是接收端利用的控制流。前者基于发送端对网络拥塞感知的评估。后者和接收端对这次连接的可用缓冲空间的数量有关。</li>
+<li>拥塞发生时（超时或者接收到了重复的 ACK ）, 将 ssthresh 设置为当前窗口大小的一半（cwnd 和 接收端通告窗口的最小值， 但至少是两个数据段的大小）。此外，如果是因为超时导致的拥塞，则将 cwnd 设置为一个数据段的大小。</li>
+<li>当另一端确认了新的数据，cwnd 增加。 但是增加的方式取决于是否在执行慢启动或者拥塞避免。 如果 cwnd  &lt;=  ssthresh , 则执行慢启动。否则，执行拥塞避免。继续执行慢启动直到出现拥塞。然后执行拥塞避免。 慢启动开始，cwnd 设置为一个数据段的大小，并在每次收到 ACK 时，增加一个数据段的大小。该拥塞窗口会呈指数级的增加：发送一个数据端，然后是两个，四个等等。拥塞避免规定每次收到 ACK 时， cwnd 增加  1/cwnd。对比慢启动的指数级增加，拥塞避免为累加。</li>
+</ol>
+<p><img src="tcp-explain/001.png" alt=""></p>
+<h1 id="快速重传和快速恢复算法"><a href="#快速重传和快速恢复算法" class="headerlink" title="快速重传和快速恢复算法"></a>快速重传和快速恢复算法</h1><p>快速重传算法：当接受到了三个或更多的 ACK ，则一定表示有数据段丢失。然后重传丢失的数据段，而不等待重传的定时器过期。</p>
+<p>快速恢复算法：重传丢失的数据段时，进入拥塞避免阶段，而不是慢启动。</p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
+<li>当接收到了第三个重复的 ACK （确认包）时，将  ssthresh（慢启动阶段临界值） 设置为 cwnd （当前拥塞窗口） 和 接收端通告窗口的最小值。 重传丢失的数据段。 将 cwnd 设置为 ssthresh + 3 * segsize（数据段的大小）。</li>
+<li>每次另一个重复的 ACK  到达， cwnd 增加 segsize , 传输一个数据包。（如果 cwnd  允许新的数据包的话）。</li>
+<li>当下一个确认新数据的 ACK 到达时，  将 cwnd  设置为 ssthresh 的值。此外，该 ACK  应该确认所有介于丢失的数据报和第三个 ACK  接收之间的数据段。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>tcp</tag>
+        <tag>network</tag>
       </tags>
   </entry>
   <entry>
@@ -1363,8 +1363,11 @@ d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 schacon@mylaptop.local</code></p
     <title>打造windows下易用终端</title>
     <url>/2021/%E6%89%93%E9%80%A0windows%E4%B8%8B%E6%98%93%E7%94%A8%E7%BB%88%E7%AB%AF/</url>
     <content><![CDATA[<p><code>windows</code> 下的命令行工具一直被人诟病：老旧，功能弱，界面。我一直在寻找 <code>windows</code> 下比较好用的终端工具，尝试使用过 <code>cmder</code>， <code>cygwin</code>等，都因各种各样的原因放弃了。直到微软推出了新的终端工具：<code>Windows Terminal</code>。 <code>Windows Terminal</code> 是一款界面美观，现代化易用的终端工具。我将会基于此构建功能丰富、易用的终端。</p>
-<h2 id="Windows-Terminal-的安装"><a href="#Windows-Terminal-的安装" class="headerlink" title="Windows Terminal 的安装"></a>Windows Terminal 的安装</h2><p><code>windows terminal</code> 的安装在之前的文章中写过，不再赘述。</p>
-<h2 id="安装-powershell-core"><a href="#安装-powershell-core" class="headerlink" title="安装 powershell-core"></a>安装 powershell-core</h2><p><code>powershell core</code> 与 <code>windows powershell</code> 不同，是一款开源、跨平台的命令行 <code>shell</code>。可以通过 <code>Microsoft Store</code> 或 <code>winget</code>工具来进行安装。</p>
+<h2 id="Windows-Terminal-的安装"><a href="#Windows-Terminal-的安装" class="headerlink" title="Windows Terminal 的安装"></a>Windows Terminal 的安装</h2><p><code>windows terminal</code> 是一款微软开源的免费、好用的终端工具。可以集成多种 <code>shell</code>，如 <code>powershell</code>,<code>cmd</code>, <code>git</code> 等。可通过 <code>Microsoft Store</code> 或 <code>winget</code>工具来进行安装。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111120839432.png" alt="image-20211112083938310"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">winget install --id=Microsoft.WindowsTerminal -e</span><br></pre></td></tr></table></figure>
+
+<h2 id="powershell-core的安装"><a href="#powershell-core的安装" class="headerlink" title="powershell core的安装"></a>powershell core的安装</h2><h2 id="安装-powershell-core"><a href="#安装-powershell-core" class="headerlink" title="安装 powershell-core"></a>安装 powershell-core</h2><p><code>powershell core</code> 与 <code>windows powershell</code> 不同，是一款开源、跨平台的命令行 <code>shell</code>。可以通过 <code>Microsoft Store</code> 或 <code>winget</code>工具来进行安装。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111052344351.png" alt="image-20211105234447288"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">winget install Microsoft.PowerShell</span><br></pre></td></tr></table></figure>
 
