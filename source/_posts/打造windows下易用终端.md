@@ -170,11 +170,8 @@ Install-Module PSReadLine
 Import-Module PSReadLine
 # 基于历史提示
 Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-# 上下方向键查找历史
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 # tab键自动补全
 Set-PSReadLineKeyHandler -Key Tab -Function Complete
 ```
