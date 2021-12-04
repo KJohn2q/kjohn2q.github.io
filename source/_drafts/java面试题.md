@@ -12,7 +12,7 @@ categories: [面试]
 * 整型：byte(1 byte),short(2 byte),int(4 byte),long(8 byte)
 * 浮点型：float(4 byte),double(8 byte)
 * 字符型：char(2 byte)
-* 布尔类型：bool
+* 布尔类型：boolean(1 byte)
 
 ## final关键字
 
