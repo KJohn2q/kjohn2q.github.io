@@ -178,6 +178,23 @@ Set-PSReadLineKeyHandler -Key Tab -Function Complete
 
 ![tab自动补全与历史命令提示](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202111060939879.gif)
 
+最终的配置文件内容如下：
+
+```
+oh-my-posh --init --shell pwsh --config D:/OneDrivezlmnhgd/OneDrive/OhMyPosh/ohmyposhv3-2.json | Invoke-Expression
+Import-Module -Name Terminal-Icons
+Import-Module Posh-Git
+
+# 导入PSReadLine
+Import-Module PSReadLine
+# 基于历史提示
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
+# tab键自动补全
+Set-PSReadLineKeyHandler -Key Tab -Function Complete
+```
+
 ## 引用
 
 * [My Ultimate PowerShell prompt with Oh My Posh and the Windows Terminal](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal)
