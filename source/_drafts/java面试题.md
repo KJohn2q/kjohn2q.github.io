@@ -7,7 +7,7 @@ categories: [面试]
 
 
 
-## java基础数据类型
+## java基础数据类型 (java primitive data type)
 
 * 整型：byte(1 byte),short(2 byte),int(4 byte),long(8 byte)
 * 浮点型：float(4 byte),double(8 byte)
@@ -91,9 +91,144 @@ java中所有io流都是以下4个抽象类派生出来的：
 * [Java 中 IO 流](https://snailclimb.gitee.io/javaguide-interview/#/./docs/b-1%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93-Java%E5%9F%BA%E7%A1%80?id=_2132-java-%e4%b8%ad-io-%e6%b5%81)
 * [Java - Files and I/O](https://www.tutorialspoint.com/java/java_files_io.htm)
 
-## java泛型
+## java泛型 （java generics）
 
-## java多态
+> 泛型程序设计意味着编写的代码可以对不同类型的对象重用。 —— 《java核心技术 卷一》第11版
+>
+> **Generics** are a facility of [generic programming](https://en.wikipedia.org/wiki/Generic_programming) that were added to the [Java programming language](https://en.wikipedia.org/wiki/Java_(programming_language)) in 2004 within version [J2SE](https://en.wikipedia.org/wiki/Java_Platform,_Standard_Edition) 5.0. They were designed to extend Java's [type system](https://en.wikipedia.org/wiki/Type_system) to allow "a type or method to operate on objects of various types while providing compile-time type safety"  —— java官方文档
+
+先看下如下代码：
+
+```java
+public static void main(String[] args) {
+    ArrayList goods = new ArrayList();
+    goods.add(15.2);
+    goods.add(16.3);
+    printArray(goods);
+}
+
+private static void printArray(ArrayList goods) {
+    for (int i = 0; i < goods.size(); i++) {
+        System.out.println((int)goods.get(i));
+    }
+}
+```
+
+`ArrayList`内部是使用 `Object` 来存储的，故我们可以添加任何引用类型的值。不过会出现这样的问题：我们在其中添加的是浮点类型的值，而在取值时，转成了 `Integer`。而这样在编译期是允许的。运行上述代码，会出现以下错误：
+
+```
+class java.lang.Double cannot be cast to class java.lang.Integer
+```
+
+为了避免类型转换的问题，我们需要为每一种数据类型，都添加该数据结构的实现。如 `StringArrayList`, `DoubleArrayList`,`IntegerArrayList`。这样使得数据结构实现很繁琐，不通用。于是在 `java 5.0` 中引入了泛型：来看使用泛型后的代码：
+
+```java
+public static void main(String[] args) {
+    ArrayList<Integer> goods = new ArrayList<Integer>();
+    goods.add(15.2);
+    goods.add(16.3);
+    printArray(goods);
+}
+
+private static void printArray(ArrayList goods) {
+    for (int i = 0; i < goods.size(); i++) {
+    	System.out.println((int)goods.get(i));
+    }
+}
+```
+
+无需运行，`idea` 就检查出了问题：
+
+![image-20211206101505584](https://cdn.jsdelivr.net/gh/KJohn2q/John-s-figure-bed/image/202112061015791.png)
+
+我们声明了一个 `Integer` 类型的 `ArrayList`， 在其中添加 `Double` 类型的值时，就会报错。
+
+泛型使得我们可以编写通用的方法和类型实现，在编译期就能检查到问题，借助编译器的静态代码检查，无需运行即能检查到类型相关问题，降低了代码运行时出问题的风险。
+
+### 引用
+
+*  [Generics in Java](https://en.wikipedia.org/wiki/Generics_in_Java#cite_note-1)
+* [Generics](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
+
+## java多态 (polymorphism)
+
+> 多态指的是同一个行为具有多个不同表现形式或形态的能力。 
+>
+> 多态是指，针对某个类型的方法调用，其真正执行的方法取决于运行时期实际执行的方法。
+
+多态是面向对象中非常重要的一个概念。可分为编译时多态和运行时多态。前者基于方法重载实现，后者基于方法重写实现。首先看一个例子：
+
+```
+public class Shape {
+
+    // 正方形面积
+    public void area(int n) {
+        System.out.println("正方形的面积为：" + n * n);
+    }
+
+    // 三角形面积
+    public void area(int l, int h) {
+        System.out.println("三角形面积为：" + l * h / 2);
+    }
+}
+
+public static void main(String[] args) {
+    Shape shape = new Shape();
+    // 正方形面积
+    shape.area(3);
+    // 三角形面积
+    shape.area(5,2);
+}
+
+正方形的面积为：9
+三角形面积为：5
+```
+
+定义一个形状的类，有两个同名，参数不同，来实现计算打印正方形和三角形的面积。此种方式，称之为方法重载。运行时通过传入不同的参数，来实现不同的行为。编译时即可确定。
+
+接下来，看一个运行时多态的例子：
+
+```
+public interface Animal {
+
+    public void eat();
+    public void drink();
+    public void run();
+}
+
+public class Cat implements Animal {
+    
+    @Override
+    public void eat() {
+        System.out.println("猫猫吃饭");
+    }
+}
+
+public class Dog implements Animal {
+
+    @Override
+    public void eat() {
+        System.out.println("狗狗吃饭");
+    }
+}
+
+public static void main(String[] args) {
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+        dog.eat();
+        cat.eat();
+    }
+    
+狗狗吃饭
+猫猫吃饭
+```
+
+`cat`和 `dog` 的类都实现了 `Animal` 接口，都实现了 `eat` 方法。编译时，只知道 `dog` 和 `cat` 是 `Animal` 类型，只有在运行时才知道具体调用哪个实现方法。
+
+### 引用
+
+* [多态](https://www.liaoxuefeng.com/wiki/1252599548343744/1260455778791232)
+* [Polymorphism in Java – An Introduction](https://www.mygreatlearning.com/blog/polymorphism-in-java/#What%20is%20Polymorphism%20in%20Java?)
 
 ## 抽象类和接口的区别
 
