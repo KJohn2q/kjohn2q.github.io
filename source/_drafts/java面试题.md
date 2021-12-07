@@ -288,6 +288,19 @@ FLUSH TABLES tabl_name,[,tbl_name] WITH READ LOCK
 
 * [Innodb中的事务隔离级别和锁的关系](https://tech.meituan.com/2014/08/20/innodb-lock.html)
 
+## 事务的特性 ACID
+
+原子性(atomicity), 一致性 (consistency), 隔离性 (isolation), 持久性 (durablity)。
+
+* 原子性 (atomicity)。事务为一系列工作单元，可以被提交或者回滚。事务中对数据库做出的修改，要么 `commit` 后成功，要么失败后 `roll back`回滚。
+* 一致性 (consistency)。事务中如涉及到多张表的修改，则在事务提交或回滚后，查询各表数据。要么成功后，各表中数据为修改后的值。要么失败回滚后，各表中数据为操作前的值。
+* 隔离性 (isolation)。各事务在执行期间相互隔离，不能互相干扰或者读取到其他事务未提交的数据。隔离性是基于锁机制来实现的。有经验的用户可以通过修改事务的隔离级别，牺牲隔离性以提升性能和并发性，不过要确保事务之间不会相互干扰。
+* 持久性 (durability)。事务一旦成功提交，即使中途发生断电，系统崩溃，竞争条件或其它潜在的非数据库应用被攻击的风险，事务中对数据做的改变也不会丢失。在写操作期间，持久性通常涉及到将操作写入到磁盘，足够数量的冗余备份以应对电源故障或软件崩溃。
+
+### 引用
+
+* [MySQL Glossary](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_acid)
+
 # Spring基础
 
 ## spring-boot默认的数据源连接池
@@ -299,8 +312,6 @@ FLUSH TABLES tabl_name,[,tbl_name] WITH READ LOCK
 ## spring boot 如何整合spring mvc
 
 ## mybatis where原理
-
-## 事务的特征（ACID）
 
 ## spring cache
 
