@@ -284,9 +284,12 @@ FLUSH TABLES tabl_name,[,tbl_name] WITH READ LOCK
 
 ## 事务的隔离级别，MySQL的默认隔离级别
 
+`InnoDB` 提供了四种事务的隔离级别：读未提交 (READ UNCOMMITTED), 读已提交 (READ COMMITTED), 可重复读 (REPEATABLE READ) 和序列化 (SERIALIZABLE)。`InnoDB` 默认的隔离级别为可重复读 (REPEATABLE READ)。 
+
 ### 引用
 
 * [Innodb中的事务隔离级别和锁的关系](https://tech.meituan.com/2014/08/20/innodb-lock.html)
+* [Transaction Isolation Levels](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html)
 
 ## 事务的特性 ACID
 
