@@ -240,6 +240,48 @@ public static void main(String[] args) {
 
 ## MySQL锁的类型，各自的适用场景
 
+* 按使用粒度划分为表锁，行锁，间隙锁。
+* 按级别划分为读锁和写锁。
+
+### 表锁 (Table Level Locks)
+
+表锁是 `MySQL` 的访问表或查询表中数据的默认锁的级别。 `MyISAM` 存储引擎只支持表锁。
+
+sql语句：
+
+```
+LOCK TABLES 
+```
+
+```
+FLUSH TABLES tabl_name,[,tbl_name] WITH READ LOCK
+```
+
+### 行锁 (Row Level Locks)
+
+`InnoDB` 和 `NDB` 存储引擎使用行级锁而不是表锁。这意味着只会锁住实际用到的记录而不是整个表。
+
+### 读锁 (Read Locks)
+
+读锁为共享锁 (Shared Lock)。有如下特征：
+
+* 多个会话可同时获得共享锁。此外，其它会话可在没有获得锁时读取表中数据。
+* 获得读锁的会话，只能读取表中数据，不能向表中写入数据。其它会话在读锁释放前，不能向表中写入数据。写操作在读锁释放前，将进入等待状态。
+* 如会话终止，`MySQL`会显式释放所有的锁。
+
+### 写锁 (Write Locks)
+
+写锁为排它锁 (Exclusive Lock)。有如下特征：
+
+* 获得写锁的会话，可从表中读取数据或向表中写入数据。其它会话不能读取或者写入，在排它锁释放前。
+* 仅有一个会话能获得写锁。
+
+### 引用
+
+* [MySQL Table Locking](https://www.mysqltutorial.org/mysql-table-locking/)
+* [What are the various types of locking used in the MySQL Server](https://www.thegeekdiary.com/what-are-the-various-types-of-locking-used-in-the-mysql-server/)
+* [InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
+
 ## 事务的隔离级别，MySQL的默认隔离级别
 
 ### 引用
