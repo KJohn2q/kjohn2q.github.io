@@ -236,6 +236,10 @@ public static void main(String[] args) {
 
 接口：所有方法均为抽象方法。关键字 `Interface`。
 
+## HashMap的实现原理
+
+## ConcurrentHashMap的实现原理
+
 # 数据库基础
 
 ## MySQL锁的类型，各自的适用场景
@@ -307,6 +311,17 @@ FLUSH TABLES tabl_name,[,tbl_name] WITH READ LOCK
 # Spring基础
 
 ## spring-boot默认的数据源连接池
+
+数据源 (DataSource) : 连接到物理数据库的工厂，作为 `DriverManager`的替代性增强。数据源可通过设置 `URL`，用户名和密码来建立连接。
+
+`SpringBoot` 自动配置了轻量级、高性能的连接池：`HikariCP`, `Tomcat JDBC Connection Pool` , `Common DBCP`.
+
+`Spring Boot 1.x` 默认的连接池为 `Tomcat JDBC Connection Pool` ，`Spring Boot 2.x` 改为了 `Hikaricp`. 
+
+### 引用
+
+*  [Configuring a DataSource Programmatically in Spring Boot](https://www.baeldung.com/spring-boot-configure-data-source-programmatic)
+* [Spring Boot DataSource Configuration](https://howtodoinjava.com/spring-boot2/datasource-configuration/)
 
 ## spring-boot自动装配原理
 
